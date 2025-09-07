@@ -1,0 +1,167 @@
+.feture-page {
+  color: black;
+  box-shadow: 0px 0px 10px 2px var(--d-grey);
+  background-color: var(--sun-seco);
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  width: 100vw;
+  padding: 30px 0;
+  overflow: hidden;
+}
+
+.feture-page .marker {
+  height: 10px;
+  width: 80px;
+  border-radius: 10px;
+  margin: auto;
+  background-color: var(--seco);
+}  
+
+/* feture title and disc */
+.feture-page .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin:  50px 0;
+  width: 100%;
+}
+
+.feture-page .content .dis{
+  width: 100%;
+  text-align: center;
+}
+
+.feture-page .content .title {
+  font-size: 1.5rem;
+  font-weight: 800;
+} 
+
+/* feture image box */
+.fetu-box,
+.fetu-box2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 150px;
+}
+
+.fetu-img {
+  height: 400px;
+  width: 300px;
+  border-radius: 10px;
+  margin: 0 70px;
+  box-shadow: 4px 8px 50px 4px #cecac98a;
+  background-position: center;
+  background-size: cover;
+  z-index: 2;
+} 
+
+#fetu-img1{
+  background-image: url("/animax img source/BERSERK-1.jpg");
+}
+#fetu-img2{
+  background-image: url("/animax img source/slient-voice-2.jpg");
+  background-position: top;
+}
+#fetu-img3{
+  background-image: url("/animax img source/sprited-away-poster.jpg");
+}
+#fetu-img4{
+  background-image: url("/animax img source/the-garden-of-words-1.jpg");
+  background-position: left;
+}
+
+
+/* fearure  content */
+.fetu-content {
+  width: 30%;
+  z-index: 5;
+  padding-left:70px;
+}
+.fetu-content .dis {
+  width: 80%;
+  opacity: 0.6;
+}
+
+.fetu-content .title {
+  font-size: 1.1rem;
+  /* font-size: 15px; */
+}
+
+
+/* feture background glowiing ball */
+.fetu-box .flot-ball-big,
+.fetu-box .flot-ball-small {
+  position: absolute;
+  top: 200px;
+  left: 250px;
+  height: 300px;
+  width: 300px;
+  background-color: crimson;
+  border-radius: 50%;
+  filter: blur(50px);
+  z-index: 1;
+}
+
+.fetu-box .flot-ball-small {
+  top: 20px;
+  left: 550px;
+  background-color: darkred;
+  height: 200px;
+  width: 200px;
+}
+
+.fetu-box2 .flot-ball-big,
+.fetu-box2 .flot-ball-small {
+  position: absolute;
+  top: 200px;
+  right: 250px;
+  height: 300px;
+  width: 300px;
+  background-color: crimson;
+  border-radius: 50%;
+  filter: blur(50px);
+  z-index: 1;
+}
+
+.fetu-box2 .flot-ball-small {
+  top: 20px;
+  right: 550px;
+  background-color: darkred;
+  height: 200px;
+  width: 200px;
+}
+
+.fetu-box2 .flot-ball-big,
+.fetu-box2 .flot-ball-small{
+  background-color:aquamarine;
+} 
+
+
+/* feture media query */
+
+/* feture page media query */
+@media screen and (max-width:700px) {
+  .fetu-box,
+  .fetu-box2{
+    margin-bottom: 50px;
+  }
+
+  .fetu-img {
+    height: 250px;
+    width: 250px;
+    margin: 0 30px 0 30px;
+  }
+  .fetu-content{
+    padding: 0 30px ;
+    width: 80%;
+  }
+  .fetu-content .title{
+    font-size: 0.7rem;
+  }
+  .fetu-content .dis{
+    width: 100%;
+  }
+} 

@@ -1,0 +1,227 @@
+
+
+/* about section body*/
+.about-section{
+  height:50dvh;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 50px ;
+
+}
+.about-us{
+  height: 50dvh;
+  width: 50%;
+  min-width: 370px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0px 30px 50px ;
+  /* background-color: red; */
+} 
+
+/* about section content */
+
+
+.about-us  .content .topic{
+  color: var(--seco);
+  font-size: 2rem ;
+  font-weight:500;
+  -webkit-text-stroke: 1px var(--prim);
+  text-decoration: underline;
+}
+
+.about-us .content .disc{
+  width: 80%;
+  font-size: 0.8rem;
+  word-spacing: 0.3rem;
+  margin-bottom: 20px;
+}
+
+.button button{
+  padding: 10px;
+  border: 1px solid black;
+  width: 120px;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 24px;
+}
+
+/* about section image card */
+.about-img{
+  width: 50%;
+  height: 100%;
+  /* background-color: yellow; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  /* padding: 50px; */
+}
+
+.about-img .about-card{
+  height: 250px;
+  width: 400px;
+  border-radius: 20px;
+  transform: rotate(-5deg);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(156, 156, 156, 0.25);
+  backdrop-filter: blur(5px);
+  position: relative;
+  z-index: 3;
+  transition: 0.75s;
+}
+
+.about-img .about-card .card-img{
+  border-radius: 50%;
+  background-color: var(--white);
+  border: 1px solid var(--d-grey);
+  height: 150px;
+  width: 150px;
+  position: relative;
+  margin-top: 20px;
+  background-repeat: no-repeat;
+  background-image: url("/animax img source/animaxx-only-logo-removebg-preview.png");
+  background-size: contain;
+  background-position: center;
+}
+
+.about-section .about-img .card-title{
+  margin-top: 5px;
+  height: 50px;
+  font-size: 1.7rem;
+  font-weight: 700;
+} 
+
+/* about section floating circle*/
+.small-logo-box{
+  position: absolute;
+  top: 100px;
+  right: -50px;
+  height: 100px;
+  width: 100px;
+  border-radius: 20px;
+  background-color: rgba(248, 229, 193, 0.25);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--d-grey);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+ }
+ 
+.small-logo-box .small-logo-img{
+  height: 50px;
+  width: 50px;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 50%;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.small-logo-box .dis{
+  width: 100%;
+  font-size: 0.6rem;
+  padding: 10px 5px;
+}
+
+.big-circle{
+  height: 80px;
+  width: 80px;
+  position: absolute; border-radius: 50%;
+  z-index: 2;
+}
+
+#big-circle-1{
+  background-image: linear-gradient(to bottom right , var(--prim), transparent);
+  top: 30px;
+  left: 220px;
+}
+#big-circle-2{
+  background-image: linear-gradient(to bottom left , var(--prim), transparent);
+  bottom: 20px;
+  left: 250px;
+}
+
+.small-circle{
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: var(--seco);
+}
+
+#small-circle-1{
+  top: -10px;
+  right: 80px;
+}
+#small-circle-2{
+  bottom: -10px;
+  right: 10px;
+} 
+
+/* about media query */
+
+@media screen and (max-width:790px) {
+  .about-section{
+    height: 100%;
+  }
+  .about-us{
+    /* background-color: blue; */
+    width: 100vw;
+  }
+  .about-us .content{
+    text-align: center;
+  }
+  .about-us .content .disc{
+    margin: auto;
+    padding: 20px 0;
+  }
+  .about-img{
+    width: 100vw;
+  }
+
+
+}
+
+
+@media screen and (max-width:700px) {
+  .about-us{
+    padding: 30px;
+  }
+  .about-us  .content .topic{
+    font-size: 1.5rem;
+    width: 100%;
+  }
+  .about-us .content .disc{
+    width: 100%;
+    font-size: 1rem;
+  }
+  .about-us .content .button button{
+    padding: 10px;
+    width: 120px;
+  }
+  .about-us .content .button button:hover{
+    background-color: var(--seco);
+  }
+  .about-img{
+    width: 90%;
+  }
+  #big-circle-1{
+    top: 30px;
+    left: 250px;
+  }
+  #big-circle-2{
+    bottom: 20px;
+    left: 0px;
+  }
+
+
+}

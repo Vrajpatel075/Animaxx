@@ -1,0 +1,103 @@
+.shopping-section{
+  width: 100vw;
+  padding-top: 100px;
+  position: relative;
+  background-color:var(--li-grey);
+}
+
+.shopping-section .title{
+  height: 100px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 4rem;
+  text-align: center;
+  color: var(--black);  
+  overflow: hidden;
+}  
+
+/* products section */
+.shopping-section .products{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 20px;
+  gap: 10px;
+  /* background-color: red; */
+}
+
+.products .shop_card{
+  padding: 20px;
+  height: 300px;
+  width: 19%;
+  min-width: 250px;
+  border-radius: 5px;
+  background-color:var(--white);
+  box-shadow: 5px 5px 10px 0px #bebbba;
+  transition: 0.5s;
+}
+
+.product-img{
+  height: 200px;
+  background-size: cover;
+}
+
+#product_img1{
+  background-image: url("animax img source/sweatshirt.jpg");
+}
+#product_img2{
+  background-image: url("animax img source/t-shirt.webp");
+}
+#product_img3{
+  background-image: url("animax img source/watch.jpg");
+}
+#product_img4{
+  background-image: url("animax img source/shirt.jpg");
+}
+#product_img5{
+  background-image: url("animax img source/shose.jpg");
+}
+
+
+
+.product-title{
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.shop_card .detail{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+}
+
+.shop_card .detail .stars{
+  font-size: 1rem;
+}
+
+.shop_card .price .dis{
+  width: 100%;
+  font-size: 1rem;
+  font-weight:500;
+  text-decoration: underline;
+} 
+
+/* explore */
+.explore{
+  margin-top: 30px;
+  padding:  60px 0;
+  font-size: 2rem;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  position:relative;
+  /* background-color: red; */
+}
+
+.explore .fa-up-right-from-square{
+  margin: 0px 10px;
+  font-size: 1.8rem;
+} 

@@ -1,0 +1,159 @@
+
+/* navigation bar*/
+a {
+  text-decoration: none;
+  color: var(--black);
+}
+.navigation {
+  backdrop-filter: blur(4px);
+  background-color: rgba(156, 156, 156, 0.25);
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+  height: 80px;
+  border-bottom: 2px solid var(--d-grey);
+  transition: top 0.3s ease-in-out;
+}
+.header-sec {
+  width: 1140px;
+  margin: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 100;
+}
+nav a:hover {
+  background-color: var(--prim);
+  border-radius: 5px;
+}
+
+nav .active-link{
+  background-color: var(--prim);
+  border-radius: 5px;
+}
+nav a {
+  transition: 0.50s;
+  padding: 8px 6px;
+  margin-right: 20px;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .mob-logo {
+  height: 50px;
+  margin-top: 10px;
+}
+
+nav .mob-logo img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(3px 3px 3px var(--black));
+}
+
+
+#open-side-nav{
+  display: none ;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border: 0;
+  border-radius: 5px;
+  background-color: var(--seco);
+  padding: 5px 10px ;
+  font-size: 1.5rem;
+  z-index:100;
+}
+#close-side-nav{
+  display: none;
+  border: 0;
+  border-radius: 5px;
+  background-color: var(--seco);
+  padding: 5px 10px ;
+  font-size: 1.5rem;
+  z-index: 9999;
+}
+
+#overlay{
+  display: none;
+  background: rgb(0,0,0,0.5);
+  position: fixed;
+  inset: 0;
+  z-index: 199;
+}
+
+
+/* desktop layout */
+@media screen and (max-width:760px) {
+  .navigation{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100dvh;
+    width: min(25em , 100%)!important;
+    z-index: 1000;
+    background-color: rgb(255, 255, 255, 0.25);
+    backdrop-filter: blur(6px);
+    border-left: 1px solid var(--prim);
+    transition: right 300ms ease-out;
+  }
+  .navigation.show{
+    right: 0;
+  }
+  .navigation.show ~ #overlay{
+   display: block;
+  }
+  nav .nav-pages{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+  }
+  
+  nav{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  nav .nav_link{
+    width: 100%;
+    margin: 0;
+  }
+  nav a{
+    font-size: 1rem;
+    padding-left: 2.5rem;
+  }
+  nav a:hover{
+    border-radius: 0;
+    color: #403f44;
+  }
+  nav .active-link{
+    background-color: transparent;
+  }
+  nav .mob-logo{
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 110px;
+  }
+  .header-sec{
+    max-width: 100%;
+    margin: 0;
+    align-items: flex-start;
+  }
+  #open-side-nav,
+  #close-side-nav{
+    display: block;
+  }
+
+} 

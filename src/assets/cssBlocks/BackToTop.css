@@ -1,0 +1,30 @@
+
+
+/* back to top */
+.back_to_top{
+  height: 80px;
+  width: 80px;
+  background-color: var(--prim);
+  border-radius:20px ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 30px;
+  right: 50px;
+  z-index: 9999;
+  font-size: 1.5rem;
+  transition: 0.5s;
+}
+
+.back_to_top:hover{
+  border-radius: 50%;
+  border: 7px solid var(--white);
+} 
+
+@media screen and (max-width:760px) {
+  .back_to_top{
+    display: none;
+  }
+}
+

@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+
+
+.Sign-in-up-page{
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to bottom right , #403f44 , #1e1b32);
+}
+.Sign-in-up-page .container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 75vw;
+    height: 85dvh;
+    background-color: var(--black);
+    border-radius:30px;
+    box-shadow: 1px 1px 5px var(--black) ;
+    justify-content: center;
+    align-items: center;
+    gap: 10%    ;
+}
+.Sign-in-up-page .info_container{
+    width: 40%;color: var(--sun-seco);
+}
+
+.Sign-in-up-page .form_container{
+    border: 1px solid var(--white);
+    width: 450px;
+    height: 80%;
+    border-radius: 5%;
+    box-shadow: 1px 1px 25px #363636b9 ;
+    color: var(--white);
+}
+
+.Sign-in-up-page .info_title{
+    font-weight: bold;
+    letter-spacing: 5px;
+    padding:20px 0px  20px 0px;
+}
+.Sign-in-up-page .form_logo img{
+    height: 200px;
+    width: 200px;
+}
+.Sign-in-up-page .disc {
+    font-size: 13px;
+    width: 80%;
+  }
+
+.Sign-in-up-page .title{
+    text-align: center;
+    padding: 26px;
+    font-size: 2rem;
+    font-weight: 800;
+    text-decoration: underline;
+}
+.Sign-in-up-page .form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Sign-in-up-page .form input{
+    width: 80%;
+    margin: 26px 26px 0px  26px;
+    padding: 15px 0 ;
+    background-color: transparent;
+    color:var(--sun-seco);
+    border: none;
+    border-bottom: 2px solid var(--d-grey);
+    outline: none;
+}
+.Sign-in-up-page .form input::placeholder{
+    color: var(--d-grey);
+}
+.Sign-in-up-page input{
+    accent-color: var(--prim);
+}
+
+.Sign-in-up-page .button-container{
+    display: flex;
+    justify-content: center;
+}
+.Sign-in-up-page form button{
+    width: 80%;
+    padding: 10px ;
+    margin-top: 20px;
+    background-color: var(--sun-seco);
+    color: var(--black);
+    border-radius: 10px;
+}
+.Sign-in-up-page form button:hover{
+    border: 2px solid var(--d-grey);
+    color: var(--prim);
+    background-color: var(--black);
+    border-radius: 10px;
+    transition:0.50s
+}
+.Sign-in-up-page .terms input{
+    margin-top: 15px;
+    margin-left: 10%;
+    padding: 15px; 
+}
+.Sign-in-up-page  a{
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration:none;
+    color:#ff6000;
+    padding: 5px;
+}
+.Sign-in-up-page  form a:hover{
+    text-decoration: underline;
+}
+.Sign-in-up-page  .login-opt{
+    padding: 30px ;
+    text-align: center;
+    font-size: smaller;
+}
+.Sign-in-up-page  .login-opt p{
+    padding: 4px;
+    font-family: var(--prim);
+}
+
+@media screen and (max-width:700px) {
+.Sign-in-up-page .container{
+    width: 70%;
+    height: 75%;
+ }   
+.Sign-in-up-page  .login-opt{
+    padding:0px;
+ }
+.Sign-in-up-page form button{
+    margin: 10px;
+ }
+}

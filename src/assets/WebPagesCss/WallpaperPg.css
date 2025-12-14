@@ -41,45 +41,35 @@ body {
 
 
 
-/* ==================================nav pannel==============================*/
-.navpannel{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding:  0 10em;
+/* ================================== serch bar==============================*/
+
+.SearchAndNavPannel{
+  width: 100%;
   height: 80px;
-  width: 100vw;
-  backdrop-filter: blur(4px);
-  background-color: rgba(156, 156, 156, 0.25);
-  border-bottom: 2px solid var(--d-grey);
-  transition: top 0.3s ease-in-out;
+  display: flex;
+  justify-content: space-evenly ;
+  align-items: center;
   position: fixed;
   top: 0;
-  z-index: 99;
+  z-index: 11;
+  background-color: #ffffff;
 }
-.navpannel .mob-logo{
-  height: 50px;
-  width: 50px;
+
+.responsive_nav_searh{
+  display: flex;
+  height: 4em;
+  padding: 4px;
+  width: 85%;
 }
-.navpannel .mob-logo img {
-  height: 100%;
-  width: 100%;
-  object-fit: contain;
-  filter: drop-shadow(3px 3px 3px var(--black ));
-}
-.nav_searh{
-    display: flex;
-    justify-content: space-evenly;
-    width: 70%;
-    height: 40px;
-    border-radius: 4px;
-}
+
 .search_input{
     padding-left: 20px;
-    width: 100%;
+    width: 88%;
     font-size: 1rem;
     border: none;
     outline: none;
+    background-color: var(--white);
+    border-radius: 1rem 0 0 1rem;
 }
 .search_icon{
     background-color: var(--seco);
@@ -89,8 +79,8 @@ body {
     align-items: center;
     font-size: 1.4rem;
     color:#0f1111 ;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
     border: none;
     flex-shrink: 0;
 }
@@ -99,215 +89,76 @@ body {
     border: 3px solid var(--prim);
 }    
 
-.responsive-nav_searh{
-  display: none;
-}
-
-/* ==================================nav bar================================ */
-a{
-  text-decoration: none;
-  color: var(--black);
-}
-.header-sec {
-  width: 1140px;
-  margin: auto;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  position: relative;
-  z-index: 100;
-}
-nav {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-nav a:hover {
-  background-color: var(--prim);
-  border-radius: 5px;
-}
-
-nav .active-link{
-  background-color: var(--prim);
-  border-radius: 5px;
-}
-nav a {
-  transition: 0.50s;
-  padding: 8px 6px;
-  margin-right: 20px;
-  letter-spacing: 2px;
-  font-weight: 500;
-}
-
-nav .mob-logo {
-  height: 50px;
-  margin-top: 10px;
-}
-
-nav .mob-logo img {
-  height: 100%;
-  width: 100%;
-  object-fit: contain;
+.wallpaper-nav .Animaxx-logo{
+  height: 45px;
+  width: 45PX;
   filter: drop-shadow(3px 3px 3px var(--black));
 }
 
-
-#open-side-nav{
-  display: none ;
-  position: fixed;
-  top: 20px;
-  right: 60px;
-  border: 0;
-  border-radius: 5px;
-  background-color: var(--seco);
-  padding: 5px 10px ;
-  font-size: 1.5rem;
-  z-index:100;
-  transition: 1.5s ease-in-out;
-}
-#close-side-nav{
-  display: none;
-  border: 0;
-  border-radius: 5px;
-  background-color: var(--seco);
-  padding: 5px 10px ;
-  font-size: 1.5rem;
-  z-index: 9999;
-  transition: 1.5s ease-in-out;
+.wallpaper-nav .Animaxx-logo img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
 
-#overlay{
-  display: none;
-  background: rgb(0,0,0,0.5);
-  position: fixed;
-  inset: 0;
-  z-index: 199;
-}
-
-
-  .navigation{
-    position: fixed;
-    top: 0;
-    right: -100%;
-    height: 100dvh;
-    width: min(25em , 100%)!important;
-    z-index: 1000;
-    background-color: rgb(255, 255, 255, 0.25);
-    backdrop-filter: blur(6px);
-    border-left: 1px solid var(--prim);
-    transition: right 300ms ease-out;
-  }
-  .navigation.show{
-    right: 0;
-  }
-  .navigation.show ~ #overlay{
-   display: block;
-  }
-  nav .nav-pages{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 5px;
-  }
-  nav{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  nav .nav_link{
-    width: 100%;
-    margin: 0;
-  }
-  nav a{
-    font-size: 1rem;
-    padding-left: 2.5rem;
-  }
-  nav a:hover{
-    border-radius: 0;
-    color: #403f44;
-  }
-  nav .active-link{
-    background-color: var(--prim);
-  }
-  nav .mob-logo{
-    position: relative;
-    margin-bottom: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 110px;
-  }
-  .header-sec{
-    max-width: 100%;
-    margin: 0;
-    align-items: flex-start;
-  }
-  #open-side-nav,
-  #close-side-nav{
-    display: block;
-  }
- 
-
-
-
+/* ============ wallpaper body===================== */
 .wallpaper-list img{
     width: 100%;
     margin-bottom: 1em;
     border-radius: 12px;
     transition: 0.5s;
-    z-index: 95;
+    z-index: 10;
 }
 .wallpaper-list img:hover{
   transform: translateY(-8px);
   box-shadow:0px 0px 15px 0px var(--black);
 }
 .wallpaper-list{
-  width: 85%;
-  columns: 250px;
-  margin: auto;
-  margin-top: 7rem;
+  columns: 200px;
+  margin: 100px 2rem 0 2rem;
 }
 .wallpaper-container{
   width: 100vw;
 }
 
-@media screen and (max-width:599px) {
-  .wallpaper-list{
-  columns:150px;
-   width: 95%;
-}
+/* Small screen layout */
+@media screen and (max-width:830px) {
+  .SearchAndNavPannel {
+    z-index: 11;
+    width: 100%;
+    height: 80px;
+    display: flex;              /* make it a flex container */
+    justify-content: center;    /* center children horizontally */
+    align-items: center;        /* center children vertically */
+    position: fixed;
+    top: 0;
+    padding: 0 1rem;            
+    gap: 1rem;                  
+  }
+
+  .responsive_nav_searh {
+    flex: 1;                    /* take available space */
+    max-width: 500px;           /* prevent it from stretching too wide */
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+  }
+
+  .search_input{
+    width:80%;
+    height: 100%;
 }
 
-@media screen and (max-width:760px) {
-  .serch input{
-    width: 50vw;
-  }
-  .serch{
-    margin:0 70px 0  50px;
-  }   
-  #open-side-nav{
-    right: 40px ;
-  }
-  .navbox{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .nav_searh{
-    display: none;
-  }
-  .responsive-nav_searh{
-    display: flex;
-    width: 80%;
-    margin: auto;
-    margin-top: 120px;
-    height: 40px;
-  }
-  .navpannel{
-    padding: 40px;
+.search_icon{
+  height: 100%;
+}
+
+}
+@media screen and (max-width:580px) {
+  .search_input{
+    width: 70%;
   }
   .wallpaper-list{
-     margin-top: 1rem;
+    columns: 150px;
   }
 }

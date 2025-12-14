@@ -1,5 +1,4 @@
-
-/* navigation bar*/
+/* navigation bar */
 a {
   text-decoration: none;
   color: var(--black);
@@ -27,31 +26,27 @@ nav a:hover {
   background-color: var(--prim);
   border-radius: 5px;
 }
-
-nav .active-link{
+nav .active-link {
   background-color: var(--prim);
   border-radius: 5px;
 }
 nav a {
-  transition: 0.50s;
+  transition: 0.5s;
   padding: 8px 6px;
   margin-right: 20px;
   letter-spacing: 2px;
   font-weight: 500;
 }
-
 nav {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 nav .mob-logo {
   height: 50px;
   margin-top: 10px;
 }
-
 nav .mob-logo img {
   height: 100%;
   width: 100%;
@@ -59,86 +54,83 @@ nav .mob-logo img {
   filter: drop-shadow(3px 3px 3px var(--black));
 }
 
-
-#open-side-nav{
-  display: none ;
-  position: fixed;
+#open-side-nav {
+  display: none;
+  position: absolute;
   top: 20px;
   right: 20px;
   border: 0;
   border-radius: 5px;
   background-color: var(--seco);
-  padding: 5px 10px ;
+  padding: 5px 10px;
   font-size: 1.5rem;
-  z-index:100;
+  z-index: 100;
 }
-#close-side-nav{
+#close-side-nav {
   display: none;
   border: 0;
   border-radius: 5px;
   background-color: var(--seco);
-  padding: 5px 10px ;
+  padding: 5px 10px;
   font-size: 1.5rem;
-  z-index: 9999;
+  z-index: 110;
 }
 
-#overlay{
+#overlay {
   display: none;
-  background: rgb(0,0,0,0.5);
+  background: rgb(0, 0, 0, 0.5);
   position: fixed;
   inset: 0;
   z-index: 199;
 }
 
-
-/* desktop layout */
-@media screen and (max-width:760px) {
-  .navigation{
+/* mobile layout */
+@media screen and (max-width: 760px) {
+  .navigation {
     position: fixed;
     top: 0;
     right: -100%;
     height: 100dvh;
-    width: min(25em , 100%)!important;
+    width: min(25em, 100%) !important;
     z-index: 1000;
-    background-color: rgb(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(6px);
     border-left: 1px solid var(--prim);
     transition: right 300ms ease-out;
   }
-  .navigation.show{
+  .navigation.show {
     right: 0;
   }
-  .navigation.show ~ #overlay{
-   display: block;
+  .navigation.show ~ #overlay {
+    display: block;
   }
-  nav .nav-pages{
+  nav .nav-pages {
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 5px;
   }
-  
-  nav{
+  nav {
     display: flex;
     flex-direction: column;
     width: 100%;
   }
-  nav .nav_link{
+  nav .nav_link {
     width: 100%;
     margin: 0;
   }
-  nav a{
+  nav a {
     font-size: 1rem;
     padding-left: 2.5rem;
   }
-  nav a:hover{
+  nav a:hover {
     border-radius: 0;
     color: #403f44;
   }
-  nav .active-link{
+  nav .active-link {
     background-color: transparent;
   }
-  nav .mob-logo{
+  nav .mob-logo {
     position: relative;
     margin-bottom: 30px;
     display: flex;
@@ -146,14 +138,82 @@ nav .mob-logo img {
     justify-content: space-between;
     gap: 110px;
   }
-  .header-sec{
+  .header-sec {
     max-width: 100%;
     margin: 0;
     align-items: flex-start;
   }
   #open-side-nav,
-  #close-side-nav{
+  #close-side-nav {
     display: block;
   }
+}
 
-} 
+/* WallpaperPg overrides: force mobile-style nav even on desktop */
+.wallpaper-nav .navigation {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  height: 100dvh;
+  width: min(25em, 100%);
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+  border-left: 1px solid var(--prim);
+  transition: right 300ms ease-out;
+  z-index: 1000;
+}
+.wallpaper-nav .navigation.show {
+  right: 0;
+}
+.wallpaper-nav nav {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+.wallpaper-nav nav .nav-pages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+}
+.wallpaper-nav nav a {
+  font-size: 1rem;
+  padding-left: 2.5rem;
+  text-align: left;
+  width: 100%;
+}
+.wallpaper-nav nav a:hover {
+  border-radius: 0;
+  color: #403f44;
+}
+.wallpaper-nav nav .active-link {
+  background-color: var(--prim);
+}
+.wallpaper-nav .mob-logo {
+  position: relative;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10rem;
+}
+.wallpaper-nav .header-sec {
+  max-width: 100%;
+  margin: 0;
+  align-items: flex-start;
+}
+.wallpaper-nav #open-side-nav,
+.wallpaper-nav #close-side-nav {
+  display: block;
+  background-color: var(--seco);
+  border: none;
+  border-radius: 5px;
+  padding: 6px 10px;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.wallpaper-nav .navigation.show ~ #overlay {
+    display: block;
+  }

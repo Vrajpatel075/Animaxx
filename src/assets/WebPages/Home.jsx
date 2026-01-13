@@ -11,14 +11,14 @@ import FooterPannel from '../htmlBlocks/FooterPannel'
 
 
 
-function Home() {
+function Home({toggleMode,currMode}) {
   return (
     <>   
     <NavigationPannel/>
     <Hero/>
     <BigScreen/>
-    <Bento/>
-    <Features/>
+    <Bento toggleMode={toggleMode} currMode={currMode}/>
+    <Features toggleMode={toggleMode} currMode={currMode}/>
     <Blog/>
     <Shopping/>
     <About/>

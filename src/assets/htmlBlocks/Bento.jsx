@@ -5,16 +5,17 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
-  function Bento() {
+  function Bento({toggleMode, currMode}) {
   const bentoRef = useRef(null);
-  const [currMode, setCurrMode] = useState("light");
+  // const [currMode, setCurrMode] = useState("light");
 
-  const toggleMode = () => {
-    const newMode = currMode === "light" ? "dark" : "light";
-    setCurrMode(newMode);
-    document.body.classList.remove(currMode);
-    document.body.classList.add(newMode);
-  };
+  // const toggleMode = () => {
+  //   const newMode = currMode === "light" ? "dark" : "light";
+  //   const BlockLvlMode = currMode === "day" ? "night" : "day";
+  //   setCurrMode(newMode);
+  //   document.body.classList.remove(currMode);
+  //   document.body.classList.add(newMode);
+  // };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -139,10 +140,10 @@
                       </div>
                       <div className="list">
                         <div className="dis">Themas</div>
-                        <div className="icon" id="mode_icon">
-                          <i id="mode-btn"className={`fa-solid ${currMode === "light" ? "fa-moon" : "fa-sun"}`}onClick={toggleMode}style={{ cursor: "pointer" }}></i>
+                        <div className="icon" id="mode_icon" onClick={toggleMode}>
+                          <i id="mode-btn"className={`fa-solid ${currMode === "light" ? "fa-moon" : "fa-sun"}`}></i>
                           </div>
-                          </div>
+                      </div>
                       <div className="list">
                           <div className="dis">Download</div>
                           <div className="icon"><i className="fa-solid fa-circle-down"></i></div>

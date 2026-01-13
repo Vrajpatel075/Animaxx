@@ -22,6 +22,7 @@
   border: 7px solid var(--white);
 } 
 
+
 @media screen and (max-width:760px) {
   .back_to_top{
     display: none;

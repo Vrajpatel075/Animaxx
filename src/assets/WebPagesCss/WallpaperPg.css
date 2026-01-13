@@ -103,23 +103,44 @@ body {
 
 /* ============ wallpaper body===================== */
 .wallpaper-list img{
-    width: 100%;
-    margin-bottom: 1em;
+    width: 100%;  
     border-radius: 12px;
     transition: 0.5s;
     z-index: 10;
 }
 .wallpaper-list img:hover{
+  background-color:transparent;
+  padding: 10px;
   transform: translateY(-8px);
-  box-shadow:0px 0px 15px 0px var(--black);
+  box-shadow:2px 2px 6px 0px var(--d-grey);
 }
 .wallpaper-list{
   columns: 200px;
-  margin: 100px 2rem 0 2rem;
+  margin: 100px 2rem 0 2rem; 
 }
 .wallpaper-container{
   width: 100vw;
 }
+.postCard{
+  padding: 10px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.postDiscription{
+  opacity: 0.5;
+  font-weight: 400;
+}
+.postLike span{
+  margin-right: 0.2rem;
+}
+.postLike{
+  margin-right: 0.5rem;
+}
+.postActivite{
+  display: flex;
+  justify-content: space-between;
+}
+
 
 /* Small screen layout */
 @media screen and (max-width:830px) {

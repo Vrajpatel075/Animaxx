@@ -18,6 +18,7 @@
   --sun-seco: #ffe6c7;
   --prim: #ff6000;
   --seco: #ffa559;
+  --night:#001938;
 }
 
 body::-webkit-scrollbar {
@@ -38,4 +39,13 @@ body {
   padding: 0;
   overflow-x: hidden;
   font-size: 12px;
+}
+
+.dark{
+  background-image: linear-gradient(to bottom right , #403f44 , #1e1b32);
+  color: #eee;
+}
+.light{
+  background-color: #eee;
+  color: black;
 }

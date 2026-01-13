@@ -9,7 +9,7 @@ function BigScreen() {
   const screenRef = useRef(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
+    const ctxs = gsap.context(() => {
       gsap.from(".show_screen", {
         y: 250,
         opacity: 1,
@@ -27,8 +27,9 @@ function BigScreen() {
       ScrollTrigger.refresh();
     }, screenRef);
 
-    return () => ctx.revert();
+    return () => ctxs.revert();
   }, []);
+
   return (
     <>
     <div className="show" ref={screenRef}>

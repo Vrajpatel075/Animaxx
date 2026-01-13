@@ -236,7 +236,7 @@
   background-color: var(--white);
   color: var(--black);
   border-radius: 25px;
-  transition: 0.75s;
+  transition: 0.75s;  
 }
 
 #item3 .bento-inner-card .list:hover {
@@ -275,14 +275,7 @@
   top: 220px;
 }
 
-.dark{
-  background-image: linear-gradient(to bottom right , #403f44 , #1e1b32);
-  color: #eee;
-}
-.light{
-  background-color: #eee;
-  color: black;
-}
+
 
 /* bento-box 4 */
 #item4 {

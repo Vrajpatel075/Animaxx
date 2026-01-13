@@ -5,31 +5,32 @@ import '../cssBlocks/Features.css'
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Features() {
-
-      const featuresRefs = useRef(null);
-       const ctx = gsap.context(() => {
+function Features({currMode}) {
+    const featuresRefs = useRef(null);
+      
     useEffect(() => {
+    const ctx = gsap.context(() => {
     gsap.from(".feture-page", {
       y: 250,
       opacity: 1,
       duration: 5,
       scrollTrigger: {
         trigger: ".feture-page",
-        scroller: "body",
         start: "top 80%",
         end: "top 90%",
         scrub: 5
       }
     });
-});
-    return () => ctx.revert(); // ✅ Cleanup on reload
+    ScrollTrigger.refresh();
+},featuresRefs);
+    return () => ctx.revert(); 
   }, []);
 
   
   return (
     <>
-     <div className="feture-page" ref={featuresRefs}>
+    <div ref={featuresRefs}>
+     <div className={`feture-page ${currMode === "light" ? "day" : "night"}`}>
         <div className="marker"></div>
         <div className="content">
         <div className="title"><h1>WHAT YOU GET</h1></div>
@@ -84,7 +85,7 @@ function Features() {
             <div className="fetu-img" id="fetu-img4"></div>
             
         </div>
-
+        </div>
      </div>
     </>
   )

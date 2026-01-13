@@ -50,7 +50,7 @@ function NavigationPannel() {
           top: showNavbar ? '0' : '-100%',
           transition: 'top 0.3s ease-in-out',
         }}
-        {...(isMobile ? { inert: '' } : {})}
+        {...(isMobile ? { inert: true } : {})}
       >
         <div className="header-sec">
           <nav>

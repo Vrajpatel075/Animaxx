@@ -31,8 +31,8 @@ const scrollToTop = () => {
 }, []);
 
   return (
-    <div className="back_to_top" ref={backToTopRef}>
-      <div className="up_btn" onClick={scrollToTop}>
+    <div className="back_to_top" onClick={scrollToTop} ref={backToTopRef}>
+      <div>
         <i className="fa-solid fa-arrow-turn-up"></i>
       </div>
     </div>

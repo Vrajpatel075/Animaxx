@@ -2,6 +2,7 @@
   import gsap from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   import '../cssBlocks/Bento.css'
+import { Link } from 'react-router-dom';
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -121,7 +122,7 @@
                   <div className="bento-inner-content">
                       <h1 className="title">POSTERS</h1>
                       <span className="dis">Download Posters And Immages Of Our Favorite Anime Movies In higH Quality Without Any Intrupting ADs.</span><br/>
-                      <button className="button-transperent"><a style={{color:"white"}} to="/sub_pages_index/wallpapers.html">VIEW MORE</a></button>
+                      <button className="button-transperent"><Link style={{color:"white"}} to="/WallpaperPg">VIEW MORE</Link></button>
                   </div>
                   <div className="bento-inner-box"></div>
                   <div className="bento-inner-box"></div>

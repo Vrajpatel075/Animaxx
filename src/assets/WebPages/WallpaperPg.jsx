@@ -3,16 +3,13 @@ import FooterPannel from '../htmlBlocks/FooterPannel'
 import "../WebPagesCss/WallpaperPg.css"
 import NavigationPannel from '../htmlBlocks/NavigationPannel'
 import { useNavigate } from 'react-router-dom'
-import { FaRegHeart } from "react-icons/fa";
-import { FaShare } from "react-icons/fa";
 import Pagination from '../htmlBlocks/Pagination'
+import { FaRegHeart, FaShare } from 'react-icons/fa6'
 
 
 function WallpaperPg(props) {
 
    const NavigateToHome = useNavigate()
-   const [posts,setPosts]=useState([])
-
 
    function truncateText(text, wordLimit) {
     const words = text.split(" ");
@@ -23,7 +20,7 @@ function WallpaperPg(props) {
   return (
     <>
         <div className="wallpaper-container">
-        <div className="SearchAndNavPannel wallpaper-nav">
+        <div className={`SearchAndNavPannel wallpaper-nav ${props.currMode === "light" ? "day" : "night"}`}>
             <div className='Animaxx-logo'>
                 <img src="/animax img source/ANIMAX_LOGO.png" 
                 alt="logo" 
@@ -40,13 +37,16 @@ function WallpaperPg(props) {
         </div>
 
 
+
         <div className="wallpaper-list">
         {props.postdata.map(post=>(
             <div className='postCard' key={post.postId}>
-                <p>post id : {post.postId}</p>
-                <p>user id : {post.userId}</p>
-                <img src={post.imageUrl} alt={`post ${post.postId}`}/>
-                <h4 className='postTitle'>{post.postOwner}</h4>
+                   {/* <div className="postActivite">
+                    <p>post id : {post.postId}</p>
+                    <p>user id : {post.userId}</p>
+                   </div> */}
+                <h4 className='postTitle' >{post.postOwner}</h4>
+                <img src={post.imageUrl} alt={`post ${post.postId}`} className={`${props.currMode === "light" ? "day" : "night"}`} />
                 <p className='postDiscription'>{truncateText(post.description,5)}</p>
                 
                 {/* <div className="postActivite">

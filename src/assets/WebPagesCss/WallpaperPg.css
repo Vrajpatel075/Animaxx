@@ -52,7 +52,12 @@ body {
   position: fixed;
   top: 0;
   z-index: 11;
-  background-color: #ffffff;
+  background-color:#ffffff;
+  color: #000;
+}
+.SearchAndNavPannel.night{
+   background-image: linear-gradient(to bottom right , #403f44 , #1e1b32);
+  color: var(--white);
 }
 
 .responsive_nav_searh{
@@ -108,12 +113,19 @@ body {
     transition: 0.5s;
     z-index: 10;
 }
-.wallpaper-list img:hover{
+.wallpaper-list .postCard img:hover{
   background-color:transparent;
-  padding: 10px;
-  transform: translateY(-8px);
-  box-shadow:2px 2px 6px 0px var(--d-grey);
+  /* padding: 12px; */
+  transform: translateY(-8px) scale(0.90);
 }
+.wallpaper-list .postCard img.day:hover{
+   box-shadow:2px 2px 10px 0px var(--d-grey);
+}
+.wallpaper-list .postCard img.night:hover{
+   box-shadow:2px 2px 10px 0px var(--black);
+}
+
+
 .wallpaper-list{
   columns: 200px;
   margin: 100px 2rem 0 2rem; 
@@ -125,6 +137,9 @@ body {
   padding: 10px;
   margin-bottom: 1rem;
   overflow: hidden;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid; 
+  -moz-column-break-inside: avoid;
 }
 .postDiscription{
   opacity: 0.5;

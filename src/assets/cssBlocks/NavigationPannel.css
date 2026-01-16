@@ -13,6 +13,7 @@ a {
   border-bottom: 2px solid var(--d-grey);
   transition: top 0.3s ease-in-out;
 }
+
 .header-sec {
   width: 1140px;
   margin: auto;

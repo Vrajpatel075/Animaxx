@@ -25,7 +25,6 @@ function App() {
   
     const toggleMode = () => {
       const newMode = currMode === "light" ? "dark" : "light";
-      // const BlockLvlMode = currMode === "light" ? "night" : "day";
       setCurrMode(newMode);
       document.body.classList.remove(currMode);
       document.body.classList.add(newMode);
@@ -50,6 +49,7 @@ function App() {
           totalPosts={postFeedData.length} 
           page={page}
           setPage={setPage}
+          currMode={currMode}
           />} 
           />
           <Route path='/SignIn' element={<SignIn />} />

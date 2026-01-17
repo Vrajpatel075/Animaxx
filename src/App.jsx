@@ -33,7 +33,8 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <BackToTop />
+        <BackToTop 
+        currMode={currMode}/>
         <Routes>
           <Route 
           path='/' 

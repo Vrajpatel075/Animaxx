@@ -39,85 +39,15 @@ body {
   overflow-x: hidden;
 }
 
-
-
-/* ================================== serch bar==============================*/
-
-.SearchAndNavPannel{
-  width: 100%;
-  height: 80px;
-  display: flex;
-  justify-content: space-evenly ;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  z-index: 11;
-  background-color:#ffffff;
-  color: #000;
-}
-.SearchAndNavPannel.night{
-   background-image: linear-gradient(to bottom right , #403f44 , #1e1b32);
-  color: var(--white);
-}
-
-.responsive_nav_searh{
-  display: flex;
-  height: 4em;
-  padding: 4px;
-  width: 85%;
-}
-
-.search_input{
-    padding-left: 20px;
-    width: 88%;
-    font-size: 1rem;
-    border: none;
-    outline: none;
-    background-color: var(--white);
-    border-radius: 1rem 0 0 1rem;
-}
-.search_icon{
-    background-color: var(--seco);
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.4rem;
-    color:#0f1111 ;
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
-    border: none;
-    flex-shrink: 0;
-}
-
-.nav_searh:hover{
-    border: 3px solid var(--prim);
-}    
-
-.wallpaper-nav .Animaxx-logo{
-  height: 45px;
-  width: 45PX;
-  filter: drop-shadow(3px 3px 3px var(--black));
-}
-
-.wallpaper-nav .Animaxx-logo img{
-  height: 100%;
-  width: 100%;
-  object-fit: contain;
-}
-
 /* ============ wallpaper body===================== */
-.wallpaper-list img{
-    width: 100%;  
-    border-radius: 12px;
-    transition: 0.5s;
-    z-index: 10;
-}
+
+
+/* images  effect */
 .wallpaper-list .postCard img:hover{
   background-color:transparent;
-  /* padding: 12px; */
   transform: translateY(-8px) scale(0.90);
 }
+/* toggle theam */
 .wallpaper-list .postCard img.day:hover{
    box-shadow:2px 2px 10px 0px var(--d-grey);
 }
@@ -125,17 +55,23 @@ body {
    box-shadow:2px 2px 10px 0px var(--black);
 }
 
-
+.wallpaper-container{
+  width: 100vw;
+}
 .wallpaper-list{
   columns: 200px;
   margin: 100px 2rem 0 2rem; 
 }
-.wallpaper-container{
-  width: 100vw;
+.wallpaper-list img{
+    width: 100%;  
+    border-radius: 12px;
+    transition: 0.5s;
+    z-index: 10;
 }
+
 .postCard{
-  padding: 10px;
-  margin-bottom: 1rem;
+  padding: 5px;
+  margin-bottom: 0.5rem;
   overflow: hidden;
   break-inside: avoid;
   -webkit-column-break-inside: avoid; 
@@ -145,56 +81,46 @@ body {
   opacity: 0.5;
   font-weight: 400;
 }
-.postLike span{
-  margin-right: 0.2rem;
+
+
+
+/* ===== Wallpaper Page Left Sidebar Nav ===== */
+.wallpaper-side-nav {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100dvh;
+  width: min(22rem, 100%);
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+  border-right: 1px solid var(--prim);
+  z-index: 1200;
+  transition: left 300ms ease-in-out;
+  padding: 1.5rem 1rem;
 }
-.postLike{
-  margin-right: 0.5rem;
+
+.wallpaper-side-nav.show {
+  left: 0;
 }
-.postActivite{
+
+/* Nav content */
+.wallpaper-side-nav nav {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-
-/* Small screen layout */
-@media screen and (max-width:830px) {
-  .SearchAndNavPannel {
-    z-index: 11;
-    width: 100%;
-    height: 80px;
-    display: flex;              /* make it a flex container */
-    justify-content: center;    /* center children horizontally */
-    align-items: center;        /* center children vertically */
-    position: fixed;
-    top: 0;
-    padding: 0 1rem;            
-    gap: 1rem;                  
-  }
-
-  .responsive_nav_searh {
-    flex: 1;                    /* take available space */
-    max-width: 500px;           /* prevent it from stretching too wide */
-    display: flex;
-    align-items: center;
-    border-radius: 1rem;
-  }
-
-  .search_input{
-    width:80%;
-    height: 100%;
+.wallpaper-side-nav a {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  text-align: left;
+  width: 100%;
 }
 
-.search_icon{
-  height: 100%;
-}
-
-}
-@media screen and (max-width:580px) {
-  .search_input{
-    width: 70%;
-  }
-  .wallpaper-list{
-    columns: 150px;
-  }
+/* Overlay */
+.wallpaper-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1100;
 }

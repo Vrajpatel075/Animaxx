@@ -21,6 +21,10 @@
   border-radius: 50%;
   border: 7px solid var(--white);
 } 
+.back_to_top.night:hover{
+  /* background-color: red; */
+  border-color: var(--night);
+}
 
 
 @media screen and (max-width:760px) {

@@ -5,7 +5,7 @@ import '../cssBlocks/BackToTop.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function BackToTop() {
+function BackToTop(props) {
   const backToTopRef = useRef(null);
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -31,7 +31,8 @@ const scrollToTop = () => {
 }, []);
 
   return (
-    <div className="back_to_top" onClick={scrollToTop} ref={backToTopRef}>
+    <div className={`back_to_top ${props.currMode === 'light'?'day':'night'}`} 
+    onClick={scrollToTop} ref={backToTopRef}>
       <div>
         <i className="fa-solid fa-arrow-turn-up"></i>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FooterPannel from '../htmlBlocks/FooterPannel';
 import '../WebPagesCss/WallpaperPg.css';
 import { useNavigate } from 'react-router-dom';
@@ -8,12 +8,16 @@ import UniversalNav from '../htmlBlocks/UniversalNav';
 function WallpaperPg(props) {
   const navigateToHome = useNavigate();
   const [wallpaperNavOpen, setWallpaperNavOpen] = useState(false);
+  const [wordLimit , setWordLimit] = useState(5);
+
 
   function truncateText(text, wordLimit) {
     const words = text.split(' ');
     if (words.length <= wordLimit) return text;
     return words.slice(0, wordLimit).join(' ') + ' ...';
   }
+
+  
 
   return (
     <>
@@ -33,8 +37,8 @@ function WallpaperPg(props) {
               <img src={post.imageUrl} alt={`post ${post.postId}`}
               className={props.currMode === 'light' ? 'day' : 'night'}/>
               <h4 className="postTitle">{post.postOwner}</h4>
-              <p className="postDiscription">
-                {truncateText(post.description, 5)}
+              <p className="postDescription">
+                {truncateText(post.description, wordLimit)}
               </p>
             </div>
           ))}

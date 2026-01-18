@@ -77,7 +77,7 @@ body {
   -webkit-column-break-inside: avoid; 
   -moz-column-break-inside: avoid;
 }
-.postDiscription{
+.postDescription{
   opacity: 0.5;
   font-weight: 400;
 }
@@ -123,4 +123,10 @@ body {
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1100;
+}
+
+@media (max-width:700px) {
+  .postDescription{
+    display: none;
+  }
 }

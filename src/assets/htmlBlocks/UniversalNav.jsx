@@ -2,29 +2,37 @@ import React, { useState } from 'react';
 import '../cssBlocks/UniversalNav.css';
 import { useNavigate } from 'react-router-dom';
 
+
 function UniversalNav({ navOpen, setNavOpen, currMode }) {
   const navigateToHome = useNavigate();
 
   // Default active link
   const [activeLink, setActiveLink] = useState('WALLPAPERS');
 
+
   const navItems = [
     { label: 'WALLPAPERS', path: '/WallpaperPg' },
     { label: 'BLOGS', path: '/SignIn' },
     { label: 'SHOP', path: '/SignUp' },
     { label: 'COMMUNITY', path: '/SignUp' },
-    { label: 'GET STARTED', path: '/SignUp' },
   ];
 
   return (
     <>
       <div className={`wallpaper-side-nav ${navOpen ? 'show' : ''}`}>
+
+        <div className="mob-nav-header">
+
         <button
           className="toggle-close-nav-btn"
           onClick={() => setNavOpen(false)}
           aria-label="close sidebar">
           ✖
         </button>
+
+         <img src="/animax img source/ANIMAX_LOGO.png" alt="logo" height="45"/>
+        </div>
+        
 
         <nav className='navlinks'>
           {navItems.map(({ label, path }) => (

@@ -60,6 +60,11 @@
   background-color: var(--sun-seco);
   transition: 0.5s;
 }
+.mob-nav-header{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
 
 
 /*============ Overlay =====*/

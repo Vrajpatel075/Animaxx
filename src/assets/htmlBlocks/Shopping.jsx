@@ -23,18 +23,17 @@ function Shopping() {
               scroller: "body",
               start: "top 80%",
               end: "top 70%",
-              scrub: 2,
-            //   markers:true
+              scrub: true,
+              // markers:true
             },
           });
         }
       });
     });
 
-    return () => ctx.revert(); // ✅ Cleanup on reload
+    return () => ctx.revert();
   }, []);
 
-  // ✅ Mouse hover handlers
   const handleMouseEnter = (e) => {
     gsap.to(e.currentTarget, { scale: 1.03, duration: 0.2 });
   };
@@ -52,7 +51,7 @@ function Shopping() {
             <div
               key={index}
               className="shop_card"
-              ref={(el) => (cardRefs.current[index] = el)} // ✅ Assign ref
+              ref={(el) => (cardRefs.current[index] = el)}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >

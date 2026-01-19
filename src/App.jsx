@@ -7,6 +7,7 @@ import SignIn from './assets/WebPages/SignIn';
 import SignUp from './assets/WebPages/SignUp';
 import { postFeedData } from '../postData';   // ✅ correct import
 import { useState } from 'react';
+import ViewedPost from './assets/WebPages/ViewedPost';
 
 function App() {
   // used for pagination
@@ -55,6 +56,13 @@ function App() {
           />
           <Route path='/SignIn' element={<SignIn />} />
           <Route path='/SignUp' element={<SignUp />} />
+          <Route 
+          path='/ViewedPost/:postId' 
+          element={<ViewedPost 
+          postdata={postFeedData} 
+          currMode={currMode}
+          />} 
+          />
         </Routes>
       </BrowserRouter>
     </>

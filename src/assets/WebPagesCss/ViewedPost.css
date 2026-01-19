@@ -1,0 +1,39 @@
+.SelectedPostContainer{
+    height: 35rem;
+    width: 55rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin: 1rem;
+    margin-top: 100px;
+    /* background-color: var(--li-grey); */
+    border-radius: 24px;
+    border: 1px solid var(--li-grey);
+}
+.ViewedImg {
+    height: 80%;
+    width: 100%;
+    /* background-color: blue; */
+}
+.ViewedImg img{
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+.PostActivite{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 0px 0.5rem;
+    font-size: 1.3rem;
+}
+.PostActivite .icons{
+    margin: 0px 4px;
+}
+.PostAuther{
+    padding: 0 0.5rem;
+}
+.ViewPostContainer{
+    padding: 0 6rem;
+}

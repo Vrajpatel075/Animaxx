@@ -1,12 +1,36 @@
+/* toggle theam */
+.recomendedPost .postCard img.day:hover{
+   box-shadow:2px 2px 10px 0px var(--d-grey);
+}
+.recomendedPost .postCard img.night:hover{
+   box-shadow:2px 2px 10px 0px var(--black);
+}
+.SelectedPostContainer.night{
+    background-color: var(--night);
+    border: 2px solid var(--black);
+}
+.backButton.night{
+    color: var(--white);
+}
+.backButton.night:hover{
+    color: var(--night);
+    transition: 0.4s;
+}
+
+
+/* body of the page */
 .ViewPostContainer{
-    margin-top: 100px;
+    margin-top: 80px;
     width: 100vw;
     display: flex;
     flex-wrap: wrap;
-    padding: 0 4rem;
+    padding: 0 6rem;
 }
 
+/* this are the 2 section of 60 and 40 % of ViewPostContainer */
+/* for desktop screen */
 .mainSection{
+    position: relative;
     width: 60%;
     height: 100%;
     padding: 1rem 1rem;
@@ -18,23 +42,11 @@
     padding-top: 1rem;
     columns: 200px;
 }
-
-.SelectedPostContainer{
-    height: 35rem;
-    width: 100%; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1rem;
-    border-radius: 24px;
-    border: 2px solid var(--li-grey);
-    float: left
-}
+/* all the recomendation below the selected img / main section */
 .mainSection section .recomendedPost{
     columns: 200px;
     margin-top: 1rem;
 }
-
 section .recomendedPost .postCard img{
     width: 100%;  
     border-radius: 12px;
@@ -45,16 +57,70 @@ section .recomendedPost .postCard img{
   background-color:transparent;
   transform: translateY(-8px) scale(0.90);
 }
-/* toggle theam */
-.recomendedPost .postCard img.day:hover{
-   box-shadow:2px 2px 10px 0px var(--d-grey);
+
+/* back button for wallpaper page */
+.backButton{
+    position: absolute;
+    top: 1rem;
+    left: -3.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.8rem; 
+    margin: 0.5rem;
+    background: transparent;
+    border: 0;
+    font-size: 1rem;
+
 }
-.recomendedPost .postCard img.night:hover{
-   box-shadow:2px 2px 10px 0px var(--black);
+.backButton:hover{
+    background-color: var(--li-grey);
+    border-radius: 12px;
+    transform: 0.5s;
 }
 
+/* post which is been selected by user in wallpaperpg */
+.Topbuttons{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 1rem;
+    padding: 0 0.5rem;
+    margin:0.5rem 0;
+}
+.Topbuttons button{
+    padding: 0.5rem;
+    font-weight: 600;
+    border-radius: 6px;
+    border: 0;
+    background-color: #ffa559;
+    color: var(--white);
+    height: 40px;
+}
+.Topbuttons .zoomIn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: x-large;
+}
+.Topbuttons button:hover{
+    background-color: #ff9239;
+}
+
+.SelectedPostContainer{
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 24px;
+    border: 2px solid var(--li-grey);
+}
 .ViewedImg {
-    height: 80%;
+    height: 75%;
     width: 100%;
     margin-bottom: 1rem;
 }
@@ -62,19 +128,154 @@ section .recomendedPost .postCard img{
 .ViewedImg img{
     object-fit: contain;
     height: 100%;
+    max-height: 30rem;
     width: 100%;
 }
 .PostActivite{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
-    padding: 0px 0.5rem;
-    font-size: 1.3rem;
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 0.5rem;
 }
 .PostActivite .icons{
-    margin: 0px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 6px;
+    border-radius: 4px;
+}
+.PostActivite .icons:hover{
+    background-color:rgba(128, 128, 128, 0.263);
+}
+.PostActivite .icons:first-child{
+    background-color: transparent;
+}
+.ActiveCount{
+    padding-left: 0.2rem;
+}
+.mainicons{
+    display: flex;
+    gap: 0.5rem;
 }
 .PostAuther{
     padding: 0 0.5rem;
 }
+.PostAuther h2:hover{
+    transition: 0.5s;
+    text-decoration: underline;
+}
+.PostComments{
+    padding: 0.5rem;
+    /* background-color: #ff9239; */
+}
+
+.CommentInput{
+    display: flex;
+    gap:0.5rem;
+    padding: 0 0.5rem;
+}
+.CommentInput input{
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--d-grey);
+    border-radius: 5px;
+}
+.CommentInput span{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.PostComments .comments h2{
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+.PostComments .comments span{
+    font-size: 0.8rem;
+    padding: 4px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.PostComments .comments span:hover{
+    background-color: var(--li-grey);
+    border-radius: 6px;
+}
+.sigleComment{
+    margin:1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--li-grey);
+}
+.PostComments .comments{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* large image / zoom in  */
+.LargeViewOverlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.LargeViewContent {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.LargeImage {
+  height: 500px;
+  margin: auto;
+}
+
+.ExitBtn {
+  position: absolute;
+  top: 0; 
+  right:0;
+  background: #ffffff64;
+  border: 2px solid var(--d-grey);
+  font-size: 1rem;
+  padding:6px 12px;
+}
+
+
+@media (max-width:1220px) {
+    .ViewPostContainer{
+        padding: 0 4rem;
+    }
+    .sideSection{
+        columns: 150px;
+    }   
+}
+@media (max-width:1150px) {
+    .mainSection section .recomendedPost{
+        columns: 150px;
+    }   
+}
+@media (max-width:970px) {
+    .mainSection {
+        width: 100%;
+    }   
+    .sideSection{
+        width: 100%;
+    }
+    .backButton{
+        display: none;
+    }
+    .ViewPostContainer{
+        padding: 0 2rem;
+    }
+       .Topbuttons{
+        display: none;
+    }
+}
+@media (max-width: 970px) { .sideSection { display: none; } }

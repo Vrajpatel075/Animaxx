@@ -121,7 +121,7 @@ import { Link } from 'react-router-dom';
                   <img src="/animax img source/yourname1.png" alt=""/>
                   <div className="bento-inner-content">
                       <h1 className="title">POSTERS</h1>
-                      <span className="dis">Download Posters And Immages Of Our Favorite Anime Movies In higH Quality Without Any Intrupting ADs.</span><br/>
+                      <span className="dis">Download Immages Of Our Favorite Anime Movies In higH Quality Without Any Intrupting ADs.</span><br/>
                       <button className="button-transperent"><Link style={{color:"white"}} to="/WallpaperPg">VIEW MORE</Link></button>
                   </div>
                   <div className="bento-inner-box"></div>

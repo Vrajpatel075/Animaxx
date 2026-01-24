@@ -101,3 +101,8 @@
   margin: 0px 10px;
   font-size: 1.8rem;
 } 
+@media screen and (max-width:570px) {
+  .shopping-section .title{
+    font-size: 2rem;
+  }
+}

@@ -37,7 +37,7 @@ body.dark   .feture-page.night {
 }
 
 .feture-page .content .dis{
-  width: 100%;
+  width: 80%;
   text-align: center;
 }
 
@@ -157,7 +157,6 @@ body.dark   .feture-page.night {
   .fetu-box2{
     margin-bottom: 50px;
   }
-
   .fetu-img {
     height: 250px;
     width: 250px;
@@ -172,5 +171,8 @@ body.dark   .feture-page.night {
   }
   .fetu-content .dis{
     width: 100%;
+  }
+  .feture-page .content .title{
+    font-size: 1rem;
   }
 } 

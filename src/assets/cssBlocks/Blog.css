@@ -45,7 +45,7 @@
 .card-img-with-svg-mark{
   width: 80vw;
   height: 80vh;
-  background-image: url("/animax img source/your-name-2.jpg");
+  background-image: url("/animax img source/yourname1-reverce.png");
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -132,27 +132,58 @@
 /* blog discription */
 .card-img-with-svg-mark .dis{
   color: #eee;
+  padding: 1rem;
+  background-color: #00000053;
+  border-radius: 12px;
   position: absolute;
   right:2%;
   top:15%;
   width: 25rem;
   font-size: 0.8rem;
-  word-spacing: 0.2rem;
+  word-spacing: 0.5rem;
   line-height: 1rem;
 }
-
+.card-img-with-svg-mark .dis:hover{
+  background-color: #000000b6;
+  transition: 0.5s;
+  box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.584);
+}
 /* blog media query */
-@media (max-width: 768px) {
-  .card-img-with-svg-mark .dis{
-    top: 15%;
-    left: 1%;
-    text-align:start;
-  }
+@media (max-width: 868px) {
+    .card-img-with-svg-mark .dis{
+      background-color: #000000bc;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .button-right{
+      width: 300px;
+      height: 120px;
+      border-radius: 3rem !important;
+    }
+    .fa-quote-left,
+    .fa-quote-right{
+      font-size: 20px;
+    }
+    .button-right .dis{
+      font-size: 0.6rem;
+      padding: 6px;
+    }
+    .card-img-with-svg-mark {
+      mask: url("/animax img source/vector-img-1-removebg-preview.png") center / contain no-repeat,
+      url("/animax img source/vector-img-2-removebg-preview.png") center / contain no-repeat, 
+      linear-gradient(#000000 0 0 );
+      -webkit-mask: url("/animax img source/vector-img-1-removebg-preview.png") center / contain no-repeat,
+      url("/animax img source/vector-img-2-removebg-preview.png") center / contain no-repeat, 
+      linear-gradient(#000000 0 0 );
+      mask-size: 20rem , 22rem; 
+      mask-position: top center , bottom right;
+      mask-composite: exclude ; 
+    } 
 } 
- 
-@media (max-width: 1080px) {
-  .card-img-with-svg-mark .dis span{
-    font-size: 0.7rem;
+@media screen and (max-width:530px) {
+  .autoshowbox{
+    display: none;
   }
-}  
-
+}
+ 

@@ -1,7 +1,7 @@
 
 /* show big screen*/
 .show{
-  height: 100vh;
+  /* height: 100vh; */
   width: 100vw;
   padding: 20px;
 }
@@ -36,7 +36,7 @@
   display: flex;
   justify-content: center;
   -webkit-text-stroke: 2px  var(--prim);
-  text-wrap: nowrap;
+  text-align: center;
 }
 
 .show_content p{
@@ -52,6 +52,25 @@
 /* show big screen media  */
 @media screen and (max-width:1000px)  {
   .show_content h1{
-    font-size: 2rem
+    font-size: 3rem
+  }
+} 
+@media screen and (max-width:850px)  {
+  .show_content h1{
+    font-size: 2.5rem
+  }
+  .show_content p{
+    font-size: 1rem;
+  }
+  .show_screen{
+    height: 50%;
+  }
+} 
+@media screen and (max-width:850px)  {
+  .show_content h1{
+    font-size: 1.5rem
+  }
+  .show_content p{
+    font-size: 0.7rem;
   }
 } 

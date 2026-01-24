@@ -16,6 +16,7 @@ const carouselRef = useRef(null);
   let runTimeout;
   let runAuto;
 
+
   const showSlider = (type) => {
     const itemSlider = listRef.current.querySelectorAll('.item');
     const itemThumbnail = thumbnailRef.current.querySelectorAll('.item');

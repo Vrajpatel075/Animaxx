@@ -9,7 +9,7 @@ function Blog() {
             <div className="card-wrapper">
                 <div className="card">
                     <div className="card-img-with-svg-mark">
-                        <div className="dis"><span>possimus maxime, error vitae sapiente voluptatem pariatur fuga eligendi eum repellendus quam asperiores earum ipsa quibusdam ex molestias necessitatibus magni tempora! Consectetur animi voluptatum ea in labore. Tenetur cumque accusamus laudantium velit iure est quaerat dolore! dolor sit amet consectetur adipisicing elit. Saepe vel aspernatur quia perferendis praesentium quas architecto a ipsa consectetur nihil beatae possimus nulla et, impedit odio minus, voluptas ducimus pariatur eaque necessitatibus eius. Esse facere minus ut dolore, voluptatibus quidem in itaque vel et, nobis sequi voluptatem laudantium quaerat obcaecati!</span></div>
+                        <div className="dis"><span>possimus ellendus quam asperionsectetur animi voluptatum ea in labore. Tenetur cumque accusamus laudantium velit iure est quaerat dolore! dolor sit amet consectetur adipisicing elit. Saepe vel aspernatur quia perferendis praesentium quas architecto a ipsa consectetur nihil beatae possimus nulla et, impedit odio minus, voluptas ducimus pariatur eaque necessitatibus eius. Esse facere minus ut dolore, voluptatibus quidem in itaque vel et, nobis sequi voluptatem laudantium quaerat obcaecati!</span></div>
                     </div>
                 </div>
 

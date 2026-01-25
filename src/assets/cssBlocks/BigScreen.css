@@ -1,9 +1,10 @@
 
 /* show big screen*/
 .show{
-  /* height: 100vh; */
+  height: 100vh;
   width: 100vw;
   padding: 20px;
+  overflow: hidden;
 }
 
 .show_screen {
@@ -63,7 +64,7 @@
     font-size: 1rem;
   }
   .show_screen{
-    height: 50%;
+    /* height: 50%; */
   }
 } 
 @media screen and (max-width:850px)  {

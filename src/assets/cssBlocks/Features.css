@@ -176,3 +176,16 @@ body.dark   .feture-page.night {
     font-size: 1rem;
   }
 } 
+@media screen and (max-width:500px) {
+  .fetu-content .title{
+    font-size: 0.6em;
+  }
+  .fetu-content .dis{
+    font-size: 0.5rem;
+  }
+  .fetu-img {
+    height: 200px;
+    width: 200px;
+    margin: 0 20px;
+  }
+}

@@ -198,13 +198,20 @@
     padding-right: 0;
   }
   .carousel .list .item .content .title {
-    font-size: 30px;
+    font-size: 25px !important;
   }
-  header nav .nav-logo img {
-    display: none;
+  .carousel .list .item .content .topic{
+    font-size: 20px !important;
+  }
+  .carousel .list .item .content .disc{
+    font-size: 10px !important;
   }
   header a {
     margin-right: 10px;
+  }
+  .thumnail .item {
+    width: 130px;
+    height: 180px;
   }
 }
 

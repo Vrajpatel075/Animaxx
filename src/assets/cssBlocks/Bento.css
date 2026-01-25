@@ -178,12 +178,14 @@
   transform: translateY(-70px);
   z-index: 4;
 }
-
-.bento-inner-content {
+#item2 .bento-inner-content{
   position: absolute;
   top: 30px;
   left: 40px;
   width: 40%;
+}
+
+.bento-inner-content {
   color: var(--white);
   z-index: 1;
   transition: 0.75s;
@@ -363,8 +365,39 @@
 
 /* wallpaper media query*/
 
+@media screen and (max-width:1310px) {
+  #item3 .bento-inner-content{
+  position: absolute;
+  left:20px;
+  top: 10px;
+  }
+  #item3 .bento-inner-card{
+    height: 200px;
+  }
+}
+@media screen and (max-width:1060px) {
+  #item2 .bento-inner-content{
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 100%;
+  }
+  .bento-inner-box:nth-child(3) {
+    left: 40%;
+    bottom: -10%;
+  }
+  .bento-inner-box:nth-child(4) {
+    left: 25%;
+    bottom: -30%;
+  }
+  .bento-inner-box:nth-child(5) {
+    left: 55%;
+    bottom: -30%;
+  }
 
-@media screen and (max-width:700px) {
+}
+
+@media screen and (max-width:900px) {
   .bento-wall .content .dis{
     width:90%;
   }
@@ -386,14 +419,18 @@
     left: 60%;
   }
   .bento-inner-box:nth-child(4) {
-    left: 45%;
+    left: 50%;
   }
   .bento-inner-box:nth-child(5) {
-    left: 75%;
+    left: 70%;
   }
-  .bento-row1 .item .bento-inner-content{
+  #item2 .bento-inner-content{
     left: 10px;
+    width: 50%;
   }
+  .bento-inner-box:hover {
+    transform: translateY(-55px);
+}
   .bento-row1 .button-transperent{
     font-size: 0.6rem;
     padding: 5px;
@@ -401,9 +438,7 @@
   }
   #item3 .bento-inner-card {  
     width: 200px;
-    top: 10px;
-    left: 2%;
-    top: 6%;
+    left: 20px;
   }
   #item3 .bento-inner-card .title{
     font-size:0.5rem;
@@ -420,15 +455,12 @@
     font-size: 0.7rem;
   }
   #item3 .bento-inner-content {
-    left: 60%;
+    left: 50%;
     top:  50%;
     height: 150px;
     width: 180px;
     font-size: 0.4rem;
     z-index: 15;
-  }
-  #item3 .bento-inner-content h1{
-    padding-bottom: 5px;
   }
   #item4 .bento-inner-content {
     width: 100%;
@@ -440,29 +472,14 @@
 
 }
 @media screen and (max-width:550px) {
-
-  .bento-inner-content .dis{
-    font-size: 0.5rem;
-    letter-spacing: 1px;
-  }
-  #item3 .bento-inner-card {
-    width: 180px;
-  }
-  #item3 .bento-inner-content {
+#item3 .bento-inner-content{
   position: absolute;
-  left: 55%;
-  top: 120px;
-  padding: 0 12px;
+  left:20px;
+  top: 10px;
+  width: 100%;
   }
-  #item3 .bento-inner-content h1{
-    display: flex;
-    flex-wrap: wrap;
-    width: 80%;
-  }
-  #item3 .bento-inner-content .dis{
-    display: flex;
-    flex-wrap: wrap;
-    width: 80%;
-  }
-
+  #item3 .bento-inner-card{
+    height: 135px;
+    left: 20px;
+    }
 }

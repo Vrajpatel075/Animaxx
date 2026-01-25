@@ -1,5 +1,3 @@
-
-
 /* about section body*/
 .about-section{
   height:50dvh;
@@ -7,23 +5,19 @@
   display: flex;
   flex-wrap: wrap;
   padding: 50px ;
-
+  overflow: visible;
 }
 .about-us{
-  height: 50dvh;
   width: 50%;
-  min-width: 370px;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 30px 0px 30px 50px ;
-  /* background-color: red; */
+  /* background-color: green; */
 } 
 
 /* about section content */
-
-
 .about-us  .content .topic{
   color: var(--seco);
   font-size: 2rem ;
@@ -58,12 +52,12 @@
   justify-content: center;
   position: relative;
   z-index: 1;
-  /* padding: 50px; */
+  padding: 2rem;
 }
 
 .about-img .about-card{
-  height: 250px;
   width: 400px;
+  padding: 1rem;
   border-radius: 20px;
   transform: rotate(-5deg);
   display: flex;
@@ -168,60 +162,89 @@
 } 
 
 /* about media query */
+@media screen and (max-width:980px) {
+  .about-section{
+    padding: 20px;
+  }
+  .about-us{
+    padding: 30px 0px 30px 10px ;
+  }
+  .about-img .about-card{
+    width: 350px;
+    padding: 0;
+    /* background-color: red; */
+  }
+}
 
 @media screen and (max-width:790px) {
   .about-section{
     height: 100%;
   }
   .about-us{
-    /* background-color: blue; */
-    width: 100vw;
+    width: 100%;
   }
   .about-us .content{
-    text-align: center;
+    text-align: start;
   }
   .about-us .content .disc{
-    margin: auto;
-    padding: 20px 0;
+    padding: 10px 0;
   }
   .about-img{
-    width: 100vw;
+    padding: 1rem;
+    width: 100%;
+    /* background-color: blue; */
   }
-
-
 }
 
 
 @media screen and (max-width:700px) {
-  .about-us{
-    padding: 30px;
-  }
-  .about-us  .content .topic{
-    font-size: 1.5rem;
-    width: 100%;
-  }
-  .about-us .content .disc{
-    width: 100%;
-    font-size: 1rem;
-  }
-  .about-us .content .button button{
-    padding: 10px;
-    width: 120px;
-  }
-  .about-us .content .button button:hover{
-    background-color: var(--seco);
-  }
-  .about-img{
-    width: 90%;
-  }
   #big-circle-1{
     top: 30px;
     left: 250px;
   }
   #big-circle-2{
     bottom: 20px;
-    left: 0px;
+    left: 100px;
   }
-
-
+  .about-section .about-card{
+    width:300px;
+  }
+  .about-img .about-card .card-img{
+    height: 80px;
+    width: 80px;
+  }
+  .about-img .about-card .card-title{
+    font-size: 1rem;
+  }
+  .small-logo-box{
+    height: 70px;
+    width: 70px;
+    border-radius: 12px;
+  }
+  .small-logo-box .small-logo-img{
+    height: 25px; 
+    width: 25px;
+    font-size: 1rem;
+  }
+  .small-logo-box .dis{
+    text-align: center;
+    font-size: 0.5rem;
+}
+}
+@media screen and (max-width:430px) {
+  .small-logo-box{
+    display: none;
+  }
+  .about-us .content .disc{
+    font-size: 0.6rem;
+    margin-bottom: 5px;
+  }
+  .about-us .content .topic{
+    font-size: 1.2rem;
+  }
+  .about-us .content .button button{
+    padding: 4px;
+    width: 60px;
+    font-size: 0.5rem;
+  }
 }

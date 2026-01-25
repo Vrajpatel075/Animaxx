@@ -26,7 +26,7 @@ import { Link } from 'react-router-dom';
       const hoverDiv = document.querySelector('.hover-div');
       const bentoImg2 = document.querySelector('#bento-img2');
 
-      const moveBox3Down = () => box3 && (box3.style.transform = 'translateY(50px)');
+      const moveBox3Down = () => box3 && (box3.style.transform = 'translateY(40px)');
       const resetBox3 = () => box3 && (box3.style.transform = 'translateY(0)');
 
       box4?.addEventListener('mouseover', moveBox3Down);

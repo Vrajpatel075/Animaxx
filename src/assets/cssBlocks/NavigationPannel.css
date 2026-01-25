@@ -63,25 +63,23 @@ nav .mob-logo .toggle-close-nav-btn{
   display: none;
 }
 
-
 /* ===== Mobile / Tablet ===== */
 @media (max-width: 760px) {
-
   .mobile-topbar {
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 70px;
-  background: rgba(156, 156, 156, 0.25);
-  backdrop-filter: blur(6px);
-  border-bottom: 2px solid var(--d-grey);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem;
-  z-index: 100;
-}
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: rgba(156, 156, 156, 0.25);
+    backdrop-filter: blur(6px);
+    border-bottom: 2px solid var(--d-grey);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    z-index: 100;
+  }
 
 
   .navigation{

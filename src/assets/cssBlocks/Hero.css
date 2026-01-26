@@ -38,7 +38,7 @@
   transform: translate(-50%);
   padding-right: 30%;
   box-sizing: border-box;
-  color: var(--white);
+  color: var(--light-white);
   text-shadow: 0 5px 10px #000;
 }
 
@@ -70,7 +70,7 @@
 }
 .carousel .list .item .content button {
   border: none;
-  background-color: var(--white);
+  background-color: var(--light-white);
   letter-spacing: 3px;
   font-family: poppins;
   font-weight: 500;
@@ -78,8 +78,8 @@
 }
 .carousel .list .item .content button:nth-child(2) {
   background-color: transparent;
-  color: var(--white);
-  border: 2px solid var(--white);
+  color: var(--light-white);
+  border: 2px solid var(--light-white);
 } 
 
 
@@ -115,7 +115,7 @@
   bottom: 10px;
   left: 10px;
   right: 10px;
-  color: var(--white);
+  color: var(--light-white);
 }
 .thumnail .item .content .title {
   font-weight: bold;
@@ -143,7 +143,7 @@
   background-color: #eee4;
   border: none;
   font-family: monospace;
-  color: var(--white);
+  color: var(--light-white);
   font-size: large;
   font-weight: bold;
   transition: 0.5s;
@@ -151,7 +151,7 @@
 }
 
 .arrow button:hover {
-  background-color: var(--white);
+  background-color: var(--light-white);
   color: var(--black);
 } 
 
@@ -339,8 +339,7 @@
 .time {
   width: 0%;
   height: 5px;
-  /* background-color: #ff6000; */
-  background-image: linear-gradient(to right, var(--seco), var(--prim));
+  background-image: linear-gradient(to right, var(--seco-1), var(--prim));
   position: absolute;
   z-index: 1000;
   top: 0;
@@ -365,5 +364,5 @@
 }
 .btn-white a{
   display: block;
-  color: var(--white);
+  color: var(--light-white);
 }

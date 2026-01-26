@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import FooterPannel from '../htmlBlocks/FooterPannel';
 import '../WebPagesCss/WallpaperPg.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Pagination from '../htmlBlocks/Pagination';
 import UniversalNav from '../htmlBlocks/UniversalNav';
 
@@ -47,6 +47,12 @@ function WallpaperPg(props) {
             </div>
           ))}
         </div>
+
+        <button>
+          <p>
+          <Link to="/UploadPost">Add Poat</Link>
+          </p>
+        </button>
 
         <Pagination
           totalPosts={props.totalPosts}

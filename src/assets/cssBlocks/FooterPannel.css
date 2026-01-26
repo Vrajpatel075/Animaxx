@@ -1,7 +1,7 @@
 footer{
   height: 50dvh;
   width: 100vw;
-  color: var(--white);
+  color: var(--light-white);
   background-image: linear-gradient(to bottom right , #403f44 , #1e1b32);
   padding-top: 20px;
   display: flex;

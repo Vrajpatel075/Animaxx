@@ -66,7 +66,7 @@ function UniversalNav({ navOpen, setNavOpen, currMode }) {
         </div>
 
         <div className="Animaxx-logo">
-          <img src="/animax img source/ANIMAX_LOGO.png" alt="logo" onClick={() => navigateToHome('/')}/>
+          <img src="/animax img source/ANIMAX_LOGO.png" alt="logo" onClick={() => navigateToHome('/ProfilePg')}/>
         </div>
       </div>
     </>

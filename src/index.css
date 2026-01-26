@@ -6,25 +6,28 @@
   box-sizing: border-box;
 }
 *::selection {
-  background-color: var(--sun-seco);
+  background-color: var(--);
   color: var(--prim);
 }
 
 :root {
-  --white:#eee;
+  --pure-white:#ffffff;
+  --light-white:#eee;
   --black: #000;
   --d-grey:#bebbba;
   --li-grey:#cecac9;
-  --sun-seco: #ffe6c7;
   --prim: #ff6000;
-  --seco: #ffa559;
+  --seco-1: #ffa559;
+  --seco-2: #ffe6c7;
+  /* use for hover */
+  --seco-3:#ff9239;
   --night:#001938;
 }
 
 body::-webkit-scrollbar {
   display: block;
   width: 8px;
-  background-color: var(--seco);
+  background-color: var(--seco-1);
 }
 
 body::-webkit-scrollbar-thumb {

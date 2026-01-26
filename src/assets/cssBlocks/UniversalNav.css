@@ -32,7 +32,7 @@
 .navlinks a:hover{
   transition: 0.5s;
   border-radius: 6px;
-  background-color: var(--sun-seco);
+  background-color: var(--seco-2);
 }
 .active-link{
   background-color: var(--prim);
@@ -42,7 +42,7 @@
 /* ===============Close and open button =============*/
 .toggle-close-nav-btn {
   align-self: flex-end;
-  background-color: var(--seco);
+  background-color: var(--seco-1);
   border-radius: 8px;
   padding: 6px 10px;
   font-size: 1.3rem;
@@ -52,12 +52,12 @@
 .toggle-open-nav-btn{
   padding: 6px 10px;
   border-radius: 0.5rem;
-  background-color: var(--seco);
+  background-color: var(--seco-1);
   font-size: 1.3rem;
 }
 .toggle-open-nav-btn:hover,
 .toggle-close-nav-btn:hover{
-  background-color: var(--sun-seco);
+  background-color: var(--seco-2);
   transition: 0.5s;
 }
 .mob-nav-header{
@@ -78,7 +78,7 @@
 /* theam toggle for navigation bar */
 .SearchAndNavPannel.night{
   background-image: linear-gradient(to bottom right , #403f44 , #1e1b32);
-  color: var(--white);
+  color: var(--light-white);
 }
 
 /*-================ main horizontal navication bar============ */
@@ -93,7 +93,7 @@
   right: 0;
   left: 0;
   z-index: 11;
-  background-color:#ffffff;
+  background-color:var(--pure-white);
   padding: 0px 1rem ;
 }
 /* serch bar */
@@ -111,12 +111,12 @@
     font-size: 1rem;
     border: none;
     outline: none;
-    background-color: var(--white);
+    background-color: var(--light-white);
     border-radius: 1rem 0 0 1rem;
 }
 
 .search_icon{
-    background-color: var(--seco);
+    background-color: var(--seco-1);
     width: 50px;
     display: flex;
     justify-content: center;

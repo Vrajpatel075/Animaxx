@@ -10,7 +10,7 @@
     border: 2px solid var(--black);
 }
 .backButton.night{
-    color: var(--white);
+    color: var(--light-white);
 }
 .backButton.night:hover{
     color: var(--night);
@@ -95,10 +95,11 @@ section .recomendedPost .postCard img{
     padding: 0.5rem;
     font-weight: 600;
     border-radius: 6px;
-    border: 0;
-    background-color: #ffa559;
-    color: var(--white);
+    border: 1px solid var(--night);
+    background-color: var(--seco-1);
+    color: var(--black);
     height: 40px;
+    transition: 0.5s;
 }
 .Topbuttons .zoomIn{
     display: flex;
@@ -107,7 +108,7 @@ section .recomendedPost .postCard img{
     font-size: x-large;
 }
 .Topbuttons button:hover{
-    background-color: #ff9239;
+    background-color: var(--seco-2);
 }
 
 .SelectedPostContainer{
@@ -168,7 +169,6 @@ section .recomendedPost .postCard img{
 }
 .PostComments{
     padding: 0.5rem;
-    /* background-color: #ff9239; */
 }
 
 .CommentInput{

@@ -8,6 +8,8 @@ import SignUp from './assets/WebPages/SignUp';
 import { postFeedData } from '../postData';   // ✅ correct import
 import { useState } from 'react';
 import ViewedPost from './assets/WebPages/ViewedPost';
+import UploadPost from './assets/WebPages/UploadPost';
+import ProfilePg from './assets/WebPages/ProfilePg';
 
 function App() {
   // used for pagination
@@ -62,6 +64,16 @@ function App() {
           postdata={postFeedData} 
           currMode={currMode}
           />} 
+          />
+          <Route 
+          path='/UploadPost' 
+          element={<UploadPost
+          currMode={currMode}/>}
+          />
+          <Route
+          path='/ProfilePg'
+          element={<ProfilePg
+          currMode={currMode}/>}
           />
         </Routes>
       </BrowserRouter>

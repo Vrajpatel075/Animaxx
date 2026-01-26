@@ -1,6 +1,6 @@
 
 body.light .feture-page.day {
-  background-color: var(--sun-seco);
+  background-color: var(--seco-2);
 }
 body.dark   .feture-page.night {
   background-color: var(--night);
@@ -10,7 +10,7 @@ body.dark   .feture-page.night {
 .feture-page {
   color: black;
    box-shadow: 2px 2px 10px 1px var(--d-grey);
-  background-color: var(--sun-seco);
+  background-color: var(--seco-2);
   border-top-left-radius: 60px;
   border-top-right-radius: 60px;
   width: 100vw;
@@ -23,7 +23,7 @@ body.dark   .feture-page.night {
   width: 80px;
   border-radius: 10px;
   margin: auto;
-  background-color: var(--seco);
+  background-color: var(--seco-1);
 }  
 
 /* feture title and disc */

@@ -19,7 +19,7 @@
 
 /* about section content */
 .about-us  .content .topic{
-  color: var(--seco);
+  color: var(--seco-1);
   font-size: 2rem ;
   font-weight:500;
   -webkit-text-stroke: 1px var(--prim);
@@ -72,7 +72,7 @@
 
 .about-img .about-card .card-img{
   border-radius: 50%;
-  background-color: var(--white);
+  background-color: var(--light-white);
   border: 1px solid var(--d-grey);
   height: 150px;
   width: 150px;
@@ -149,7 +149,7 @@
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  background-color: var(--seco);
+  background-color: var(--seco-1);
 }
 
 #small-circle-1{

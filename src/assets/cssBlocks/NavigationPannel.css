@@ -91,7 +91,7 @@ nav .mob-logo .toggle-close-nav-btn{
   }
 
   .toggle-nav-btn {
-    background: var(--seco);
+    background: var(--seco-1);
     border: none;
     border-radius: 5px;
     padding: 6px 10px;
@@ -150,7 +150,7 @@ nav .mob-logo .toggle-close-nav-btn{
   }
   .toggle-close-nav-btn:hover,
   .toggle-open-nav-btn:hover{
-    background-color: var(--sun-seco);
+    background-color: var(--seco-2);
   }
   .header-sec{
     align-items: start;

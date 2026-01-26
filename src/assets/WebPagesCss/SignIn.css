@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-
-
 .Sign-in-up-page{
     height: 100dvh;
+    width: 100dvw;
+    padding: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,26 +12,26 @@
 .Sign-in-up-page .container{
     display: flex;
     flex-wrap: wrap;
-    width: 75vw;
-    height: 85dvh;
+    padding: 5rem 3rem;
     background-color: var(--black);
     border-radius:30px;
     box-shadow: 1px 1px 5px var(--black) ;
     justify-content: center;
     align-items: center;
-    gap: 10%    ;
+    gap: 20px;
 }
 .Sign-in-up-page .info_container{
-    width: 40%;color: var(--sun-seco);
+    width: 40%;
+    color: var(--seco-2);
 }
 
 .Sign-in-up-page .form_container{
-    border: 1px solid var(--white);
+    border: 1px solid var(--light-white);
     width: 450px;
     height: 80%;
     border-radius: 5%;
     box-shadow: 1px 1px 25px #363636b9 ;
-    color: var(--white);
+    color: var(--light-white);
 }
 
 .Sign-in-up-page .info_title{
@@ -65,7 +65,7 @@
     margin: 26px 26px 0px  26px;
     padding: 15px 0 ;
     background-color: transparent;
-    color:var(--sun-seco);
+    color:var(--seco-2);
     border: none;
     border-bottom: 2px solid var(--d-grey);
     outline: none;
@@ -85,7 +85,7 @@
     width: 80%;
     padding: 10px ;
     margin-top: 20px;
-    background-color: var(--sun-seco);
+    background-color: var(--seco-2);
     color: var(--black);
     border-radius: 10px;
 }
@@ -105,7 +105,7 @@
     font-size: 15px;
     font-weight: 600;
     text-decoration:none;
-    color:#ff6000;
+    color:var(--prim);
     padding: 5px;
 }
 .Sign-in-up-page  form a:hover{
@@ -121,15 +121,44 @@
     font-family: var(--prim);
 }
 
+@media screen and (max-width:1400px) {
+    .Sign-in-up-page .container{
+        padding: 5rem 2rem;
+        gap: 40px;
+    }
+    .Sign-in-up-page .info_container{
+        width: 100%;
+        text-align: center;
+    }
+    .Sign-in-up-page .form_logo img{
+        height: 100px;
+        width: 100px;
+    }
+    .Sign-in-up-page .disc {
+        font-size: 13px;
+        margin: auto;
+    }
+}
 @media screen and (max-width:700px) {
-.Sign-in-up-page .container{
-    width: 70%;
-    height: 75%;
- }   
-.Sign-in-up-page  .login-opt{
-    padding:0px;
- }
-.Sign-in-up-page form button{
-    margin: 10px;
- }
+    .Sign-in-up-page{
+        padding: 1rem;
+    }
+    }
+@media screen and (max-width:600px) {
+    .Sign-in-up-page{
+        padding: 0;
+    }
+    .Sign-in-up-page .container{
+        padding: 1rem, 0.5rem;
+    }
+    .Sign-in-up-page .disc{
+        display: none;
+    }
+    .Sign-in-up-page  .form_container{
+        width: 100%;
+    }
+    .Sign-in-up-page .form_container .terms,
+    .Sign-in-up-page .form_container Link{
+        font-size: 0.5rem;
+    }
 }

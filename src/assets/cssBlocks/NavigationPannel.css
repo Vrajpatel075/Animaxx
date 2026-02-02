@@ -53,15 +53,15 @@ nav a {
   background-color: var(--prim);
   transition:0.5s;
 }
-.nav_link:last-child{
-  background-color: var(--prim);
-}
 .mob-logo .toggle-nav-btn{
   display: none;
 }
 nav .mob-logo .toggle-close-nav-btn{
   display: none;
 }
+
+
+
 
 /* ===== Mobile / Tablet ===== */
 @media (max-width: 760px) {
@@ -123,14 +123,12 @@ nav .mob-logo .toggle-close-nav-btn{
     width: 100%;
   }
   
-  .nav_link:last-child{
-    display: none;
-  }
   nav a {
-    font-weight: 600;
+    /* font-weight: 600; */
     width: 100%;
-    padding: 1rem 2.5rem;
-    margin: 0;
+    padding: 0.75rem 1rem;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
     font-size: 1rem;
   }
   .mob-logo {
@@ -155,4 +153,10 @@ nav .mob-logo .toggle-close-nav-btn{
   .header-sec{
     align-items: start;
   }
+  /* .nav_link:first-child{
+    background-color: var(--prim);
+  } */
+  /* .nav_link:last-child{
+    background-color: none;
+  } */
 }

@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './assets/WebPages/Home';
 import WallpaperPg from './assets/WebPages/WallpaperPg';
@@ -6,7 +6,7 @@ import BackToTop from './assets/htmlBlocks/BackToTop';
 import SignIn from './assets/WebPages/SignIn';
 import SignUp from './assets/WebPages/SignUp';
 import { postFeedData } from '../postData';   // ✅ correct import
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ViewedPost from './assets/WebPages/ViewedPost';
 import UploadPost from './assets/WebPages/UploadPost';
 import ProfilePg from './assets/WebPages/ProfilePg';
@@ -18,6 +18,14 @@ function App() {
 
   const lastPostIndex = page * limit;
   const firstPostIndex = lastPostIndex - limit;
+
+  //cheak login
+ const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("userId"));
+ 
+ useEffect(() => {
+  const storedUserId = localStorage.getItem("userId"); 
+  setIsLoggedIn(!!storedUserId);
+}, []);
 
   // slice the data for pagination
   const currentPosts = postFeedData.slice(firstPostIndex, lastPostIndex);
@@ -56,7 +64,7 @@ function App() {
           currMode={currMode}
           />} 
           />
-          <Route path='/SignIn' element={<SignIn />} />
+          <Route path='/SignIn' element={<SignIn setIsLoggedIn={setIsLoggedIn} />} />
           <Route path='/SignUp' element={<SignUp />} />
           <Route 
           path='/ViewedPost/:postId' 
@@ -67,14 +75,13 @@ function App() {
           />
           <Route 
           path='/UploadPost' 
-          element={<UploadPost
-          currMode={currMode}/>}
+          element={isLoggedIn ? <UploadPost  currMode={currMode}/> : <Navigate to= "/" />}
           />
           <Route
           path='/ProfilePg'
-          element={<ProfilePg
-          currMode={currMode}/>}
+          element={isLoggedIn ? <ProfilePg currMode={currMode} setIsLoggedIn={setIsLoggedIn}/>  : <Navigate to="/" />}
           />
+
         </Routes>
       </BrowserRouter>
     </>

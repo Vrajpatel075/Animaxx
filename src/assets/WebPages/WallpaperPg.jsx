@@ -26,6 +26,7 @@ function WallpaperPg(props) {
         navOpen={wallpaperNavOpen}
         setNavOpen={setWallpaperNavOpen}
         currMode={props.currMode}
+        showSearch={true}
       />
 
 

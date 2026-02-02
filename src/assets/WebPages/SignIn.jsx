@@ -1,8 +1,32 @@
-import React from 'react'
-import { Link } from 'react-router-dom'; 
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'; 
 import '../WebPagesCss/SignIn.css'
-function SignIn() {
+import UserService from '../../Service/UserService';
+function SignIn({setIsLoggedIn}) {
+
+    const  [email , setEmail]=useState("");
+    const  [password , setPassword]=useState("");
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e)=>{
+      e.preventDefault();
+      try{
+        const responce = await UserService.login({email , password})
+        const loggedInUser = responce.data;
+        
+        localStorage.setItem("userId", loggedInUser.userId); 
+        setIsLoggedIn(true);
+        localStorage.setItem("userEmail", loggedInUser.email);
+        
+        alert("Login successful for user: " + loggedInUser.username);
+        navigate("/ProfilePg");
+      }catch (error){
+        alert("login failed" + error);
+      }
+    }
   return (
+
+
     <>
        <div className="Sign-in-up-page">
         <div className="container">
@@ -15,10 +39,20 @@ function SignIn() {
             </div>
             <div className="form_container">
             <div className="title">LOGIN</div>
-                <form action="">
+                <form action="" onSubmit={handleSubmit}>
                 <div className="form">
-                <input className="effect-1" type="text" name="Username" placeholder="Enter Username"/>
-                <input type="password" name="Password" placeholder="Enter Password"/>
+
+                <input className="effect-1" 
+                type="email" 
+                name="email" 
+                placeholder="Enter email" 
+                onChange={(e)=> setEmail(e.target.value)}/>
+
+                <input 
+                type="password" 
+                name="Password" 
+                placeholder="Enter Password"
+                onChange={(e)=> setPassword(e.target.value)}/>
                 </div>
                 <div className="terms">
                 <label>

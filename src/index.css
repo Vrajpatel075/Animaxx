@@ -52,3 +52,11 @@ body {
   background-color: #eee;
   color: black;
 }
+.active-link{
+  background-color: var(--prim);
+  border-radius: 6px;
+}
+.active-link:hover{
+  background-color: var(--seco-2);
+  color: var(--prim);
+}

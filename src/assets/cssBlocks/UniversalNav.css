@@ -26,18 +26,20 @@
 
 .wallpaper-side-nav nav a {
   width: 100%;
-  padding: 0.75rem 1rem;
+  /* padding: 0.75rem 1rem; */
   text-align: left;
 }
-.navlinks a:hover{
+.routeLinks{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.routeLinks a:hover{
   transition: 0.5s;
   border-radius: 6px;
   background-color: var(--seco-2);
 }
-.active-link{
-  background-color: var(--prim);
-  border-radius: 6px;
-}
+
 
 /* ===============Close and open button =============*/
 .toggle-close-nav-btn {
@@ -96,6 +98,36 @@
   background-color:var(--pure-white);
   padding: 0px 1rem ;
 }
+.profilNav .SearchAndNavPannel{
+  justify-content: space-between;
+  padding: 0 2rem ;
+}
+.logoutLink{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px;
+  background-color: #cecac985;
+  border: 1px solid var(--black);
+  padding: 0.5rem 0.5rem;
+  width: 100%;
+  /* background-color: yellow; */
+}
+.LogoutIcon{
+  /* background-color: red; */
+  padding: 0.3rem 0;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.VirticalNav{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 90%;
+}
+
 /* serch bar */
 .responsive_nav_searh{
   display: flex;

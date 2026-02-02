@@ -80,10 +80,12 @@ function ViewedPost({postdata , currMode }) {
   
   return (
     <>
+    <div className="viewpage">
     <UniversalNav
     navOpen={wallpaperNavOpen}
     setNavOpen={setWallpaperNavOpen}
-    currMode={currMode}/>
+    currMode={currMode}
+    showSearch={true}/>
     
 
     <div className="ViewPostContainer">
@@ -219,6 +221,7 @@ function ViewedPost({postdata , currMode }) {
 
 
     <FooterPannel/>
+        </div>
     </>
   )
 }

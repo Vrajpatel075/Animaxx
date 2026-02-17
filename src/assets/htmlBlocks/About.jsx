@@ -3,6 +3,8 @@ import '../cssBlocks/About.css'
 import { Link } from 'react-router-dom'
 
 function About() {
+    const isLoggedIn = !!localStorage.getItem("userId");
+
   return (
    <>
         <div id="Community" className="about-section">
@@ -13,7 +15,7 @@ function About() {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, consectetur. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus praesentium, reiciendis voluptatum magni reprehenderit
                 </div>
                 <div className="button">
-                    <button><Link to="/SignUp">SIGN-UP</Link></button>
+                    {!isLoggedIn && ( <button> <Link to="/SignUp">SIGN-UP</Link> </button> )}
                 </div>
             </div>
         </div>

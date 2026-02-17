@@ -1,20 +1,12 @@
 .Profile-Container{
     display: flex;
-    /* justify-content: center; */
-    /* align-items: center; */
     flex-wrap: wrap;
     margin-top: 80px;
-    
-    /* height: 100vh; */
     width: 100vw;
-
-    /* background-color: pink; */
-    color: var(--black);
+    /* color: var(--black); */
 }
-.Settings{
-    position: fixed;
-    top: 6rem;
-    right:1rem;
+.Profile-Container.night{
+    background-color: var(--night);
 }
 .Profile-Container .Profile-Img-Container{
     width: 100%;
@@ -27,6 +19,7 @@
     /* background-color: purple; */
     
     padding: 1rem 4rem;
+    margin: 0 2rem;
     padding-bottom: 2rem;
     position: relative;
 }
@@ -34,19 +27,32 @@
 .Profile-Container .Profile-Img-Container .Profil-Pic img{
     background-color: yellow;
     border-radius: 50%;
-    height:200px;
+    height:250px;
+    width: 250px;
+    object-fit: cover;
 }
-.Profile-Container .Profile-Img-Container .Profile-Content .userName{
-    font-size:2rem ;
+.Profile-Container .Profile-Img-Container .Profile-Content .first-last-name{
+    font-size:1rem ;
+    display: flex;
+    gap: 0.5rem;
 }
 .Profile-Container .Profile-Img-Container .Profile-Content .Disc{
     font-size:0.8rem;
     word-spacing: 2px;
-    width: 80%;
+    width: 90%;
+    /* margin-top: 2rem; */
+    /* background-color: red; */
 }
 .Profile-Container .Profile-Img-Container .Profile-Content .Profile-Achivement{
     font-size: 1rem;
     padding-top: 1rem;
+}
+.Profile-Container .Profile-Img-Container .Profile-Content span{
+    font-size: 1.5rem;
+}
+.Profile-Container .Profile-Img-Container .Profile-Content .Profile-Achivement span{
+    margin-right: 0.5rem;
+    font-size: 1rem;
 }
 
 

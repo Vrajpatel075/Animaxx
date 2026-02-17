@@ -3,6 +3,7 @@ import '../cssBlocks/UniversalNav.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import UserService from '../../Service/UserService';
 import { TbLogout2 } from "react-icons/tb";
+import { IoSettingsOutline } from "react-icons/io5";
 
 function UniversalNav({ navOpen, setNavOpen, currMode, showSearch, setIsLoggedIn }) {
   const navigate = useNavigate();
@@ -74,13 +75,14 @@ function UniversalNav({ navOpen, setNavOpen, currMode, showSearch, setIsLoggedIn
           </div>
 
           {cheakLogin && (
-            <div className="logoutLink" onClick={handleLogout}>
-              <div>
+            <div>
+              <div className="logoutLink" onClick={handleLogout}>
               <a>Logout</a>
-              </div>
               <div className='LogoutIcon'>
                 <TbLogout2/>
               </div>
+              </div>
+              
             </div>
           )}
         </nav>

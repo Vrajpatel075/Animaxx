@@ -74,12 +74,14 @@
 
 .shop_card .detail .stars{
   font-size: 1rem;
+   color: var(--black);
 }
 
 .shop_card .price .dis{
   width: 100%;
   font-size: 1rem;
   font-weight:500;
+  color: var(--black);
 } 
 
 /* explore */

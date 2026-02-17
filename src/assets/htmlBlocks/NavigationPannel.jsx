@@ -33,15 +33,6 @@ function NavigationPannel() {
     { label: 'COMMUNITY', to: '/CommunityPg' },
   ];
 
-  // Add Profile or Get Started depending on login
-  // if (cheakLogin) {
-  //   const accountLink = { label: 'Profile', to: '/ProfilePg' };
-  //   windowWidth > 760 ? NavItems.push(accountLink) : NavItems.unshift(accountLink);
-  // } else {
-  //   const getStartedLink = { label: 'Get Started', to: '/SignIn' };
-  //   windowWidth > 760 ? NavItems.push(getStartedLink) : NavItems.unshift(getStartedLink);
-  // }
-
   return (
     <>
       <div className="mobile-topbar">
@@ -70,7 +61,7 @@ function NavigationPannel() {
             </div>
 
             <div className="nav-pages">
-              <NavLink to={cheakLogin ? "/ProfilePg" : "/SignIn"} 
+              <NavLink to={cheakLogin ? "/ProfilePg" : "/SignUpUserinfo"} 
               className={({ isActive }) => 
               window.location.pathname === "/" 
               ? "active-link" 

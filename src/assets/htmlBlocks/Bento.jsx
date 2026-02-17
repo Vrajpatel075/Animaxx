@@ -8,15 +8,8 @@ import { Link } from 'react-router-dom';
 
   function Bento({toggleMode, currMode}) {
   const bentoRef = useRef(null);
-  // const [currMode, setCurrMode] = useState("light");
+  const isLoggedIn = !!localStorage.getItem("userId");
 
-  // const toggleMode = () => {
-  //   const newMode = currMode === "light" ? "dark" : "light";
-  //   const BlockLvlMode = currMode === "day" ? "night" : "day";
-  //   setCurrMode(newMode);
-  //   document.body.classList.remove(currMode);
-  //   document.body.classList.add(newMode);
-  // };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -122,7 +115,10 @@ import { Link } from 'react-router-dom';
                   <div className="bento-inner-content">
                       <h1 className="title">POSTERS</h1>
                       <span className="dis">Download Immages Of Our Favorite Anime Movies In higH Quality Without Any Intrupting ADs.</span><br/>
-                      <button className="button-transperent"><Link style={{color:"white"}} to="/WallpaperPg">VIEW MORE</Link></button>
+                       <button className="button-transperent" style={{ color: "white" }} 
+                        onClick={() => navigate(isLoggedIn ? "/WallpaperPg" : "/SignIn")}>
+                        VIEW MORE
+                      </button>
                   </div>
                   <div className="bento-inner-box"></div>
                   <div className="bento-inner-box"></div>

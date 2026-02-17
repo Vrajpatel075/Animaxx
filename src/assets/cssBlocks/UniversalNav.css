@@ -79,7 +79,8 @@
 
 /* theam toggle for navigation bar */
 .SearchAndNavPannel.night{
-  background-image: linear-gradient(to bottom right , #403f44 , #1e1b32);
+  background-color:var(--dark);
+  /* background-image: linear-gradient(to bottom right , #403f44 , #1e1b32); */
   color: var(--light-white);
 }
 
@@ -95,7 +96,7 @@
   right: 0;
   left: 0;
   z-index: 11;
-  background-color:var(--pure-white);
+  /* background-color:var(--pure-white); */
   padding: 0px 1rem ;
 }
 .profilNav .SearchAndNavPannel{
@@ -109,17 +110,24 @@
   border-radius: 12px;
   background-color: #cecac985;
   border: 1px solid var(--black);
-  padding: 0.5rem 0.5rem;
+  padding: 0.2rem 1rem;
   width: 100%;
+  /* gap: 0.5rem; */
+  margin-top: 0.5rem;
   /* background-color: yellow; */
 }
 .LogoutIcon{
   /* background-color: red; */
-  padding: 0.3rem 0;
+  padding: 0rem 0.5rem;
   font-size: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0.5rem;
+}
+.logoutLink a{
+  padding: 0.5rem; 
+  /* background-color: red; */
 }
 .VirticalNav{
   display: flex;

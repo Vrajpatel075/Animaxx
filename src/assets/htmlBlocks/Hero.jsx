@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import '../cssBlocks/Hero.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function Hero() {
@@ -10,6 +10,9 @@ const carouselRef = useRef(null);
   const thumbnailRef = useRef(null);
   const nextRef = useRef(null);
   const prevRef = useRef(null);
+  const isLoggedIn = !!localStorage.getItem("userId");
+  const Navigate = useNavigate();
+
 
   const timeRunning = 3000;
   const timeAutoNext = 7000;
@@ -65,6 +68,9 @@ const carouselRef = useRef(null);
   };
 }, []);
 
+const handleSeeMore=()=>{
+    Navigate(isLoggedIn ? "/WallpaperPg" : "/SignIn");
+}
     
   return (
     <>
@@ -81,8 +87,8 @@ const carouselRef = useRef(null);
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, consectetur. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus praesentium, reiciendis voluptatum magni reprehenderit
                     </div>
                     <div className="button">
-                        <button className="btn-black"><Link to="/SignIn">SEE MORE</Link></button>
-                        <button className="btn-white"><Link to="/SignUp">SIGN-UP</Link></button>
+                        <button className="btn-black" onClick={handleSeeMore}>SEE MORE</button>
+                        {!isLoggedIn && (<button className="btn-white"><Link to="/SignUpUserinfo">SIGN-UP</Link></button>)}
                     </div>
                 </div>
             </div>
@@ -97,8 +103,8 @@ const carouselRef = useRef(null);
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, consectetur. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus praesentium, reiciendis voluptatum magni reprehenderit?
                     </div>
                     <div className="button">
-                    <button className="btn-black"><Link to="/SignIn">SEE MORE</Link></button>
-                    <button className="btn-white"><Link to="/SignUp">SIGN-UP</Link></button>
+                    <button className="btn-black" onClick={handleSeeMore}>SEE MORE</button>
+                    {!isLoggedIn && (<button className="btn-white"><Link to="/SignUpUserinfo">SIGN-UP</Link></button>)}
                     </div>
                 </div>
             </div>
@@ -113,8 +119,8 @@ const carouselRef = useRef(null);
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, consectetur. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus praesentium, reiciendis voluptatum magni reprehenderit
                     </div>
                     <div className="button">
-                    <button className="btn-black"><Link to="/SignIn">SEE MORE</Link></button>
-                    <button className="btn-white"><Link to="/SignUp">SIGN-UP</Link></button>
+                    <button className="btn-black" onClick={handleSeeMore}>SEE MORE</button>
+                    {!isLoggedIn && (<button className="btn-white"><Link to="/SignUpUserinfo">SIGN-UP</Link></button>)}
                     </div>
                 </div>
             </div>
@@ -129,8 +135,8 @@ const carouselRef = useRef(null);
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, consectetur. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus praesentium, reiciendis voluptatum magni reprehenderit
                     </div>
                     <div className="button">
-                    <button className="btn-black"><Link to="/SignIn">SEE MORE</Link></button>
-                    <button className="btn-white"><Link to="/SignUp">SIGN-UP</Link></button>
+                    <button className="btn-black" onClick={handleSeeMore}>SEE MORE</button>
+                    {!isLoggedIn && (<button className="btn-white"><Link to="/SignUpUserinfo">SIGN-UP</Link></button>)}
                     </div>
                 </div>
             </div>
@@ -145,8 +151,8 @@ const carouselRef = useRef(null);
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, consectetur. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus praesentium, reiciendis voluptatum magni reprehenderit
                     </div>
                     <div className="button">
-                    <button className="btn-black"><Link to="/SignIn">SEE MORE</Link></button>
-                    <button className="btn-white"><Link to="/SignUp">SIGN-UP</Link></button>
+                    <button className="btn-black" onClick={handleSeeMore}>SEE MORE</button>
+                    {!isLoggedIn && (<button className="btn-white"><Link to="/SignUpUserinfo">SIGN-UP</Link></button>)}
                     </div>
                 </div>
             </div>

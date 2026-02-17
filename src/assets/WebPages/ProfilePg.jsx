@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import "../WebPagesCss/ProfilePg.css"
 import { data, useNavigate } from 'react-router-dom';
+import { MdOutlineEditNote } from "react-icons/md";
 import UserService from '../../Service/UserService';
-import NavigationPannel from '../htmlBlocks/NavigationPannel';
 import UniversalNav from '../htmlBlocks/UniversalNav';
+import Settings from '../htmlBlocks/Settings';
 
-function ProfilePg({setIsLoggedIn}) {
+
+// currMode and SetCurrMode in for passing to Setting.jsx page as props not used in this page
+function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
     const [profile , setProfile]=  useState({});
     const [navOpen, setNavOpen] = useState(false);
+    const [isSettingOn , setIsSettingOn] = useState(false)
     const navigate = useNavigate();
 
     useEffect(()=>{
@@ -16,7 +20,7 @@ function ProfilePg({setIsLoggedIn}) {
                  UserService.getProfile(userId).then(res =>{
                 setProfile(res.data);
             })}
-        },[]);
+        },[<Settings/>]);
 
     const handleLogout = async()=>{
         try{
@@ -45,22 +49,22 @@ function ProfilePg({setIsLoggedIn}) {
     <div className='Profile-Container'>
         <div className="Profile-Img-Container">
             <div className='Profil-Pic'>
-            <img  src={profile.profilePicture || "/animax img source/ANIMAX_LOGO.png"} alt="Profile Pic" />
+            <img  src={profile.profilePicture 
+            ? `http://localhost:8080/uploads/profile-pics/${profile.profilePicture}`
+            : "/animax img source/ANIMAX_LOGO.png"} alt="Profile Pic" />
             </div>
             <div className="Profile-Content">
-                <h1 className='userName'>{profile.username || "Loading..."}</h1>
-                <p className='Disc'>{profile.bio || "loding..."}</p>
-                <p className='Profile-Achivement'>Likes <span>12K</span></p> 
-                <div className="Edit-Profile">
-                    {/* <button onClick={handleProfileEdits}>Edit</button> */}
+                <div className='first-last-name'><h1>{profile.firstName}</h1><h1>{profile.lastName}</h1>
+                <span onClick={()=>{setIsSettingOn(!isSettingOn)}}><MdOutlineEditNote/></span>
                 </div>
-            </div>
-            <div className='Settings'>
-                {/* <button onClick={OpenSettings}>Setting</button> */}
-                <button onClick={handleLogout}>Logout</button>
-            </div>
+                <h3 className='userName'>@{profile.username || "Loading..."}</h3>
+                <p className='Disc'>{profile.bio || "loding..."}</p>
+                <p className='Profile-Achivement'> 
+                    <span>Likes 12K</span>
+                    <span>Post 10</span>
+                </p> 
 
-           
+            </div>           
             
         </div>
         <div className="Activity-Nav">
@@ -72,6 +76,9 @@ function ProfilePg({setIsLoggedIn}) {
         <div className="Uploded-Post"></div>
         <div className="Saved-post"></div>
     </div>
+
+
+    {isSettingOn && <Settings setIsSettingOn={setIsSettingOn} currMode={currMode} setCurrMode={setCurrMode}/>}
   </>
   )
 }

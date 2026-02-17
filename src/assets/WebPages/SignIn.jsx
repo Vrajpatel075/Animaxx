@@ -6,11 +6,19 @@ function SignIn({setIsLoggedIn}) {
 
     const  [email , setEmail]=useState("");
     const  [password , setPassword]=useState("");
+    const [errors , setErrors] =  useState("");
     const navigate = useNavigate();
 
     const handleSubmit = async (e)=>{
       e.preventDefault();
+
+      let newError = {};
+        if(!email.trim()) newError.email = "Enter Email";
+        if(!password.trim()) newError.password ="Enter Password";
+        setErrors(newError);
+
       try{
+        if(Object.keys(newError).length === 0){
         const responce = await UserService.login({email , password})
         const loggedInUser = responce.data;
         
@@ -19,7 +27,7 @@ function SignIn({setIsLoggedIn}) {
         localStorage.setItem("userEmail", loggedInUser.email);
         
         alert("Login successful for user: " + loggedInUser.username);
-        navigate("/ProfilePg");
+        navigate("/ProfilePg");}
       }catch (error){
         alert("login failed" + error);
       }
@@ -44,19 +52,22 @@ function SignIn({setIsLoggedIn}) {
 
                 <input className="effect-1" 
                 type="email" 
-                name="email" 
+                name="email"  
                 placeholder="Enter email" 
                 onChange={(e)=> setEmail(e.target.value)}/>
+                {errors.email && <span className='error'>{errors.email}</span>}
 
                 <input 
                 type="password" 
                 name="Password" 
                 placeholder="Enter Password"
                 onChange={(e)=> setPassword(e.target.value)}/>
+                {errors.password && <span className='error'>{errors.password}</span>}
+
                 </div>
                 <div className="terms">
                 <label>
-                  <input type="checkbox" style={{marginRight: "5px"}}/>
+                  <input type="checkbox" style={{marginRight: "5px"}} required/>
                   I Agree To The <Link to="/">terms & conditions</Link>
                 </label>
               </div>
@@ -65,7 +76,7 @@ function SignIn({setIsLoggedIn}) {
                 <button>Submit</button>
                 </div>
                  <div className="login-opt">
-                <p>Don't have an account? <Link to="/SignUp">SIGN UP</Link></p>
+                <p>Don't have an account? <Link to="/SignUpUserinfo">SIGN UP</Link></p>
                 <p>Forgot password? <Link to="/ChangePassword">Change Password</Link></p>
               </div>
             </form>

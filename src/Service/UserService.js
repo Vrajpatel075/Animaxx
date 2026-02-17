@@ -15,6 +15,19 @@ class UserService {
         });
     }
 
+    edit(id,userData){
+        return axios.put(USER_API_BASE_URL + `/Edit/${id}` , userData ,{
+            withCredentials:true })
+    }
+    uploadProfilePicture(id , file){
+        const formData = new FormData();
+        formData.append("file", file);
+
+        return axios.post(USER_API_BASE_URL + `/uploadProfilePicture/${id}` , formData , {
+            withCredentials: true
+        });
+    }
+
     getProfile(id){
         return axios.get(USER_API_BASE_URL + `/Profile/${id}` , {
             withCredentials:true,

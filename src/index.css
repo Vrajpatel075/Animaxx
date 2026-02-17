@@ -22,6 +22,7 @@
   /* use for hover */
   --seco-3:#ff9239;
   --night:#001938;
+  --dark:#1b1b1b;
 }
 
 body::-webkit-scrollbar {
@@ -45,11 +46,13 @@ body {
 }
 
 .dark{
-  background-image: linear-gradient(to bottom right , #403f44 , #1e1b32);
+  background-color:var(--dark);
+  /* background-image: linear-gradient(to bottom right , #403f44 , #1e1b32); */
   color: #eee;
 }
+
 .light{
-  background-color: #eee;
+  background-color:var(--pure-white);
   color: black;
 }
 .active-link{

@@ -25,6 +25,8 @@ function SignIn({setIsLoggedIn}) {
         localStorage.setItem("userId", loggedInUser.userId); 
         setIsLoggedIn(true);
         localStorage.setItem("userEmail", loggedInUser.email);
+
+        // localStorage.setItem("username" , loggedInUser.username);
         
         alert("Login successful for user: " + loggedInUser.username);
         navigate("/ProfilePg");}

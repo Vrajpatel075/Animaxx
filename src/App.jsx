@@ -8,7 +8,7 @@ import SignUp from './assets/WebPages/SignUp';
 import { postFeedData } from '../postData';   
 import { useEffect, useState } from 'react';
 import ViewedPost from './assets/WebPages/ViewedPost';
-import UploadPost from './assets/WebPages/UploadPost';
+import UploadPost from './assets/htmlBlocks/UploadPost';
 import ProfilePg from './assets/WebPages/ProfilePg';
 import SignUpUserinfo from './assets/WebPages/SignUpUserinfo';
 import Settings from './assets/htmlBlocks/Settings';

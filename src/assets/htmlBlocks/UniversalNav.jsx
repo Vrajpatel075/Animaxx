@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../cssBlocks/UniversalNav.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import UserService from '../../Service/UserService';
@@ -8,6 +8,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 function UniversalNav({ navOpen, setNavOpen, currMode, showSearch, setIsLoggedIn }) {
   const navigate = useNavigate();
   const cheakLogin = localStorage.getItem("userId");
+  const [profile , setProfile] = useState({});
 
   const [activeLink, setActiveLink] = useState('WALLPAPERS');
 
@@ -31,6 +32,14 @@ function UniversalNav({ navOpen, setNavOpen, currMode, showSearch, setIsLoggedIn
     }
   };
 
+     useEffect(()=>{
+            const userId = localStorage.getItem("userId");
+            if(userId){
+                 UserService.getProfile(userId).then(res =>{
+                setProfile(res.data);
+            })}
+        },[]);
+
   return (
     <>
       <div className={`wallpaper-side-nav ${navOpen ? 'show' : ''}`}>
@@ -44,10 +53,14 @@ function UniversalNav({ navOpen, setNavOpen, currMode, showSearch, setIsLoggedIn
           </button>
 
           <div className="Animaxx-Logo">
-            <img
-              src="/animax img source/ANIMAX_LOGO.png"
+            <img src={ profile.profilePicture
+            ? `http://localhost:8080/uploads/profile-pics/${profile.profilePicture}`
+            : profile.gender === "male"
+            ? "/animax img source/animaxx_male_user_profile_picture.png"
+            : profile.gender === "female"
+            ? "/animax img source/animaxx_female_user_profile_picture.png"
+            : "/animax img source/animaxx_default_user_profile_picture.png"}
               alt="logo"
-              height="45"
               onClick={() => navigate('/')}
             />
           </div>
@@ -94,7 +107,7 @@ function UniversalNav({ navOpen, setNavOpen, currMode, showSearch, setIsLoggedIn
 
       <div
         className={`SearchAndNavPannel wallpaper-nav ${
-          currMode === 'light' ? 'day' : 'night'
+          currMode === 'light' ? 'light' : 'dark'
         }`}
       >
         <button

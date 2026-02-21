@@ -49,12 +49,6 @@ function WallpaperPg(props) {
           ))}
         </div>
 
-        <button>
-          <p>
-          <Link to="/UploadPost">Add Poat</Link>
-          </p>
-        </button>
-
         <Pagination
           totalPosts={props.totalPosts}
           limit={props.limit}

@@ -12,15 +12,17 @@
 
 :root {
   --pure-white:#ffffff;
-  --light-white:#eee;
+  --light-white:#f4f4f4;
   --black: #000;
   --d-grey:#bebbba;
   --li-grey:#cecac9;
   --prim: #ff6000;
   --seco-1: #ffa559;
-  --seco-2: #ffe6c7;
+
   /* use for hover */
+  --seco-2: #ffe6c7;
   --seco-3:#ff9239;
+  
   --night:#001938;
   --dark:#1b1b1b;
 }
@@ -59,7 +61,9 @@ body {
   background-color: var(--prim);
   border-radius: 6px;
 }
-.active-link:hover{
+.active-link:hover,
+button:hover{
   background-color: var(--seco-2);
   color: var(--prim);
 }
+

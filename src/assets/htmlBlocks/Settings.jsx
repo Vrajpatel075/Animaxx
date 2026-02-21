@@ -11,6 +11,7 @@ function Settings({setIsSettingOn , currMode ,setCurrMode}) {
     const [otp, setOtp] = useState("");
     const [generatedOtp, setGeneratedOtp] = useState(null);
     const [isOtpVerified, setIsOtpVerified] = useState(false);
+    const [usernameerror , setUsernameError ] = useState("")
 
     const [editFormData , setEditformData] = useState({
         userId:"",
@@ -48,9 +49,21 @@ function Settings({setIsSettingOn , currMode ,setCurrMode}) {
          })
          }
     },[])
-    const handleChange = (e) => {
+    const handleChange = async (e) => {
         const { name, value } = e.target; 
         setEditformData(prev => ({ ...prev, [name]: value })); 
+        if(name === "username"){
+            try{
+                const res = await UserService.cheakusername(value);
+                if(res.data.exists){
+                    setUsernameError("Username already exists.");
+                }else{
+                    setUsernameError("");
+                }
+            }catch(error){
+                alert(error)
+            }
+        }
     };
     const handleSave = async (e)=>{
         e.preventDefault();
@@ -164,6 +177,7 @@ function Settings({setIsSettingOn , currMode ,setCurrMode}) {
                                         value={editFormData.username}
                                         onChange={handleChange} 
                                         disabled={!isEditable} />
+                                        {usernameerror && <span className="error">{usernameerror}</span>}
                                     </div>
                                     
                                     <div className="email">

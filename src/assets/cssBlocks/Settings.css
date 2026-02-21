@@ -144,13 +144,16 @@
     flex-wrap: wrap;
     gap: 2rem;
     padding: 1rem;
+    height: 80px;
 }
 .setting_Container .Update_Profile form .two_inputs input{
     height: 2rem;
     padding: 6px ;
     border-radius: 6px;
 }
-
+.setting_Container .Update_Profile form .two_inputs .username .error{
+    color: red;
+}
 .two_inputs > div {
   display: flex;
   flex-direction: column; 
@@ -163,6 +166,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+}
+.setting_Container .Update_Profile form .gender_save button{
+    margin-top: 0.5rem;
 }
 .setting_Container .Update_Profile form .gender_save select{
     padding: 0.5rem 1rem;
@@ -180,7 +186,8 @@
 .setting_Container .Update_Profile form .save_btn{
     padding: 0.5rem 1rem;
 }
-.setting_Container .Update_Profile form .gender_save button:hover{
+.setting_Container .Update_Profile form .gender_save button:hover,
+.setting_Container .Update_Profile form .save_btn button:hover{
     background-color: var(--seco-2);
     color: var(--prim);
 }

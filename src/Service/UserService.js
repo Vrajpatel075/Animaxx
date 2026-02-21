@@ -40,6 +40,12 @@ class UserService {
             localStorage.removeItem("user"); 
             });
         }
+
+    cheakusername(username){
+        return axios.get(USER_API_BASE_URL + `/cheakUsername?username=${username}`, {
+        withCredentials: true
+    });
+    }
 }
 
 

@@ -46,7 +46,7 @@ function NavigationPannel() {
         <img src="/animax img source/ANIMAX_LOGO.png" alt="logo" className="topbar-logo" />
       </div>
 
-      <div className={`navigation ${sidebarOpen ? 'show' : ''}`} style={{ top: showNavbar ? '0' : '-100%' }}>
+        <div className={`navigation ${sidebarOpen ? 'show' : ''}`} style={{ top: showNavbar ? '0' : '-100%' }}>
         <div className="header-sec">
           <nav>
             <div className="mob-logo">

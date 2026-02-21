@@ -19,7 +19,7 @@ function ViewedPost({postdata , currMode }) {
   const [wordLimit , setWordLimit] = useState(5);
   const navigate   = useNavigate();
   const [isLargeView , setIsLargeView] = useState(false);
-  const [viewComments , setviewComments] = useState(false)
+  const [viewComments , setviewComments] = useState(false);
   const [resizeRecomendationValue , setResizeRecomendationValue] = useState(35);
 
   // to cheak the width on mobile screen and show recomendation accouding to it

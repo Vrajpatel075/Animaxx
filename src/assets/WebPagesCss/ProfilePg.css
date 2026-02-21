@@ -1,9 +1,12 @@
+.profile-body{
+    /* background-color: blue; */
+    margin: 0 4rem;
+}
 .Profile-Container{
     display: flex;
     flex-wrap: wrap;
+    /* background-color: yellow; */
     margin-top: 80px;
-    width: 100vw;
-    /* color: var(--black); */
 }
 .Profile-Container.night{
     background-color: var(--night);
@@ -25,7 +28,7 @@
 }
 
 .Profile-Container .Profile-Img-Container .Profil-Pic img{
-    background-color: yellow;
+    /* background-color: yellow; */
     border-radius: 50%;
     height:250px;
     width: 250px;
@@ -39,28 +42,36 @@
 .Profile-Container .Profile-Img-Container .Profile-Content .Disc{
     font-size:0.8rem;
     word-spacing: 2px;
-    width: 90%;
-    /* margin-top: 2rem; */
-    /* background-color: red; */
 }
 .Profile-Container .Profile-Img-Container .Profile-Content .Profile-Achivement{
     font-size: 1rem;
     padding-top: 1rem;
 }
-.Profile-Container .Profile-Img-Container .Profile-Content span{
-    font-size: 1.5rem;
+.Profile-Container .Profile-Img-Container .Profile-Content .edit-btn{
+    font-size: 2rem;
 }
-.Profile-Container .Profile-Img-Container .Profile-Content .Profile-Achivement span{
-    margin-right: 0.5rem;
+.Profile-Container .Profile-Img-Container .Profile-Content .Profile-Achivement .Achivement-count{
+    margin-right: 1rem;
     font-size: 1rem;
+    font-weight: 500;
 }
-
+.Profile-Container .Activity_button button{
+    width: 150px;
+    padding:0.5rem 1rem;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+    background-color: var(--seco-3);
+    transition: 0.5s;
+    font-weight: 550;
+}
+.Profile-Container .Activity_button button:hover{
+    background-color: var(--seco-2);
+}
 
 
 
 /* avtivity nav */
 .Profile-Container .Activity-Nav{
-    /* background-color:chartreuse; */
     width: 100%;
     height: 50px;
 
@@ -70,24 +81,19 @@
 }
 .Profile-Container .Activity-Nav ul{
     width: 100%;
-    height: 100%;
     list-style-type: none;
-    border: 5px solid var(--d-gary);
-    /* background-color: cornflowerblue; */
     
     display: flex;
     flex-wrap: nowrap;
-    /* gap: 1px; */
-
+    gap: 2rem;
 }
 .Profile-Container .Activity-Nav ul li{
-    width: 50%;
+    width: 100%;
     padding: 1rem;
     text-align: center;
     font-size: 1rem;
-    /* background-color: red; */
-    border: 2px solid var(--d-grey);
     cursor: pointer;
+    border-top: 2px solid var(--d-grey);
 }
 
 
@@ -97,7 +103,83 @@
 
 
 
+/* responsive */
+@media screen and (max-width:856px) {
+    .profile-body{
+        margin: 0 1rem;        
+    }
+    .Profile-Container .Profile-Img-Container{
+        gap: 2rem;
+        padding: 1rem 1rem;
+        margin: 0 1rem;
+    }
+    .Profile-Container .Profile-Img-Container .Profil-Pic img{
+        height:150px;
+        width: 150px;
+    }
+    .Profile-Container .Profile-Img-Container .Profile-Content .first-last-name{
+        font-size:0.7rem ;
+    }
+    .Profile-Container .Profile-Img-Container .Profile-Content .Disc{
+        font-size:0.5rem;
+    }
+    .Profile-Container .Profile-Img-Container .Profile-Content .Profile-Achivement{
+        padding-top: 0.5rem;
+    }
+    .Profile-Container .Profile-Img-Container .Profile-Content .userName{
+        font-size: 0.7rem;
+    }
+    .Profile-Container .Profile-Img-Container .Profile-Content .edit-btn{
+        font-size: 1.5rem;
+    }
+    .Profile-Container .Profile-Img-Container .Profile-Content .Profile-Achivement .Achivement-count{
+        font-size: 1rem;
+    }
+    .Profile-Container .Activity_button button{
+        width: 100px;
+        border: none;
+    }
+}
+@media screen and (max-width:480px) {
+    .Profile-Container .Profile-Img-Container .Profile-Content .edit-btn{
+        font-size: 1rem;
+    }
+    .Profile-Container .Profile-Img-Container .Profile-Content .Profile-Achivement .Achivement-count{
+        font-size: 0.8rem;
+    }
+     .Profile-Container .Profile-Img-Container .Profile-Content .first-last-name{
+        font-size:0.5rem ;
+    }
+    .Profile-Container .Profile-Img-Container .Profile-Content .Disc{
+        font-size:0.5rem;
+    }
+    .Profile-Container .Profile-Img-Container .Profil-Pic img{
+        height:100px;
+        width: 100px;
+    }
+    .Profile-Container .Activity_button button{
+        width: 70px;
+        font-size: 0.5rem;
+        padding:0.3rem 0.3rem;
+    }
+    .Profile-Container .Profile-Img-Container{
+        margin: 0;
+        padding: 1rem 0rem;
+    }
 
+    /* activity nav */
+
+    .Profile-Container .Activity-Nav{
+        height: 30px;
+    }
+    .Profile-Container .Activity-Nav ul{
+        gap: 1rem;
+    }
+    .Profile-Container .Activity-Nav ul li{
+        padding: 0.5rem;
+        font-size: 0.7rem;
+    }
+}
 
 
 

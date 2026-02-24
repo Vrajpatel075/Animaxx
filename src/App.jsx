@@ -24,7 +24,10 @@ function App() {
 
   //cheak login
  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("userId"));
- 
+
+
+    
+    
  useEffect(() => {
   const storedUserId = localStorage.getItem("userId"); 
   setIsLoggedIn(!!storedUserId);
@@ -85,18 +88,15 @@ function App() {
           currMode={currMode}
           />} 
           />
-          <Route 
-          path='/UploadPost' 
-          element={isLoggedIn ? <UploadPost  currMode={currMode}/> : <Navigate to= "/" />}
-          />
           <Route
           path='/ProfilePg'
-          element={isLoggedIn ? <ProfilePg currMode={currMode} setCurrMode={setCurrMode} setIsLoggedIn={setIsLoggedIn}/>  : <Navigate to="/" />}
+          element={isLoggedIn ? <ProfilePg 
+            currMode={currMode} 
+            setCurrMode={setCurrMode} 
+            setIsLoggedIn={setIsLoggedIn}/>  
+            : 
+          <Navigate to="/" />}
           />
-
-          {/* <Route */}
-          {/* path='/ProfilePg/Settings' */}
-          {/* element={<Settings/>}/> */}
 
         </Routes>
       </BrowserRouter>

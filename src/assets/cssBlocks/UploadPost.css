@@ -11,10 +11,11 @@
 
     position: fixed;
     top: 0; right: 0;
-    z-index: 9999;
+    z-index: 9998;
 } 
 .formContainer .PostForm{   
-    width: 50%;
+    position: relative;
+    width: 700px;
     height: 90%;
     padding: 2rem;
     text-align: center;
@@ -30,6 +31,19 @@
 .formContainer .PostForm.dark{
     background-color: var(--dark);
     box-shadow: 0 0 8px 2px var(--black);
+}
+.formContainer .PostForm .Close-btn{
+    position: absolute;
+    right: 0;
+    top: 0;
+    /* background-color: red; */
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+    transition: 0.3s;
+}
+.formContainer  .PostForm .Close-btn:hover{
+    border-radius: 6px;
+    background-color: var(--li-grey);
 }
 .formContainer .PostForm form{
     display: flex; 
@@ -61,10 +75,8 @@
 }
 
 .formContainer .PostForm form input{
-    width: 100%;
     text-align: start;
     padding: 0.5rem;
-    /* margin-bottom: 1rem; */
     border: 0;
     outline: none;
     border-bottom: 2px solid var(--d-grey);
@@ -76,6 +88,11 @@
 .formContainer .PostForm form input{
     background-color: var(--dark);
     color: var(--pure-white);
+}
+.formContainer .PostForm form textarea{
+    height: 80px;
+    padding: 1rem;
+    resize: none;
 }
 .formContainer .PostForm form input.light{
     background-color: var(--pure-white);
@@ -96,3 +113,72 @@
     background-color: var(--seco-2);
     transition: 0.25s;
 }
+.formContainer .PostForm form button.UploadButton{
+    margin-top: 1.5rem;
+}
+
+
+
+@media screen and (max-width:700px) {
+    .formContainer .PostForm{
+        height: 100%;
+    }
+}
+@media screen and (max-width:512px) {
+    .formContainer .PostForm{
+        padding: 1rem 1rem;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+    }
+    .formContainer .PostForm form .viewimg{
+        margin: 0;
+    }
+    .formContainer .PostForm form .viewimg button{
+        padding: 0.5rem;
+    }
+    .formContainer .PostForm form img{
+        width: 200px;
+        height: 200px;
+    }
+    .formContainer .PostForm form{
+        overflow: hidden;
+        width: 300px;
+        padding: 1rem;
+    }
+    .formContainer .PostForm form input{
+        text-align: start;
+        width: 300px;
+        margin: auto;
+        padding: 0.5rem;
+        border: 0;
+        outline: none;
+        border-bottom: 2px solid var(--d-grey);
+    }
+    .formContainer .PostForm form button{
+        padding: 0.5rem 0.5rem;
+        font-size: 0.7rem;
+    }
+    .discardBox{
+        width: 200px;
+    }
+}
+
+@media screen and (max-width:420px) {
+    .formContainer .PostForm{
+        align-items: end;
+        padding-right: 2.5rem;
+    }
+    .formContainer .PostForm .Uploadtitle{
+        align-self: center;
+        justify-self: center;
+        margin-bottom: 0.5rem;
+    }
+    .formContainer .PostForm h1.Close-btn{
+        /* background-color: red; */
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+}
+

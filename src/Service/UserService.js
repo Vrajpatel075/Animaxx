@@ -35,7 +35,7 @@ class UserService {
     }
 
     logout() {
-        axios.post(USER_API_BASE_URL + "/logout", {}, { withCredentials: true })
+        return axios.post(USER_API_BASE_URL + "/logout", {}, { withCredentials: true })
         .then(() => {
             localStorage.removeItem("user"); 
             });

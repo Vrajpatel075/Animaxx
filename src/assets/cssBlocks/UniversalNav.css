@@ -109,6 +109,9 @@
     padding: 0 2rem;
   }
 }
+.logoutButton{
+  width: 100%;
+}
 .logoutLink{
   display: flex;
   justify-content: space-between;
@@ -179,12 +182,16 @@
 /* profile picture  */
 .wallpaper-nav .Animaxx-logo{
   height: 45px;
+  width: 45px;
   filter: drop-shadow(3px 3px 3px var(--black));
 }
 .wallpaper-nav .Animaxx-logo img{
   height: 100%;
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 50%;
+  padding: 0.1rem;
+  background-image: linear-gradient(90deg,#833AB4 0%, #FD1D1D 50%, #FCB045 100%);
 }
 .mob-nav-header .Animaxx-Logo{
   height: 45px;
@@ -196,9 +203,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
-  background: linear-gradient(90deg, #833AB4 0%, #fd421d 50%, #FCB045 100%);
-  background-clip: padding-box;
 }
 
 
@@ -208,10 +212,26 @@
     padding: 0px 1rem;       
     gap: 1rem;                  
   }
-
+  .responsive_nav_searh{
+    height: 3em;
+  }
   .search_input{
     width:80%;
-    height: 100%;
+  }
+  .search_icon{
+    font-size: 1rem;
+  }
+  .mob-nav-header .Animaxx-Logo,
+  .wallpaper-nav .Animaxx-logo{
+    height: 35px;
+    width: 35px;
+  }
+  .toggle-open-nav-btn{
+    padding: 4px 8px;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 }
 @media screen and (max-width:580px) {

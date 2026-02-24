@@ -93,7 +93,7 @@ function ViewedPost({postdata , currMode }) {
       <div className="mainSection">
         <button 
         className={`backButton ${currMode === 'light' ? 'day' : 'night'}`} 
-        onClick={()=>navigate("/WallpaperPg")}>
+        onClick={()=>navigate(-1)}>
           <FaArrowLeft/>
         </button>
        
@@ -138,7 +138,7 @@ function ViewedPost({postdata , currMode }) {
 
           <div className="CommentInput">
             <span><FaRegComment/> </span>
-            <input type="text" placeholder='Comment' />
+            <input type="text" placeholder='Comment' className={`${currMode === "light" ? "light" : "dark"}`} />
           </div>
 
           {viewComments && (

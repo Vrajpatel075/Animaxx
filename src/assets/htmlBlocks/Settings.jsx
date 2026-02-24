@@ -3,8 +3,9 @@ import UserService from '../../Service/UserService';
 import "../cssBlocks/Settings.css"
 import { FaPen } from "react-icons/fa6";
 import { CiLock , CiUnlock} from "react-icons/ci";
+import ExitWarring from './ExitWarring';
 
-function Settings({setIsSettingOn , currMode ,setCurrMode}) {
+function Settings({ currMode ,setCurrMode ,setCheakDiscard ,cheakdiscard ,setActiveModal}) {
     const [activetab , setActivetab]=useState("Account");
     const [userDetails , SetUserDetails] = useState({});
     const [isEditable , setIsEditable] = useState(false);
@@ -102,8 +103,9 @@ function Settings({setIsSettingOn , currMode ,setCurrMode}) {
 
   return (
     <>
-    <div className="Setting_container" onClick={()=>setIsSettingOn(false)}>
+    <div className="Setting_container" onClick={() => setCheakDiscard(true)}>
         <div className={`Setting_Model ${currMode === 'light' ? 'light' : 'dark'}`} onClick={(e) => e.stopPropagation()}>
+        <h1 className='close_Settings' onClick={() => setCheakDiscard(true)} >X</h1>
             <div className="Setting_Nav">
                 <ul>
                     {["Account" , "Privrcy" , "Mode" , "Contact us" ].map(tab =>(
@@ -114,6 +116,8 @@ function Settings({setIsSettingOn , currMode ,setCurrMode}) {
                     ))}
                 </ul>
             </div>
+
+
             <div className="Setting_Content">
                 <h1>Settings</h1>
 
@@ -384,11 +388,19 @@ function Settings({setIsSettingOn , currMode ,setCurrMode}) {
                         <li><span>mobile:</span> +91 98741-98542</li>
                     </div>
                     </div>
-                    </div>
+                </div>
                 }
             </div>
         </div>
     </div>
+
+    { cheakdiscard &&
+        <ExitWarring
+        currMode={currMode} 
+        setCheakDiscard={setCheakDiscard} 
+        setActiveModal={setActiveModal} 
+        />
+    }
     </>
   )
 }

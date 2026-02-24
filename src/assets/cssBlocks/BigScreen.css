@@ -63,8 +63,8 @@
   .show_content p{
     font-size: 1rem;
   }
-  .show_screen{
-    /* height: 50%; */
+  .show{
+    height: 100%;
   }
 } 
 @media screen and (max-width:850px)  {

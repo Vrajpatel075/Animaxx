@@ -13,18 +13,19 @@ import PostService from '../../Service/PostService';
 function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
     const [profile , setProfile]=  useState({});
     const [navOpen, setNavOpen] = useState(false);
-    const [isSettingOn , setIsSettingOn] = useState(false);
-    const [isAddpostOpen , setIsAddpostOpen] = useState(false);
     const [ispostselected , SetIsPostSelected] =useState(true);
     const [userposts , setUserPosts]= useState([]);
+    const [cheakdiscard , setCheakDiscard] = useState(false);
+    const [activeModal, setActiveModal] = useState(null);
     const [wordLimit , setWordLimit] = useState(5);
+
     const navigate = useNavigate();
 
     useEffect(()=>{
             const userId = localStorage.getItem("userId");
             if(userId){
                  UserService.getProfile(userId).then(res =>{
-                setProfile(res.data);
+                setProfile(res.data );
 
                 PostService.getUserPost(userId).then(post=>{
                 setUserPosts(post)
@@ -66,7 +67,7 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
             </div>
             <div className="Profile-Content">
                 <div className='first-last-name'><h1>{profile.firstName}</h1><h1>{profile.lastName}</h1>
-                <span className='edit-btn' onClick={()=>{setIsSettingOn(!isSettingOn)}}><MdOutlineEditNote/></span>
+                <span className='edit-btn' onClick={() => setActiveModal("setting")}><MdOutlineEditNote/></span>
                 </div>
                 <h3 className='userName'>@{profile.username || "Loading..."}</h3>
                 <p className='Disc'>{profile.bio || "loding..."}</p>
@@ -75,11 +76,16 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
                     <span className='Achivement-count'>Post: 10</span>
                 </p> 
                 <div className='Activity_button'>
-                <button onClick={()=>setIsAddpostOpen(true)}>
+                <button onClick={() => setActiveModal("addpost")}>
                       Add Poat
                 </button>
-                {isAddpostOpen && (
-                        <UploadPost currMode={currMode} setIsAddpostOpen={setIsAddpostOpen} closeModal={() => setIsAddpostOpen(false)} />
+                {activeModal === "addpost" && ( 
+                        <UploadPost 
+                        currMode={currMode} 
+                        setCheakDiscard={setCheakDiscard} 
+                        cheakdiscard={cheakdiscard} 
+                        setActiveModal={setActiveModal}
+                        closeModal={() => setActiveModal(null)} />
                     )}
                 </div>
             </div>           
@@ -112,7 +118,7 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
               <h4 className="postTitle">{post.postOwner}</h4>
               <p className="postDescription">
                 {truncateText(post.description, wordLimit)}
-                {/* {post.description} */}
+                {post.description}
               </p>
             </div>
           ))}
@@ -122,7 +128,15 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
        </div>
 
 
-    {isSettingOn && <Settings setIsSettingOn={setIsSettingOn} currMode={currMode} setCurrMode={setCurrMode}/>}
+    {activeModal === "setting" && (
+        <Settings 
+        currMode={currMode} 
+        cheakdiscard={cheakdiscard} 
+        setCheakDiscard={setCheakDiscard} 
+        setActiveModal={setActiveModal}
+        closeModal={() => setActiveModal(null)}
+        />
+    )}
   </>
   )
 }

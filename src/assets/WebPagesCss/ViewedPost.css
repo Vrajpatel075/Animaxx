@@ -9,6 +9,10 @@
     background-color: var(--night);
     border: 2px solid var(--black);
 }
+.mainSection .backButton.day{
+    color: var(--black);
+    transition: 0.2s;
+}
 .mainSection .backButton.night{
     color: var(--light-white);
 }
@@ -55,7 +59,7 @@ section .recomendedPost .postCard img{
 }
 .recomendedPost .postCard img:hover{
   background-color:transparent;
-  transform: translateY(-8px) scale(0.90);
+  transform: translateY(-8px) scale(0.98);
 }
 
 /* back button for wallpaper page */
@@ -95,11 +99,10 @@ section .recomendedPost .postCard img{
     padding: 0.5rem;
     font-weight: 600;
     border-radius: 6px;
-    border: 1px solid var(--night);
     background-color: var(--seco-1);
-    color: var(--black);
     height: 40px;
     transition: 0.5s;
+    border: none;
 }
 .Topbuttons .zoomIn{
     display: flex;
@@ -113,6 +116,7 @@ section .recomendedPost .postCard img{
 
 .SelectedPostContainer{
     width: 100%; 
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -179,9 +183,11 @@ section .recomendedPost .postCard img{
 .CommentInput input{
     width: 100%;
     padding: 0.5rem;
-    border: 1px solid var(--d-grey);
     border-radius: 5px;
+    border: 0;
+    outline: none;
 }
+
 .CommentInput span{
     font-size: 1.5rem;
     display: flex;
@@ -268,8 +274,8 @@ section .recomendedPost .postCard img{
     .sideSection{
         width: 100%;
     }
-    .mainSection .backButton{
-        display: none;
+    .ViewedImg {
+        height: 300px;
     }
     .ViewPostContainer{
         padding: 0 2rem;
@@ -278,9 +284,29 @@ section .recomendedPost .postCard img{
         display: none;
     }
     .mainSection .backButton{
-        top: 1rem;
-        left: -4rem;
-        background-color: red;
+        top: 0;
+        left: 0;
+        margin: 2rem;
+        /* background-color: red; */
     }
 }
 @media (max-width: 970px) { .sideSection { display: none; } }
+
+@media screen and (max-width:600px) {
+    .SelectedPostContainer .PostAuther{
+        font-size: 0.5rem;
+    }
+    .SelectedPostContainer .PostActivite{
+        font-size: 1rem;
+    }
+    .SelectedPostContainer .PostComments .comments{
+        font-size: 0.7rem;
+        margin-bottom: 0.5rem;
+    }
+    .CommentInput input{
+        padding: 0.5rem;
+    }
+    .CommentInput span{
+        font-size: 1rem;
+    }
+}

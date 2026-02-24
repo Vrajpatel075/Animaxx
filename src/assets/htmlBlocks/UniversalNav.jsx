@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import '../cssBlocks/UniversalNav.css';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import UserService from '../../Service/UserService';
 import { TbLogout2 } from "react-icons/tb";
 import { IoSettingsOutline } from "react-icons/io5";
 
 function UniversalNav({ navOpen, setNavOpen, currMode, showSearch, setIsLoggedIn }) {
   const navigate = useNavigate();
+  const location = useLocation();
   const cheakLogin = localStorage.getItem("userId");
   const [profile , setProfile] = useState({});
 
-  const [activeLink, setActiveLink] = useState('WALLPAPERS');
-
   const navItems = [
-    { label: 'WALLPAPERS', path: '/WallpaperPg' },
-    { label: 'BLOGS', path: '/BlogsPg' },
-    { label: 'SHOP', path: '/ShopPg' },
-    { label: 'COMMUNITY', path: '/CommunityPg' },
+    { label: 'WALLPAPERS', paths: ['/WallpaperPg', '/ViewedPost'] },
+    { label: 'BLOGS', paths: ['/BlogsPg'] },
+    { label: 'SHOP', paths: ['/ShopPg'] },
+    { label: 'COMMUNITY', paths: ['/CommunityPg'] },
   ];
 
   const handleLogout = async () => {
@@ -32,13 +31,14 @@ function UniversalNav({ navOpen, setNavOpen, currMode, showSearch, setIsLoggedIn
     }
   };
 
-     useEffect(()=>{
-            const userId = localStorage.getItem("userId");
-            if(userId){
-                 UserService.getProfile(userId).then(res =>{
-                setProfile(res.data);
-            })}
-        },[]);
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+      UserService.getProfile(userId).then(res => {
+        setProfile(res.data);
+      });
+    }
+  }, []);
 
   return (
     <>
@@ -53,49 +53,48 @@ function UniversalNav({ navOpen, setNavOpen, currMode, showSearch, setIsLoggedIn
           </button>
 
           <div className="Animaxx-Logo">
-            <img src={ profile.profilePicture
-            ? `http://localhost:8080/uploads/profile-pics/${profile.profilePicture}`
-            : profile.gender === "male"
-            ? "/animax img source/animaxx_male_user_profile_picture.png"
-            : profile.gender === "female"
-            ? "/animax img source/animaxx_female_user_profile_picture.png"
-            : "/animax img source/animaxx_default_user_profile_picture.png"}
+            <img
+              src="/animax img source/ANIMAX_LOGO.png"
               alt="logo"
               onClick={() => navigate('/')}
             />
           </div>
         </div>
 
-        <nav className='VirticalNav'>
+        <nav className="VirticalNav">
           <div className="routeLinks">
             {cheakLogin && (
-              <NavLink 
-              to="/ProfilePg"
-              className={({ isActive }) => (isActive ? 'active-link' : 'nav_link')}
-              onClick={() => setNavOpen(false)}>PROFILE
-              </NavLink>
-            )}
-            {navItems.map(({ label, path }) => (
               <NavLink
-                key={label}
-                to={path}
+                to="/ProfilePg"
                 className={({ isActive }) => (isActive ? 'active-link' : 'nav_link')}
                 onClick={() => setNavOpen(false)}
               >
-                {label}
+                PROFILE
               </NavLink>
-            ))}
+            )}
+            {navItems.map(({ label, paths }) => {
+              const isActive = paths.some(p => location.pathname.startsWith(p));
+              return (
+                <NavLink
+                  key={label}
+                  to={paths[0]} // main navigation target
+                  className={isActive ? 'active-link' : 'nav_link'}
+                  onClick={() => setNavOpen(false)}
+                >
+                  {label}
+                </NavLink>
+              );
+            })}
           </div>
 
           {cheakLogin && (
-            <div>
+            <div className='logoutButton'>
               <div className="logoutLink" onClick={handleLogout}>
-              <a>Logout</a>
-              <div className='LogoutIcon'>
-                <TbLogout2/>
+                <a>Logout</a>
+                <div className="LogoutIcon">
+                  <TbLogout2 />
+                </div>
               </div>
-              </div>
-              
             </div>
           )}
         </nav>
@@ -115,7 +114,7 @@ function UniversalNav({ navOpen, setNavOpen, currMode, showSearch, setIsLoggedIn
           onClick={() => setNavOpen(true)}
           aria-label="open sidebar"
         >
-          ☰
+         <span> ☰ </span>
         </button>
 
         {showSearch && (
@@ -129,7 +128,15 @@ function UniversalNav({ navOpen, setNavOpen, currMode, showSearch, setIsLoggedIn
 
         <div className="Animaxx-logo">
           <img
-            src="/animax img source/ANIMAX_LOGO.png"
+            src={
+                profile.profilePicture
+                  ? `http://localhost:8080/uploads/profile-pics/${profile.profilePicture}`
+                  : profile.gender === "male"
+                  ? "/animax img source/animaxx_male_user_profile_picture.png"
+                  : profile.gender === "female"
+                  ? "/animax img source/animaxx_female_user_profile_picture.png"
+                  : "/animax img source/animaxx_default_user_profile_picture.png"
+              }
             alt="logo"
             onClick={() => navigate('/ProfilePg')}
           />

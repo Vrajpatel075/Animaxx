@@ -23,7 +23,7 @@
 .Setting_Model.light{
     background-color: var(--pure-white);
 }
-.Setting_Nav{
+.Setting_Model .Setting_Nav{
     font-size: 1rem;
     padding: 2rem;
     width: 200px;
@@ -54,7 +54,7 @@
 .setting_Container{
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: var(--li-grey) transparent;
+    scrollbar-color: rgba(128, 128, 128, 0.195) transparent;
     width: 100%;
     height: 450px;
     padding: 1rem;
@@ -144,7 +144,14 @@
     flex-wrap: wrap;
     gap: 2rem;
     padding: 1rem;
-    height: 80px;
+    min-height: 80px;
+}
+.setting_Container .Update_Profile form .gender_save{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    flex-wrap: wrap;
 }
 .setting_Container .Update_Profile form .two_inputs input{
     height: 2rem;
@@ -161,12 +168,7 @@
   min-width: 200px;
 }
 
-.setting_Container .Update_Profile form .gender_save{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-}
+
 .setting_Container .Update_Profile form .gender_save button{
     margin-top: 0.5rem;
 }
@@ -207,6 +209,9 @@
     margin-top: 2rem;
 }
 
+
+
+/* mode ----------------------------- */
 .Mode_Input_container {
     margin: 1rem 0;
     font-size: 1rem;
@@ -215,15 +220,20 @@
     margin: 0.5rem 0.5rem;
 }
 
-
+/* aboit us =---------------------------------- */
 .Contact_Container .foot-container{
     margin: 0;
     padding: 1rem;
     width: 100%;
     border-radius: 16px;
+    height: 450px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(128, 128, 128, 0.195) transparent;
 }
 .Contact_Container .foot-container.light{
     background-color: azure;
+
 }
 .Contact_Container .foot-container.dark{
     background-color: var(--night);
@@ -235,5 +245,68 @@
 .Contact_Container .foot-container .des img{
     filter: drop-shadow(2px 2px 2px var(--black));
 }
+.close_Settings{
+    display: none;
+}
 
+@media screen and (max-width:700px) {
+.Contact_Container .foot-container{
+    height: 600px;
+}
+.Setting_Model .close_Settings{
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin:2rem;
+    font-size: 1rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 300;
+    transition: 0.3s;
+}
+.Setting_Model .close_Settings:hover{
+    background-color: rgba(128, 128, 128, 0.093);
+    border-radius: 6px;
+}
+.Setting_Model{
+    position: relative;
+    height: 100dvh;
+    width: 100dvw;
+    display: block;
+    border-radius: 0;
+}
+.Setting_Model .Setting_Nav{
+    width: 100%;
+    margin: 0;
+    padding: 1rem 1.5rem;
+}
+.Setting_Model .Setting_Nav ul{
+    display: flex;
+    padding-bottom: 0.5rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--li-grey);
+}
+.setting_Container{
+    height: 700px;
+}
+.setting_Container .Update_Profile form{
+    padding: 0.5rem;
+}
+.setting_Container .Update_Profile form .two_inputs,
+.setting_Container .Update_Profile form .gender_save,
+.setting_Container .Update_Profile form .userid_bio,
+.setting_Container .Update_Profile form .save_btn{
+    padding: 0;
+    margin-top: 1rem;
+}
+}
 
+@media screen and (max-width:400px) {
+    .Setting_Model .Setting_Nav ul{
+        font-size: 0.7rem;
+        gap: 1rem;
+    }
+    .Setting_Content{
+        padding: 0.5rem;
+    }
+}

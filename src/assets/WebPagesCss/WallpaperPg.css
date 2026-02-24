@@ -2,24 +2,31 @@
 /* ============ wallpaper body===================== */
 
 /* images  effect */
-.wallpaper-list .postCard img:hover{
+.wallpaper-container .wallpaper-list .postCard img:hover,
+.post_container .wallpaper-list .postCard img:hover{
   background-color:transparent;
-  transform: translateY(-8px) scale(0.90);
+  transform: translateY(-8px) scale(0.98);
 }
 /* toggle theam */
-.wallpaper-list .postCard img.day:hover{
+.wallpaper-container .wallpaper-list .postCard img.day:hover,
+.post_container .wallpaper-list .postCard img.day:hover{
    box-shadow:2px 2px 10px 0px var(--d-grey);
 }
-.wallpaper-list .postCard img.night:hover{
+.wallpaper-container .wallpaper-list .postCard img.night:hover,
+.post_container .wallpaper-list .postCard img.night:hover{
    box-shadow:2px 2px 10px 0px var(--black);
 }
 
 .wallpaper-container{
   width: 100vw;
 }
-.wallpaper-list{
+.wallpaper-container .wallpaper-list{
   columns: 200px;
   margin: 100px 2rem 0 2rem; 
+}
+.post_container .wallpaper-list{
+  columns: 200px;
+  margin: 1rem;
 }
 .wallpaper-list img{
     width: 100%;  
@@ -87,5 +94,19 @@
 @media (max-width:700px) {
   .postDescription{
     display: none;
+  }
+.wallpaper-container .wallpaper-list{
+  columns: 150px;
+}
+.post_container .wallpaper-list{
+  columns: 150px;
+}
+}
+@media (max-width:400px) {
+  .wallpaper-container .wallpaper-list{
+    columns: 120px;
+  }
+  .post_container .wallpaper-list{
+    columns: 120px;
   }
 }

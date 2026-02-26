@@ -13,7 +13,7 @@ import PostService from '../../Service/PostService';
 function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
     const [profile , setProfile]=  useState({});
     const [navOpen, setNavOpen] = useState(false);
-    const [ispostselected , SetIsPostSelected] =useState(true);
+    // const [displayPosts , SetdisplayPosts] =useState(true);
     const [userposts , setUserPosts]= useState([]);
     const [cheakdiscard , setCheakDiscard] = useState(false);
     const [activeModal, setActiveModal] = useState(null);
@@ -73,7 +73,7 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
                 <p className='Disc'>{profile.bio || "loding..."}</p>
                 <p className='Profile-Achivement'> 
                     <span className='Achivement-count'>Follwers: 1520</span>
-                    <span className='Achivement-count'>Post: 10</span>
+                    <span className='Achivement-count'>Post: {profile.totalPosts}</span>
                 </p> 
                 <div className='Activity_button'>
                 <button onClick={() => setActiveModal("addpost")}>
@@ -104,16 +104,19 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
 
 
     
-    {ispostselected && 
+    {/* {displayPosts &&  */}
     <div className="post_container">
          <div className="wallpaper-list">
           {userposts.map((post) => (
-            <div className="postCard" key={post.postId}>
+            <div 
+            className="postCard" 
+            key={post.postId}
+            onClick={()=> navigate(`/SelectedUserPost/${post.postId}`)}  >
               
               <img 
               src={post.imageUrl} 
               alt={`post ${post.postId}`}
-              onClick={()=> navigate(`/ViewedPost/${post.postId}`)} 
+              onClick={()=> navigate(`/SelectedUserPost/${post.postId}`)} 
               />
               <h4 className="postTitle">{post.postOwner}</h4>
               <p className="postDescription">
@@ -121,10 +124,10 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
                 {post.description}
               </p>
             </div>
-          ))}
+          )) || "Upload Post"}
         </div>
     </div>
-    }
+    {/* } */}
        </div>
 
 
@@ -132,6 +135,7 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
         <Settings 
         currMode={currMode} 
         cheakdiscard={cheakdiscard} 
+        setCurrMode={setCurrMode} 
         setCheakDiscard={setCheakDiscard} 
         setActiveModal={setActiveModal}
         closeModal={() => setActiveModal(null)}

@@ -394,13 +394,13 @@ function Settings({ currMode ,setCurrMode ,setCheakDiscard ,cheakdiscard ,setAct
         </div>
     </div>
 
-    { cheakdiscard &&
+    { cheakdiscard &&(
         <ExitWarring
         currMode={currMode} 
         setCheakDiscard={setCheakDiscard} 
         setActiveModal={setActiveModal} 
         />
-    }
+    )}
     </>
   )
 }

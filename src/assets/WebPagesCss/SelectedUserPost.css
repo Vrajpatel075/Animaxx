@@ -1,0 +1,62 @@
+.selectedUserPostContainer{
+    position: fixed;
+    top: 0; left: 0;
+    background-color: rgba(0, 0, 0, 0.244);
+
+    width: 100dvw;
+    height: 100dvh;
+    padding: 1rem 4rem ;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.selectedUserPostContainer .selectedUserPostModel{
+    /* background-color: white; */
+    height: 90%;
+    width: 80%;
+
+    padding: 1rem;
+    border-radius: 16px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+.selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer{
+    width: 70%;
+    height: 100%;
+}
+.selectedUserPostContainer .selectedUserPostModel .post_container{
+    width: 30%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+    scrollbar-color: var(--li-grey);
+
+    columns: 150px;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
+.selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .ViewedImg{
+    width: 100%;
+    height: 800px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+.selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .ViewedImg img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+
+}
+.selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .PostComments{
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: var(--li-grey);
+    scroll-behavior: smooth;
+    height: 300px;
+    width: 100%;
+}

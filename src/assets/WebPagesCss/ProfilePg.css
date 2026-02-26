@@ -5,7 +5,6 @@
 .Profile-Container{
     display: flex;
     flex-wrap: wrap;
-    /* background-color: yellow; */
     margin-top: 80px;
 }
 .Profile-Container.night{
@@ -112,6 +111,7 @@
         gap: 2rem;
         padding: 1rem 1rem;
         margin: 0 1rem;
+        margin-bottom: 1rem;
     }
     .Profile-Container .Profile-Img-Container .Profil-Pic img{
         height:150px;
@@ -165,6 +165,7 @@
     .Profile-Container .Profile-Img-Container{
         margin: 0;
         padding: 1rem 0rem;
+        margin-bottom: 1rem;
     }
 
     /* activity nav */

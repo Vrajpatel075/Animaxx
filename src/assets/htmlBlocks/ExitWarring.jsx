@@ -6,7 +6,7 @@
     <div className='discardContainer' onClick={(e) => e.stopPropagation()}>
       <div className={`discardBox ${currMode === "light" ? "light" : "dark"}`}>
         <h2>Are You Sure?</h2>
-        <p>Changes are not saved yet</p>
+        <p>Unsaved changes will be lost.</p>
         <div className='discardbtn'>
           <button className='continueBtn' onClick={() => setCheakDiscard(false)}>
             Continue

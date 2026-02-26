@@ -12,6 +12,7 @@ import UploadPost from './assets/htmlBlocks/UploadPost';
 import ProfilePg from './assets/WebPages/ProfilePg';
 import SignUpUserinfo from './assets/WebPages/SignUpUserinfo';
 import Settings from './assets/htmlBlocks/Settings';
+import SelectedUserPost from './assets/WebPages/SelectedUserPost';
 
 function App() {
   // used for pagination
@@ -96,6 +97,13 @@ function App() {
             setIsLoggedIn={setIsLoggedIn}/>  
             : 
           <Navigate to="/" />}
+          />
+
+          <Route
+          path='/SelectedUserPost/:postId'
+          element={<SelectedUserPost
+          currMode={currMode}
+          />}
           />
 
         </Routes>

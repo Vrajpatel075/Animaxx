@@ -124,13 +124,13 @@ section .recomendedPost .postCard img{
     border-radius: 24px;
     border: 2px solid var(--li-grey);
 }
-.ViewedImg {
+.mainSection .SelectedPostContainer .ViewedImg {
     height: 75%;
     width: 100%;
     margin-bottom: 1rem;
 }
 
-.ViewedImg img{
+.mainSection .SelectedPostContainer .ViewedImg img{
     object-fit: contain;
     height: 100%;
     max-height: 30rem;
@@ -185,6 +185,7 @@ section .recomendedPost .postCard img{
     padding: 0.5rem;
     border-radius: 5px;
     border: 0;
+    border-bottom: 1px solid var(--li-grey);
     outline: none;
 }
 

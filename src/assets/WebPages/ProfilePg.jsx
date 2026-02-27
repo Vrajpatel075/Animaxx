@@ -4,20 +4,22 @@ import { data, Link, useNavigate } from 'react-router-dom';
 import { MdOutlineEditNote } from "react-icons/md";
 import UserService from '../../Service/UserService';
 import UniversalNav from '../htmlBlocks/UniversalNav';
-import Settings from '../htmlBlocks/Settings';
-import UploadPost from '../htmlBlocks/UploadPost';
+import Settings from '../ModelBody/Settings';
+import UploadPost from '../ModelBody/UploadPost';
 import PostService from '../../Service/PostService';
+import SelectedUserPost from '../ModelBody/SelectedUserPost';
 
 
-// currMode and SetCurrMode in for passing to Setting.jsx page as props not used in this page
+// SetCurrMode is for passing to Setting.jsx page as props not used in this page
 function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
     const [profile , setProfile]=  useState({});
     const [navOpen, setNavOpen] = useState(false);
-    // const [displayPosts , SetdisplayPosts] =useState(true);
     const [userposts , setUserPosts]= useState([]);
     const [cheakdiscard , setCheakDiscard] = useState(false);
     const [activeModal, setActiveModal] = useState(null);
     const [wordLimit , setWordLimit] = useState(5);
+    const [selectedPostId, setSelectedPostId] = useState(null);
+
 
     const navigate = useNavigate();
 
@@ -97,8 +99,6 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
                 <li className='Save'>Save</li>
             </ul>
         </div>
-        <div className="Uploded-Post"></div>
-        <div className="Saved-post"></div>
     </div>
  
 
@@ -111,12 +111,13 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
             <div 
             className="postCard" 
             key={post.postId}
-            onClick={()=> navigate(`/SelectedUserPost/${post.postId}`)}  >
+            onClick={() => setSelectedPostId(post.postId)}  
+            >
               
               <img 
               src={post.imageUrl} 
               alt={`post ${post.postId}`}
-              onClick={()=> navigate(`/SelectedUserPost/${post.postId}`)} 
+              onClick={() => setSelectedPostId(post.postId)}
               />
               <h4 className="postTitle">{post.postOwner}</h4>
               <p className="postDescription">
@@ -127,7 +128,6 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
           )) || "Upload Post"}
         </div>
     </div>
-    {/* } */}
        </div>
 
 
@@ -141,6 +141,12 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
         closeModal={() => setActiveModal(null)}
         />
     )}
+
+    {selectedPostId  && 
+    <SelectedUserPost
+    currMode={currMode} 
+    postId={selectedPostId} 
+    closeModal={() => setSelectedPostId(null)} />}
   </>
   )
 }

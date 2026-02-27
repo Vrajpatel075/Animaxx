@@ -14,11 +14,13 @@ import FooterPannel from '../htmlBlocks/FooterPannel'
 function Home({toggleMode,currMode}) {
   return (
     <>   
+
+    {/* this navcigation pannel is only user in home page as horizontal nav */}
     <NavigationPannel/>
     <Hero/>
     <BigScreen/>
     <Bento toggleMode={toggleMode} currMode={currMode}/>
-    <Features toggleMode={toggleMode} currMode={currMode}/>
+    <Features currMode={currMode}/>
     <Blog/>
     <Shopping/>
     <About/>

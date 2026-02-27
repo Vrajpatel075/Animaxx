@@ -23,6 +23,7 @@
   --seco-2: #ffe6c7;
   --seco-3:#ff9239;
   
+  /* night use for the inner container and dark is bor body */
   --night:#001938;
   --dark:#1b1b1b;
 }
@@ -47,9 +48,10 @@ body {
   font-size: 12px;
 }
 
+
+
 .dark{
   background-color:var(--dark);
-  /* background-image: linear-gradient(to bottom right , #403f44 , #1e1b32); */
   color: #eee;
 }
 
@@ -57,10 +59,12 @@ body {
   background-color:var(--pure-white);
   color: black;
 }
+
 .active-link{
   background-color: var(--prim);
   border-radius: 6px;
 }
+
 .active-link:hover,
 button:hover{
   background-color: var(--seco-2);

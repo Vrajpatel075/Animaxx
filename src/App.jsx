@@ -8,11 +8,11 @@ import SignUp from './assets/WebPages/SignUp';
 import { postFeedData } from '../postData';   
 import { useEffect, useState } from 'react';
 import ViewedPost from './assets/WebPages/ViewedPost';
-import UploadPost from './assets/htmlBlocks/UploadPost';
+import UploadPost from './assets/ModelBody/UploadPost';
 import ProfilePg from './assets/WebPages/ProfilePg';
 import SignUpUserinfo from './assets/WebPages/SignUpUserinfo';
-import Settings from './assets/htmlBlocks/Settings';
-import SelectedUserPost from './assets/WebPages/SelectedUserPost';
+import Settings from './assets/ModelBody/Settings';
+import SelectedUserPost from './assets/ModelBody/SelectedUserPost';
 
 function App() {
   // used for pagination
@@ -23,16 +23,13 @@ function App() {
   const firstPostIndex = lastPostIndex - limit;
   
 
-  //cheak login
- const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("userId"));
-
-
-    
-    
- useEffect(() => {
-  const storedUserId = localStorage.getItem("userId"); 
-  setIsLoggedIn(!!storedUserId);
-}, []);
+  //cheak if user is login or not for authorization
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("userId"));
+  
+  useEffect(() => {
+    const storedUserId = localStorage.getItem("userId"); 
+    setIsLoggedIn(!!storedUserId);
+  }, []);
 
   // slice the data for pagination
   const currentPosts = postFeedData.slice(firstPostIndex, lastPostIndex);
@@ -58,15 +55,22 @@ function App() {
   return (
     <>
       <BrowserRouter>
+
+      {/* back  to top arrow which is on botton right of every page */}
         <BackToTop 
         currMode={currMode}/>
+        
         <Routes>
+
+          {/* Chinging them / mode using toggle from home page in bento box 3 */}
           <Route 
           path='/' 
           element={<Home 
           toggleMode={toggleMode}
           currMode={currMode}
           />} />
+
+
           <Route 
           path='/WallpaperPg' 
           element={<WallpaperPg 
@@ -76,8 +80,9 @@ function App() {
           page={page}
           setPage={setPage}
           currMode={currMode}
-          />} 
-          />
+          />} />
+
+
           <Route path='/SignIn' element={<SignIn setIsLoggedIn={setIsLoggedIn} />} />
           <Route path='/SignUp' element={<SignUp />} />
           <Route path='/SignUpUserinfo' element={<SignUpUserinfo />} />
@@ -87,8 +92,9 @@ function App() {
           element={<ViewedPost 
           postdata={postFeedData} 
           currMode={currMode}
-          />} 
-          />
+          />} />
+
+          {/* cheak if user is login before navigating to profilePg */}
           <Route
           path='/ProfilePg'
           element={isLoggedIn ? <ProfilePg 
@@ -96,15 +102,14 @@ function App() {
             setCurrMode={setCurrMode} 
             setIsLoggedIn={setIsLoggedIn}/>  
             : 
-          <Navigate to="/" />}
-          />
+          <Navigate to="/" 
+          /> } />
 
-          <Route
+          {/* <Route
           path='/SelectedUserPost/:postId'
           element={<SelectedUserPost
           currMode={currMode}
-          />}
-          />
+          /> } /> */}
 
         </Routes>
       </BrowserRouter>

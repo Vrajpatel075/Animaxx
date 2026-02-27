@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
-import "../cssBlocks/UploadPost.css";
-import ExitWarring from './ExitWarring.jsx';
+import "../ModelCss/UploadPost.css";
+import ExitWarring from '../ModelBody/ExitWarring.jsx';
 import PostService from '../../Service/PostService.js';
 
 function UploadPost({ currMode, setCheakDiscard, cheakdiscard ,setActiveModal }) {

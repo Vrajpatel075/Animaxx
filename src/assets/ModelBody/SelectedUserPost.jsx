@@ -4,12 +4,11 @@ import PostService from '../../Service/PostService';
 import { FaAngleUp, FaChevronDown, FaRegComment, FaRegHeart, FaShare } from 'react-icons/fa6';
 import { FiDownload } from 'react-icons/fi';
 import { HiDotsHorizontal } from 'react-icons/hi';
-import "../WebPagesCss/SelectedUserPost.css"
+import "../ModelCss/SelectedUserPost.css"
 
-function SelectedUserPost({currMode}) {
+function SelectedUserPost({currMode , postId , closeModal}) {
 const navigate = useNavigate();
 const [openComments , SetOpenComments ] = useState(false)
-const { postId } = useParams(); 
 const [allUsersPost , SetallUsersPost] = useState([])
 
 
@@ -22,17 +21,28 @@ useEffect(()=>{
         }
 },[postId])
 
+// show all post in accept the post selected
+const unselectedpost = useMemo(()=>{
+  return allUsersPost.filter(p=> p.postId !==  parseInt(postId));
+},[postId , allUsersPost])
+
+
+// show only selected post data 
 const selectedpost = useMemo(()=>{
     return allUsersPost.find(p=> p.postId === parseInt(postId)); 
-},[postId ,allUsersPost])
+},[postId ,allUsersPost , unselectedpost])
+
+
 if(!selectedpost){
     return <div>Loding...</div>
 }
 
   return (
   <>
-  <div className="selectedUserPostContainer">
-    <div className={`selectedUserPostModel ${currMode === 'light' ? 'light' : 'dark'}`}>
+  <div className="selectedUserPostContainer" onClick={closeModal}>
+    <div className={`selectedUserPostModel ${currMode === 'light' ? 'light' : 'dark'}`}
+    onClick={(e) => e.stopPropagation()}>
+      
         <div className={`SelectedPostContainer ${currMode === 'light' ? 'day' : 'night'}`}>
                 
           <div className="ViewedImg">
@@ -93,7 +103,7 @@ if(!selectedpost){
 
         <div className="post_container">
          <div className="wallpaper-list">
-          {allUsersPost.map((post) => (
+          {unselectedpost.map((post) => (
             <div 
             className="postCard" 
             key={post.postId}

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import UserService from '../../Service/UserService';
-import "../cssBlocks/Settings.css"
+import "../ModelCss/Settings.css"
 import { FaPen } from "react-icons/fa6";
 import { CiLock , CiUnlock} from "react-icons/ci";
-import ExitWarring from './ExitWarring';
+import ExitWarring from '../ModelBody/ExitWarring';
 
 function Settings({ currMode ,setCurrMode ,setCheakDiscard ,cheakdiscard ,setActiveModal}) {
     const [activetab , setActivetab]=useState("Account");

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../cssBlocks/BackToTop.css';
@@ -6,6 +6,7 @@ import '../cssBlocks/BackToTop.css';
 gsap.registerPlugin(ScrollTrigger);
 
 function BackToTop(props) {
+
   const backToTopRef = useRef(null);
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });

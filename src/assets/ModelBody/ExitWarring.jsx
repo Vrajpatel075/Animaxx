@@ -1,5 +1,5 @@
     import React from 'react'
-    import "../cssBlocks/ExitWarring.css"
+    import "../ModelCss/ExitWarring.css"
     
     function ExitWarring({ currMode, setCheakDiscard, setActiveModal  }) {
   return (

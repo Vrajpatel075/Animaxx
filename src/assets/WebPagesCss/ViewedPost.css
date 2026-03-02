@@ -12,14 +12,9 @@
 }
 .mainSection .backButton.day{
     color: var(--black);
-    transition: 0.2s;
 }
 .mainSection .backButton.night{
     color: var(--light-white);
-}
-.mainSection .backButton.night:hover{
-    color: var(--night);
-    transition: 0.4s;
 }
 
 
@@ -55,7 +50,7 @@
 section .recomendedPost .postCard img{
     width: 100%;  
     border-radius: 12px;
-    transition: 0.5s;
+    transition: 0.3s;
     z-index: 10;
 }
 .recomendedPost .postCard img:hover{
@@ -79,11 +74,12 @@ section .recomendedPost .postCard img{
     border: 0;
     font-size: 1rem;
 
+
 }
 .mainSection .backButton:hover{
-    background-color: var(--li-grey);
+    background-color: rgba(128, 128, 128, 0.175);
     border-radius: 12px;
-    transform: 0.5s;
+    transition: 0.2s;
 }
 
 /* post which is been selected by user in wallpaperpg */

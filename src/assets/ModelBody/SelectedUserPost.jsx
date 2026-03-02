@@ -1,41 +1,18 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import PostService from '../../Service/PostService';
-import { FaAngleUp, FaChevronDown, FaRegComment, FaRegHeart, FaShare } from 'react-icons/fa6';
+import { FaAngleUp, FaArrowLeft, FaChevronDown, FaRegComment, FaRegHeart, FaShare } from 'react-icons/fa6';
 import { FiDownload } from 'react-icons/fi';
 import { HiDotsHorizontal } from 'react-icons/hi';
 import "../ModelCss/SelectedUserPost.css"
 
-function SelectedUserPost({currMode , postId , closeModal}) {
-const navigate = useNavigate();
+function SelectedUserPost({currMode , postId , closeModal , posts , setSelectedPostId}) {
 const [openComments , SetOpenComments ] = useState(false)
-const [allUsersPost , SetallUsersPost] = useState([])
-
-
-useEffect(()=>{
-    const userId = localStorage.getItem("userId");
-    if(userId){
-         PostService.getUserPost(userId).then(posts =>{
-            SetallUsersPost(posts)
-         })
-        }
-},[postId])
 
 // show all post in accept the post selected
-const unselectedpost = useMemo(()=>{
-  return allUsersPost.filter(p=> p.postId !==  parseInt(postId));
-},[postId , allUsersPost])
-
+const unselectedpost = posts.filter(p => p.postId !== parseInt(postId));
 
 // show only selected post data 
-const selectedpost = useMemo(()=>{
-    return allUsersPost.find(p=> p.postId === parseInt(postId)); 
-},[postId ,allUsersPost , unselectedpost])
-
-
-if(!selectedpost){
-    return <div>Loding...</div>
-}
+const selectedpost = posts.find(p => p.postId === parseInt(postId));
 
   return (
   <>
@@ -44,6 +21,12 @@ if(!selectedpost){
     onClick={(e) => e.stopPropagation()}>
       
         <div className={`SelectedPostContainer ${currMode === 'light' ? 'day' : 'night'}`}>
+
+           <div className="backBtn">
+            <h2>
+              <span onClick={closeModal}> <FaArrowLeft/></span> 
+              <span>Posts</span></h2>
+          </div>
                 
           <div className="ViewedImg">
             <img src={selectedpost.imageUrl} alt={selectedpost.title} />
@@ -53,7 +36,6 @@ if(!selectedpost){
               <h2>{selectedpost.title}</h2 >
               <p className="postDescription">
                 {selectedpost.description}
-                {/* {truncateText(selectedpost.description, wordLimit)} */}
               </p>
           </div>
           
@@ -68,18 +50,18 @@ if(!selectedpost){
               <span className='icons'><FaShare/></span>
           </div>
   
-          <div className="PostComments">
+          <div className={`PostComments ${currMode === 'light' ? 'day' : 'night'}`}>
             <div className="comments">
               <h2>comments</h2>
               <span className='openComments'
               onClick={() => SetOpenComments(prev => !prev)}>
                 {openComments  ?<FaAngleUp/> : <FaChevronDown/>}
-                </span>
+              </span>
             </div>
   
             <div className="CommentInput">
               <span><FaRegComment/> </span>
-              <input type="text" placeholder='Comment' className={`${currMode === "light" ? "light" : "dark"}`} />
+              <input type="text" placeholder='Comment' className={`${currMode === 'light' ? 'day' : 'night'}`} />
             </div>
   
             {openComments && (
@@ -101,21 +83,21 @@ if(!selectedpost){
           </div>
         </div>
 
-        <div className="post_container">
+        <div className={`post_container ${currMode === 'light' ? 'light' : 'night'}`}>
          <div className="wallpaper-list">
           {unselectedpost.map((post) => (
             <div 
             className="postCard" 
             key={post.postId}
-            onClick={()=> navigate(`/SelectedUserPost/${post.postId}`)}  >
+            onClick={() => setSelectedPostId(post.postId)}>
               
               <img 
               src={post.imageUrl} 
               alt={`post ${post.postId}`}
-              onClick={()=> navigate(`/SelectedUserPost/${post.postId}`)} 
+              onClick={() => setSelectedPostId(post.postId)}
               />    
             </div>
-          )) || "Upload Post"}
+          ))}
         </div>
         </div>
         

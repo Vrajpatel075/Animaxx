@@ -17,25 +17,23 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
     const [userposts , setUserPosts]= useState([]);
     const [cheakdiscard , setCheakDiscard] = useState(false);
     const [activeModal, setActiveModal] = useState(null);
-    const [wordLimit , setWordLimit] = useState(5);
+    const [wordLimit , setWordLimit] = useState();
     const [selectedPostId, setSelectedPostId] = useState(null);
-
-
-    const navigate = useNavigate();
+    const [activeSection , setActiveSection] = useState("Posts");
 
     useEffect(()=>{
             const userId = localStorage.getItem("userId");
             if(userId){
-                 UserService.getProfile(userId).then(res =>{
+                UserService.getProfile(userId).then(res =>{
                 setProfile(res.data );
 
                 PostService.getUserPost(userId).then(post=>{
                 setUserPosts(post)
                 })
             })}
-        },[<Settings/>]);
+        },[]);
 
-    function truncateText(text, wordLimit) {
+    function truncateText(text="", wordLimit=5) {
         const words = text.split(' ');
         if (words.length <= wordLimit) return text;
         return words.slice(0, wordLimit).join(' ') + ' ...';
@@ -95,8 +93,8 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
         </div>
         <div className="Activity-Nav">
             <ul>
-                <li className='Post'>Post</li>
-                <li className='Save'>Save</li>
+                <li className='Post' onClick={()=>setActiveSection("Posts")}>Post</li>
+                <li className='Save' onClick={()=>setActiveSection("Save")}>Save</li>
             </ul>
         </div>
     </div>
@@ -104,7 +102,7 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
 
 
     
-    {/* {displayPosts &&  */}
+    {activeSection === "Posts" && 
     <div className="post_container">
          <div className="wallpaper-list">
           {userposts.map((post) => (
@@ -122,12 +120,18 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
               <h4 className="postTitle">{post.postOwner}</h4>
               <p className="postDescription">
                 {truncateText(post.description, wordLimit)}
-                {post.description}
+                {/* {post.description} */}
               </p>
             </div>
           )) || "Upload Post"}
         </div>
-    </div>
+    </div>}
+
+    {activeSection  === "Save" &&
+    <div>
+        <h1>Save Posts</h1>
+    </div>}
+
        </div>
 
 
@@ -142,11 +146,15 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
         />
     )}
 
+    
     {selectedPostId  && 
     <SelectedUserPost
     currMode={currMode} 
     postId={selectedPostId} 
-    closeModal={() => setSelectedPostId(null)} />}
+    posts={userposts}
+    setSelectedPostId={setSelectedPostId}
+    closeModal={() => setSelectedPostId(null)} />
+    }
   </>
   )
 }

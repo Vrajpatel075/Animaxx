@@ -39,7 +39,7 @@
 .wallpaper-container .wallpaper-list .postCard,
 .post_container .wallpaper-list .postCard{
   padding: 5px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   overflow: hidden;
   break-inside: avoid;
   -webkit-column-break-inside: avoid; 

@@ -156,7 +156,7 @@ function ViewedPost({postdata , currMode }) {
               <p>Lorem ipsum dolor sit amet.</p>
             </div>
           </div>
-        )}
+          )}
         </div>
       </div>
 

@@ -148,10 +148,14 @@
         font-size: 0.8rem;
     }
      .Profile-Container .Profile-Img-Container .Profile-Content .first-last-name{
+        margin-bottom: 0.5rem;
         font-size:0.5rem ;
     }
     .Profile-Container .Profile-Img-Container .Profile-Content .Disc{
         font-size:0.5rem;
+        font-weight: 300;
+        width: 80%;
+        /* background-color: red; */
     }
     .Profile-Container .Profile-Img-Container .Profil-Pic img{
         height:100px;

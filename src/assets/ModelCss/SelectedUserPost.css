@@ -12,10 +12,22 @@
     align-items: center;
     z-index: 9999;
 }
+.selectedUserPostContainer .selectedUserPostModel .backBtn{
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.selectedUserPostContainer .backBtn span{
+    margin: 0 0.5rem;
+    font-weight: 500;
+}
 .selectedUserPostContainer .selectedUserPostModel{
-    /* background-color: white; */
     height: 90%;
     width: 80%;
+    min-width: 800px;
 
     padding: 1rem;
     border-radius: 16px;
@@ -23,22 +35,22 @@
     align-items: start;
     justify-content: center;
 }
+
 .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer{
     width: 70%;
-    height: 100%;
 }
 .selectedUserPostContainer .selectedUserPostModel .post_container{
     width: 30%;
     height: 100%;
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    scroll-behavior: smooth;
-    scrollbar-color: var(--li-grey);
+    overflow-y: auto;
 
-    columns: 150px;
     gap: 0;
     margin: 0;
     padding: 0;
+}
+.selectedUserPostContainer .selectedUserPostModel .post_container .wallpaper-list .postCard{
+    margin-bottom: 0.5rem;
+    height: fit-content;
 }
 .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .ViewedImg{
     width: 100%;
@@ -53,10 +65,91 @@
 
 }
 .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .PostComments{
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    scrollbar-color: var(--li-grey);
+    overflow-y: auto;
     scroll-behavior: smooth;
     height: 300px;
     width: 100%;
+}
+.PostComments.night::-webkit-scrollbar,
+.post_container.night::-webkit-scrollbar{
+    width: 6px;
+}
+.PostComments.night::-webkit-scrollbar-thumb{
+    background-color: var(--dark); 
+    border-radius: 4px;
+}
+.post_container.night::-webkit-scrollbar-thumb{
+    background-color: var(--night); 
+    border-radius: 4px;
+}
+.PostComments.night::-webkit-scrollbar-track{
+    background-color: var(--night);
+}
+.post_container.night::-webkit-scrollbar-track{
+    background-color: var(--dark);
+}
+.PostComments input.night{
+    color: var(--pure-white);
+    background-color: var(--night);
+}
+
+@media screen and (max-width:800px) {
+    .selectedUserPostContainer .selectedUserPostModel{
+        height: 100dvh;
+        width: 100dvw;
+        min-width: none;
+        padding: 0rem;
+        flex-wrap: wrap;
+        flex-direction: row;
+        overflow: auto;
+    }
+    .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer{
+        width: 100dvw;
+        height: fit-content;
+        border-radius: 0;
+        padding: 2rem ;
+    }
+    .selectedUserPostContainer .selectedUserPostModel .post_container{
+        width: 100dvw;
+        flex-wrap: wrap;
+        columns: 200px;
+        margin-top: 2rem;
+    }
+    .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .ViewedImg{
+        width: 100%;
+        height: 400px;
+        margin-bottom: 2rem;
+    }
+    .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .PostComments{
+        height: max-content;
+        max-height: 200px;
+    }
+}
+@media screen and (max-width:600px) {
+    .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer{
+        padding: 1rem ;
+    }
+    .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .ViewedImg{
+        height: 300px;
+    }
+}
+@media screen and (max-width:400px) {
+    .selectedUserPostContainer .selectedUserPostModel {
+        min-width: 100dvw;
+    }
+    .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .ViewedImg{
+        height: 250px;
+    }
+    .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .PostActivite{
+        margin: 0;
+    }
+    .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .PostComments{
+        padding: 0 8px;
+    }
+    .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .PostComments h2{
+        font-size: 0.8rem;
+    }
+       .selectedUserPostContainer .selectedUserPostModel .post_container{
+        margin-top: 0.5rem;
+    }
 }

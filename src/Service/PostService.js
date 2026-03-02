@@ -17,6 +17,13 @@ class PostService{
             return  response.data;
          })
     }
+
+    getAllPosts(){
+        return axios.get(POST_API_BASE_URL , {
+            withCredentials:true}).then(response =>{
+                return response.data;
+            })
+    }
 }
 
 export default new PostService;

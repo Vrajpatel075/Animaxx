@@ -24,6 +24,7 @@ function WallpaperPg(props) {
     <>
       <UniversalNav
         navOpen={wallpaperNavOpen}
+        setIsLoggedIn={props.setIsLoggedIn}
         setNavOpen={setWallpaperNavOpen}
         currMode={props.currMode}
         showSearch={true}

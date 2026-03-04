@@ -36,7 +36,7 @@
     justify-content: center;
 }
 
-.selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer{
+.selectedUserPostContainer .selectedUserPostModel .SelectedPost{
     width: 70%;
 }
 .selectedUserPostContainer .selectedUserPostModel .post_container{
@@ -52,19 +52,19 @@
     margin-bottom: 0.5rem;
     height: fit-content;
 }
-.selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .ViewedImg{
+.selectedUserPostContainer .selectedUserPostModel .SelectedPost .ViewedImg{
     width: 100%;
     height: 800px;
     margin-bottom: 2rem;
     overflow: hidden;
 }
-.selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .ViewedImg img{
+.selectedUserPostContainer .selectedUserPostModel .SelectedPost .ViewedImg img{
     object-fit: contain;
     width: 100%;
     height: 100%;
 
 }
-.selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .PostComments{
+.selectedUserPostContainer .selectedUserPostModel .SelectedPost .PostComments{
     overflow-y: auto;
     scroll-behavior: smooth;
     height: 300px;
@@ -103,7 +103,7 @@
         flex-direction: row;
         overflow: auto;
     }
-    .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer{
+    .selectedUserPostContainer .selectedUserPostModel .SelectedPost{
         width: 100dvw;
         height: fit-content;
         border-radius: 0;
@@ -115,21 +115,21 @@
         columns: 200px;
         margin-top: 2rem;
     }
-    .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .ViewedImg{
+    .selectedUserPostContainer .selectedUserPostModel .SelectedPost .ViewedImg{
         width: 100%;
         height: 400px;
         margin-bottom: 2rem;
     }
-    .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .PostComments{
+    .selectedUserPostContainer .selectedUserPostModel .SelectedPost .PostComments{
         height: max-content;
         max-height: 200px;
     }
 }
 @media screen and (max-width:600px) {
-    .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer{
+    .selectedUserPostContainer .selectedUserPostModel .SelectedPost{
         padding: 1rem ;
     }
-    .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .ViewedImg{
+    .selectedUserPostContainer .selectedUserPostModel .SelectedPost .ViewedImg{
         height: 300px;
     }
 }
@@ -137,16 +137,16 @@
     .selectedUserPostContainer .selectedUserPostModel {
         min-width: 100dvw;
     }
-    .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .ViewedImg{
+    .selectedUserPostContainer .selectedUserPostModel .SelectedPost .ViewedImg{
         height: 250px;
     }
-    .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .PostActivite{
+    .selectedUserPostContainer .selectedUserPostModel .SelectedPost .PostActivite{
         margin: 0;
     }
-    .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .PostComments{
+    .selectedUserPostContainer .selectedUserPostModel .SelectedPost .PostComments{
         padding: 0 8px;
     }
-    .selectedUserPostContainer .selectedUserPostModel .SelectedPostContainer .PostComments h2{
+    .selectedUserPostContainer .selectedUserPostModel .SelectedPost .PostComments h2{
         font-size: 0.8rem;
     }
        .selectedUserPostContainer .selectedUserPostModel .post_container{

@@ -1,0 +1,131 @@
+.SelectedPost.night{
+    /* background-image: linear-gradient(to bottom right , #403f44 , #1e1b32); */
+    background-color: var(--night);
+    border: 2px solid var(--black);
+}
+
+.SelectedPost{
+    width:800px; 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 24px;
+    border: 2px solid var(--li-grey);
+}
+
+.SelectedPost .ViewedImg{
+    width: 100%;
+    height: 800px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+.SelectedPost .ViewedImg img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+
+}
+.SelectedPost .PostComments{
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    height: 300px;
+    width: 100%;
+}
+
+
+/* viewd post */
+
+.SelectedPost .PostOwner{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 0.5rem;    
+    margin-bottom: 0.5rem;
+    padding: 0rem 0.5rem;
+    font-size: 1rem;
+}
+.SelectedPost .PostOwner .ProfilPic{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.SelectedPost .PostOwner .ProfilPic img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    padding: 0.1rem;
+    background-image: linear-gradient(90deg,#833AB4 0%, #FD1D1D 50%, #FCB045 100%);
+}
+.SelectedPost .ViewedImg {
+    height:400px;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.SelectedPost .ViewedImg img{
+    object-fit: contain;
+    height: 100%;
+    max-height: 30rem;
+    width: 100%;
+}
+
+
+@media screen and (max-width:800px){
+    .SelectedPost{
+        width: 100dvw;
+        height: fit-content;
+        border-radius: 0;
+        padding: 2rem ;
+    }
+    .SelectedPost .ViewedImg{
+        width: 100%;
+        height: 400px;
+        margin-bottom: 2rem;
+    }
+    .SelectedPost .PostComments{
+        height: max-content;
+        max-height: 200px;
+    }
+}
+@media screen and (max-width:600px) {
+    .SelectedPost{
+        padding: 1rem ;
+        margin: 0;
+        border-radius: 0;
+    }
+    .SelectedPost .ViewedImg{
+        height: 200px;
+    }
+    .SelectedPost.night{
+        border: none;
+    }
+     .SelectedPost .PostAuther{
+        font-size: 0.5rem;
+    }
+    .SelectedPost .PostActivite{
+        font-size: 1rem;
+    }
+    .SelectedPost .PostComments .comments{
+        font-size: 0.7rem;
+        margin-bottom: 0.5rem;
+    }
+}
+@media screen and (max-width:400px) {
+    .SelectedPost .ViewedImg{
+        height: 250px;
+    }
+    .SelectedPost .PostActivite{
+        margin: 0;
+    }
+    .SelectedPost .PostComments{
+        padding: 0 8px;
+    }
+    .SelectedPost .PostComments h2{
+        font-size: 0.8rem;
+    }
+}

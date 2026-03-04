@@ -156,7 +156,7 @@
   justify-content: center;
 }
 .search_input{
-    padding-left: 20px;
+    padding: 16px;
     width: 88%;
     font-size: 1rem;
     border: none;
@@ -177,6 +177,7 @@
     border-bottom-right-radius: 6px;
     border: none;
     flex-shrink: 0;
+    padding: 16px;
 }
 
 /* profile picture  */

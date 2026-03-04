@@ -8,6 +8,7 @@ import Settings from '../ModelBody/Settings';
 import UploadPost from '../ModelBody/UploadPost';
 import PostService from '../../Service/PostService';
 import SelectedUserPost from '../ModelBody/SelectedUserPost';
+import PostCard from '../htmlBlocks/PostCard';
 
 
 // SetCurrMode is for passing to Setting.jsx page as props not used in this page
@@ -17,7 +18,6 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
     const [userposts , setUserPosts]= useState([]);
     const [cheakdiscard , setCheakDiscard] = useState(false);
     const [activeModal, setActiveModal] = useState(null);
-    const [wordLimit , setWordLimit] = useState();
     const [selectedPostId, setSelectedPostId] = useState(null);
     const [activeSection , setActiveSection] = useState("Posts");
 
@@ -32,12 +32,6 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
                 })
             })}
         },[]);
-
-    function truncateText(text="", wordLimit=5) {
-        const words = text.split(' ');
-        if (words.length <= wordLimit) return text;
-        return words.slice(0, wordLimit).join(' ') + ' ...';
-  }
 
   return (
   <>
@@ -106,24 +100,13 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
     <div className="post_container">
          <div className="wallpaper-list">
           {userposts.map((post) => (
-            <div 
-            className="postCard" 
+            <PostCard
             key={post.postId}
-            onClick={() => setSelectedPostId(post.postId)}  
-            >
-              
-              <img 
-              src={post.imageUrl} 
-              alt={`post ${post.postId}`}
-              onClick={() => setSelectedPostId(post.postId)}
-              />
-              <h4 className="postTitle">{post.postOwner}</h4>
-              <p className="postDescription">
-                {truncateText(post.description, wordLimit)}
-                {/* {post.description} */}
-              </p>
-            </div>
-          )) || "Upload Post"}
+            post={post}
+            currMode={currMode}
+            onClick={() => setSelectedPostId(post.postId)}/>
+          )) || 
+          <h2> Upload Post</h2>}
         </div>
     </div>}
 

@@ -1,0 +1,35 @@
+/* toggle theam */
+.postCard img.day:hover{
+   box-shadow:2px 2px 10px 0px var(--d-grey);
+}
+.postCard img.night:hover{
+   box-shadow:2px 2px 10px 0px var(--black);
+}
+
+.postCard img{
+    width: 100%;  
+    border-radius: 12px;
+    transition: 0.3s;
+    z-index: 10;
+}
+
+.postCard img:hover{
+  background-color:transparent;
+  transform: translateY(-8px) scale(0.98);
+}
+.postCard{
+  padding: 5px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid; 
+  -moz-column-break-inside: avoid;
+}
+
+
+@media screen and (max-width:400px) {
+    .postCard{
+        padding: 5px;
+        margin-bottom: 0;
+    }
+}

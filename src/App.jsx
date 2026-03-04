@@ -1,30 +1,18 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './assets/WebPages/Home';
-import WallpaperPg from './assets/WebPages/WallpaperPg';
+import GalleryPg from './assets/WebPages/GalleryPg'
 import BackToTop from './assets/htmlBlocks/BackToTop';
 import SignIn from './assets/WebPages/SignIn';
-import SignUp from './assets/WebPages/SignUp';
-// import { postFeedData } from '../postData';   
+import SignUp from './assets/WebPages/SignUp';  
 import { useEffect, useState } from 'react';
 import ViewedPost from './assets/WebPages/ViewedPost';
 import ProfilePg from './assets/WebPages/ProfilePg';
 import SignUpUserinfo from './assets/WebPages/SignUpUserinfo';
-import UserService from './Service/UserService';
-import PostService from './Service/PostService';
 
 
 function App() {
-  const [allPosts , setAllPosts] =  useState([]);
 
-  // fetching all posts
-  useEffect(()=>{
-    PostService.getAllPosts().then(res=>{
-      setAllPosts(res)
-    })
-  },[])
-
-  
   // used for pagination
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(50);
@@ -40,10 +28,6 @@ function App() {
     const storedUserId = localStorage.getItem("userId"); 
     setIsLoggedIn(!!storedUserId);
   }, []);
-
-  // slice the data for pagination
-  const currentPosts = allPosts.slice(firstPostIndex, lastPostIndex);
-
 
   // toggle light and dark mode
   const [currMode, setCurrMode] = useState(()=>{
@@ -82,16 +66,15 @@ function App() {
 
 
           <Route 
-          path='/WallpaperPg' 
-          element={<WallpaperPg 
-          postdata={currentPosts} 
+          path='/Gallery' 
+          element={<GalleryPg 
           limit={limit} 
-          totalPosts={allPosts.length} 
           page={page}
-          setIsLoggedIn={setIsLoggedIn}
           setPage={setPage}
+          setIsLoggedIn={setIsLoggedIn}
           currMode={currMode}
           />} />
+    
 
 
           <Route path='/SignIn' element={<SignIn setIsLoggedIn={setIsLoggedIn} />} />
@@ -101,7 +84,6 @@ function App() {
           <Route 
           path='/ViewedPost/:postId' 
           element={<ViewedPost 
-          postdata={allPosts} 
           currMode={currMode}
           />} />
 
@@ -115,12 +97,6 @@ function App() {
             : 
           <Navigate to="/" 
           /> } />
-
-          {/* <Route
-          path='/SelectedUserPost/:postId'
-          element={<SelectedUserPost
-          currMode={currMode}
-          /> } /> */}
 
         </Routes>
       </BrowserRouter>

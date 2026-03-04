@@ -12,7 +12,7 @@ function UniversalNav({ navOpen, setNavOpen, currMode, showSearch, setIsLoggedIn
   const [profile , setProfile] = useState({});
 
   const navItems = [
-    { label: 'WALLPAPERS', paths: ['/WallpaperPg', '/ViewedPost'] },
+    { label: 'GALLERY', paths: ['/Gallery', '/ViewedPost'] },
     { label: 'BLOGS', paths: ['/BlogsPg'] },
     { label: 'SHOP', paths: ['/ShopPg'] },
     { label: 'COMMUNITY', paths: ['/CommunityPg'] },

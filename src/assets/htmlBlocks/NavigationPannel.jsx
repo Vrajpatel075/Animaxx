@@ -27,7 +27,7 @@ function NavigationPannel() {
   }, [lastScrollTop]);
 
   const NavItems = [
-    { label: 'WALLPAPERS', to: '/WallpaperPg' },
+    { label: 'Gallery', to: '/Gallery' },
     { label: 'BLOGS', to: '/BlogsPg' },
     { label: 'SHOP', to: '/ShopPg' },
     { label: 'COMMUNITY', to: '/CommunityPg' },

@@ -78,7 +78,7 @@
     padding: 0.5rem;
     border: 0;
     outline: none;
-    border-bottom: 2px solid var(--d-grey);
+    border-bottom: 1px solid var(--d-grey);
 }
 .formContainer .PostForm form .error{
     color: red;
@@ -151,9 +151,6 @@
         width: 300px;
         margin: auto;
         padding: 0.5rem;
-        border: 0;
-        outline: none;
-        border-bottom: 2px solid var(--d-grey);
     }
     .formContainer .PostForm form button{
         padding: 0.5rem 0.5rem;

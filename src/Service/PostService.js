@@ -24,6 +24,16 @@ class PostService{
                 return response.data;
             })
     }
+
+    getPostByPostId(postId){
+        return axios.get(POST_API_BASE_URL + `/${postId}`, {
+            withCredentials:true}).then(response => {
+                return response.data;
+            })
+        }
+
+
+
 }
 
 export default new PostService;

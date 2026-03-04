@@ -116,7 +116,7 @@ import { Link } from 'react-router-dom';
                       <h1 className="title">POSTERS</h1>
                       <span className="dis">Download Immages Of Our Favorite Anime Movies In higH Quality Without Any Intrupting ADs.</span><br/>
                        <button className="button-transperent" style={{ color: "white" }} 
-                        onClick={() => navigate(isLoggedIn ? "/WallpaperPg" : "/SignIn")}>
+                        onClick={() => navigate(isLoggedIn ? "/Gallery" : "/SignIn")}>
                         VIEW MORE
                       </button>
                   </div>

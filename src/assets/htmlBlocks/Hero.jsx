@@ -69,7 +69,7 @@ const carouselRef = useRef(null);
 }, []);
 
 const handleSeeMore=()=>{
-    Navigate(isLoggedIn ? "/WallpaperPg" : "/SignIn");
+    Navigate(isLoggedIn ? "/Gallery" : "/SignIn");
 }
     
   return (

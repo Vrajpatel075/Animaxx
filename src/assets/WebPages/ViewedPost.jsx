@@ -4,12 +4,7 @@ import UniversalNav from '../htmlBlocks/UniversalNav'
 import FooterPannel from '../htmlBlocks/FooterPannel';
 import "../WebPagesCss/ViewedPost.css"
 import "../WebPagesCss/GalleryPg.css"
-import { FaRegHeart ,FaShare,FaArrowLeft,FaChevronDown,FaAngleUp} from "react-icons/fa";
-import { FiDownload } from "react-icons/fi";
-import { HiDotsHorizontal } from "react-icons/hi";
-import { MdOutlineZoomOutMap } from "react-icons/md";
-import { FaRegComment } from "react-icons/fa6";
-import UserService from '../../Service/UserService';
+import { FaArrowLeft} from "react-icons/fa";
 import PostService from '../../Service/PostService';
 import PostCard from '../htmlBlocks/PostCard';
 import SelectedPost from '../htmlBlocks/SelectedPost';
@@ -22,14 +17,11 @@ function ViewedPost({currMode }) {
   const { postId } = useParams(); 
   const [selectedpost , setSelectedpostPost] = useState(null);
   const [wallpaperNavOpen, setWallpaperNavOpen] = useState(false);
-  const [wordLimit , setWordLimit] = useState(5);
   const [isLargeView , setIsLargeView] = useState(false);
-  const [viewComments , setviewComments] = useState(false);
-  const [isCommentsOpen , setIsCommentsOpen] = useState(false)
-  const [isDescriptionOpen,setIsDescriptionOpen] =useState(false);
-  const [loading, setLoading] = useState(false);
   const [recommendedPosts, setRecommendedPosts] = useState([]);
   const [resizeRecomendationValue , setResizeRecomendationValue] = useState(35);
+
+  
 
   // to fetch selected img 
   useEffect(()=>{
@@ -37,6 +29,7 @@ function ViewedPost({currMode }) {
       setSelectedpostPost(res)
     })
   },[postId])
+
   const post = selectedpost;
 
   // to fetch all the img
@@ -62,7 +55,6 @@ function ViewedPost({currMode }) {
 
   // post recomendation
   const mainSuggestion = resizeRecomendationValue;
-  const sideSuggestion = 25;
   
   const { mainRecommendations, sideRecommendations } = useMemo(() => {
   const shuffled = [...recommendedPosts].sort(() => Math.random() - 0.5);
@@ -73,12 +65,6 @@ function ViewedPost({currMode }) {
   return { mainRecommendations: main, sideRecommendations: side };
 }, [recommendedPosts, resizeRecomendationValue]);
 
-
-  function truncateText(text, wordLimit) {
-    const words = text.split(' ');
-    if (words.length <= wordLimit) return text;
-    return words.slice(0, wordLimit).join(' ');
-  }
   if (!post) return <p>Loading post...</p>;
 
   return (
@@ -100,6 +86,7 @@ function ViewedPost({currMode }) {
         </button>
         <h2>Posts</h2>
       </div>
+     
 
       <div className="mainSection">
       <SelectedPost
@@ -114,7 +101,8 @@ function ViewedPost({currMode }) {
           key={rp.postId} 
           post={rp} 
           currMode={currMode} 
-          onClick={() => navigate(`/ViewedPost/${rp.postId}`)} />
+          onClick={() =>{ 
+            navigate(`/ViewedPost/${rp.postId}`)}} />
         ))}
         </div>
       </section>

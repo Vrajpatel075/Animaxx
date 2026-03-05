@@ -5,17 +5,30 @@ import { HiDotsHorizontal } from 'react-icons/hi';
 import "../ModelCss/SelectedUserPost.css"
 import PostCard from '../htmlBlocks/PostCard';
 import Comments from '../htmlBlocks/Comments';
+import SelectedPost from '../htmlBlocks/SelectedPost';
 
 
 function SelectedUserPost({currMode , postId , closeModal , posts , setSelectedPostId}) {
-// const [openComments , SetOpenComments ] = useState(false)
+const [isDescriptionOpen , setIsDescriptionOpen] = useState(false)
 const [isCommentsOpen, setIsCommentsOpen] = useState(false);
+const [wordLimit , setWordLimit] = useState();
 
 // show all post in accept the post selected
 const unselectedpost = posts.filter(p => p.postId !== parseInt(postId));
 
 // show only selected post data 
 const selectedpost = posts.find(p => p.postId === parseInt(postId));
+
+function truncateText(text="", wordLimit=5) {
+        const words = text.split(' ');
+        if (words.length <= wordLimit) return text;
+        return words.slice(0, wordLimit).join(' ') + ' ...more';
+    }
+
+  useEffect(() => {
+  setIsDescriptionOpen(false);
+}, [postId]);
+
 
   return (
   <>
@@ -25,7 +38,7 @@ const selectedpost = posts.find(p => p.postId === parseInt(postId));
       
         <div className={`SelectedPost ${currMode === 'light' ? 'day' : 'night'}`}>
 
-           <div className="backBtn">
+           <div className="backButton">
             <h2>
               <span onClick={closeModal}> <FaArrowLeft/></span> 
               <span>Posts</span></h2>
@@ -36,11 +49,27 @@ const selectedpost = posts.find(p => p.postId === parseInt(postId));
           </div>
           
           <div className="PostAuther">
-              <h2>{selectedpost.title}</h2 >
-              <p className="postDescription">
-                {selectedpost.description}
-              </p>
-          </div>
+                  <h3>{selectedpost.title}</h3>
+                  {isDescriptionOpen ? (
+                    <p className='postDescription'>{selectedpost.description}
+                    </p>
+                  ) : (
+                     <h3 className="postDescription">
+                      {truncateText(selectedpost.description, wordLimit)}
+                      <span onClick={()=>setIsDescriptionOpen(true)}> ...more </span>
+                    </h3> 
+                  )}
+                  {isDescriptionOpen && (
+                      <div className='postDescription'>
+                        {selectedpost.tags.map((tag,index)=>(
+                          <span key={index}>
+                            <span>#{tag} </span>
+                          </span>
+                        ))}
+                        <span onClick={()=> setIsDescriptionOpen(false)}> ...Show less</span> 
+                      </div>
+                    )}
+            </div>
 
           <div className='PostActivite'>
             <span className='mainicons'>
@@ -68,7 +97,10 @@ const selectedpost = posts.find(p => p.postId === parseInt(postId));
             key={post.postId}
             currMode={currMode}
             post={post}
-            onClick={() => setSelectedPostId(post.postId)}/>
+            onClick={() => {
+              setSelectedPostId(post.postId);
+              setIsDescriptionOpen(false);
+            }}/>
           ))}
         </div>
         </div>

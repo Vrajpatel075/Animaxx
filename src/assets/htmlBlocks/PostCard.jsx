@@ -15,9 +15,9 @@ function PostCard({post , currMode , onClick }) {
           alt={post.postOwner} 
           className={currMode === 'light' ? 'day' : 'night'} 
            />
-           <p className="postDescription">
+           <p className="postcardDescription">
                 {truncateText(post.description, wordLimit)}
-            </p>
+          </p>
     </div>
   )
 }

@@ -7,7 +7,7 @@ function Comments({currMode}) {
 
   return (
     <div>
-        <div className="PostComments">
+        <div className={`PostComments ${currMode === "light" ? "light" :"night"}`}>
             <div className="comments">
                 <h2>comments</h2>
                 <span
@@ -23,7 +23,7 @@ function Comments({currMode}) {
                 className={`${currMode === "light" ? "light" : "dark"}`} />
             </div>
                 
-                {viewComments && (
+            {viewComments && (
                     <div className="allComments">
                         <div className="sigleComment">
                             <h4>Lorem, ipsum dolor.</h4>
@@ -38,7 +38,7 @@ function Comments({currMode}) {
                             <p>Lorem ipsum dolor sit amet.</p>
                         </div>
                     </div>
-                )}
+            )}
                 
         </div>
     </div>

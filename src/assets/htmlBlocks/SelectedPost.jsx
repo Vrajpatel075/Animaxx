@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import "../cssBlocks/SelectedPost.css"
+import "../cssBlocks/SelectedPost.css"
 import { FaAngleUp, FaChevronDown, FaRegComment, FaRegHeart, FaShare } from 'react-icons/fa6';
 import { HiDotsHorizontal } from 'react-icons/hi';
 import Comments from './Comments';
@@ -45,14 +45,23 @@ function SelectedPost({post , currMode }) {
                   <h3>{post.title}</h3>
                   {isDescriptionOpen ? (
                     <p className='postDescription'>{post.description}
-                    <span onClick={()=> setIsDescriptionOpen(false)}> ...Show less</span>
                     </p>
                   ) : (
                      <h3 className="postDescription">
                       {truncateText(post.description, wordLimit)}
                       <span onClick={()=>setIsDescriptionOpen(true)}> ...more </span>
-                    </h3>
+                    </h3> 
                   )}
+                  {isDescriptionOpen && (
+                      <div className='postDescription'>
+                        {post.tags.map((tag,index)=>(
+                          <span key={index}>
+                            <span>#{tag} </span>
+                          </span>
+                        ))}
+                        <span onClick={()=> setIsDescriptionOpen(false)}> ...Show less</span> 
+                      </div>
+                    )}
                   </div>
                 
                 <div className='PostActivite'>

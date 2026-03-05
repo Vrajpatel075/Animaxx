@@ -184,7 +184,8 @@
 .wallpaper-nav .Animaxx-logo{
   height: 45px;
   width: 45px;
-  filter: drop-shadow(3px 3px 3px var(--black));
+  filter: drop-shadow(2px 1px 1px var(--black));
+  cursor: pointer;
 }
 .wallpaper-nav .Animaxx-logo img{
   height: 100%;

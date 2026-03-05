@@ -1,9 +1,5 @@
 
-.SelectedPost.night{
-    /* background-image: linear-gradient(to bottom right , #403f44 , #1e1b32); */
-    background-color: var(--night);
-    border: 2px solid var(--black);
-}
+
 .mainSection .backButton.day{
     color: var(--black);
 }
@@ -28,6 +24,7 @@
     width: 60%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
 }
 .sideSection{
@@ -96,52 +93,6 @@
     background-color: var(--seco-2);
 }
 
-.SelectedPost{
-    width: 100%; 
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1rem;
-    border-radius: 24px;
-    border: 2px solid var(--li-grey);
-}
-.SelectedPost .PostOwner{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    gap: 0.5rem;    
-    margin-bottom: 0.5rem;
-    padding: 0rem 0.5rem;
-    font-size: 1rem;
-}
-.SelectedPost .PostOwner .ProfilPic{
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    overflow: hidden;
-}
-.SelectedPost .PostOwner .ProfilPic img{
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-    border-radius: 50%;
-    padding: 0.1rem;
-    background-image: linear-gradient(90deg,#833AB4 0%, #FD1D1D 50%, #FCB045 100%);
-}
-.mainSection .SelectedPost .ViewedImg {
-    height:400px;
-    width: 100%;
-    margin-bottom: 1rem;
-}
-
-.mainSection .SelectedPost .ViewedImg img{
-    object-fit: contain;
-    height: 100%;
-    max-height: 30rem;
-    width: 100%;
-}
 .PostActivite{
     display: flex;
     justify-content: space-between;
@@ -177,61 +128,14 @@
     transition: 0.5s;
     text-decoration: underline;
 }
-.PostComments{
-    padding: 0.5rem;
-}
 
-.CommentInput{
-    display: flex;
-    gap:0.5rem;
-    padding: 0 0.5rem;
-}
-.CommentInput input{
-    width: 100%;
-    padding: 0.5rem 1rem;
-    border-radius: 16px;
-    border: none;
-}
-.CommentInput input:focus{
-    outline:1px solid var(--seco-2);
-}
 
-.CommentInput span{
-    font-size: 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-    transition: 0.3s;
-}
+
 .comments span:hover{
     color: var(--seco-1);
 }
-.PostComments .comments h2{
-    display: inline-block;
-    margin-right: 0.5rem;
-}
-.PostComments .comments span{
-    font-size: 0.8rem;
-    padding: 4px 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.PostComments .comments span:hover{
-    background-color: var(--li-grey);
-    border-radius: 6px;
-}
-.sigleComment{
-    margin:1rem;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--li-grey);
-}
-.PostComments .comments{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+
 
 /* large image / zoom in  */
 .LargeViewOverlay {
@@ -268,7 +172,7 @@
 
 
 
-@media (max-width:1220px) {
+@media screen and (max-width:1220px) {
     .ViewPostContainer{
         padding: 0 4rem;
     }
@@ -276,13 +180,14 @@
         columns: 150px;
     }   
 }
-@media (max-width:1150px) {
+@media screen and (max-width:1150px) {
     .mainSection section .recomendedPost{
         columns: 150px;
     }   
 }
-@media (max-width:970px) {
+@media screen and (max-width:970px) {
     .mainSection {
+        justify-content: center;
         width: 100%;
     }   
     .sideSection{
@@ -301,37 +206,11 @@
     .ViewPostContainer{
         padding: 0;
     }
-    .SelectedPost{
-        width: 100dvw;
-        margin: 0;
-        border-radius: 0;
-    }
     .recomendedPost{
         padding: 0 1rem;
-    }
-    .SelectedPost.night{
-        border: none;
     }
     .ViewPostContainer .backButton{
         font-size: 0.7rem;
     }
-    .mainSection .SelectedPost .ViewedImg {
-        height:200px;
-    }
-    .SelectedPost .PostAuther{
-        font-size: 0.5rem;
-    }
-    .SelectedPost .PostActivite{
-        font-size: 1rem;
-    }
-    .SelectedPost .PostComments .comments{
-        font-size: 0.7rem;
-        margin-bottom: 0.5rem;
-    }
-    .CommentInput input{
-        padding: 0.5rem;
-    }
-    .CommentInput span{
-        font-size: 1rem;
-    }
+
 }

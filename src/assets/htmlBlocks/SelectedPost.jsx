@@ -1,22 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../cssBlocks/SelectedPost.css"
 import { FaAngleUp, FaChevronDown, FaRegComment, FaRegHeart, FaShare } from 'react-icons/fa6';
 import { HiDotsHorizontal } from 'react-icons/hi';
-import Comments from './Comments';
+import HandleComments from './HandleComments';
+import LikesService from '../../Service/LikesService';
+import { IoMdHeart } from 'react-icons/io';
+import HandleLikes from './HandleLikes';
 
-function SelectedPost({post , currMode }) {
-    const [isDescriptionOpen, setIsDescriptionOpen] = useState(false); 
+function SelectedPost({post , currMode ,setIsDescriptionOpen ,  isDescriptionOpen}) {
     const [isCommentsOpen, setIsCommentsOpen] = useState(false);
     const [wordLimit , setWordLimit] = useState();
-    
 
 
+  
     function truncateText(text="", wordLimit=5) {
         const words = text.split(' ');
         if (words.length <= wordLimit) return text;
         return words.slice(0, wordLimit).join(' ') + ' ...more';
     }
-
 
   return (
     <div>
@@ -66,9 +67,7 @@ function SelectedPost({post , currMode }) {
                 
                 <div className='PostActivite'>
                     <span className='mainicons'>
-                      <span className='icons'><FaRegHeart/>
-                      <span className='ActiveCount'>{post.likes}</span>
-                      </span>
+                      <HandleLikes post={post}/>
                       <span className='icons'><FaRegComment
                       onClick={() => setIsCommentsOpen(prev => !prev)}/></span>
                       <span className='icons'><FaShare/></span>
@@ -77,11 +76,12 @@ function SelectedPost({post , currMode }) {
                 </div>
 
                 {isCommentsOpen &&
-                <Comments
+                <HandleComments
+                postId={post.postId}
                 currMode={currMode}/>}
         
         
-              </div>
+              </div>  
     </div>
   )
 }

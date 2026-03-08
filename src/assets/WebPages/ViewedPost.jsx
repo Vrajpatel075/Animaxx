@@ -15,6 +15,7 @@ import SelectedPost from '../htmlBlocks/SelectedPost';
 function ViewedPost({currMode }) {
   const navigate   = useNavigate();
   const { postId } = useParams(); 
+  const [isDescriptionOpen, setIsDescriptionOpen] = useState(false); 
   const [selectedpost , setSelectedpostPost] = useState(null);
   const [wallpaperNavOpen, setWallpaperNavOpen] = useState(false);
   const [isLargeView , setIsLargeView] = useState(false);
@@ -36,6 +37,7 @@ function ViewedPost({currMode }) {
   useEffect(()=>{
     PostService.getAllPosts().then(res =>{
       setRecommendedPosts(res.filter(p=>p.postId !== parseInt(postId)));
+      setIsDescriptionOpen(false);
     })
   },[postId])
 
@@ -91,6 +93,8 @@ function ViewedPost({currMode }) {
       <div className="mainSection">
       <SelectedPost
       post={post}
+      setIsDescriptionOpen={setIsDescriptionOpen}
+      isDescriptionOpen={isDescriptionOpen}
       currMode={currMode}/> 
       <section >
         
@@ -118,7 +122,8 @@ function ViewedPost({currMode }) {
           key={rp.postId} 
           post={rp} 
           currMode={currMode} 
-          onClick={() => navigate(`/ViewedPost/${rp.postId}`)} />
+          onClick={() => {
+            navigate(`/ViewedPost/${rp.postId}`)}} />
           ))}
         </div>
        </section>

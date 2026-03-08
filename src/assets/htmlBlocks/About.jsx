@@ -15,7 +15,7 @@ function About() {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, consectetur. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus praesentium, reiciendis voluptatum magni reprehenderit
                 </div>
                 <div className="button">
-                    {!isLoggedIn && ( <button> <Link to="/SignUp">SIGN-UP</Link> </button> )}
+                    {!isLoggedIn && ( <button className='mouseCursor'> <Link to="/SignUp">SIGN-UP</Link> </button> )}
                 </div>
             </div>
         </div>

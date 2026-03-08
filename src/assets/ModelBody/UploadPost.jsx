@@ -81,7 +81,7 @@ function UploadPost({ currMode, setCheakDiscard, cheakdiscard ,setActiveModal })
                 onChange={handlePostChange}
               />
               {formerror.post && <p className='error'>{formerror.post}</p>}
-              <button type="button">Select Image</button>
+              <button className='mouseCursor' type="button">Select Image</button>
             </div>
 
             <label>Title :</label>
@@ -102,7 +102,7 @@ function UploadPost({ currMode, setCheakDiscard, cheakdiscard ,setActiveModal })
               onChange={handleTagsChange}
               className={currMode === "light" ? "light" : "dark"} />
 
-            <button className='UploadButton' type='submit'>Upload</button>
+            <button className='UploadButton mouseCursor' type='submit'>Upload</button>
           </form>
         </div>
 

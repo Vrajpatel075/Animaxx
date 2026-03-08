@@ -9,7 +9,7 @@ import PostCard from '../htmlBlocks/PostCard';
 
 
 // setIsLoggedIn is goint to pass in UniversalNav
-function WallpaperPg({limit , page , currMode ,setIsLoggedIn}) {
+function GalleryPg({limit , page , currMode ,setIsLoggedIn}) {
   const [wallpaperNavOpen, setWallpaperNavOpen] = useState(false);
   const [wordLimit , setWordLimit] = useState(5);
   const [postdata , setPostdata] = useState([]);
@@ -75,4 +75,4 @@ function WallpaperPg({limit , page , currMode ,setIsLoggedIn}) {
   );
 }
 
-export default WallpaperPg;
+export default GalleryPg;

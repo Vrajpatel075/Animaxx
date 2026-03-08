@@ -60,6 +60,9 @@ body {
   background-color:var(--pure-white);
   color: black;
 }
+.mouseCursor{
+  cursor: pointer;
+}
 
 .active-link{
   background-color: var(--prim);

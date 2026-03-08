@@ -87,7 +87,7 @@ const handleSeeMore=()=>{
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, consectetur. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus praesentium, reiciendis voluptatum magni reprehenderit
                     </div>
                     <div className="button">
-                        <button className="btn-black" onClick={handleSeeMore}>SEE MORE</button>
+                        <button className="btn-black mouseCursor" onClick={handleSeeMore}>SEE MORE</button>
                         {!isLoggedIn && (<button className="btn-white"><Link to="/SignUpUserinfo">SIGN-UP</Link></button>)}
                     </div>
                 </div>
@@ -103,7 +103,7 @@ const handleSeeMore=()=>{
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, consectetur. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus praesentium, reiciendis voluptatum magni reprehenderit?
                     </div>
                     <div className="button">
-                    <button className="btn-black" onClick={handleSeeMore}>SEE MORE</button>
+                    <button className="btn-black mouseCursor" onClick={handleSeeMore}>SEE MORE</button>
                     {!isLoggedIn && (<button className="btn-white"><Link to="/SignUpUserinfo">SIGN-UP</Link></button>)}
                     </div>
                 </div>
@@ -219,8 +219,8 @@ const handleSeeMore=()=>{
 
     {/* <!-- ================ARROW ============================ --> */}
          <div className="arrow">
-            <button id="prev" ref={prevRef}><i className="fa-solid fa-arrow-left"></i></button>
-            <button id="next" ref={nextRef}><i className="fa-solid fa-arrow-right"></i></button>
+            <button id="prev" ref={prevRef}><i className="fa-solid fa-arrow-left mouseCursor"></i></button>
+            <button id="next" ref={nextRef}><i className="fa-solid fa-arrow-right mouseCursor"></i></button>
         </div>
 
         <div className="time"></div>

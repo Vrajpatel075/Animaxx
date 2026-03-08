@@ -52,7 +52,7 @@ function UniversalNav({ navOpen, setNavOpen, currMode, showSearch, setIsLoggedIn
             ✖
           </button>
 
-          <div className="Animaxx-Logo">
+          <div className="Animaxx-Logo mouseCursor">
             <img
               src="/animax img source/ANIMAX_LOGO.png"
               alt="logo"

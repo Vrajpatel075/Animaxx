@@ -4,8 +4,9 @@ import { FiDownload } from 'react-icons/fi';
 import { HiDotsHorizontal } from 'react-icons/hi';
 import "../ModelCss/SelectedUserPost.css"
 import PostCard from '../htmlBlocks/PostCard';
-import Comments from '../htmlBlocks/Comments';
-import SelectedPost from '../htmlBlocks/SelectedPost';
+import HandleComments from '../htmlBlocks/HandleComments';
+import { IoMdHeart } from 'react-icons/io';
+import HandleLikes from '../htmlBlocks/HandleLikes';
 
 
 function SelectedUserPost({currMode , postId , closeModal , posts , setSelectedPostId}) {
@@ -40,7 +41,7 @@ function truncateText(text="", wordLimit=5) {
 
            <div className="backButton">
             <h2>
-              <span onClick={closeModal}> <FaArrowLeft/></span> 
+              <button className={`${currMode === 'light' ? 'light' : 'night'}`} onClick={closeModal} > <FaArrowLeft/></button> 
               <span>Posts</span></h2>
           </div>
                 
@@ -73,18 +74,18 @@ function truncateText(text="", wordLimit=5) {
 
           <div className='PostActivite'>
             <span className='mainicons'>
-              <span className='icons'><FaRegHeart/>
-              <span className='ActiveCount'>{selectedpost.likes}</span>
-              </span>
+                <HandleLikes post={selectedpost} />
+
               <span className='icons'><FaRegComment
-              onClick={() => setIsCommentsOpen(prev => !prev)}/></span>
-              <span className='icons'><FaShare/></span>
-            </span>
+                onClick={() => setIsCommentsOpen(prev => !prev)}/></span>
+                <span className='icons'><FaShare/></span>
+              </span>
+              
               <span className='icons'><HiDotsHorizontal/></span>
-            </div>
+          </div>
   
           {isCommentsOpen &&
-          <Comments
+          <HandleComments
           currMode={currMode}/>}
 
           

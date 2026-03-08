@@ -32,7 +32,6 @@ footer{
 .foot-container .fab:hover{
   color: var(--prim);
   transition: 0.5s;
-  cursor: pointer;
 }
 
 .foot-container .des .logo{

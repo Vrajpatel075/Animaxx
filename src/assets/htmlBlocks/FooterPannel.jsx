@@ -14,10 +14,10 @@ function FooterPannel() {
                     <p>
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate modi sunt aspernatur pariatur nulla libero odio, accus
                     </p>
-                    <i className="fab fa-facebook-f"></i>
-                    <i className="fab fa-instagram"></i>
-                    <i className="fab fa-twitter"></i>
-                    <i className="fab fa-youtube"></i>
+                    <i className="fab fa-facebook-f mouseCursor"></i>
+                    <i className="fab fa-instagram mouseCursor"></i>
+                    <i className="fab fa-twitter mouseCursor"></i>
+                    <i className="fab fa-youtube mouseCursor"></i>
                     </div>
                     <div className="foot-title">
                         <h2>Category</h2>

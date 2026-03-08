@@ -42,7 +42,8 @@
 }
 .formContainer  .PostForm .Close-btn:hover{
     border-radius: 6px;
-    background-color: rgba(128, 128, 128, 0.23);
+    color: var(--prim);
+    background-color: rgba(128, 128, 128, 0.088);
 }
 .formContainer .PostForm form{
     display: flex; 
@@ -101,10 +102,10 @@
     padding: 0.5rem 1rem;
     background-color: var(--seco-3);
     border-radius: 16px;
+    border: none;
     margin-top: 1rem;
     font-weight: 600;
     font-size: 1rem;
-    cursor: pointer;
     margin: auto;
     width: 50%;
 }

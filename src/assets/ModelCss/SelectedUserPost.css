@@ -24,6 +24,22 @@
     margin: 0 0.5rem;
     font-weight: 500;
 }
+.selectedUserPostContainer .backButton button{
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    background-color: transparent;
+    color: var(--pure-white);
+    padding: 0.7rem;
+    transition: 0.5s;
+}
+.selectedUserPostContainer .backButton button.light{
+    color: var(--dark);
+}
+.selectedUserPostContainer .backButton button:hover{
+    background-color: rgba(128, 128, 128, 0.073);
+    color: var(--prim);
+}
 .selectedUserPostContainer .selectedUserPostModel{
     height: 90%;
     width: 80%;
@@ -68,11 +84,15 @@
 }
 
 
-.post_container.night::-webkit-scrollbar{
+.post_container::-webkit-scrollbar{
     width: 6px;
 }
 .post_container.night::-webkit-scrollbar-thumb{
     background-color: var(--night); 
+    border-radius: 4px;
+}
+.post_container.light::-webkit-scrollbar-thumb{
+    background-color: var(--li-grey); 
     border-radius: 4px;
 }
 

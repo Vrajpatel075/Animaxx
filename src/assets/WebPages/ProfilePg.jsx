@@ -86,7 +86,7 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
             
         </div>
         <div className="Activity-Nav">
-            <ul>
+            <ul className='mouseCursor'>
                 <li className='Post' onClick={()=>setActiveSection("Posts")}>Post</li>
                 <li className='Save' onClick={()=>setActiveSection("Save")}>Save</li>
             </ul>

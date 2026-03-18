@@ -10,6 +10,8 @@
 }
 .Profile-Container .Disc{
     margin-left:1rem;
+    font-size: 0.9rem;
+    width: 500px;
 }   
 
 .Profile-Container .Profile-Img-Container{
@@ -163,9 +165,6 @@
     }
 }
 @media screen and (max-width:500px) {
-    .Profile-Container .Profile-Img-Container{
-        /* justify-content: space-evenly; */
-    }
     .Profile-Container .Profile-Img-Container .Profile-Content .edit-btn{
         font-size: 1rem;
     }

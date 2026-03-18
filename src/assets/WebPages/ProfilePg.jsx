@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import "../WebPagesCss/ProfilePg.css"
-import { data, Link, useNavigate } from 'react-router-dom';
 import { MdOutlineEditNote } from "react-icons/md";
 import UserService from '../../Service/UserService';
 import UniversalNav from '../ComponentBlockUi/UniversalNav';
@@ -9,7 +8,6 @@ import UploadPost from '../ModelBody/UploadPost';
 import PostService from '../../Service/PostService';
 import SelectedUserPost from '../ModelBody/SelectedUserPost';
 import PostCard from '../ComponentBlockUi/PostCard';
-import { useSelector } from 'react-redux';
 
 
 // SetCurrMode is for passing to Setting.jsx page as props not used in this page
@@ -23,13 +21,12 @@ function ProfilePg({setIsLoggedIn}) {
     const [activeSection , setActiveSection] = useState("Posts");
     const [followBtn , SetFollowbtn]  = useState(false);
 
-    const currMode = useSelector((state)=> state.theme.mode);
 
     useEffect(()=>{
             const userId = localStorage.getItem("userId");
             if(userId){
                 UserService.getProfile(userId).then(res =>{
-                setProfile(res.data );
+                setProfile(res.data);
 
                 PostService.getUserPost(userId).then(post=>{
                 setUserPosts(post)
@@ -110,19 +107,12 @@ function ProfilePg({setIsLoggedIn}) {
 
         </div>
 
-        <p className='Disc'>{profile.bio || "loding.."}</p>
+        <p className='Disc'>{profile.bio|| ""}</p>
         {followBtn && (
             <div className='Activity_button'>
                 <button onClick={() => setActiveModal("addpost")}>
                       Add Poat
                 </button>
-            {activeModal === "addpost" && ( 
-                <UploadPost 
-                setCheakDiscard={setCheakDiscard} 
-                cheakdiscard={cheakdiscard} 
-                setActiveModal={setActiveModal}
-                closeModal={() => setActiveModal(null)} />
-            )}
         </div>
         )}
         
@@ -176,6 +166,14 @@ function ProfilePg({setIsLoggedIn}) {
     setSelectedPostId={setSelectedPostId}
     closeModal={() => setSelectedPostId(null)} />
     }
+
+    {activeModal === "addpost" && ( 
+        <UploadPost 
+        setCheakDiscard={setCheakDiscard} 
+        cheakdiscard={cheakdiscard} 
+        setActiveModal={setActiveModal}
+        closeModal={() => setActiveModal(null)} />
+    )}
   </>
   )
 }

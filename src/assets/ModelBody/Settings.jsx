@@ -21,17 +21,18 @@ function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
     const currMode = useSelector((state)=> state.theme.mode)
 
 
-
-
     const [editFormData , setEditformData] = useState({
         userId:"",
         username:"",
+        email:"",
+        password:"",
         bio:"",
         firstName:"",
         lastName:"",
         profilePicture:"",
         gender:"",
-        dateOfBirth:""
+        dateOfBirth:"",
+        phoneNumber:""
     });
 
     const handleImageUpload = async (e)=>{
@@ -55,7 +56,8 @@ function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
          if(userId){
              UserService.getProfile(userId).then(res=>{
                 SetUserDetails(res.data);
-                setEditformData(res.data);
+                const { createdAt, updatedAt, lastLogin, totalPosts, ...safeData } = res.data;
+                setEditformData(safeData);
          })
          }
     },[])
@@ -77,12 +79,14 @@ function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
     };
     const handleSave = async (e)=>{
         e.preventDefault();
+        console.log("Payload:", editFormData);
         try{
             const res = await UserService.edit(editFormData.userId , editFormData);
             SetUserDetails(res.data);
             setIsEditable(false); 
             alert("Profile updated successfully!");
         }catch(error){
+             console.error(error.response?.data);
             alert("Failed to update profile: " + error);
         }
     };
@@ -153,7 +157,6 @@ function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
                             <button onClick={()=>setIsEditable(!isEditable)}>
                                 <p>
                                     <span>{isEditable === true ? <CiUnlock/> : <CiLock/>}</span> 
-                                    {/* <span> Edit </span> */}
                                 </p>  
                             </button>
                         </div>
@@ -162,7 +165,7 @@ function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
                                 
                                 <div className="userid_bio">
                                 <input type="text"
-                                name='userid'
+                                name='userId'
                                 value={editFormData.userId  || ""} 
                                 onChange={handleChange}
                                 style={{display:"none"}}
@@ -172,8 +175,8 @@ function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
                                 <textarea type="text"
                                 className='bio'
                                 name='bio'
-                                maxLength={50}
-                                row={3}
+                                maxLength={150}
+                                row={5}
                                 placeholder='Write About Your Self'
                                 value={editFormData.bio  || ""} 
                                 onChange={handleChange}

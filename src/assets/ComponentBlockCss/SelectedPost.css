@@ -119,6 +119,12 @@
         border-radius: 0;
         border: none;
     }
+    .SelectedPost.night{
+        border:none;
+    }
+    .SelectedPost.light{
+        border:none;
+    }
     .SelectedPost .ViewedImg{
         height: 200px;
     } 

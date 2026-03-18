@@ -1,17 +1,25 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import "../ModelCss/UploadPost.css";
 import ExitWarring from '../ModelBody/ExitWarring.jsx';
 import PostService from '../../Service/PostService.js';
 import { useSelector } from 'react-redux';
+import imageCompression from 'browser-image-compression';
 
 function UploadPost({setCheakDiscard, cheakdiscard ,setActiveModal }) {
   const postinputref = useRef(null);
-  const [post, setPost] = useState();
+  const [post, setPost] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null); 
   const [tags, setTags] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [formerror, SetFormError] = useState({});
   const currMode = useSelector((state)=> state.theme.mode);
+
+  useEffect(() => {
+    return () => {
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
+    };
+  }, [previewUrl]);
 
   const handleTagsChange = (e) => {
     const value = e.target.value;
@@ -38,9 +46,10 @@ function UploadPost({setCheakDiscard, cheakdiscard ,setActiveModal }) {
         formdata.append("userId", currentUserId);
 
         await PostService.createPost(formdata);
+        setActiveModal(null);
         alert("Post uploaded successfully!");
       } catch (error) {
-        alert(error);
+         alert("Error uploading post: " + error.message);
       }
     }
   };
@@ -49,9 +58,22 @@ function UploadPost({setCheakDiscard, cheakdiscard ,setActiveModal }) {
     postinputref.current.click();
   };
 
-  const handlePostChange = (e) => {
+  const handlePostChange = async (e) => {
     const file = e.target.files[0];
-    if (file) setPost(file);
+    if (file) {
+      try{
+         const option = {
+        maxSize:1,
+        maxWidthOrHeight:1024,
+        useWebWorker:true,
+      };
+      const compressedFile = await imageCompression(file,option)
+      setPost(compressedFile);
+       const url = URL.createObjectURL(compressedFile);
+      setPreviewUrl(url);
+    }catch(err){
+      alert("Image compression failed: " + err.message);
+    }}
   };
 
   return (
@@ -62,13 +84,13 @@ function UploadPost({setCheakDiscard, cheakdiscard ,setActiveModal }) {
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close button triggers ExitWarring */}
+          
+          <h1 className='Uploadtitle'>Upload Post</h1>
           <h1 className='Close-btn' onClick={() => setCheakDiscard(true)}>X</h1>
 
-          <h1 className='Uploadtitle'>Upload Post</h1>
           <form method='post' encType="multipart/form-data" onSubmit={handleSubmit}>
-            <label htmlFor="img">Image :</label>
             <div className="viewimg" onClick={handlePostUpload}>
-              {post ? (
+              {previewUrl ? (
                 <img src={URL.createObjectURL(post)} alt="img" />
               ) : (
                 <img src="/animax img source/animaxx_female_user_profile_picture.png" alt="img" />
@@ -86,6 +108,8 @@ function UploadPost({setCheakDiscard, cheakdiscard ,setActiveModal }) {
               <button className='mouseCursor' type="button">Select Image</button>
             </div>
 
+            <div className='formInputs'>
+
             <label>Title :</label>
             <input type="text" name="title" onChange={(e) => setTitle(e.target.value)}
               className={currMode === "light" ? "light" : "dark"} />
@@ -94,8 +118,7 @@ function UploadPost({setCheakDiscard, cheakdiscard ,setActiveModal }) {
             <label>Description :</label>
             <input type="text" name="Description" onChange={(e) => setDescription(e.target.value)}
               className={currMode === "light" ? "light" : "dark"} />
-            {formerror.description && <p className='error'>{formerror.description}</p>}
-
+          
             <label>Tags :</label>
             <textarea
               name='tags'
@@ -103,7 +126,10 @@ function UploadPost({setCheakDiscard, cheakdiscard ,setActiveModal }) {
               placeholder="Enter tags separated by commas"
               onChange={handleTagsChange}
               className={currMode === "light" ? "light" : "dark"} />
+             {formerror.tags && <p className='error'>{formerror.tags}</p>}
 
+             </div>
+             
             <button className='UploadButton mouseCursor' type='submit'>Upload</button>
           </form>
         </div>

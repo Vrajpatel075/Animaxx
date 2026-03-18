@@ -18,6 +18,12 @@ class CommentService{
         })
     }
 
+    getCommentCount(postId){
+        return axios.get(COMMENTS_API_BASE_URL + `/post/${postId}/count`,{  
+            withCredentials:true,
+        }).then(res => res.data);
+    }
+
 
 }
 

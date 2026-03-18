@@ -10,7 +10,7 @@
 
 /* body of the page */
 .ViewPostContainer{
-    margin-top: 80px;
+    margin: 0.5rem 0;
     width: 100vw;
     display: flex;
     flex-wrap: wrap;
@@ -39,13 +39,14 @@
 }
 
 /* back button for wallpaper page */
-.ViewPostContainer .PostHeader {
+.PostHeader {
     display: flex;
     align-items: center;
     justify-content: start;
-    width: 100dvw;
+    gap:0.5rem;
+    width: 100%;
 }
-.ViewPostContainer .backButton{
+.backButton{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,13 +56,20 @@
     background: transparent;    
     border: 0;
     font-size: 1rem;
-}
-
-.ViewPostContainer .backButton:hover{
-    color: var(--seco-1);
-    background-color: rgba(128, 128, 128, 0.175);
     border-radius: 12px;
     transition: 0.2s;
+}
+.backButton.light{
+    color: var(--black);
+}
+.backButton.night{
+    color: var(--light-white);
+}
+
+.backButton:hover,
+.CommentInput .backButton:hover{
+    color: var(--seco-1);
+    background-color: rgba(128, 128, 128, 0.175);
 }
 
 /* post which is been selected by user in wallpaperpg */
@@ -93,41 +101,12 @@
     background-color: var(--seco-2);
 }
 
-.PostActivite{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    font-size: 1.2rem;
-    margin: 0.5rem;
-}
-.PostActivite .icons{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px 6px;
-    border-radius: 4px;
-}
-.PostActivite .icons:hover{
-    background-color:rgba(128, 128, 128, 0.263);
-}
-.PostActivite .icons:first-child{
-    background-color: transparent;
-}
-.ActiveCount{
-    padding-left: 0.2rem;
-}
+
 .mainicons{
     display: flex;
     gap: 0.5rem;
 }
-.PostAuther{
-    padding: 0 0.5rem;
-}
-.PostAuther h2:hover{
-    transition: 0.5s;
-    text-decoration: underline;
-}
+
 
 
 
@@ -211,6 +190,14 @@
     }
     .ViewPostContainer .backButton{
         font-size: 0.7rem;
+    }
+}
+
+/* only for mobile screen recomendation */
+@media screen and (max-width:500px) {
+    .mainSection section .recomendedPost{
+        columns: auto;
+        margin-top: 0;
     }
 
 }

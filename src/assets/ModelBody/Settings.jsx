@@ -4,8 +4,10 @@ import "../ModelCss/Settings.css"
 import { FaPen } from "react-icons/fa6";
 import { CiLock , CiUnlock} from "react-icons/ci";
 import ExitWarring from '../ModelBody/ExitWarring';
+import { useDispatch, useSelector } from 'react-redux';
+import { setMode } from '../Redux/Feature/Theme/themeSlice';
 
-function Settings({ currMode ,setCurrMode ,setCheakDiscard ,cheakdiscard ,setActiveModal}) {
+function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
     const [activetab , setActivetab]=useState("Account");
     const [userDetails , SetUserDetails] = useState({});
     const [isEditable , setIsEditable] = useState(false);
@@ -13,6 +15,13 @@ function Settings({ currMode ,setCurrMode ,setCheakDiscard ,cheakdiscard ,setAct
     const [generatedOtp, setGeneratedOtp] = useState(null);
     const [isOtpVerified, setIsOtpVerified] = useState(false);
     const [usernameerror , setUsernameError ] = useState("")
+
+
+    const dispatch =  useDispatch();
+    const currMode = useSelector((state)=> state.theme.mode)
+
+
+
 
     const [editFormData , setEditformData] = useState({
         userId:"",
@@ -95,10 +104,7 @@ function Settings({ currMode ,setCurrMode ,setCheakDiscard ,cheakdiscard ,setAct
 
 // change the them / mode from profile
     const changeCurrMode = (mode) =>{
-        setCurrMode(mode)
-        localStorage.setItem("mode" , mode)
-        document.body.classList.remove("light", "dark"); 
-        document.body.classList.add(mode);
+        dispatch(setMode(mode));
     }
 
   return (
@@ -332,7 +338,7 @@ function Settings({ currMode ,setCurrMode ,setCheakDiscard ,cheakdiscard ,setAct
                      <input 
                      type="radio" 
                      value="light" 
-                     name='light'
+                     name='theme'
                      checked={currMode === "light"}
                      onChange={()=> changeCurrMode("light")}/>
                      <span>Light</span>
@@ -342,7 +348,7 @@ function Settings({ currMode ,setCurrMode ,setCheakDiscard ,cheakdiscard ,setAct
                      <input 
                      type="radio" 
                      value="dark" 
-                     name='dark'
+                     name='theme'
                      checked={currMode === "dark"}
                      onChange={()=> changeCurrMode("dark")} />
                      <span>Dark</span>

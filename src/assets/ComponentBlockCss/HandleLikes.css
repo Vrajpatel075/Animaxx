@@ -1,0 +1,11 @@
+.SelectedPost .PostActivite .RedHeart{
+    stroke-width: 8p;
+    stroke: darkred;
+    fill: crimson;
+    font-size: 1.5rem;
+}
+@media screen and (max-width:600px) {
+    .SelectedPost .PostActivite .icons{
+        font-size: 1.2rem;
+    }
+}

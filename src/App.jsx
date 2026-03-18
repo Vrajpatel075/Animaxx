@@ -2,13 +2,14 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './assets/WebPages/Home';
 import GalleryPg from './assets/WebPages/GalleryPg'
-import BackToTop from './assets/htmlBlocks/BackToTop';
+import BackToTop from './assets/ComponentBlockUi/BackToTop';
 import SignIn from './assets/WebPages/SignIn';
 import SignUp from './assets/WebPages/SignUp';  
 import { useEffect, useState } from 'react';
 import ViewedPost from './assets/WebPages/ViewedPost';
 import ProfilePg from './assets/WebPages/ProfilePg';
 import SignUpUserinfo from './assets/WebPages/SignUpUserinfo';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
   // used for pagination
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(50);
+
+  const currMode = useSelector((state) => state.theme.mode);
 
   const lastPostIndex = page * limit;
   const firstPostIndex = lastPostIndex - limit;
@@ -29,19 +32,8 @@ function App() {
     setIsLoggedIn(!!storedUserId);
   }, []);
 
-  // toggle light and dark mode
-  const [currMode, setCurrMode] = useState(()=>{
-    return localStorage.getItem("mode") || "light";
-  });
-  
-    const toggleMode = () => {
-      const newMode = currMode === "light" ? "dark" : "light";
-      setCurrMode(newMode);
-      localStorage.setItem("mode", newMode);
-      document.body.classList.remove(currMode);
-      document.body.classList.add(newMode);
-    };
     useEffect(() => {
+      document.body.classList.remove("light", "dark");
       document.body.classList.add(currMode);
     }, [currMode]);
 
@@ -52,7 +44,7 @@ function App() {
 
       {/* back  to top arrow which is on botton right of every page */}
         <BackToTop 
-        currMode={currMode}/>
+        />
         
         <Routes>
 
@@ -60,8 +52,6 @@ function App() {
           <Route 
           path='/' 
           element={<Home 
-          toggleMode={toggleMode}
-          currMode={currMode}
           />} />
 
 
@@ -72,7 +62,6 @@ function App() {
           page={page}
           setPage={setPage}
           setIsLoggedIn={setIsLoggedIn}
-          currMode={currMode}
           />} />
     
 
@@ -84,16 +73,13 @@ function App() {
           <Route 
           path='/ViewedPost/:postId' 
           element={<ViewedPost 
-          currMode={currMode}
           />} />
 
           {/* cheak if user is login before navigating to profilePg */}
           <Route
           path='/ProfilePg'
           element={isLoggedIn ? <ProfilePg 
-            currMode={currMode} 
-            setCurrMode={setCurrMode} 
-            setIsLoggedIn={setIsLoggedIn}/>  
+          setIsLoggedIn={setIsLoggedIn}/>  
             : 
           <Navigate to="/" 
           /> } />

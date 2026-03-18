@@ -1,18 +1,19 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import UniversalNav from '../htmlBlocks/UniversalNav'
-import FooterPannel from '../htmlBlocks/FooterPannel';
+import UniversalNav from '../ComponentBlockUi/UniversalNav'
+import FooterPannel from '../ComponentBlockUi/FooterPannel';
 import "../WebPagesCss/ViewedPost.css"
 import "../WebPagesCss/GalleryPg.css"
 import { FaArrowLeft} from "react-icons/fa";
 import PostService from '../../Service/PostService';
-import PostCard from '../htmlBlocks/PostCard';
-import SelectedPost from '../htmlBlocks/SelectedPost';
+import PostCard from '../ComponentBlockUi/PostCard';
+import SelectedPost from '../ComponentBlockUi/SelectedPost';
+import { useSelector } from 'react-redux';
 
 
 
 
-function ViewedPost({currMode }) {
+function ViewedPost() {
   const navigate   = useNavigate();
   const { postId } = useParams(); 
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false); 
@@ -21,6 +22,9 @@ function ViewedPost({currMode }) {
   const [isLargeView , setIsLargeView] = useState(false);
   const [recommendedPosts, setRecommendedPosts] = useState([]);
   const [resizeRecomendationValue , setResizeRecomendationValue] = useState(35);
+  const [mobileRecomendation , setmMbileRecomendation] = useState(false);
+
+  const currMode = useSelector((state)=> state.theme.mode);
 
   
 
@@ -49,6 +53,12 @@ function ViewedPost({currMode }) {
       } else{
         setResizeRecomendationValue(35)
       }
+      if(window.innerWidth<=500){
+        setmMbileRecomendation(true)
+      }
+      else{
+        setmMbileRecomendation(false)
+      }
     }
     window.addEventListener("resize",handleResize);
     handleResize();
@@ -71,13 +81,7 @@ function ViewedPost({currMode }) {
 
   return (
     <>
-    <div className="viewpage">
-    <UniversalNav
-    navOpen={wallpaperNavOpen}
-    setNavOpen={setWallpaperNavOpen}
-    currMode={currMode}
-    showSearch={true}/>
-    
+    <div className="viewpage">    
 
     <div className="ViewPostContainer">
 
@@ -95,18 +99,24 @@ function ViewedPost({currMode }) {
       post={post}
       setIsDescriptionOpen={setIsDescriptionOpen}
       isDescriptionOpen={isDescriptionOpen}
-      currMode={currMode}/> 
+      /> 
       <section >
         
         
         <div className="recomendedPost">
-        {mainRecommendations.map(rp => ( 
+        {mobileRecomendation || mainRecommendations.map(rp => ( 
           <PostCard
           key={rp.postId} 
           post={rp} 
-          currMode={currMode} 
           onClick={() =>{ 
             navigate(`/ViewedPost/${rp.postId}`)}} />
+        ))}
+
+        {mobileRecomendation &&
+        mainRecommendations.map(rp =>(
+          <SelectedPost 
+          key={rp.postId}
+          post={rp}/>
         ))}
         </div>
       </section>
@@ -116,12 +126,12 @@ function ViewedPost({currMode }) {
 
       <div className="sideSection">
        <section>
+
         <div className="recomendedPost">
          {sideRecommendations.map(rp => ( 
           <PostCard
           key={rp.postId} 
           post={rp} 
-          currMode={currMode} 
           onClick={() => {
             navigate(`/ViewedPost/${rp.postId}`)}} />
           ))}
@@ -141,10 +151,7 @@ function ViewedPost({currMode }) {
       </div>
         )}
 
-        
-
-
-    <FooterPannel/>
+      
         </div>
     </>
   )

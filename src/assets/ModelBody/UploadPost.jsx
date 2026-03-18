@@ -2,14 +2,16 @@ import React, { useRef, useState } from 'react';
 import "../ModelCss/UploadPost.css";
 import ExitWarring from '../ModelBody/ExitWarring.jsx';
 import PostService from '../../Service/PostService.js';
+import { useSelector } from 'react-redux';
 
-function UploadPost({ currMode, setCheakDiscard, cheakdiscard ,setActiveModal }) {
+function UploadPost({setCheakDiscard, cheakdiscard ,setActiveModal }) {
   const postinputref = useRef(null);
   const [post, setPost] = useState();
   const [tags, setTags] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [formerror, SetFormError] = useState({});
+  const currMode = useSelector((state)=> state.theme.mode);
 
   const handleTagsChange = (e) => {
     const value = e.target.value;

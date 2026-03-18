@@ -4,16 +4,16 @@
 .wallpaper-container{
   width: 100vw;
 }
-.wallpaper-container .wallpaper-list{
+.wallpaper-container .post-list{
   columns: 200px;
   margin: 100px 2rem 0 2rem; 
 }
-.post_container .wallpaper-list{
+.post_container .post-list{
   columns: 200px;
   margin: 1rem;
 }
-.wallpaper-container .wallpaper-list img,
-.post_container .wallpaper-list img{
+.wallpaper-container .post-list img,
+.post_container .post-list img{
     width: 100%;  
     border-radius: 12px;
     transition: 0.5s;
@@ -25,9 +25,9 @@
   font-weight: 400;
 }
 .postcardDescription{
-  opacity: 0.5;
-  font-size: 0.7rem;
+  font-size: 0.5rem;
   font-weight: 300;
+  letter-spacing: 0.1rem;
 }
 
 /* ===== Wallpaper Page Left Sidebar Nav ===== */
@@ -72,23 +72,23 @@
 }
 
 @media (max-width:700px) {
-.wallpaper-container .wallpaper-list{
+.wallpaper-container .post-list{
   columns: 150px;
 }
-.post_container .wallpaper-list{
+.post_container .post-list{
   columns: 150px;
 }
 }
 @media (max-width:400px) {
-  .wallpaper-container .wallpaper-list{
+  .wallpaper-container .post-list{
     columns: 120px;
   }
-  .post_container .wallpaper-list{
+  .post_container .post-list{
     columns: 100px;
     margin: 0.5rem;
   }
-  .wallpaper-container .wallpaper-list img,
-  .post_container .wallpaper-list img{
+  .wallpaper-container .post-list img,
+  .post_container .post-list img{
     border-radius: 4px;
   }
 }

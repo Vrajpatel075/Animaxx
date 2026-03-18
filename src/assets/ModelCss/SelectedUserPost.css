@@ -12,38 +12,12 @@
     align-items: center;
     z-index: 9999;
 }
-.selectedUserPostContainer .selectedUserPostModel .backButton{
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-}
-.selectedUserPostContainer .backButton span{
-    margin: 0 0.5rem;
-    font-weight: 500;
-}
-.selectedUserPostContainer .backButton button{
-    border: none;
-    border-radius: 12px;
-    font-size: 1rem;
-    background-color: transparent;
-    color: var(--pure-white);
-    padding: 0.7rem;
-    transition: 0.5s;
-}
-.selectedUserPostContainer .backButton button.light{
-    color: var(--dark);
-}
-.selectedUserPostContainer .backButton button:hover{
-    background-color: rgba(128, 128, 128, 0.073);
-    color: var(--prim);
-}
-.selectedUserPostContainer .selectedUserPostModel{
+
+.selectedUserPostModel{
     height: 90%;
-    width: 80%;
+    width: 800px;
     min-width: 800px;
+    overflow: auto;
 
     padding: 1rem;
     border-radius: 16px;
@@ -52,51 +26,24 @@
     justify-content: center;
 }
 
-
-/*selected post is displayed ---------------------*/
-.selectedUserPostContainer .selectedUserPostModel .SelectedPost{
-    width: 70%;
-}
-
-/* remaining posts are diaplayed  */
-.selectedUserPostContainer .selectedUserPostModel .post_container{
-    width: 30%;
-    height: 100%;
-    overflow-y: auto;
-
-    gap: 0;
-    margin: 0;
-    padding: 0;
-}
-
-/* ---------------------- */
-.selectedUserPostContainer .selectedUserPostModel .SelectedPost .ViewedImg{
-    width: 100%;
-    height: 800px;
-    margin-bottom: 2rem;
-    overflow: hidden;
-}
-/* ------------------------ */
-.selectedUserPostContainer .selectedUserPostModel .SelectedPost .ViewedImg img{
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
-}
+ .selectedUserPostModel .SelectedPost{
+    width: 750px;
+ }
 
 
-.post_container::-webkit-scrollbar{
+.selectedUserPostModel::-webkit-scrollbar{
     width: 6px;
 }
-.post_container.night::-webkit-scrollbar-thumb{
+.selectedUserPostModel.dark::-webkit-scrollbar-thumb{
     background-color: var(--night); 
     border-radius: 4px;
 }
-.post_container.light::-webkit-scrollbar-thumb{
+.selectedUserPostModel.light::-webkit-scrollbar-thumb{
     background-color: var(--li-grey); 
     border-radius: 4px;
 }
 
-.post_container.night::-webkit-scrollbar-track{
+.selectedUserPostModel.night::-webkit-scrollbar-track{
     background-color: var(--dark);
 }
 
@@ -111,31 +58,13 @@
         flex-direction: row;
         overflow: auto;
     }
-    /* ------------------------ */
-    .selectedUserPostContainer .selectedUserPostModel .SelectedPost{
+     .selectedUserPostModel .SelectedPost{
         width: 100dvw;
-        height: fit-content;
         border-radius: 0;
-        padding: 2rem ;
-    }
-    .selectedUserPostContainer .selectedUserPostModel .post_container{
-        width: 100dvw;
-        flex-wrap: wrap;
-        columns: 200px;
-        margin-top: 2rem;
-    }
-    /* -------------------------- */
-    .selectedUserPostContainer .selectedUserPostModel .SelectedPost .ViewedImg{
-        width: 100%;
-        height: 400px;
-        margin-bottom: 2rem;
+        margin: 0;
     }
 }
-/* --------------------------- */
 @media screen and (max-width:600px) {
-    .selectedUserPostContainer .selectedUserPostModel .SelectedPost{
-        padding: 1rem ;
-    }
     .selectedUserPostContainer .selectedUserPostModel .SelectedPost .ViewedImg{
         height: 300px;
     }
@@ -144,15 +73,18 @@
     .selectedUserPostContainer .selectedUserPostModel {
         min-width: 100dvw;
     }
-    /* --------------------- */
     .selectedUserPostContainer .selectedUserPostModel .SelectedPost .ViewedImg{
         height: 250px;
     }
-    /* -------------------- */
     .selectedUserPostContainer .selectedUserPostModel .SelectedPost .PostActivite{
         margin: 0;
     }
-       .selectedUserPostContainer .selectedUserPostModel .post_container{
-        margin-top: 0.5rem;
+}
+@media screen and (max-width:500px) {
+    .selectedUserPostContainer .selectedUserPostModel .post_container{
+        width: 100dvw;
+        columns: auto;
+        margin:0;
     }
+
 }

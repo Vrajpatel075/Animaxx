@@ -3,34 +3,36 @@
     margin: 0 4rem;
 }
 .Profile-Container{
-    display: flex;
-    flex-wrap: wrap;
     margin-top: 80px;
 }
 .Profile-Container.night{
     background-color: var(--night);
 }
+.Profile-Container .Disc{
+    margin-left:1rem;
+}   
+
 .Profile-Container .Profile-Img-Container{
     width: 100%;
-    /* height: 300px; */
+    /* height: 00px; */
 
     display: flex;
     justify-content: start;
-    align-items: center;
+    align-items: start;
     gap: 4rem;
     /* background-color: purple; */
     
-    padding: 1rem 4rem;
-    margin: 0 2rem;
-    padding-bottom: 2rem;
+    padding: 1rem;
+    /* margin: 0 2rem; */
+    /* padding-bottom: 2rem; */
     position: relative;
 }
 
 .Profile-Container .Profile-Img-Container .Profil-Pic img{
     /* background-color: yellow; */
     border-radius: 50%;
-    height:250px;
-    width: 250px;
+    height:200px;
+    width: 200px;
     object-fit: cover;
 }
 .Profile-Container .Profile-Img-Container .Profile-Content .first-last-name{
@@ -38,6 +40,15 @@
     display: flex;
     gap: 0.5rem;
 }
+.Profile-Container .Profile-Img-Container .Profile-Content .userName{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.Profile-Container .Profile-Img-Container .Profile-Content .userName .Activity_button button{
+    margin: 0;
+}
+
 .Profile-Container .Profile-Img-Container .Profile-Content .Disc{
     font-size:0.8rem;
     word-spacing: 2px;
@@ -45,24 +56,37 @@
 .Profile-Container .Profile-Img-Container .Profile-Content .Profile-Achivement{
     font-size: 1rem;
     padding-top: 1rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 .Profile-Container .Profile-Img-Container .Profile-Content .edit-btn{
     font-size: 2rem;
 }
 .Profile-Container .Profile-Img-Container .Profile-Content .Profile-Achivement .Achivement-count{
-    margin-right: 1rem;
     font-size: 1rem;
     font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
 .Profile-Container .Activity_button button{
-    width: 150px;
+    width: 100px;
     padding:0.5rem 1rem;
     margin-top: 0.5rem;
+    margin-right: 1rem;
     border-radius: 8px;
     background-color: var(--seco-3);
     transition: 0.5s;
     font-weight: 550;
+    border: none;
 }
+
 .Profile-Container .Activity_button button:hover{
     background-color: var(--seco-2);
 }
@@ -74,6 +98,7 @@
     width: 100%;
     height: 50px;
 
+    margin-top: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -108,9 +133,8 @@
     }
     .Profile-Container .Profile-Img-Container{
         gap: 2rem;
-        padding: 1rem 1rem;
+        padding: 0;
         margin: 0 1rem;
-        margin-bottom: 1rem;
     }
     .Profile-Container .Profile-Img-Container .Profil-Pic img{
         height:150px;
@@ -125,50 +149,49 @@
     .Profile-Container .Profile-Img-Container .Profile-Content .Profile-Achivement{
         padding-top: 0.5rem;
     }
-    .Profile-Container .Profile-Img-Container .Profile-Content .userName{
+    .Profile-Container .Profile-Img-Container .Profile-Content .userName h3{
         font-size: 0.7rem;
     }
     .Profile-Container .Profile-Img-Container .Profile-Content .edit-btn{
         font-size: 1.5rem;
     }
     .Profile-Container .Profile-Img-Container .Profile-Content .Profile-Achivement .Achivement-count{
-        font-size: 1rem;
+        font-size: 0.7rem;
     }
     .Profile-Container .Activity_button button{
         width: 100px;
-        border: none;
     }
 }
-@media screen and (max-width:480px) {
+@media screen and (max-width:500px) {
+    .Profile-Container .Profile-Img-Container{
+        /* justify-content: space-evenly; */
+    }
     .Profile-Container .Profile-Img-Container .Profile-Content .edit-btn{
         font-size: 1rem;
     }
+    .Profile-Container .Profile-Img-Container .Profil-Pic img{
+        height:80px;
+        width: 80px;
+    }
     .Profile-Container .Profile-Img-Container .Profile-Content .Profile-Achivement .Achivement-count{
-        font-size: 0.8rem;
+        font-size: 0.6rem;
+        padding: 0;
     }
      .Profile-Container .Profile-Img-Container .Profile-Content .first-last-name{
-        margin-bottom: 0.5rem;
+        margin-bottom: 0;
         font-size:0.5rem ;
     }
-    .Profile-Container .Profile-Img-Container .Profile-Content .Disc{
+    .Profile-Container .Disc{
         font-size:0.5rem;
-        font-weight: 300;
-        width: 80%;
-        /* background-color: red; */
-    }
-    .Profile-Container .Profile-Img-Container .Profil-Pic img{
-        height:100px;
-        width: 100px;
+        width: 50%;
     }
     .Profile-Container .Activity_button button{
-        width: 70px;
         font-size: 0.5rem;
         padding:0.3rem 0.3rem;
+        width: 45%;
     }
     .Profile-Container .Profile-Img-Container{
         margin: 0;
-        padding: 1rem 0rem;
-        margin-bottom: 1rem;
     }
 
     /* activity nav */
@@ -186,7 +209,17 @@
 }
 
 
-
+@media screen and (max-width:350px) {
+    .Profile-Container .Activity_button{
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        margin-bottom: 1rem;
+    }
+    .Profile-Container .Profile-Img-Container{
+        gap: 1rem;
+    }
+}
 
 
 

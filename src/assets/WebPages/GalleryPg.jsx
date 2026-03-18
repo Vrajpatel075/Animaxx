@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import FooterPannel from '../htmlBlocks/FooterPannel';
+import FooterPannel from '../ComponentBlockUi/FooterPannel';
 import '../WebPagesCss/GalleryPg.css';
 import {useNavigate } from 'react-router-dom';
-import Pagination from '../htmlBlocks/Pagination';
-import UniversalNav from '../htmlBlocks/UniversalNav';
+import Pagination from '../ComponentBlockUi/Pagination';
+import UniversalNav from '../ComponentBlockUi/UniversalNav';
 import PostService from '../../Service/PostService';
-import PostCard from '../htmlBlocks/PostCard';
+import PostCard from '../ComponentBlockUi/PostCard';
+import { useSelector } from 'react-redux';
 
 
 // setIsLoggedIn is goint to pass in UniversalNav
-function GalleryPg({limit , page , currMode ,setIsLoggedIn}) {
+function GalleryPg({limit , page ,setIsLoggedIn}) {
   const [wallpaperNavOpen, setWallpaperNavOpen] = useState(false);
   const [wordLimit , setWordLimit] = useState(5);
   const [postdata , setPostdata] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate   = useNavigate();
+
 
 
   // fetching the ALLPOST data 
@@ -46,19 +48,17 @@ function GalleryPg({limit , page , currMode ,setIsLoggedIn}) {
         navOpen={wallpaperNavOpen}
         setIsLoggedIn={setIsLoggedIn}
         setNavOpen={setWallpaperNavOpen}
-        currMode={currMode}
         showSearch={true}
       />
 
 
       <div className="wallpaper-container">
-        <div className="wallpaper-list">
+        <div className="post-list">
           {loading && <p>Loading...</p>}
           {GalleryPosts.map((post) => (
             <PostCard
             key={post.postId} 
             post={post} 
-            currMode={currMode} 
             onClick={() => navigate(`/ViewedPost/${post.postId}`)}/>
           ))}
         </div>

@@ -1,0 +1,239 @@
+.PostComments::-webkit-scrollbar{
+    width: 6px;
+}
+.PostComments.night::-webkit-scrollbar-thumb{
+    background-color: var(--dark); 
+    border-radius: 4px;
+}
+.PostComments.light::-webkit-scrollbar-thumb{
+    background-color: var(--li-grey); 
+}
+.PostComments.night::-webkit-scrollbar-track{
+    background-color: var(--night);
+}
+.PostComments input.night{
+    color: var(--pure-white);
+    background-color: var(--night);
+}
+.PostComments.night{
+    background-color: var(--night);
+    color: var(--pure-white);
+    /* border: 1px solid var(--black); */
+}
+.PostComments.light{
+    color: var(--black);
+    background-color: var(--pure-white);
+    /* border: 1px solid var(--li-grey); */
+}
+.PostComments{
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    max-height: 500px;
+    width: 100%;
+    padding: 0.5rem;
+}
+.PostComments .comments span{
+    font-size: 1rem;
+    padding: 4px 4px;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+    justify-content: center;
+}
+.PostComments .comments span:hover{
+    background-color: rgba(128, 128, 128, 0.097);
+    border-radius: 6px;
+}
+
+.allComments .sigleComment .PostOwner{
+    margin: 0.5rem 0;
+    padding: 0;
+}
+
+.CommentInput{
+    position: relative;
+    display: flex;
+    gap:0.5rem;
+    padding: 0 0.5rem;
+}
+.CommentInput .CommentPostBtn{
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    border-radius: 16px;
+    transition: 0.3s;
+    font-size: 1.5rem;
+    background-color: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.CommentInput .CommentPostBtn.light{
+    color: var(--dark);
+}
+.CommentInput .CommentPostBtn.night{
+    color: var(--pure-white);
+}
+.CommentInput .CommentPostBtn:hover{
+    color: var(--seco-1);
+    background-color: rgba(128, 128, 128, 0.071);
+}
+
+.CommentInput input{
+    width: 100%;
+    height: 2.5rem;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 16px;
+    border: 1px solid var(--li-grey);
+}
+.CommentInput input:focus{
+    outline:1px solid var(--seco-2);
+}
+
+.CommentInput span{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.sigleComment{
+    margin:1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--li-grey);
+}
+
+.PostComments .comments{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.commentProfilPic{
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.CommentMessage {
+    display: flex;
+    justify-content: space-between;
+}
+.CommentActivity span{
+    font-size: 1.2rem ;
+    padding-right: 1rem;
+}
+
+
+
+
+@media screen and (max-width:800px){
+    .PostComments{
+        height: max-content;
+        max-height: 500px;
+    }
+}
+@media screen and (max-width:600px){
+    .PostComments .comments{
+        font-size: 0.7rem;
+        margin-bottom: 0.5rem;
+    }
+    .CommentInput input{
+        padding: 0.5rem;
+    }
+    .CommentInput span{
+        font-size: 1rem;
+    }
+    .CommentInput .CommentPostBtn{
+        padding: 0.7rem 1rem;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .PostComments{
+        padding: 0 8px;
+    }
+    .PostComments h2{
+        font-size: 0.8rem;
+    }
+    .PostComments .comments{
+        font-size: 0.7rem;
+        margin-bottom: 0.5rem;
+    }
+    .CommentInput input{
+        height: 1.5rem;
+        font-size: 0.7rem;
+        padding: 0.5rem;
+    } 
+    .CommentInput .CommentPostBtn{
+        padding: 0.4rem 1rem;
+        font-size: 0.7rem;
+    }
+    .sigleComment{
+        margin: 0;
+    }
+    .allComments .sigleComment .PostOwner{
+        font-size: 0.6rem;
+        margin: 0;
+    }
+    .CommentMessage{
+        font-size: 0.5rem;
+        margin: 0.5rem 0;
+    }
+    .commentProfilPic{
+        height: 20px;
+        width: 20px;
+    }
+    .CommentActivity span{
+        font-size: 0.8rem;
+    }
+
+
+
+
+
+
+    .commentcontainer{
+        height: 100vh;
+        width: 100vw;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0; right: 0;
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0.51);
+        transition: 0.5s ease-in;
+    }
+    .commentcontainer .PostComments{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100dvh;
+        width: 100%;
+        border-radius: 24px;
+        margin-top: 3rem;
+        padding: 1.5rem;
+        max-height: none;
+    }
+    .commentcontainer .PostComments .line{
+        height: 5px;
+        width: 20%;
+        border-radius: 16px;
+        margin: auto;
+        background-color: var(--d-grey);
+        margin-bottom: 0.5rem;
+    }
+    .commentcontainer .PostComments .comments{
+        margin-bottom: 1rem;
+    }
+}

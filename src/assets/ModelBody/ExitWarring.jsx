@@ -1,7 +1,9 @@
     import React from 'react'
     import "../ModelCss/ExitWarring.css"
+import { useSelector } from 'react-redux';
     
-    function ExitWarring({ currMode, setCheakDiscard, setActiveModal  }) {
+    function ExitWarring({ setCheakDiscard, setActiveModal  }) {
+      const currMode = useSelector((state)=>state.theme.mode);
   return (
     <div className='discardContainer' onClick={(e) => e.stopPropagation()}>
       <div className={`discardBox ${currMode === "light" ? "light" : "dark"}`}>

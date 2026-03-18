@@ -1,13 +1,13 @@
 import React from 'react'
-import Hero from '../htmlBlocks/Hero'
-import BigScreen from '../htmlBlocks/BigScreen'
-import Bento from '../htmlBlocks/Bento'
-import Features from '../htmlBlocks/Features'
-import Blog from '../htmlBlocks/Blog'
-import Shopping from '../htmlBlocks/Shopping'
-import About from '../htmlBlocks/About'
-import NavigationPannel from '../htmlBlocks/NavigationPannel'
-import FooterPannel from '../htmlBlocks/FooterPannel'
+import Hero from '../ComponentBlockUi/Hero'
+import BigScreen from '../ComponentBlockUi/BigScreen'
+import Bento from '../ComponentBlockUi/Bento'
+import Features from '../ComponentBlockUi/Features'
+import Blog from '../ComponentBlockUi/Blog'
+import Shopping from '../ComponentBlockUi/Shopping'
+import About from '../ComponentBlockUi/About'
+import NavigationPannel from '../ComponentBlockUi/NavigationPannel'
+import FooterPannel from '../ComponentBlockUi/FooterPannel'
 
 
 
@@ -19,8 +19,8 @@ function Home({toggleMode,currMode}) {
     <NavigationPannel/>
     <Hero/>
     <BigScreen/>
-    <Bento toggleMode={toggleMode} currMode={currMode}/>
-    <Features currMode={currMode}/>
+    <Bento/>
+    <Features/>
     <Blog/>
     <Shopping/>
     <About/>

@@ -3,16 +3,17 @@ import "../WebPagesCss/ProfilePg.css"
 import { data, Link, useNavigate } from 'react-router-dom';
 import { MdOutlineEditNote } from "react-icons/md";
 import UserService from '../../Service/UserService';
-import UniversalNav from '../htmlBlocks/UniversalNav';
+import UniversalNav from '../ComponentBlockUi/UniversalNav';
 import Settings from '../ModelBody/Settings';
 import UploadPost from '../ModelBody/UploadPost';
 import PostService from '../../Service/PostService';
 import SelectedUserPost from '../ModelBody/SelectedUserPost';
-import PostCard from '../htmlBlocks/PostCard';
+import PostCard from '../ComponentBlockUi/PostCard';
+import { useSelector } from 'react-redux';
 
 
 // SetCurrMode is for passing to Setting.jsx page as props not used in this page
-function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
+function ProfilePg({setIsLoggedIn}) {
     const [profile , setProfile]=  useState({});
     const [navOpen, setNavOpen] = useState(false);
     const [userposts , setUserPosts]= useState([]);
@@ -20,6 +21,9 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
     const [activeModal, setActiveModal] = useState(null);
     const [selectedPostId, setSelectedPostId] = useState(null);
     const [activeSection , setActiveSection] = useState("Posts");
+    const [followBtn , SetFollowbtn]  = useState(false);
+
+    const currMode = useSelector((state)=> state.theme.mode);
 
     useEffect(()=>{
             const userId = localStorage.getItem("userId");
@@ -32,6 +36,22 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
                 })
             })}
         },[]);
+    useEffect(()=>{
+        const handleResize = () =>{
+            if(window.innerWidth<=500){
+                SetFollowbtn(true);
+            }else{
+                SetFollowbtn(false);
+            }
+        }
+        
+        handleResize();
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    },[])
 
   return (
   <>
@@ -41,7 +61,6 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
     navOpen={navOpen}
     setNavOpen={setNavOpen}
     showSearch={false}  
-    currMode={currMode}
     setIsLoggedIn={setIsLoggedIn} 
     />
 </div>
@@ -63,32 +82,55 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
                 <div className='first-last-name'><h1>{profile.firstName}</h1><h1>{profile.lastName}</h1>
                 <span className='edit-btn' onClick={() => setActiveModal("setting")}><MdOutlineEditNote/></span>
                 </div>
-                <h3 className='userName'>@{profile.username || "Loading..."}</h3>
-                <p className='Disc'>{profile.bio || "loding..."}</p>
+                <div className='userName'>
+                <h3>@{profile.username || "Loading..."}</h3>
+                {!followBtn && (
+                    <div className='Activity_button'>
+                        <button onClick={() => setActiveModal("addpost")}>
+                            Add Poat
+                        </button>
+                    </div>
+                )}</div>
+                
                 <p className='Profile-Achivement'> 
-                    <span className='Achivement-count'>Follwers: 1520</span>
-                    <span className='Achivement-count'>Post: {profile.totalPosts}</span>
+                    <span className='Achivement-count'>
+                        <span>{profile.totalPosts}</span> 
+                        <span>Post</span>
+                    </span>
+                    <span className='Achivement-count'>
+                        <span>0</span> 
+                        <span>Followers</span>
+                    </span>
+                    <span className='Achivement-count'>
+                        <span>0</span> 
+                        <span>Following</span>
+                    </span>
                 </p> 
-                <div className='Activity_button'>
+        </div>
+
+        </div>
+
+        <p className='Disc'>{profile.bio || "loding.."}</p>
+        {followBtn && (
+            <div className='Activity_button'>
                 <button onClick={() => setActiveModal("addpost")}>
                       Add Poat
                 </button>
-                {activeModal === "addpost" && ( 
-                        <UploadPost 
-                        currMode={currMode} 
-                        setCheakDiscard={setCheakDiscard} 
-                        cheakdiscard={cheakdiscard} 
-                        setActiveModal={setActiveModal}
-                        closeModal={() => setActiveModal(null)} />
-                    )}
-                </div>
-            </div>           
-            
+            {activeModal === "addpost" && ( 
+                <UploadPost 
+                setCheakDiscard={setCheakDiscard} 
+                cheakdiscard={cheakdiscard} 
+                setActiveModal={setActiveModal}
+                closeModal={() => setActiveModal(null)} />
+            )}
         </div>
+        )}
+        
+
         <div className="Activity-Nav">
             <ul className='mouseCursor'>
                 <li className='Post' onClick={()=>setActiveSection("Posts")}>Post</li>
-                <li className='Save' onClick={()=>setActiveSection("Save")}>Save</li>
+                <li className='Save' onClick={()=>setActiveSection("Blogs")}>Blogs</li>
             </ul>
         </div>
     </div>
@@ -98,21 +140,20 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
     
     {activeSection === "Posts" && 
     <div className="post_container">
-         <div className="wallpaper-list">
+         <div className="post-list">
           {userposts.map((post) => (
             <PostCard
             key={post.postId}
             post={post}
-            currMode={currMode}
             onClick={() => setSelectedPostId(post.postId)}/>
           )) || 
           <h2> Upload Post</h2>}
         </div>
     </div>}
 
-    {activeSection  === "Save" &&
+    {activeSection  === "Blogs" &&
     <div>
-        <h1>Save Posts</h1>
+        <h1>Upload Blog</h1>
     </div>}
 
        </div>
@@ -120,9 +161,7 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
 
     {activeModal === "setting" && (
         <Settings 
-        currMode={currMode} 
         cheakdiscard={cheakdiscard} 
-        setCurrMode={setCurrMode} 
         setCheakDiscard={setCheakDiscard} 
         setActiveModal={setActiveModal}
         closeModal={() => setActiveModal(null)}
@@ -132,7 +171,6 @@ function ProfilePg({setIsLoggedIn , currMode ,setCurrMode}) {
     
     {selectedPostId  && 
     <SelectedUserPost
-    currMode={currMode} 
     postId={selectedPostId} 
     posts={userposts}
     setSelectedPostId={setSelectedPostId}

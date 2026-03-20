@@ -1,10 +1,13 @@
 import React from 'react'
 import '../ComponentBlockCss/Blog.css'
+import { useSelector } from 'react-redux'
 
 function Blog() {
+    const currMode =useSelector((state)=>state.theme.mode)
   return (
     <>
-     <div id="blog" className="autoshowbox">
+    <div className={'blog_Container'}>
+     <div id="blog" className={`autoshowbox ${currMode === 'light' ? 'light' : 'dark'}`}>
         <div className="autoshow-circle">
             <div className="card-wrapper">
                 <div className="card">
@@ -25,6 +28,7 @@ function Blog() {
                 </div>
             </div>
          </div>
+     </div>
      </div>
     </>
   )

@@ -172,6 +172,9 @@
         height:80px;
         width: 80px;
     }
+    .Profile-Container .Profile-Img-Container .Profile-Content .Profile-Achivement{
+        margin-top: 0;
+    }
     .Profile-Container .Profile-Img-Container .Profile-Content .Profile-Achivement .Achivement-count{
         font-size: 0.6rem;
         padding: 0;
@@ -184,10 +187,21 @@
         font-size:0.5rem;
         width: 50%;
     }
+    .Profile-Container .Activity_button {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 0.5rem;
+    }
+    .Profile-Container .Activity_button button:nth-last-child(1){
+        background-color: var(--d-grey);
+    }
     .Profile-Container .Activity_button button{
         font-size: 0.5rem;
         padding:0.3rem 0.3rem;
+        margin: 0;
         width: 45%;
+        border-radius: 4px;
     }
     .Profile-Container .Profile-Img-Container{
         margin: 0;

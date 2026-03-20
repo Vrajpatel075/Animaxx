@@ -14,6 +14,14 @@ function SelectedPost({post ,setIsDescriptionOpen ,  isDescriptionOpen}) {
     const [commentcount , SetCommentCount] = useState();
     const currMode = useSelector((state)=> state.theme.mode);
 
+
+    function parseDMY(dateStr) {
+      const [day, month, year] = dateStr.split("-");
+      return new Date(`${year}-${month}-${day}`);
+    }
+
+
+
      useEffect(()=>{
         try{
             CommentsService.getCommentCount(post.postId).then(res => {
@@ -51,7 +59,7 @@ function SelectedPost({post ,setIsDescriptionOpen ,  isDescriptionOpen}) {
                 </div>
         
                 <div className="ViewedImg">          
-                  <img src={post.imageUrl} alt={post.postOwner} />
+                  <img src={post.imageUrl} alt={post.postOwner} loading='lazy' />
                 </div>
              
                 <div className='PostActivite'>
@@ -73,7 +81,7 @@ function SelectedPost({post ,setIsDescriptionOpen ,  isDescriptionOpen}) {
                   ) : (
                      <h3 className="postDescription">
                       {truncateText(post.description, wordLimit)}
-                      <span onClick={()=>setIsDescriptionOpen(true)}> ...more </span>
+                      <span className='mouseCursor' onClick={()=>setIsDescriptionOpen(true)}> ...more </span>
                     </h3> 
                   )}
                   {isDescriptionOpen && (
@@ -83,10 +91,14 @@ function SelectedPost({post ,setIsDescriptionOpen ,  isDescriptionOpen}) {
                             <span>#{tag} </span>
                           </span>
                         ))}
-                        <span onClick={()=> setIsDescriptionOpen(false)}> ...Show less</span> 
+                        <span className='mouseCursor' onClick={()=> setIsDescriptionOpen(false)}> ...Show less</span> 
                       </div>
                     )}
-                  <span>{post.createdAt}</span>
+                  <span>{parseDMY(post.createdAt).toLocaleDateString("en-GB",{
+                    day:"2-digit",
+                    month:"long",
+                    year:"numeric"
+                  })}</span>
                 </div>
 
                 {isCommentsOpen &&

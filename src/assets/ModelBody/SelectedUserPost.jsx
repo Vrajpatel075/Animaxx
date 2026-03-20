@@ -32,14 +32,17 @@ const post = posts.find(p => p.postId === parseInt(postId));
           
           
         <SelectedPost
-        currMode={currMode}
-        post={post}/>
+        post={post}
+        isDescriptionOpen={isDescriptionOpen}
+        setIsDescriptionOpen={setIsDescriptionOpen}
+        />
 
         {unselectedpost.map((post) => (
             <SelectedPost
             key={post.postId}
-            currMode={currMode}
             post={post}
+            isDescriptionOpen={isDescriptionOpen}
+            setIsDescriptionOpen={setIsDescriptionOpen}
             onClick={() => {
               setSelectedPostId(post.postId);
               setIsDescriptionOpen(false);

@@ -5,9 +5,10 @@ import PostService from '../../Service/PostService.js';
 import { useSelector } from 'react-redux';
 import imageCompression from 'browser-image-compression';
 
-function UploadPost({setCheakDiscard, cheakdiscard ,setActiveModal }) {
+function UploadPost({setCheakDiscard, cheakdiscard ,setUserPosts,setActiveModal }) {
   const postinputref = useRef(null);
   const [post, setPost] = useState(null);
+  const [originalFile, setOriginalFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null); 
   const [tags, setTags] = useState([]);
   const [title, setTitle] = useState("");
@@ -40,12 +41,15 @@ function UploadPost({setCheakDiscard, cheakdiscard ,setActiveModal }) {
         formdata.append("title", title);
         formdata.append("description", description);
         tags.forEach(tag => formdata.append("tags", tag));
-        formdata.append("img", post);
+
+        formdata.append("originalImg", originalFile);
+        formdata.append("compressedImg", post);
 
         const currentUserId = localStorage.getItem("userId");
         formdata.append("userId", currentUserId);
 
-        await PostService.createPost(formdata);
+        const response = await PostService.createPost(formdata);
+        setUserPosts(prev => [...prev, response.data]);
         setActiveModal(null);
         alert("Post uploaded successfully!");
       } catch (error) {
@@ -61,10 +65,11 @@ function UploadPost({setCheakDiscard, cheakdiscard ,setActiveModal }) {
   const handlePostChange = async (e) => {
     const file = e.target.files[0];
     if (file) {
+      setOriginalFile(file);
       try{
          const option = {
-        maxSize:1,
-        maxWidthOrHeight:1024,
+        maxSize:0.2,
+        maxWidthOrHeight:600,
         useWebWorker:true,
       };
       const compressedFile = await imageCompression(file,option)
@@ -93,7 +98,7 @@ function UploadPost({setCheakDiscard, cheakdiscard ,setActiveModal }) {
               {previewUrl ? (
                 <img src={URL.createObjectURL(post)} alt="img" />
               ) : (
-                <img src="/animax img source/animaxx_female_user_profile_picture.png" alt="img" />
+                <img src="/animax img source/animaxx_default_user_profile_picture.png" alt="img" />
               )}
               <input
                 type="file"
@@ -105,6 +110,7 @@ function UploadPost({setCheakDiscard, cheakdiscard ,setActiveModal }) {
                 onChange={handlePostChange}
               />
               {formerror.post && <p className='error'>{formerror.post}</p>}
+              <p>Image Must be less then 5 Mb</p>
               <button className='mouseCursor' type="button">Select Image</button>
             </div>
 
@@ -122,7 +128,7 @@ function UploadPost({setCheakDiscard, cheakdiscard ,setActiveModal }) {
             <label>Tags :</label>
             <textarea
               name='tags'
-              maxLength={50}
+              maxLength={300}
               placeholder="Enter tags separated by commas"
               onChange={handleTagsChange}
               className={currMode === "light" ? "light" : "dark"} />
@@ -137,7 +143,6 @@ function UploadPost({setCheakDiscard, cheakdiscard ,setActiveModal }) {
         {/* ExitWarring modal */}
         {cheakdiscard && (
           <ExitWarring
-            currMode={currMode}
             setCheakDiscard={setCheakDiscard}
             setActiveModal={setActiveModal} 
           />

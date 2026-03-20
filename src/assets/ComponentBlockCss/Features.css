@@ -5,11 +5,11 @@ body.light .feture-page.day {
 body.dark   .feture-page.night {
   background-color: var(--night);
   color: var(--li-grey);
-   box-shadow: 2px 2px 10px 2px var(--black);
+   /* box-shadow: 2px 2px 10px 2px var(--black); */
 }
 .feture-page {
   color: black;
-   box-shadow: 2px 2px 10px 1px var(--d-grey);
+  /* box-shadow: 2px 2px 10px 1px var(--d-grey); */
   background-color: var(--seco-2);
   border-top-left-radius: 60px;
   border-top-right-radius: 60px;

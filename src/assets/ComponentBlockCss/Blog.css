@@ -1,14 +1,17 @@
 
 /* blog circle animation */
+.autoshowbox.light{
+background: linear-gradient(0deg,rgba(206, 202, 201, 1) 0%, rgba(245, 237, 237, 1) 50%, rgba(255, 230, 199, 1) 100%);
+}
+.autoshowbox.dark{
+background: linear-gradient(0deg,rgb(23, 23, 24) 0%, rgba(27, 27, 27, 1) 50%, rgba(34, 40, 49, 1) 100%);
+}
 .autoshowbox{
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   padding-top:80px;
   width: 100vw;
   height: 100dvh;
-  /* background-color: black ; */
-
 }
 
 .autoshowbox .autoshow-circle{
@@ -18,8 +21,6 @@
   position: relative;
   height: 150px;
   width: 150px; 
-  /* background-color:var(--seco-2); */
-  /* background-color: red; */
   border-radius: 50%;
   overflow: hidden;
   animation: autoshowanimation both;

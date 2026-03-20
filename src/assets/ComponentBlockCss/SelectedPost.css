@@ -79,11 +79,13 @@
 
 .PostActivite .icons{
     margin-right: 1rem;
+    padding: 0.5rem;
     font-size: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 4px;
+    transition: 0.3s;
 }
 .PostActivite .icons:hover{
     background-color:rgba(128, 128, 128, 0.263);

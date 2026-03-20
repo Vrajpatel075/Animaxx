@@ -18,7 +18,6 @@ function ViewedPost() {
   const { postId } = useParams(); 
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false); 
   const [selectedpost , setSelectedpostPost] = useState(null);
-  const [wallpaperNavOpen, setWallpaperNavOpen] = useState(false);
   const [isLargeView , setIsLargeView] = useState(false);
   const [recommendedPosts, setRecommendedPosts] = useState([]);
   const [resizeRecomendationValue , setResizeRecomendationValue] = useState(35);

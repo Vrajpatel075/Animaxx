@@ -107,11 +107,14 @@ function ProfilePg({setIsLoggedIn}) {
 
         </div>
 
-        <p className='Disc'>{profile.bio|| ""}</p>
+        <pre className='Disc'>{profile.bio|| ""}</pre>
         {followBtn && (
             <div className='Activity_button'>
                 <button onClick={() => setActiveModal("addpost")}>
                       Add Poat
+                </button>
+                <button onClick={() => setActiveModal("setting")}>
+                      Edit
                 </button>
         </div>
         )}
@@ -171,6 +174,7 @@ function ProfilePg({setIsLoggedIn}) {
         <UploadPost 
         setCheakDiscard={setCheakDiscard} 
         cheakdiscard={cheakdiscard} 
+        setUserPosts={setUserPosts}
         setActiveModal={setActiveModal}
         closeModal={() => setActiveModal(null)} />
     )}

@@ -36,14 +36,6 @@
     overflow: auto;
 }
 
-.formContainer .PostForm.light{
-    background-color: var(--pure-white);
-    box-shadow: 0 0 8px 2px var(--li-grey);
-}
-.formContainer .PostForm.dark{
-    background-color: var(--dark);
-    box-shadow: 0 0 8px 2px var(--black);
-}
 .formContainer .PostForm .Close-btn{
     position: absolute;
     right: 0;

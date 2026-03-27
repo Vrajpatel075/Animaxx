@@ -183,7 +183,7 @@ function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
                                 disabled={!isEditable}/></div>
                                 
                                 <div className="two_inputs">
-                                    <div className="username">
+                                    <div>
                                         <label>Username</label> 
                                         <input type="text"
                                         name='username'
@@ -193,10 +193,9 @@ function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
                                         {usernameerror && <span className="error">{usernameerror}</span>}
                                     </div>
                                     
-                                    <div className="email">
+                                    <div>
                                         <label>Email</label>
                                         <input type="text" 
-                                        // className='email'
                                         name="email" 
                                         value={editFormData.email ||""} 
                                         onChange={handleChange} 
@@ -206,7 +205,7 @@ function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
                                 </div>
                                 
                                 <div className="two_inputs">
-                                    <div className="firstname">
+                                    <div>
                                         <label>FirstName</label>
                                         <input type="text" 
                                         name="firstName" 
@@ -215,7 +214,7 @@ function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
                                         disabled={!isEditable} />
                                     </div>
                                     
-                                    <div className="lastname">
+                                    <div>
                                         <label>LastName</label>
                                         <input type="text" 
                                         name="lastName" 

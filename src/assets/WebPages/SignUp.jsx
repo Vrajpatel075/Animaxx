@@ -13,6 +13,25 @@ function SignUp() {
 
   const { firstName, lastName, phone , country } = location.state || {};
 
+  const handleUsernameChange = async (e) => {
+  const value = e.target.value;
+  setUsername(value);
+
+  if (value.trim()) {
+    try {
+      const res = await UserService.cheakusername(value);
+      if (res.data.exists) {
+        setErrors(prev => ({ ...prev, username: "Username already exists." }));
+      } else {
+        setErrors(prev => ({ ...prev, username: "" }));
+      }
+    } catch (error) {
+      console.error("Error checking username:", error);
+    }
+  }
+};
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -20,6 +39,10 @@ function SignUp() {
     if(!username.trim()) newError.username = "Enter User Name";
     if(!email.trim()) newError.email = "Enter Email";
     if(!password.trim())newError.password = "Enter Password";
+      
+    if (errors.username) {
+      newError.username = errors.username;
+    }
     setErrors(newError);
 
     try {
@@ -61,7 +84,7 @@ function SignUp() {
               <input 
                 type="text" 
                 placeholder="Enter Username" 
-                onChange={(e) => setUsername(e.target.value)} 
+                onChange={handleUsernameChange} 
               />
               {errors.username && <span className='error'>{errors.username}</span>}
       

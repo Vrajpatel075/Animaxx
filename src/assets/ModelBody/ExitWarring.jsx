@@ -1,5 +1,5 @@
-    import React from 'react'
-    import "../ModelCss/ExitWarring.css"
+import React from 'react'
+import "../ModelCss/ExitWarring.css"
 import { useSelector } from 'react-redux';
     
     function ExitWarring({ setCheakDiscard, setActiveModal  }) {

@@ -126,9 +126,9 @@
 
 .setting_Container .Update_Profile form .bio{
     width: 100%;
+    height: 100%;
     padding: 0.5rem  0.5rem;
     border-radius: 6px;
-    margin-bottom: 2rem;
 }
 .setting_Container .Update_Profile form textarea{
     resize: none;
@@ -137,7 +137,6 @@
     padding: 0 1rem;
 }
 .setting_Container .Update_Profile form .two_inputs{
-    /* background-color: red; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -300,7 +299,11 @@
     margin-top: 1rem;
 }
 }
-
+@media screen and (max-width:550px) {
+    .setting_Container .Update_Profile form .two_inputs{
+        gap: 0.5rem;
+    }
+}
 @media screen and (max-width:400px) {
     .Setting_Model .Setting_Nav ul{
         font-size: 0.7rem;

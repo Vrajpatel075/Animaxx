@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
 .Sign-in-up-page{
     height: 100dvh;
     width: 100dvw;
@@ -82,6 +80,7 @@
     accent-color: var(--prim);
 }
 
+
 .Sign-in-up-page .button-container{
     display: flex;
     justify-content: center;
@@ -105,6 +104,16 @@
 .Sign-in-up-page .terms input{
     margin-top: 15px;
     margin-left: 3rem;
+}
+.Sign-in-up-page .showpassword input{
+    height: 15px;
+    width: 15px;
+    margin: 0.5rem 0rem 0  3rem;
+}
+.Sign-in-up-page .showpassword label span{
+    padding-left: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
 }
 .Sign-in-up-page .terms label span{
     margin-left: 0.5rem;

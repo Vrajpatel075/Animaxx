@@ -5,12 +5,15 @@ import UserService from '../../Service/UserService';
 import { TbLogout2 } from "react-icons/tb";
 import { IoSettingsOutline } from "react-icons/io5";
 import { useSelector } from 'react-redux';
+import LogoutModel from '../ModelBody/LogoutModel';
 
 function UniversalNav({ navOpen, setNavOpen, showSearch, setIsLoggedIn }) {
   const navigate = useNavigate();
   const location = useLocation();
   const cheakLogin = localStorage.getItem("userId");
   const [profile , setProfile] = useState({});
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+
   const currMode = useSelector((state)=>state.theme.mode);
 
   const navItems = [
@@ -67,7 +70,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch, setIsLoggedIn }) {
           <div className="routeLinks">
             {cheakLogin && (
               <NavLink
-                to="/ProfilePg"
+                to={`/ProfilePg/${cheakLogin}`}
                 className={({ isActive }) => (isActive ? 'active-link' : 'nav_link')}
                 onClick={() => setNavOpen(false)}
               >
@@ -91,7 +94,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch, setIsLoggedIn }) {
 
           {cheakLogin && (
             <div className='logoutButton'>
-              <div className="logoutLink" onClick={handleLogout}>
+              <div className="logoutLink" onClick={()=>setShowLogoutModal(true)}>
                 <a>Logout</a>
                 <div className="LogoutIcon">
                   <TbLogout2 />
@@ -101,6 +104,14 @@ function UniversalNav({ navOpen, setNavOpen, showSearch, setIsLoggedIn }) {
           )}
         </nav>
       </div>
+
+      {showLogoutModal && (
+        <LogoutModel
+        onConfirm={handleLogout} 
+        onCancel={() => setShowLogoutModal(false)} 
+        />
+      )}
+
 
       {navOpen && (
         <div className="wallpaper-overlay" onClick={() => setNavOpen(false)} />
@@ -140,7 +151,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch, setIsLoggedIn }) {
                   : "/animax img source/animaxx_default_user_profile_picture.png"
               }
             alt="logo"
-            onClick={() => navigate('/ProfilePg')}
+            onClick={() => navigate(`/ProfilePg/${profile.userId}`)}
           />
         </div>
       </div>

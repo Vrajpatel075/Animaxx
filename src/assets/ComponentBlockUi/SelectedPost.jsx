@@ -7,8 +7,10 @@ import HandleLikes from './HandleLikes';
 import { MdBookmarkBorder } from 'react-icons/md';
 import CommentsService from '../../Service/CommentsService';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function SelectedPost({post ,setIsDescriptionOpen ,  isDescriptionOpen}) {
+    const navigate = useNavigate();
     const [isCommentsOpen, setIsCommentsOpen] = useState(false);
     const [wordLimit , setWordLimit] = useState();
     const [commentcount , SetCommentCount] = useState();
@@ -52,9 +54,12 @@ function SelectedPost({post ,setIsDescriptionOpen ,  isDescriptionOpen}) {
                     <div className='ProfilPic'>
                       <img className='' src={`http://localhost:8080/uploads/profile-pics/${post.user?.profilePicture}`}alt={post.user?.username} />
                     </div>
-                    <div className="ProfilrUsername">
+                    <div className="ProfilrUsername"
+                    onClick={()=>{
+                      navigate(`/ProfilePg/${post.user?.userId}`)
+                    }}>
                       <span>{post.user?.username}</span>
-                </div>
+                    </div>
                     
                 </div>
         

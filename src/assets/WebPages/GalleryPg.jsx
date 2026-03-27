@@ -7,6 +7,7 @@ import UniversalNav from '../ComponentBlockUi/UniversalNav';
 import PostService from '../../Service/PostService';
 import PostCard from '../ComponentBlockUi/PostCard';
 import { useSelector } from 'react-redux';
+import SkeletonCard from '../LodingSkeleton/SkeletonUi/SkeletonCard';
 
 
 // setIsLoggedIn is goint to pass in UniversalNav
@@ -16,8 +17,6 @@ function GalleryPg({limit , page ,setIsLoggedIn}) {
   const [postdata , setPostdata] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate   = useNavigate();
-
-
 
   // fetching the ALLPOST data 
   useEffect(()=>{
@@ -51,16 +50,19 @@ function GalleryPg({limit , page ,setIsLoggedIn}) {
         showSearch={true}
       />
 
-
       <div className="wallpaper-container">
         <div className="post-list">
-          {loading && <p>Loading...</p>}
-          {GalleryPosts.map((post) => (
+          {loading ? (
+            Array.from({length:limit}).map((_,index)=>(
+              <SkeletonCard  key={index}/>
+            ))
+          ): 
+          (GalleryPosts.map((post) => (
             <PostCard
             key={post.postId} 
             post={post} 
             onClick={() => navigate(`/ViewedPost/${post.postId}`)}/>
-          ))}
+          )))}
         </div>
 
         <Pagination

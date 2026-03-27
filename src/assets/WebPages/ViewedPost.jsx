@@ -9,6 +9,7 @@ import PostService from '../../Service/PostService';
 import PostCard from '../ComponentBlockUi/PostCard';
 import SelectedPost from '../ComponentBlockUi/SelectedPost';
 import { useSelector } from 'react-redux';
+import SkeletonCard from '../LodingSkeleton/SkeletonUi/SkeletonCard';
 
 
 
@@ -17,11 +18,13 @@ function ViewedPost() {
   const navigate   = useNavigate();
   const { postId } = useParams(); 
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false); 
-  const [selectedpost , setSelectedpostPost] = useState(null);
+  const [selectedpost , setSelectedpost] = useState(null);
   const [isLargeView , setIsLargeView] = useState(false);
   const [recommendedPosts, setRecommendedPosts] = useState([]);
   const [resizeRecomendationValue , setResizeRecomendationValue] = useState(35);
   const [mobileRecomendation , setmMbileRecomendation] = useState(false);
+  const [loading, setLoading] = useState(false);
+  
 
   const currMode = useSelector((state)=> state.theme.mode);
 
@@ -30,7 +33,7 @@ function ViewedPost() {
   // to fetch selected img 
   useEffect(()=>{
     PostService.getPostByPostId(postId).then(res=>{
-      setSelectedpostPost(res)
+      setSelectedpost(res)
     })
   },[postId])
 
@@ -38,8 +41,10 @@ function ViewedPost() {
 
   // to fetch all the img
   useEffect(()=>{
+    setLoading(true);
     PostService.getAllPosts().then(res =>{
       setRecommendedPosts(res.filter(p=>p.postId !== parseInt(postId)));
+      setLoading(false);
       setIsDescriptionOpen(false);
     })
   },[postId])
@@ -76,7 +81,7 @@ function ViewedPost() {
   return { mainRecommendations: main, sideRecommendations: side };
 }, [recommendedPosts, resizeRecomendationValue]);
 
-  if (!post) return <p>Loading post...</p>;
+  if (!post) return <p></p>;
 
   return (
     <>
@@ -103,20 +108,28 @@ function ViewedPost() {
         
         
         <div className="recomendedPost">
-        {mobileRecomendation || mainRecommendations.map(rp => ( 
-          <PostCard
-          key={rp.postId} 
-          post={rp} 
-          onClick={() =>{ 
-            navigate(`/ViewedPost/${rp.postId}`)}} />
-        ))}
+          {loading ? (
+            Array.from({ length: resizeRecomendationValue }).map((_, i) => (
+              <SkeletonCard key={i}/>
+          )) ):(
+            <>
+            {!mobileRecomendation && mainRecommendations.map(rp => ( 
+            <PostCard
+            key={rp.postId} 
+            post={rp} 
+            onClick={() =>{ 
+              navigate(`/ViewedPost/${rp.postId}`)}} />
+              ))}
 
-        {mobileRecomendation &&
-        mainRecommendations.map(rp =>(
-          <SelectedPost 
-          key={rp.postId}
-          post={rp}/>
-        ))}
+            {mobileRecomendation &&
+            mainRecommendations.map(rp =>(
+            <SelectedPost 
+            key={rp.postId}
+            post={rp}/>
+            ))}
+            </>
+          )}
+
         </div>
       </section>
 

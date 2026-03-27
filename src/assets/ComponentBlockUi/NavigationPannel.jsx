@@ -61,7 +61,7 @@ function NavigationPannel() {
             </div>
 
             <div className="nav-pages">
-              <NavLink to={cheakLogin ? "/ProfilePg" : "/SignUpUserinfo"} 
+              <NavLink to={cheakLogin ? `/ProfilePg/${cheakLogin}` : "/SignUpUserinfo"} 
               className={({ isActive }) => 
               window.location.pathname === "/" 
               ? "active-link" 

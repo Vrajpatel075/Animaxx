@@ -77,7 +77,7 @@ function App() {
 
           {/* cheak if user is login before navigating to profilePg */}
           <Route
-          path='/ProfilePg'
+          path='/ProfilePg/:userId'
           element={isLoggedIn ? <ProfilePg 
           setIsLoggedIn={setIsLoggedIn}/>  
             : 

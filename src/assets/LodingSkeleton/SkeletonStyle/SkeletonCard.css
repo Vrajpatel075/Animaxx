@@ -1,0 +1,71 @@
+.skeleton-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Base skeleton style */
+.skeleton-img,
+.skeleton-text {
+  position: relative;
+  overflow: hidden;
+  margin: 0.2rem;
+}
+
+.skeleton-img.light,
+.skeleton-text.light {
+  background: var(--li-grey);
+}
+
+.skeleton-img.dark,
+.skeleton-text.dark {
+  background:var(--night);
+}
+
+/* Image */
+.skeleton-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 12px;
+}
+
+/* Text */
+.skeleton-text {
+  height: 14px;
+  width: 160px;
+  border-radius: 6px;
+}
+
+.skeleton-card:nth-child(2) .skeleton-img::before {
+  animation-delay: 0.2s;
+}
+
+/* 🔥 Glass Shine Effect */
+.skeleton-img::before,
+.skeleton-text::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  height: 100%;
+  width: 150%;
+
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 75%
+  );
+
+  animation: shine 1.4s ease-in-out infinite;
+}
+
+/* Smooth sweeping animation */
+@keyframes shine {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 150%;
+  }
+}

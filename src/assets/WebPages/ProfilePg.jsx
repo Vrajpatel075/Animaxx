@@ -8,6 +8,9 @@ import UploadPost from '../ModelBody/UploadPost';
 import PostService from '../../Service/PostService';
 import SelectedUserPost from '../ModelBody/SelectedUserPost';
 import PostCard from '../ComponentBlockUi/PostCard';
+import ProfileSkeleton from '../LodingSkeleton/SkeletonUi/ProfileSkeleton';
+import { useParams } from 'react-router-dom';
+
 
 
 // SetCurrMode is for passing to Setting.jsx page as props not used in this page
@@ -20,20 +23,33 @@ function ProfilePg({setIsLoggedIn}) {
     const [selectedPostId, setSelectedPostId] = useState(null);
     const [activeSection , setActiveSection] = useState("Posts");
     const [followBtn , SetFollowbtn]  = useState(false);
-
-
-    useEffect(()=>{
-            const userId = localStorage.getItem("userId");
-            if(userId){
-                UserService.getProfile(userId).then(res =>{
+    const [Loading , setLoading] = useState(false);
+    const {userId} = useParams();
+    // const userId = id || localStorage.getItem("userId");
+    
+    
+    useEffect(() => {
+        console.log("Route ID:", userId);
+        const fetchData = async () => {
+            if (!userId) return;
+            
+            try {
+                setLoading(true);
+                const res = await UserService.getProfile(userId);
                 setProfile(res.data);
-
-                PostService.getUserPost(userId).then(post=>{
-                setUserPosts(post)
-                })
-            })}
-        },[]);
-    useEffect(()=>{
+                const posts = await PostService.getUserPost(userId);
+                setUserPosts(posts);
+            
+            } catch (err) {
+            console.error("Error fetching profile:", err);
+        
+        } finally {
+            setLoading(false);
+        }};
+        fetchData();
+    }, [userId]);
+        
+        useEffect(()=>{
         const handleResize = () =>{
             if(window.innerWidth<=500){
                 SetFollowbtn(true);
@@ -50,6 +66,9 @@ function ProfilePg({setIsLoggedIn}) {
         };
     },[])
 
+    if(Loading){
+        return <ProfileSkeleton/>;
+    }
   return (
   <>
   <div className="profile-body">
@@ -91,7 +110,7 @@ function ProfilePg({setIsLoggedIn}) {
                 
                 <p className='Profile-Achivement'> 
                     <span className='Achivement-count'>
-                        <span>{profile.totalPosts}</span> 
+                        <span>{ "0" || profile.totalPosts}</span> 
                         <span>Post</span>
                     </span>
                     <span className='Achivement-count'>

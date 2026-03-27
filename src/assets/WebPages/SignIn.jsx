@@ -7,6 +7,7 @@ function SignIn({setIsLoggedIn}) {
     const  [email , setEmail]=useState("");
     const  [password , setPassword]=useState("");
     const [errors , setErrors] =  useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (e)=>{
@@ -29,7 +30,7 @@ function SignIn({setIsLoggedIn}) {
         // localStorage.setItem("username" , loggedInUser.username);
         
         alert("Login successful for user: " + loggedInUser.username);
-        navigate("/ProfilePg");}
+        navigate(`{/ProfilePg/${loggedInUser.userId}}`);}
       }catch (error){
         alert("login failed" + error);
       }
@@ -47,7 +48,7 @@ function SignIn({setIsLoggedIn}) {
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, consectetur. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus praesentium, reiciendis voluptatum magni reprehenderit
                         </div>
             </div>
-            <div className="form_container">
+              <div className="form_container">
             <div className="title">LOGIN</div>
                 <form action="" onSubmit={handleSubmit}>
                 <div className="form">
@@ -59,20 +60,26 @@ function SignIn({setIsLoggedIn}) {
                 onChange={(e)=> setEmail(e.target.value)}/>
                 {errors.email && <span className='error'>{errors.email}</span>}
 
+                
+
                 <input 
-                type="password" 
+                type={showPassword ? "text" : "password"} 
                 name="Password" 
                 placeholder="Enter Password"
                 onChange={(e)=> setPassword(e.target.value)}/>
                 {errors.password && <span className='error'>{errors.password}</span>}
-
                 </div>
-                <div className="terms">
+                
+                <div className="showpassword">
                 <label>
-                  <input type="checkbox" style={{marginRight: "5px"}} required/>
-                  I Agree To The <Link to="/">terms & conditions</Link>
-                </label>
-              </div>
+                  <input 
+                  type="checkbox"
+                  checked={showPassword}
+                  onChange={() => setShowPassword(!showPassword)}
+                  />
+                  <span>Show Password</span> 
+                  </label>
+                </div>
 
                 <div className="button-container">
                 <button>Submit</button>

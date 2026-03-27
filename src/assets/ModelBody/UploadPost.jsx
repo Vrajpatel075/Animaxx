@@ -68,8 +68,8 @@ function UploadPost({setCheakDiscard, cheakdiscard ,setUserPosts,setActiveModal 
       setOriginalFile(file);
       try{
          const option = {
-        maxSize:0.2,
-        maxWidthOrHeight:600,
+        maxSize:0.1,
+        maxWidthOrHeight:300,
         useWebWorker:true,
       };
       const compressedFile = await imageCompression(file,option)

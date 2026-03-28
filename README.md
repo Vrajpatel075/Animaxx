@@ -18,13 +18,16 @@ Here what you can do with Animaxx
 - Free Account Creation → Anyone can join instantly without barriers.
 - Profile Building → Showcase your anime interests, posts, and artwork.
 - Friendship & Networking → Connect with fellow anime enthusiasts worldwide.
+
 🎨 Content Creation & Sharing
 - Upload Posts → Share anime art, thoughts, or creative projects.
 - Showcase Your Artwork → Build a portfolio and gain recognition.
 - Explore New Anime Content → Discover fresh ideas, styles, and inspir
+
 📥 Media Access
 - Download High‑Quality Images → Access crisp, detailed visuals.
 - Dual Image Storage → Compressed previews for speed, originals for detail.
+
 💬 Engagement & Interaction
 - Like Posts → Support your favorite creators.
 - Comment on Posts → Share feedback, thoughts, and discussions.

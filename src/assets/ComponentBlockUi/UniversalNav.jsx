@@ -6,6 +6,7 @@ import { TbLogout2 } from "react-icons/tb";
 import { IoSettingsOutline } from "react-icons/io5";
 import { useSelector } from 'react-redux';
 import LogoutModel from '../ModelBody/LogoutModel';
+import SignInCheak from '../ModelBody/SignInCheak';
 
 function UniversalNav({ navOpen, setNavOpen, showSearch, setIsLoggedIn }) {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch, setIsLoggedIn }) {
   const cheakLogin = localStorage.getItem("userId");
   const [profile , setProfile] = useState({});
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [showSignInModal, setShowSignInModal] = useState(false);
 
   const currMode = useSelector((state)=>state.theme.mode);
 
@@ -35,6 +37,16 @@ function UniversalNav({ navOpen, setNavOpen, showSearch, setIsLoggedIn }) {
       alert("Logout failed! " + error);
     }
   };
+  
+  const handleProfileClick = () => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+    navigate(`/ProfilePg/${userId}`);
+  } else {
+    setShowSignInModal(true); 
+  }
+};
+
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
@@ -151,8 +163,10 @@ function UniversalNav({ navOpen, setNavOpen, showSearch, setIsLoggedIn }) {
                   : "/animax img source/animaxx_default_user_profile_picture.png"
               }
             alt="logo"
-            onClick={() => navigate(`/ProfilePg/${profile.userId}`)}
+            onClick={handleProfileClick}
           />
+          {showSignInModal &&
+          <SignInCheak onClose={()=>setShowSignInModal(false)}/>}
         </div>
       </div>
     </>

@@ -46,7 +46,10 @@ const handleNext = (e) =>{
         </div>
 
         <div className="form_container">
-          <div className="title">SIGN UP</div>
+          <div className="titleMessage">
+            <h2>Get Started</h2>
+            <p>To unlock endless creativity.</p>
+            </div>
           <form onSubmit={handleNext}>
             <div className="form">
               <input 

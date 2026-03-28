@@ -6,7 +6,7 @@ function LogoutModel({ onConfirm, onCancel }) {
   const currMode = useSelector((state)=>state.theme.mode);
 
   return (
-    <div className='discardContainer' onClick={(e) => e.stopPropagation()}>
+    <div className='ModelContainer' onClick={(e) => e.stopPropagation()}>
       <div className={`discardBox ${currMode === "light" ? "light" : "dark"}`}>
         <h2>Confirm Logout</h2>
         <p>Are you sure you want to log out?</p>

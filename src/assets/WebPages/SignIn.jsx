@@ -49,7 +49,10 @@ function SignIn({setIsLoggedIn}) {
                         </div>
             </div>
               <div className="form_container">
-            <div className="title">LOGIN</div>
+            <div className="titleMessage">
+              <h2>Welcome Back!</h2>
+              <p>Please Log in to your account.</p>  
+            </div>
                 <form action="" onSubmit={handleSubmit}>
                 <div className="form">
 

@@ -1,0 +1,55 @@
+.SignInBox{
+    border-radius: 12px;
+    padding: 1rem 3rem 3rem 3rem;
+}
+.SignInCheakBtn{
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.SignInBox p{
+    font-size: 0.6rem;
+}
+.SignInCheakBtn button{
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 12px;
+    font-weight: 700;
+    background-color: var(--seco-3);
+    transition: 0.3s;
+    /* color: var(--prim); */
+}
+.SignInCheakBtn button:hover{
+    color: var(--seco-3);
+    background-color: var(--seco-2);
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.separator::before,
+.separator::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ccc; /* line color */
+}
+
+.separator:not(:empty)::before {
+  margin-right: 0.75em;
+}
+
+.separator:not(:empty)::after {
+  margin-left: 0.75em;
+}
+
+.separator span {
+  font-weight: bold;
+  color: #666; /* text color */
+}

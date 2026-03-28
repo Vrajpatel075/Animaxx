@@ -1,1 +1,4 @@
+##🥷Animaxx 
+
 Animaxx is a vibrant anime discovery hub where fans can explore, save, and share their favorite characters, UI designs, and creative inspirations. Built for developers and dreamers, it blends Pinterest-style visuals with full-stack functionality—perfect for showcasing anime art, building themed dashboards, and connecting through shared aesthetics.
+

@@ -2,9 +2,10 @@
     /* background-color: blue; */
     margin: 0 4rem;
 }
-.Profile-Container{
-    margin-top: 80px;
+.NavOn{
+     margin-top: 80px;
 }
+
 .Profile-Container.night{
     background-color: var(--night);
 }

@@ -24,7 +24,7 @@ const post = posts.find(p => p.postId === parseInt(postId));
     onClick={(e) => e.stopPropagation()}>
 
         <div>
-          <div className='PostHeader'>
+          <div className='BackHeader'>
               <button className={`backButton ${currMode === 'light' ? 'light' : 'dark'}`} 
               onClick={closeModal} > <FaArrowLeft/></button> 
               <h2>Posts</h2>

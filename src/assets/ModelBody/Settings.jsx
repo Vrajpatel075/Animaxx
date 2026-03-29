@@ -6,10 +6,10 @@ import { CiLock , CiUnlock} from "react-icons/ci";
 import ExitWarring from '../ModelBody/ExitWarring';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMode } from '../Redux/Feature/Theme/themeSlice';
+import { fetchuserdata } from '../Redux/authSlice';
 
 function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
     const [activetab , setActivetab]=useState("Account");
-    const [userDetails , SetUserDetails] = useState({});
     const [isEditable , setIsEditable] = useState(false);
     const [otp, setOtp] = useState("");
     const [generatedOtp, setGeneratedOtp] = useState(null);
@@ -18,7 +18,8 @@ function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
 
 
     const dispatch =  useDispatch();
-    const currMode = useSelector((state)=> state.theme.mode)
+    const currMode = useSelector((state)=> state.theme.mode);
+    const {userId , profile} = useSelector((state)=>state.auth);
 
 
     const [editFormData , setEditformData] = useState({
@@ -52,15 +53,12 @@ function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
     }
 
     useEffect(()=>{
-         const userId = localStorage.getItem("userId");
          if(userId){
-             UserService.getProfile(userId).then(res=>{
-                SetUserDetails(res.data);
-                const { createdAt, updatedAt, lastLogin, totalPosts, ...safeData } = res.data;
-                setEditformData(safeData);
-         })
-         }
-    },[])
+            dispatch(fetchuserdata(userId));
+        
+            const { createdAt, updatedAt, lastLogin, totalPosts, ...safeData } = profile;
+            setEditformData(safeData);
+         }},[userId])
     const handleChange = async (e) => {
         const { name, value } = e.target; 
         setEditformData(prev => ({ ...prev, [name]: value })); 
@@ -139,8 +137,8 @@ function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
                         <div className="Profil_Pic">
                            <img
                            src={
-                            userDetails.profilePicture
-                            ? `http://localhost:8080/uploads/profile-pics/${userDetails.profilePicture}`
+                            profile?.profilePicture
+                            ? `http://localhost:8080/uploads/profile-pics/${profile?.profilePicture}`
                             : "/animax img source/ANIMAX_LOGO.png"
                         }
                         alt="Profile Pic"/>
@@ -243,7 +241,7 @@ function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
 
                             </form>
 
-                            <p className='Account_Created'> <span>Account Created On</span>{userDetails.createdAt}</p>
+                            <p className='Account_Created'> <span>Account Created On</span>{profile?.createdAt}</p>
                         </div>
                         <div className="About_Info">
                             

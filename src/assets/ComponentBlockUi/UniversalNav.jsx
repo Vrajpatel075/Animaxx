@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import '../ComponentBlockCss/UniversalNav.css';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
-import UserService from '../../Service/UserService';
 import { TbLogout2 } from "react-icons/tb";
-import { IoSettingsOutline } from "react-icons/io5";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import LogoutModel from '../ModelBody/LogoutModel';
 import SignInCheak from '../ModelBody/SignInCheak';
+import { fetchuserdata, logoutUser } from '../Redux/authSlice';
 
-function UniversalNav({ navOpen, setNavOpen, showSearch, setIsLoggedIn }) {
+function UniversalNav({ navOpen, setNavOpen, showSearch }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const cheakLogin = localStorage.getItem("userId");
-  const [profile , setProfile] = useState({});
+  const dispatch = useDispatch();
+
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showSignInModal, setShowSignInModal] = useState(false);
 
-  const currMode = useSelector((state)=>state.theme.mode);
+  // Redux state
+  const { userId, profile, isLoggedIn } = useSelector((state) => state.auth);
+  const currMode = useSelector((state) => state.theme.mode);
 
   const navItems = [
     { label: 'GALLERY', paths: ['/Gallery', '/ViewedPost'] },
@@ -25,37 +26,30 @@ function UniversalNav({ navOpen, setNavOpen, showSearch, setIsLoggedIn }) {
     { label: 'COMMUNITY', paths: ['/CommunityPg'] },
   ];
 
-  const handleLogout = async () => {
-    try {
-      await UserService.logout();
-      localStorage.removeItem("userId");
-      localStorage.removeItem("userEmail");
-      setIsLoggedIn(false);
-      alert("Logout successfully");
-      navigate("/");
-    } catch (error) {
-      alert("Logout failed! " + error);
+  const handleLogout = () => {
+    dispatch(logoutUser()).then((res) => {
+      if (res.meta.requestStatus === 'fulfilled') {
+        alert("Logout successfully");
+        navigate("/");
+      } else {
+        alert("Logout failed!");
+      }
+    });
+  };
+
+  const handleProfileClick = () => {
+    if (isLoggedIn) {
+      navigate(`/ProfilePg/${userId}`);
+    } else {
+      setShowSignInModal(true);
     }
   };
-  
-  const handleProfileClick = () => {
-    const userId = localStorage.getItem("userId");
-    if (userId) {
-    navigate(`/ProfilePg/${userId}`);
-  } else {
-    setShowSignInModal(true); 
-  }
-};
-
 
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
     if (userId) {
-      UserService.getProfile(userId).then(res => {
-        setProfile(res.data);
-      });
+      dispatch(fetchuserdata(userId));
     }
-  }, []);
+  }, [userId, dispatch]);
 
   return (
     <>
@@ -80,9 +74,9 @@ function UniversalNav({ navOpen, setNavOpen, showSearch, setIsLoggedIn }) {
 
         <nav className="VirticalNav">
           <div className="routeLinks">
-            {cheakLogin && (
+            {isLoggedIn && (
               <NavLink
-                to={`/ProfilePg/${cheakLogin}`}
+                to={`/ProfilePg/${userId}`}
                 className={({ isActive }) => (isActive ? 'active-link' : 'nav_link')}
                 onClick={() => setNavOpen(false)}
               >
@@ -94,7 +88,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch, setIsLoggedIn }) {
               return (
                 <NavLink
                   key={label}
-                  to={paths[0]} // main navigation target
+                  to={paths[0]}
                   className={isActive ? 'active-link' : 'nav_link'}
                   onClick={() => setNavOpen(false)}
                 >
@@ -104,9 +98,9 @@ function UniversalNav({ navOpen, setNavOpen, showSearch, setIsLoggedIn }) {
             })}
           </div>
 
-          {cheakLogin && (
+          {isLoggedIn && (
             <div className='logoutButton'>
-              <div className="logoutLink" onClick={()=>setShowLogoutModal(true)}>
+              <div className="logoutLink" onClick={() => setShowLogoutModal(true)}>
                 <a>Logout</a>
                 <div className="LogoutIcon">
                   <TbLogout2 />
@@ -119,11 +113,10 @@ function UniversalNav({ navOpen, setNavOpen, showSearch, setIsLoggedIn }) {
 
       {showLogoutModal && (
         <LogoutModel
-        onConfirm={handleLogout} 
-        onCancel={() => setShowLogoutModal(false)} 
+          onConfirm={handleLogout}
+          onCancel={() => setShowLogoutModal(false)}
         />
       )}
-
 
       {navOpen && (
         <div className="wallpaper-overlay" onClick={() => setNavOpen(false)} />
@@ -139,7 +132,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch, setIsLoggedIn }) {
           onClick={() => setNavOpen(true)}
           aria-label="open sidebar"
         >
-         <span> ☰ </span>
+          <span> ☰ </span>
         </button>
 
         {showSearch && (
@@ -154,19 +147,20 @@ function UniversalNav({ navOpen, setNavOpen, showSearch, setIsLoggedIn }) {
         <div className="Animaxx-logo">
           <img
             src={
-                profile.profilePicture
-                  ? `http://localhost:8080/uploads/profile-pics/${profile.profilePicture}`
-                  : profile.gender === "male"
-                  ? "/animax img source/animaxx_male_user_profile_picture.png"
-                  : profile.gender === "female"
-                  ? "/animax img source/animaxx_female_user_profile_picture.png"
-                  : "/animax img source/animaxx_default_user_profile_picture.png"
-              }
+              profile?.profilePicture
+                ? `http://localhost:8080/uploads/profile-pics/${profile.profilePicture}`
+                : profile?.gender === "male"
+                ? "/animax img source/animaxx_male_user_profile_picture.png"
+                : profile?.gender === "female"
+                ? "/animax img source/animaxx_female_user_profile_picture.png"
+                : "/animax img source/animaxx_default_user_profile_picture.png"
+            }
             alt="logo"
             onClick={handleProfileClick}
           />
-          {showSignInModal &&
-          <SignInCheak onClose={()=>setShowSignInModal(false)}/>}
+          {showSignInModal && (
+            <SignInCheak onClose={() => setShowSignInModal(false)} />
+          )}
         </div>
       </div>
     </>

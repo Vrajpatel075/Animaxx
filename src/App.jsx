@@ -20,10 +20,6 @@ function App() {
 
   const currMode = useSelector((state) => state.theme.mode);
 
-  const lastPostIndex = page * limit;
-  const firstPostIndex = lastPostIndex - limit;
-  
-
   //cheak if user is login or not for authorization
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("userId"));
   
@@ -61,12 +57,11 @@ function App() {
           limit={limit} 
           page={page}
           setPage={setPage}
-          setIsLoggedIn={setIsLoggedIn}
           />} />
     
 
 
-          <Route path='/SignIn' element={<SignIn setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path='/SignIn' element={<SignIn />} />
           <Route path='/SignUp' element={<SignUp />} />
           <Route path='/SignUpUserinfo' element={<SignUpUserinfo />} />
     
@@ -78,8 +73,7 @@ function App() {
           {/* cheak if user is login before navigating to profilePg */}
           <Route
           path='/ProfilePg/:userId'
-          element={isLoggedIn ? <ProfilePg 
-          setIsLoggedIn={setIsLoggedIn}/>  
+          element={isLoggedIn ? <ProfilePg />  
             : 
           <Navigate to="/" 
           /> } />

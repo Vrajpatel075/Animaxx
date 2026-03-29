@@ -1,6 +1,7 @@
 .skeleton-card {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   gap: 10px;
 }
 
@@ -24,15 +25,17 @@
 
 /* Image */
 .skeleton-img {
-  width: 200px;
-  height: 200px;
+  min-width: 130px;
+  max-width: 200px;
+  height: 250px;
   border-radius: 12px;
 }
 
 /* Text */
 .skeleton-text {
   height: 14px;
-  width: 160px;
+  min-width: 100px;
+  max-width: 160px;
   border-radius: 6px;
 }
 
@@ -53,7 +56,7 @@
   background: linear-gradient(
     110deg,
     transparent 25%,
-    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.044) 50%,
     transparent 75%
   );
 

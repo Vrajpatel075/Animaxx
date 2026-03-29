@@ -11,10 +11,8 @@ import SkeletonCard from '../LodingSkeleton/SkeletonUi/SkeletonCard';
 import SignInCheak from '../ModelBody/SignInCheak';
 
 
-// setIsLoggedIn is goint to pass in UniversalNav
-function GalleryPg({limit , page ,setIsLoggedIn}) {
+function GalleryPg({limit , page }) {
   const [wallpaperNavOpen, setWallpaperNavOpen] = useState(false);
-  const [wordLimit , setWordLimit] = useState(5);
   const [postdata , setPostdata] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate   = useNavigate();
@@ -46,7 +44,6 @@ function GalleryPg({limit , page ,setIsLoggedIn}) {
     <>
       <UniversalNav
         navOpen={wallpaperNavOpen}
-        setIsLoggedIn={setIsLoggedIn}
         setNavOpen={setWallpaperNavOpen}
         showSearch={true}
       />

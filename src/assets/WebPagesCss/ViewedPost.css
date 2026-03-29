@@ -36,40 +36,6 @@
     margin-top: 1rem;
 }
 
-/* back button for wallpaper page */
-.PostHeader {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    gap:0.5rem;
-    width: 100%;
-}
-.backButton{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 0.8rem; 
-    margin: 0.2rem;
-    background: transparent;    
-    border: 0;
-    font-size: 1rem;
-    border-radius: 12px;
-    transition: 0.2s;
-}
-.backButton.light{
-    color: var(--black);
-}
-.backButton.night{
-    color: var(--light-white);
-}
-
-.backButton:hover,
-.CommentInput .backButton:hover{
-    color: var(--seco-1);
-    background-color: rgba(128, 128, 128, 0.175);
-}
-
 /* post which is been selected by user in wallpaperpg */
 .Topbuttons{
     width: 100%;

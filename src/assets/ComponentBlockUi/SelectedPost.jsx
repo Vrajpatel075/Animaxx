@@ -54,7 +54,7 @@ function SelectedPost({post ,setIsDescriptionOpen ,  isDescriptionOpen}) {
                     <div className='ProfilPic'>
                       <img className='' src={`http://localhost:8080/uploads/profile-pics/${post.user?.profilePicture}`}alt={post.user?.username} />
                     </div>
-                    <div className="ProfilrUsername"
+                    <div className="ProfilrUsername mouseCursor"
                     onClick={()=>{
                       navigate(`/ProfilePg/${post.user?.userId}`)
                     }}>

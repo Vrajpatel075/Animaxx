@@ -15,7 +15,7 @@ function SignInCheak({onClose}) {
             <div className='SignInCheakBtn'>
                 <button onClick={()=>navigate("/SignIn")}>Sign-In</button>
             </div>
-        <div class="separator">
+        <div className="separator">
             <span>OR</span>
         </div>
         

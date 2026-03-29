@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "../WebPagesCss/ProfilePg.css"
 import { MdOutlineEditNote } from "react-icons/md";
-import UserService from '../../Service/UserService';
 import UniversalNav from '../ComponentBlockUi/UniversalNav';
 import Settings from '../ModelBody/Settings';
 import UploadPost from '../ModelBody/UploadPost';
@@ -9,13 +8,15 @@ import PostService from '../../Service/PostService';
 import SelectedUserPost from '../ModelBody/SelectedUserPost';
 import PostCard from '../ComponentBlockUi/PostCard';
 import ProfileSkeleton from '../LodingSkeleton/SkeletonUi/ProfileSkeleton';
-import { useParams } from 'react-router-dom';
+import {useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import UserService from '../../Service/UserService';
+import { FaArrowLeft } from 'react-icons/fa6';
 
 
 
 // SetCurrMode is for passing to Setting.jsx page as props not used in this page
-function ProfilePg({setIsLoggedIn}) {
-    const [profile , setProfile]=  useState({});
+function ProfilePg() {
     const [navOpen, setNavOpen] = useState(false);
     const [userposts , setUserPosts]= useState([]);
     const [cheakdiscard , setCheakDiscard] = useState(false);
@@ -23,21 +24,31 @@ function ProfilePg({setIsLoggedIn}) {
     const [selectedPostId, setSelectedPostId] = useState(null);
     const [activeSection , setActiveSection] = useState("Posts");
     const [followBtn , SetFollowbtn]  = useState(false);
+    const [isotherprofile,setIsOtherProfile] = useState(false);
     const [Loading , setLoading] = useState(false);
-    const {userId} = useParams();
-    // const userId = id || localStorage.getItem("userId");
+    const {userId : paramId } =  useParams();
+    const [profiledata , setProfileData] = useState({});
+    const navigate =  useNavigate();
+
+    // redux
+    const {userId} = useSelector((state)=>state.auth);
+    const currMode = useSelector((state)=>state.theme.mode);
     
     
     useEffect(() => {
-        console.log("Route ID:", userId);
         const fetchData = async () => {
-            if (!userId) return;
-            
             try {
                 setLoading(true);
-                const res = await UserService.getProfile(userId);
-                setProfile(res.data);
-                const posts = await PostService.getUserPost(userId);
+                if(paramId !== userId){
+                    const res = await UserService.getProfile(paramId);
+                    setProfileData(res.data);
+                    setIsOtherProfile(false);
+                }else{
+                    const res = await UserService.getProfile(userId);
+                    setProfileData(res.data);
+                    setIsOtherProfile(true);
+                }
+                const posts = await PostService.getUserPost(paramId);
                 setUserPosts(posts);
             
             } catch (err) {
@@ -47,9 +58,9 @@ function ProfilePg({setIsLoggedIn}) {
             setLoading(false);
         }};
         fetchData();
-    }, [userId]);
+    }, [userId,paramId]);
         
-        useEffect(()=>{
+    useEffect(()=>{
         const handleResize = () =>{
             if(window.innerWidth<=500){
                 SetFollowbtn(true);
@@ -58,9 +69,8 @@ function ProfilePg({setIsLoggedIn}) {
             }
         }
         
-        handleResize();
+    handleResize();
         window.addEventListener("resize", handleResize);
-
         return () => {
             window.removeEventListener("resize", handleResize);
         };
@@ -72,45 +82,56 @@ function ProfilePg({setIsLoggedIn}) {
   return (
   <>
   <div className="profile-body">
-  <div className="profilNav">
-    <UniversalNav 
-    navOpen={navOpen}
-    setNavOpen={setNavOpen}
-    showSearch={false}  
-    setIsLoggedIn={setIsLoggedIn} 
-    />
-</div>
+    {isotherprofile ?(
+        <div className="profilNav">
+        <UniversalNav 
+        navOpen={navOpen}
+        setNavOpen={setNavOpen}
+        showSearch={false}  />
+    </div>
+    ):(
+    <div className='BackHeader'>
+        <button className={`backButton ${currMode === 'light' ? 'light' : 'dark'}`}
+        onClick={()=>navigate(-1)}>
+          <FaArrowLeft/>
+        </button>
+        <h1>{profiledata.username}</h1>
+      </div>
+    )}
+    
 
-    <div className='Profile-Container'>
+    <div className={`Profile-Container ${isotherprofile === true ? "NavOn" : ""}`} >
         <div className="Profile-Img-Container">
             <div className='Profil-Pic'>
-            <img src={ profile.profilePicture
-            ? `http://localhost:8080/uploads/profile-pics/${profile.profilePicture}`
-            : profile.gender === "male"
+            <img src={ profiledata.profilePicture
+            ? `http://localhost:8080/uploads/profile-pics/${profiledata?.profilePicture}`
+            : profiledata.gender === "male"
             ? "/animax img source/animaxx_male_user_profile_picture.png"
-            : profile.gender === "female"
+            : profiledata.gender === "female"
             ? "/animax img source/animaxx_female_user_profile_picture.png"
             : "/animax img source/animaxx_default_user_profile_picture.png"
         } alt="Profile Pic"/>
 
             </div>
             <div className="Profile-Content">
-                <div className='first-last-name'><h1>{profile.firstName}</h1><h1>{profile.lastName}</h1>
+                <div className='first-last-name'><h1>{profiledata?.firstName}</h1><h1>{profiledata?.lastName}</h1>
                 <span className='edit-btn' onClick={() => setActiveModal("setting")}><MdOutlineEditNote/></span>
                 </div>
                 <div className='userName'>
-                <h3>@{profile.username || "Loading..."}</h3>
+                <h3>@{profiledata?.username || "Loading..."}</h3>
                 {!followBtn && (
                     <div className='Activity_button'>
-                        <button onClick={() => setActiveModal("addpost")}>
-                            Add Poat
-                        </button>
+                        {isotherprofile ?(
+                            <button onClick={() => setActiveModal("addpost")}> Add Poat </button>
+                        ):(
+                            <button> Follow </button>
+                        )}
                     </div>
                 )}</div>
                 
                 <p className='Profile-Achivement'> 
                     <span className='Achivement-count'>
-                        <span>{ "0" || profile.totalPosts}</span> 
+                        <span>{profiledata.totalPosts || "0"}</span> 
                         <span>Post</span>
                     </span>
                     <span className='Achivement-count'>
@@ -126,7 +147,7 @@ function ProfilePg({setIsLoggedIn}) {
 
         </div>
 
-        <pre className='Disc'>{profile.bio|| ""}</pre>
+        <pre className='Disc'>{profiledata.bio || ""}</pre>
         {followBtn && (
             <div className='Activity_button'>
                 <button onClick={() => setActiveModal("addpost")}>
@@ -181,8 +202,7 @@ function ProfilePg({setIsLoggedIn}) {
     )}
 
     
-    {selectedPostId  && 
-    <SelectedUserPost
+    {selectedPostId  && <SelectedUserPost
     postId={selectedPostId} 
     posts={userposts}
     setSelectedPostId={setSelectedPostId}

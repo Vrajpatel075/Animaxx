@@ -75,3 +75,36 @@ button:hover{
   color: var(--prim);
 }
 
+/* back button for wallpaper page */
+.BackHeader {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap:0.5rem;
+    padding: 0.5rem 0;
+    width: 100%;
+}
+.backButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.8rem; 
+    margin: 0.2rem;
+    background: transparent;    
+    border: 0;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+.backButton.light{
+    color: var(--black);
+}
+.backButton.night{
+    color: var(--light-white);
+}
+
+.backButton:hover{
+  border-radius: 12px;
+    color: var(--seco-1);
+    background-color: rgba(128, 128, 128, 0.175);
+}

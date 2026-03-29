@@ -89,7 +89,7 @@ function ViewedPost() {
 
     <div className="ViewPostContainer">
 
-      <div className='PostHeader'>
+      <div className='BackHeader'>
         <button className={`backButton ${currMode === 'light' ? 'light' : 'dark'}`}
         onClick={()=>navigate(-1)}>
           <FaArrowLeft/>

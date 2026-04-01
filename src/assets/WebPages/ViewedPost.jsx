@@ -85,7 +85,7 @@ function ViewedPost() {
 
   return (
     <>
-    <div className="viewpage">    
+    <div className="viewpage">   
 
     <div className="ViewPostContainer">
 
@@ -105,7 +105,6 @@ function ViewedPost() {
       isDescriptionOpen={isDescriptionOpen}
       /> 
       <section >
-        
         
         <div className="recomendedPost">
           {loading ? (

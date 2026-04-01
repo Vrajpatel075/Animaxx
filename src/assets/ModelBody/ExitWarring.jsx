@@ -1,27 +1,66 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../ModelCss/ExitWarring.css"
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { logoutUser } from '../Redux/authSlice';
     
-    function ExitWarring({ setCheakDiscard, setActiveModal  }) {
+    function ExitWarring({ setActiveModal ,WarringModel,onCancel }) {
       const currMode = useSelector((state)=>state.theme.mode);
+      const dispatch = useDispatch();
+      const navigate = useNavigate()
+;
+      
+        const handleLogout = () => {
+          dispatch(logoutUser()).then((res) => {
+            if (res.meta.requestStatus === 'fulfilled') {
+              alert("Logout successfully");
+              navigate("/");
+            } else {
+              alert("Logout failed!");
+            }
+          });
+        };
   return (
-    <div className='ModelContainer' onClick={(e) => e.stopPropagation()}>
+    <>
+      {WarringModel === "exitWarring" &&
+      <div className='ModelContainer' onClick={(e) => e.stopPropagation()}>
       <div className={`discardBox ${currMode === "light" ? "light" : "dark"}`}>
         <h2>Are You Sure?</h2>
         <p>Unsaved changes will be lost.</p>
         <div className='discardbtn'>
-          <button className='continueBtn' onClick={() => setCheakDiscard(false)}>
+          <button className='continueBtn' onClick={onCancel}>
             Continue
           </button>
           <button className='exitBtn' onClick={() => {
-            setCheakDiscard(false); 
+            onCancel();
             setActiveModal(null);  
           }}>
             Exit
           </button>
         </div>
       </div>
+      </div>
+      }
+
+      {WarringModel === "logoutWarring" &&
+          <div className='ModelContainer' onClick={(e) => e.stopPropagation()}>
+            <div className={`discardBox ${currMode === "light" ? "light" : "dark"}`}>
+              <h2>Confirm Logout</h2>
+              <p>Are you sure you want to log out?</p>
+              
+              <div className='discardbtn'>
+                <button className='continueBtn' onClick={handleLogout}>
+            Logout
+          </button>
+          <button className='exitBtn' onClick={onCancel}>
+            Cancel
+          </button>
+        </div>
+      </div>
     </div>
+      }
+
+    </>
   );
 }
 

@@ -12,41 +12,51 @@ import {useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import UserService from '../../Service/UserService';
 import { FaArrowLeft } from 'react-icons/fa6';
+import FollowService from "../../Service/FollowService";
 
 
 
 // SetCurrMode is for passing to Setting.jsx page as props not used in this page
 function ProfilePg() {
+    const navigate =  useNavigate();
     const [navOpen, setNavOpen] = useState(false);
-    const [userposts , setUserPosts]= useState([]);
-    const [cheakdiscard , setCheakDiscard] = useState(false);
-    const [activeModal, setActiveModal] = useState(null);
-    const [selectedPostId, setSelectedPostId] = useState(null);
-    const [activeSection , setActiveSection] = useState("Posts");
-    const [followBtn , SetFollowbtn]  = useState(false);
-    const [isotherprofile,setIsOtherProfile] = useState(false);
     const [Loading , setLoading] = useState(false);
+    const [cheakdiscard , setCheakDiscard] = useState(false);
+    
+    // to show the user post or blogs uploded by user
+    const [activeModal, setActiveModal] = useState(null);
+    const [activeSection , setActiveSection] = useState("Posts");
+    const [selectedPostId, setSelectedPostId] = useState(null);
+
+    // to fetch user uploded posts
+    const [userposts , setUserPosts]= useState([]);
+    
+    // to cheak profile page is of same login user or other users
+    const [isOwnProfile, setIsOwnProfile] = useState(false);
+    const [followBtn , SetFollowbtn]  = useState(false);
     const {userId : paramId } =  useParams();
     const [profiledata , setProfileData] = useState({});
-    const navigate =  useNavigate();
+
+    // TO handle Followers
+    const [isFollowing , setIsFollowing] = useState(false);
+    const [followersCount , setfollowersCount] = useState(0);
+    const [followingCount , setfollowingCount] = useState(0);
 
     // redux
     const {userId} = useSelector((state)=>state.auth);
     const currMode = useSelector((state)=>state.theme.mode);
     
-    
+    // to fetch user data and post data
     useEffect(() => {
         const fetchData = async () => {
             try {
                 setLoading(true);
-                if(paramId !== userId){
-                    const res = await UserService.getProfile(paramId);
-                    setProfileData(res.data);
-                    setIsOtherProfile(false);
+                const res = await UserService.getProfile(paramId);
+                setProfileData(res.data);
+                if(paramId === userId){
+                    setIsOwnProfile(true);
                 }else{
-                    const res = await UserService.getProfile(userId);
-                    setProfileData(res.data);
-                    setIsOtherProfile(true);
+                    setIsOwnProfile(false);
                 }
                 const posts = await PostService.getUserPost(paramId);
                 setUserPosts(posts);
@@ -60,6 +70,7 @@ function ProfilePg() {
         fetchData();
     }, [userId,paramId]);
         
+    //  to cheak the width of screen so layout can be changes 
     useEffect(()=>{
         const handleResize = () =>{
             if(window.innerWidth<=500){
@@ -76,13 +87,61 @@ function ProfilePg() {
         };
     },[])
 
+    useEffect(()=>{
+        if(!paramId || !userId) return;
+        fetchFollowData();
+    },[paramId , userId])
+
+
+    // handle follow data fetching
+    const fetchFollowData = async ()=>{
+        try{
+            const followers = await FollowService.getFollowerCount(paramId);
+            setfollowersCount(followers);
+            
+            const following = await FollowService.getFollowingCount(paramId);
+            setfollowingCount(following);
+
+            const isFollow = await FollowService.checkFollow(paramId, userId);
+            setIsFollowing(isFollow);
+
+        }catch(err){
+            console.error("Error fetching follow data:", err);
+        }
+    }
+
+    // handleToggleFollow 
+    const handleToggleFollow = async () => {
+        const newState = !isFollowing;
+        
+        try {
+            setIsFollowing(newState);
+            setfollowersCount(prev => newState ? prev + 1 : prev - 1);
+            
+            await FollowService.toggleFollow(paramId, userId);
+        } catch (err) {
+            console.error("Error toggling follow:", err);
+            
+            // rollback UI
+            setIsFollowing(!newState);
+            setfollowersCount(prev => newState ? prev - 1 : prev + 1);
+        }
+    };
+
+
+
+    // loading...
     if(Loading){
         return <ProfileSkeleton/>;
     }
+
   return (
   <>
   <div className="profile-body">
-    {isotherprofile ?(
+
+    {/* to change the header according to user */}
+    {isOwnProfile ?
+    (
         <div className="profilNav">
         <UniversalNav 
         navOpen={navOpen}
@@ -99,8 +158,8 @@ function ProfilePg() {
       </div>
     )}
     
-
-    <div className={`Profile-Container ${isotherprofile === true ? "NavOn" : ""}`} >
+    
+    <div className={`Profile-Container ${isOwnProfile === true ? "NavOn" : ""}`} >
         <div className="Profile-Img-Container">
             <div className='Profil-Pic'>
             <img src={ profiledata.profilePicture
@@ -115,16 +174,22 @@ function ProfilePg() {
             </div>
             <div className="Profile-Content">
                 <div className='first-last-name'><h1>{profiledata?.firstName}</h1><h1>{profiledata?.lastName}</h1>
+                
+                {isOwnProfile && 
                 <span className='edit-btn' onClick={() => setActiveModal("setting")}><MdOutlineEditNote/></span>
+                }
+                
                 </div>
                 <div className='userName'>
                 <h3>@{profiledata?.username || "Loading..."}</h3>
                 {!followBtn && (
                     <div className='Activity_button'>
-                        {isotherprofile ?(
+                        {isOwnProfile ?(
                             <button onClick={() => setActiveModal("addpost")}> Add Poat </button>
                         ):(
-                            <button> Follow </button>
+                            <button onClick={handleToggleFollow}> 
+                                {isFollowing ? "Unfollow" : "Follow"}    
+                            </button>
                         )}
                     </div>
                 )}</div>
@@ -135,11 +200,11 @@ function ProfilePg() {
                         <span>Post</span>
                     </span>
                     <span className='Achivement-count'>
-                        <span>0</span> 
+                        <span>{followersCount}</span>
                         <span>Followers</span>
                     </span>
                     <span className='Achivement-count'>
-                        <span>0</span> 
+                        <span>{followingCount}</span>
                         <span>Following</span>
                     </span>
                 </p> 
@@ -148,14 +213,28 @@ function ProfilePg() {
         </div>
 
         <pre className='Disc'>{profiledata.bio || ""}</pre>
+        
         {followBtn && (
             <div className='Activity_button'>
-                <button onClick={() => setActiveModal("addpost")}>
+                {isOwnProfile ? (
+                    <button onClick={() => setActiveModal("addpost")}>
                       Add Poat
-                </button>
-                <button onClick={() => setActiveModal("setting")}>
+                    </button>
+                ):(
+                    <button onClick={handleToggleFollow}>
+                      {isFollowing ? "Unfollow" : "Follow"}    
+                    </button>
+                )}
+                {isOwnProfile ? (
+                    <button className='settings' onClick={() => setActiveModal("setting")}>
                       Edit
-                </button>
+                    </button>
+                ):(
+                    <button className='message'>
+                      Message
+                    </button>
+                )}
+            
         </div>
         )}
         
@@ -170,9 +249,9 @@ function ProfilePg() {
  
 
 
-    
+    {/* so see post of blogs */}
     {activeSection === "Posts" && 
-    <div className="post_container">
+      <div className="post_container">
          <div className="post-list">
           {userposts.map((post) => (
             <PostCard
@@ -182,16 +261,16 @@ function ProfilePg() {
           )) || 
           <h2> Upload Post</h2>}
         </div>
-    </div>}
+      </div>}
 
     {activeSection  === "Blogs" &&
-    <div>
+      <div>
         <h1>Upload Blog</h1>
-    </div>}
+      </div>}
+    </div>
 
-       </div>
 
-
+    {/* setting model */}
     {activeModal === "setting" && (
         <Settings 
         cheakdiscard={cheakdiscard} 
@@ -201,7 +280,7 @@ function ProfilePg() {
         />
     )}
 
-    
+    {/* open selected post from user profile */}
     {selectedPostId  && <SelectedUserPost
     postId={selectedPostId} 
     posts={userposts}
@@ -209,6 +288,7 @@ function ProfilePg() {
     closeModal={() => setSelectedPostId(null)} />
     }
 
+    {/* upload post */}
     {activeModal === "addpost" && ( 
         <UploadPost 
         setCheakDiscard={setCheakDiscard} 

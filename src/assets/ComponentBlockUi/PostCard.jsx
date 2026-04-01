@@ -1,15 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../ComponentBlockCss/postCard.css'
 import { useSelector } from 'react-redux';
 
 function PostCard({post , onClick }) {
     const [wordLimit , setWordLimit] = useState();
+    const [isDescription , setIsDescription] = useState();
+
+    // redux
     const currMode = useSelector((state)=> state.theme.mode);
 
-    function truncateText(text="", wordLimit=5) {
+    useEffect(()=>{
+      const handleResize = () =>{
+            if(window.innerWidth<=500){
+                setIsDescription(true);
+                setWordLimit(0)
+            }else{
+                setIsDescription(false);
+                setWordLimit(5);
+            }}
+      handleResize();
+      window.addEventListener("resize", handleResize);
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+    },[])
+
+    function truncateText(text="", wordLimit) {
         const words = text.split(' ');
         if (words.length <= wordLimit) return text;
-        return words.slice(0, wordLimit).join(' ') + ' ...';
+        return words.slice(0, wordLimit).join(' ');
     }
   return (
     <div className='postCard' onClick={onClick}>

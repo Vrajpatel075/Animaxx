@@ -3,16 +3,22 @@ import { FaRegHeart } from 'react-icons/fa6';
 import { IoMdHeart } from 'react-icons/io';
 import LikesService from '../../Service/LikesService';
 import "../ComponentBlockCss/HandleLikes.css"
+import { useSelector } from 'react-redux';
+import SignInCheak from '../ModelBody/SignInCheak';
 
 function HandleLikes({post}) {
         const [likes , setLikes] = useState(post.likes);
         const [liked, setLiked] = useState(false);
-        const userId = localStorage.getItem("userId");
+        const [showSignInModal, setShowSignInModal] = useState(false);
+        
+        // redux
+        const {userId , isLoggedIn } = useSelector((state)=>state.auth);
 
     useEffect(()=>{
         setLikes(post.likes);
         const fetchUserLikedPosts = async () => {
             try{
+              if (!userId) return;
                     const likedPosts = await LikesService.getLikedPosts(userId);
                      let isLiked = false;
                       for (let i = 0; i < likedPosts.length; i++){
@@ -24,13 +30,17 @@ function HandleLikes({post}) {
                     setLiked(isLiked);
                     
                   }catch(err){
-                    console.log(err)
+                      console.log("Skipping liked posts fetch:", err.message);
                   }
                 }
                 fetchUserLikedPosts();
-            },[userId , post.postId])
+            },[userId , post.postId, post.likes])
 
     const handleLikeToggle = async ()=>{
+          if (!isLoggedIn || !userId) {
+            setShowSignInModal(true);
+            return;
+            }
       try{
         const res = await LikesService.toggleLike(userId, post.postId)
         setLiked(res.liked);
@@ -47,6 +57,7 @@ function HandleLikes({post}) {
             {liked ? <IoMdHeart className='RedHeart'/>  :<FaRegHeart/> }
             <span className='ActiveCount'>{likes}</span>
         </span> 
+         {showSignInModal && <SignInCheak />}
     </div>
   )
 }

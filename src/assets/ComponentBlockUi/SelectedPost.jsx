@@ -71,7 +71,8 @@ function SelectedPost({post ,setIsDescriptionOpen ,  isDescriptionOpen}) {
                     <span className='mainicons'>
                       <HandleLikes post={post}/>
                       <span className='icons'><FaRegComment
-                      onClick={() => setIsCommentsOpen(prev => !prev)}/>  <span  className='ActiveCount'>{commentcount}</span> </span>
+                      onClick={() => setIsCommentsOpen(prev => !prev)}/>  
+                      <span  className='ActiveCount'>{commentcount}</span> </span>
                       <span className='icons'><MdBookmarkBorder /></span>
                       <span className='icons'><FaShare/></span>
                     </span>

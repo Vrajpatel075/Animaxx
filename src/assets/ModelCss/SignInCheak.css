@@ -18,6 +18,7 @@
     padding: 0.5rem;
     border-radius: 12px;
     font-weight: 700;
+    border: none;
     background-color: var(--seco-3);
     transition: 0.3s;
     /* color: var(--prim); */

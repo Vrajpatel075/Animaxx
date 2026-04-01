@@ -143,8 +143,9 @@ function UploadPost({setCheakDiscard, cheakdiscard ,setUserPosts,setActiveModal 
         {/* ExitWarring modal */}
         {cheakdiscard && (
           <ExitWarring
-            setCheakDiscard={setCheakDiscard}
-            setActiveModal={setActiveModal} 
+          WarringModel={"exitWarring"}
+          onCancel={()=> setCheakDiscard(false)} 
+          setActiveModal={setActiveModal} 
           />
         )}
       </div>

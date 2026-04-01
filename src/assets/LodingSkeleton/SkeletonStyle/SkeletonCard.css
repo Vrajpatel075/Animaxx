@@ -1,3 +1,82 @@
+.skeleton-post {
+  width: 100%;
+  max-width: 500px;
+  margin: 10px auto;
+  padding: 12px;
+  border-bottom: 1px solid var(--d-grey);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.skeleton-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.skeleton-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--li-grey);
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-username {
+  width: 120px;
+  height: 12px;
+  border-radius: 6px;
+  background: var(--li-grey);
+  position: relative;
+  overflow: hidden;
+}
+.skeleton-image {
+  width: 100%;
+  height: 320px;
+  border-radius: 8px;
+  background: var(--li-grey);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Actions */
+.skeleton-actions {
+  display: flex;
+  gap: 16px;
+  padding: 4px 0;
+}
+.skeleton-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: var(--li-grey);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Caption */
+.skeleton-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeleton-line {
+  height: 10px;
+  border-radius: 6px;
+  background: var(--li-grey);
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-line.short {
+  width: 40%;
+}
+
+.skeleton-line.long {
+  width: 80%;
+}
+
 .skeleton-card {
   display: flex;
   flex-direction: column;
@@ -11,16 +90,6 @@
   position: relative;
   overflow: hidden;
   margin: 0.2rem;
-}
-
-.skeleton-img.light,
-.skeleton-text.light {
-  background: var(--li-grey);
-}
-
-.skeleton-img.dark,
-.skeleton-text.dark {
-  background:var(--night);
 }
 
 /* Image */
@@ -44,8 +113,7 @@
 }
 
 /* 🔥 Glass Shine Effect */
-.skeleton-img::before,
-.skeleton-text::before {
+.shimmer::before {
   content: "";
   position: absolute;
   top: 0;
@@ -71,4 +139,25 @@
   100% {
     left: 150%;
   }
+}
+
+/* =========== Theme =============== */
+.skeleton-card.light .skeleton-img,
+.skeleton-card.light .skeleton-text,
+.skeleton-post.light .skeleton-avatar,
+.skeleton-post.light .skeleton-username,
+.skeleton-post.light .skeleton-image,
+.skeleton-post.light .skeleton-icon,
+.skeleton-post.light .skeleton-line {
+  background: var(--li-grey);
+}
+
+.skeleton-card.dark .skeleton-img,
+.skeleton-card.dark .skeleton-text,
+.skeleton-post.dark .skeleton-avatar,
+.skeleton-post.dark .skeleton-username,
+.skeleton-post.dark .skeleton-image,
+.skeleton-post.dark .skeleton-icon,
+.skeleton-post.dark .skeleton-line {
+  background:var(--night);
 }

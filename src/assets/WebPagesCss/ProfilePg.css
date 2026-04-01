@@ -23,16 +23,12 @@
     justify-content: start;
     align-items: start;
     gap: 4rem;
-    /* background-color: purple; */
     
     padding: 1rem;
-    /* margin: 0 2rem; */
-    /* padding-bottom: 2rem; */
     position: relative;
 }
 
 .Profile-Container .Profile-Img-Container .Profil-Pic img{
-    /* background-color: yellow; */
     border-radius: 50%;
     height:200px;
     width: 200px;
@@ -137,7 +133,6 @@
     .Profile-Container .Profile-Img-Container{
         gap: 2rem;
         padding: 0;
-        margin: 0 1rem;
     }
     .Profile-Container .Profile-Img-Container .Profil-Pic img{
         height:150px;
@@ -145,9 +140,6 @@
     }
     .Profile-Container .Profile-Img-Container .Profile-Content .first-last-name{
         font-size:0.7rem ;
-    }
-    .Profile-Container .Profile-Img-Container .Profile-Content .Disc{
-        font-size:0.5rem;
     }
     .Profile-Container .Profile-Img-Container .Profile-Content .Profile-Achivement{
         padding-top: 0.5rem;
@@ -165,13 +157,30 @@
         width: 100px;
     }
 }
+@media screen  and (max-width:750px) {
+    .Profile-Container .Profile-Img-Container .Profil-Pic img{
+        height:100px;
+        width: 100px;
+    }
+}
 @media screen and (max-width:500px) {
+    .BackHeader{
+        margin: 0.5rem 0;
+        font-size: 0.5rem;
+    }
+    .backButton{
+        padding: 0;
+    }
     .Profile-Container .Profile-Img-Container .Profile-Content .edit-btn{
         font-size: 1rem;
     }
+    .Profile-Container .Profile-Img-Container{
+        gap: 0.5rem;
+    }
     .Profile-Container .Profile-Img-Container .Profil-Pic img{
-        height:80px;
-        width: 80px;
+        height:65px;
+        width: 65px;
+        margin: 0  0.3rem;
     }
     .Profile-Container .Profile-Img-Container .Profile-Content .Profile-Achivement{
         margin-top: 0;
@@ -193,8 +202,10 @@
         align-items: center;
         justify-content: space-around;
         margin-top: 0.5rem;
+        gap: 1rem;
     }
-    .Profile-Container .Activity_button button:nth-last-child(1){
+    .Profile-Container .Activity_button .settings,
+    .Profile-Container .Activity_button .message{
         background-color: var(--d-grey);
     }
     .Profile-Container .Activity_button button{
@@ -223,7 +234,7 @@
 }
 
 
-@media screen and (max-width:350px) {
+@media screen and (max-width:400px) {
     .Profile-Container .Activity_button{
         display: flex;
         align-items: center;
@@ -233,6 +244,25 @@
     .Profile-Container .Profile-Img-Container{
         gap: 1rem;
     }
+    .Profile-Container .Profile-Img-Container .Profil-Pic img{
+        height:50px;
+        width: 50px;
+    }
+    .Profile-Container .Profile-Img-Container .Profile-Content .first-last-name{
+        font-size:0.3rem ;
+    }
+    .Profile-Container .Disc{
+        font-size:0.4rem;
+        width: 50%;
+        margin: 0.5rem 0;
+    }
+    .Profile-Container .Profile-Img-Container .Profile-Content .userName h3{
+        font-size: 0.4rem;
+    }
+    .Profile-Container .Profile-Img-Container .Profile-Content .Profile-Achivement .Achivement-count{
+        font-size: 0.4rem;
+    }
+    
 }
 
 

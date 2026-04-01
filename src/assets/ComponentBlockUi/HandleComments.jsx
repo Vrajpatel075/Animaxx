@@ -7,13 +7,16 @@ import { AiOutlineSend } from 'react-icons/ai';
 import { BiHeart } from 'react-icons/bi';
 import { MdReportGmailerrorred } from 'react-icons/md';
 import { useSelector } from 'react-redux';
+import SignInCheak from '../ModelBody/SignInCheak';
 
 function Comments({postId,setIsCommentsOpen}) {
      const [viewComments , setviewComments] = useState(true);
      const [comment , setComment] =  useState("");
      const [allcomments , setAllComments] =  useState([]);
+     const [showSignInModal, setShowSignInModal] = useState(false);
 
      const currMode = useSelector((state)=> state.theme.mode);
+     const {userId , isLoggedIn} = useSelector((state)=>state.auth);
 
 
      function timeago(dataString){
@@ -37,10 +40,12 @@ function Comments({postId,setIsCommentsOpen}) {
         }
      },[postId])
 
-
      const handleSubmit = async (e)=>{
-        e.preventDefault();
-        const userId = localStorage.getItem("userId");
+        e.preventDefault(); 
+        if(!userId)  {
+            setShowSignInModal(true);
+            return
+        };
         try{
             const res = await CommentsService.AddComment({
                 text : comment,
@@ -74,7 +79,8 @@ function Comments({postId,setIsCommentsOpen}) {
                 placeholder='Comment' 
                 value={comment}
                 className={`${currMode === "light" ? "light" : "dark"}`} 
-                onChange={(e)=> setComment(e.target.value)}/>
+                onChange={(e)=> setComment(e.target.value)}
+                />
                 <button type="submit" className={`CommentPostBtn ${currMode === "light" ? "light" :"night"}`}>
                    <AiOutlineSend/>            
                 </button>
@@ -103,6 +109,8 @@ function Comments({postId,setIsCommentsOpen}) {
                         ))}
                     </div>
             )}
+
+            {showSignInModal && <SignInCheak/>}
                 
         </div>
     </div>

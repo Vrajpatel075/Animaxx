@@ -3,9 +3,9 @@ import '../ComponentBlockCss/UniversalNav.css';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { TbLogout2 } from "react-icons/tb";
 import { useSelector, useDispatch } from 'react-redux';
-import LogoutModel from '../ModelBody/LogoutModel';
 import SignInCheak from '../ModelBody/SignInCheak';
 import { fetchuserdata, logoutUser } from '../Redux/authSlice';
+import ExitWarring from '../ModelBody/ExitWarring';
 
 function UniversalNav({ navOpen, setNavOpen, showSearch }) {
   const navigate = useNavigate();
@@ -26,16 +26,6 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
     { label: 'COMMUNITY', paths: ['/CommunityPg'] },
   ];
 
-  const handleLogout = () => {
-    dispatch(logoutUser()).then((res) => {
-      if (res.meta.requestStatus === 'fulfilled') {
-        alert("Logout successfully");
-        navigate("/");
-      } else {
-        alert("Logout failed!");
-      }
-    });
-  };
 
   const handleProfileClick = () => {
     if (isLoggedIn) {
@@ -112,9 +102,9 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
       </div>
 
       {showLogoutModal && (
-        <LogoutModel
-          onConfirm={handleLogout}
-          onCancel={() => setShowLogoutModal(false)}
+        <ExitWarring
+        WarringModel={"logoutWarring"}
+        onCancel={() => setShowLogoutModal(false)}
         />
       )}
 

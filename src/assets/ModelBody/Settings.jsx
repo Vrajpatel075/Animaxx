@@ -402,8 +402,8 @@ function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
 
     { cheakdiscard &&(
         <ExitWarring
-        currMode={currMode} 
-        setCheakDiscard={setCheakDiscard} 
+        WarringModel={"exitWarring"}
+        onCancel={()=> setCheakDiscard(false)} 
         setActiveModal={setActiveModal} 
         />
     )}

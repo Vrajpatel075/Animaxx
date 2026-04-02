@@ -17,6 +17,36 @@
   left: 0;
 }
 
+/* dropdown for profile */
+.dropdown-menu.dark{
+  background-color: var(--night);
+}
+.dropdown-menu.light{
+  background-color: var(--pure-white);
+}
+.dropdown{
+  position: relative;
+}
+
+.dropdown-menu{
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  padding: 0.5rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.dropdown > .link:focus + .dropdown-menu{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
 /* ============Sidebar nav links=========== */
 .wallpaper-side-nav nav {
   display: flex;
@@ -184,11 +214,10 @@
 .wallpaper-nav .Animaxx-logo,
 .mob-nav-header .Animaxx-Logo{
   height: 45px;
-  width: 45px;
-  border-radius: 50%;
+  border-radius: 6px;
+  padding: 0.1rem 0.3rem;
   cursor: pointer;
 }
-
 .wallpaper-nav .Animaxx-logo img{
   height: 100%;
   width: 100%;

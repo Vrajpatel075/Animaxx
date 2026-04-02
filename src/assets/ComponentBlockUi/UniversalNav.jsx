@@ -134,7 +134,9 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
           </div>
         )}
 
-        <div className="Animaxx-logo">
+        <div className={`dropdown`}>
+
+          <div className="Animaxx-logo link" tabIndex={0}>
           <img
             src={
               profile?.profilePicture
@@ -146,11 +148,17 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
                 : "/animax img source/animaxx_default_user_profile_picture.png"
             }
             alt="logo"
-            onClick={handleProfileClick}
+            // onClick={handleProfileClick}
           />
+       
           {showSignInModal && (
             <SignInCheak onClose={() => setShowSignInModal(false)} />
           )}
+          </div>
+          <div className={`dropdown-menu ${currMode === "light" ? "light" : "dark"}`}>
+            dropdown content
+          </div>
+
         </div>
       </div>
     </>

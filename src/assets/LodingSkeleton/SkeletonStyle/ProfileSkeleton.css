@@ -9,12 +9,6 @@
   border-radius: 8px;
   overflow: hidden;
 }
-.skeleton.dark{
-    background: var(--night);
-}
-.skeleton.light{
-    background: var(--li-grey);
-}
 
 .post:nth-child(odd)::before {
   animation-delay: 0.2s;
@@ -115,4 +109,37 @@
 .post {
   width: 100%;
   height: 200px;
+}
+
+/* =============== theme ============== */
+.skeleton.dark{
+    background: var(--night);
+}
+.skeleton.light{
+    background: var(--li-grey);
+}
+
+@media screen and (max-width:700px) {
+  .avatar{
+    width: 100px;
+    height: 100px;
+  }
+  .profile-skeleton{
+    margin: 80px 0.5rem 0 0.5rem;
+  }
+  .profile-header{
+    gap: 0.5rem;
+  }
+  .name {
+    width: 150px;
+    height: 12px;
+  }
+  .username {
+    width: 100px;
+    height: 8px;
+  }
+  .stat {
+    width: 30px;
+    height: 10px;
+  }
 }

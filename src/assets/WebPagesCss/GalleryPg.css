@@ -72,21 +72,24 @@
 }
 
 @media (max-width:700px) {
-.wallpaper-container .post-list{
-  columns: 150px;
-}
+.wallpaper-container .post-list,
 .post_container .post-list{
-  columns: 150px;
+  columns: 140px;
+}
+}
+@media (max-width:500px) {
+.wallpaper-container .post-list,
+.post_container .post-list{
+  columns: 120px;
 }
 }
 @media (max-width:400px) {
-  .wallpaper-container .post-list{
-    columns: 120px;
-  }
-  .post_container .post-list{
+  .post_container .post-list,
+   .wallpaper-container .post-list{
     columns: 100px;
-    margin: 0.5rem;
+    margin: 0rem;
   }
+  
   .wallpaper-container .post-list img,
   .post_container .post-list img{
     border-radius: 4px;

@@ -1,6 +1,6 @@
 .profile-body{
     /* background-color: blue; */
-    margin: 0 4rem;
+    padding: 0 4rem;
 }
 .NavOn{
      margin-top: 80px;
@@ -30,8 +30,8 @@
 
 .Profile-Container .Profile-Img-Container .Profil-Pic img{
     border-radius: 50%;
-    height:200px;
-    width: 200px;
+    height:180px;
+    width: 180px;
     object-fit: cover;
 }
 .Profile-Container .Profile-Img-Container .Profile-Content .first-last-name{
@@ -128,7 +128,7 @@
 /* responsive */
 @media screen and (max-width:856px) {
     .profile-body{
-        margin: 0 1rem;        
+        padding: 0 1rem;        
     }
     .Profile-Container .Profile-Img-Container{
         gap: 2rem;
@@ -238,7 +238,7 @@
     .Profile-Container .Activity_button{
         display: flex;
         align-items: center;
-        justify-content: start;
+        justify-content: space-around;
         margin-bottom: 1rem;
     }
     .Profile-Container .Profile-Img-Container{

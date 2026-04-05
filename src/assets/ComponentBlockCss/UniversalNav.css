@@ -46,6 +46,7 @@
 }
 .dropdown-menu .profile-content h2{
   white-space: nowrap;
+  font-size: 1rem;
 }
 .dropdown-menu .profile-content p{
   opacity: 0.5;

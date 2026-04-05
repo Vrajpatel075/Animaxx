@@ -3,6 +3,7 @@ import "../ModelCss/ExitWarring.css"
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logoutUser } from '../Redux/authSlice';
+import toast from 'react-hot-toast';
     
     function ExitWarring({ setActiveModal ,WarringModel,onCancel }) {
       const currMode = useSelector((state)=>state.theme.mode);
@@ -13,10 +14,13 @@ import { logoutUser } from '../Redux/authSlice';
         const handleLogout = () => {
           dispatch(logoutUser()).then((res) => {
             if (res.meta.requestStatus === 'fulfilled') {
-              alert("Logout successfully");
+              toast.success("Logout successfully" ,{ style:{
+                background:"#ff9239",
+                font:"1rem"
+              }});
               navigate("/");
             } else {
-              alert("Logout failed!");
+              toast.error("Logout failed!");
             }
           });
         };

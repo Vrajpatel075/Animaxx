@@ -3,7 +3,9 @@ import "../ModelCss/UploadPost.css";
 import ExitWarring from '../ModelBody/ExitWarring.jsx';
 import PostService from '../../Service/PostService.js';
 import { useSelector } from 'react-redux';
-import imageCompression from 'browser-image-compression';
+import imageCompression from 'browser-image-compression'; 
+import toast from 'react-hot-toast';
+import { FaFileCircleCheck, FaFileCircleExclamation } from 'react-icons/fa6';
 
 function UploadPost({setCheakDiscard, cheakdiscard ,setUserPosts,setActiveModal }) {
   const postinputref = useRef(null);
@@ -14,7 +16,10 @@ function UploadPost({setCheakDiscard, cheakdiscard ,setUserPosts,setActiveModal 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [formerror, SetFormError] = useState({});
+
+  // redux
   const currMode = useSelector((state)=> state.theme.mode);
+  const {userId} = useSelector((state)=>state.auth);
 
   useEffect(() => {
     return () => {
@@ -34,6 +39,12 @@ function UploadPost({setCheakDiscard, cheakdiscard ,setUserPosts,setActiveModal 
     if (!title.trim()) newformErrors.title = "Enter Title For Post";
     if (tags.length === 0) newformErrors.tags = "Enter at least 1 Tag";
     SetFormError(newformErrors);
+    if(Object.keys(newformErrors).length !== 0) {
+      toast.error("Please FIll the required details" , {  style:{
+        background:"#ff9239",
+        font:"1rem"
+      }})
+    }
 
     if (Object.keys(newformErrors).length === 0) {
       try {
@@ -44,16 +55,17 @@ function UploadPost({setCheakDiscard, cheakdiscard ,setUserPosts,setActiveModal 
 
         formdata.append("originalImg", originalFile);
         formdata.append("compressedImg", post);
-
-        const currentUserId = localStorage.getItem("userId");
-        formdata.append("userId", currentUserId);
+        formdata.append("userId", userId);
 
         const response = await PostService.createPost(formdata);
         setUserPosts(prev => [...prev, response.data]);
         setActiveModal(null);
-        alert("Post uploaded successfully!");
+        toast("Post uploaded successfully!" , {icon:<FaFileCircleCheck/> , style: {
+          background: "#ff9239",
+          font:"1rem"
+        }});
       } catch (error) {
-         alert("Error uploading post: " + error.message);
+         toast.error("Error uploading post: " + error.message);
       }
     }
   };

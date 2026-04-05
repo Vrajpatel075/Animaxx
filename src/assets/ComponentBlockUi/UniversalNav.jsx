@@ -202,7 +202,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
 
           {/* Profile */}
           <p 
-          className='dropdownlink'
+          className='dropdownlink mouseCursor'
           onClick={()=> navigate(`/ProfilePg/${userId}`)}>
             <span><FaUser/></span> 
             <span>Profile</span>
@@ -210,7 +210,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
 
           {/* settings */}
           <p 
-          className='dropdownlink'>
+          className='dropdownlink mouseCursor'>
             <span><IoMdSettings/></span>
             <span>Settings</span>
           </p>
@@ -219,8 +219,8 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
 
           {/* Logout */}
           <p
-          onClick={() => setShowLogoutModal(true)}
-          className='dropdownlink'>
+          className='dropdownlink mouseCursor'
+          onClick={() => setShowLogoutModal(true)}>
             <span><TbLogout2/></span>
             <span>Logout</span>
           </p>

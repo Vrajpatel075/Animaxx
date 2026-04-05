@@ -9,7 +9,10 @@ import { useEffect, useState } from 'react';
 import ViewedPost from './assets/WebPages/ViewedPost';
 import ProfilePg from './assets/WebPages/ProfilePg';
 import SignUpUserinfo from './assets/WebPages/SignUpUserinfo';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import toast from 'react-hot-toast';
+import { BsSunFill } from 'react-icons/bs';
+import { IoMoon } from 'react-icons/io5';
 
 
 function App() {
@@ -17,8 +20,9 @@ function App() {
   // used for pagination
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(50);
-
+  
   const currMode = useSelector((state) => state.theme.mode);
+  const [prevMode , setPrevMode] = useState(currMode);
 
   //cheak if user is login or not for authorization
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("userId"));
@@ -29,8 +33,17 @@ function App() {
   }, []);
 
     useEffect(() => {
+
       document.body.classList.remove("light", "dark");
       document.body.classList.add(currMode);
+      if(prevMode !== currMode){
+        if(currMode ===  "light"){
+          toast("Switched to Light theme" , {icon: <BsSunFill/>} );
+        }else{
+          toast("Switched to Dark theme" , {icon: <IoMoon/> , style:{background:"black", color:"white"}} );
+        }
+        setPrevMode(currMode)
+      }
     }, [currMode]);
 
 

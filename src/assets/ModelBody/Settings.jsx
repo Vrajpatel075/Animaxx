@@ -7,6 +7,7 @@ import ExitWarring from '../ModelBody/ExitWarring';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMode } from '../Redux/Feature/Theme/themeSlice';
 import { fetchuserdata } from '../Redux/authSlice';
+import toast from 'react-hot-toast';
 
 function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
     const [activetab , setActivetab]=useState("Account");
@@ -44,9 +45,10 @@ function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
           const res = await  UserService.uploadProfilePicture(editFormData.userId , file);
           SetUserDetails(res.data);
           setEditformData(res.data);
-          alert("Profile picture updated successfully!");
+          toast.success("Profile picture updated successfully!");
         }catch(error){
-            alert("Failed to upload profile picture: " + error);
+            console.log(error);
+            toast.error("Failed to upload profile picture: ");
         }
 
       
@@ -82,10 +84,10 @@ function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
             const res = await UserService.edit(editFormData.userId , editFormData);
             SetUserDetails(res.data);
             setIsEditable(false); 
-            alert("Profile updated successfully!");
+            toast.success("Profile updated successfully!");
         }catch(error){
              console.error(error.response?.data);
-            alert("Failed to update profile: " + error);
+            toast.error("Failed to update profile: " + error);
         }
     };
 
@@ -98,9 +100,9 @@ function Settings({ setCheakDiscard ,cheakdiscard ,setActiveModal}) {
     const handleVerifyOtp = () =>{
         if(otp  === generatedOtp){
             setIsOtpVerified(true)
-            alert("OTP verified successfully! You can now change your password.");
+            toast.success("OTP verified successfully! You can now change your password.");
         }else{
-            alert("Invalid OTP. Please try again.");
+            toast.error("Invalid OTP. Please try again.");
         }
     }
 

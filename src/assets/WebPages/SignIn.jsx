@@ -4,6 +4,8 @@ import '../WebPagesCss/SignIn.css';
 import UserService from '../../Service/UserService';
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../Redux/authSlice';
+import toast from 'react-hot-toast';
+import { MdFileDownloadDone } from 'react-icons/md';
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -31,11 +33,18 @@ function SignIn() {
           email: loggedInUser.email
         }));
 
-        alert("Login successful for user: " + loggedInUser.username);
+        toast.success("Logged in successfully" , {style:{
+          background:"#ff9239",
+          font:"1rem"
+        }});
         navigate(`/ProfilePg/${loggedInUser.userId}`);
       }
     } catch (error) {
-      alert("Login failed: " + error);
+      console.log(error);
+      toast.error("Incorrect password. Please try again." ,{style:{
+          background:"#ff9239",
+          font:"1rem"
+        }});
     }
   };
 

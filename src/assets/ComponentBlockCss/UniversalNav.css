@@ -1,4 +1,4 @@
-/* dropdown for profile */
+/* ====================dropdown for profile */
 .dropdown-menu.dark{
   background-color: var(--night);
 }
@@ -69,10 +69,10 @@
 } 
 .dropdown-menu.dark .dropdownlink:hover{
   background-color: rgba(128, 128, 128, 0.097);
-}
+} 
 
 
-/* ============Sidebar nav links=========== */
+/* =======================Sidebar nav links */
 .routeLinks{
   display: flex;
   flex-wrap: wrap;
@@ -82,9 +82,9 @@
   transition: 0.5s;
   border-radius: 6px;
   background-color: var(--seco-2);
-}
+} 
 
-/* ===== Wallpaper Page Left Sidebar Nav ===== */
+/* ========== gallery Page Left Sidebar Nav */
 .side-nav {
   position: fixed;
   top: 0;
@@ -107,15 +107,49 @@
   flex-direction: column;
   gap: 1rem;
 }
-
+.sideNavLinks{
+  height: 90%;
+}
+.side-nav-header{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
 .side-nav a {
   padding: 0.75rem 1rem;
   font-size: 1rem;
   text-align: left;
   width: 100%;
 }
+.logoutButton{
+  width: 100%;
+}
+.logoutLink{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px;
+  background-color: #cecac985;
+  border: 1px solid var(--black);
+  padding: 0.2rem 1rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+.LogoutIcon{
+  padding: 0rem 0.5rem;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--black);
+}
+.logoutLink a{
+  padding: 0.5rem; 
+  color: var(--black);
+} 
 
-/* ===============Close and open button =============*/
+/* ================== Close and open button */
 .toggle-close-nav-btn {
   align-self: flex-end;
   background-color: var(--seco-1);
@@ -135,85 +169,36 @@
 .toggle-close-nav-btn:hover{
   background-color: var(--seco-2);
   transition: 0.5s;
-}
-.side-nav-header{
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
+} 
 
-/*-================ main horizontal navication bar============ */
+/* ========= main horizontal navication bar */
 .SearchAndNavPannel{
   width: 100%;
   height: 80px;
   display: flex;
-  justify-content: space-evenly ;
+  justify-content: space-between ;
   align-items: center;
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   z-index: 11;
-  padding: 0px 2rem ;
-}
-.profilNav .SearchAndNavPannel{
-  justify-content: space-between;
-  padding: 0 4rem ;
-}
-@media screen and (max-width:856px) {
-  .profilNav .SearchAndNavPannel{
-    padding: 0 2rem;
-  }
-}
-.logoutButton{
-  width: 100%;
-}
-.logoutLink{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 12px;
-  background-color: #cecac985;
-  border: 1px solid var(--black);
-  padding: 0.2rem 1rem;
-  width: 100%;
-  /* gap: 0.5rem; */
-  margin-top: 0.5rem;
-  /* background-color: yellow; */
-}
-.LogoutIcon{
-  /* background-color: red; */
-  padding: 0rem 0.5rem;
-  font-size: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--black);
-}
-.logoutLink a{
-  padding: 0.5rem; 
-  color: var(--black);
-  /* background-color: red; */
-}
-.VirticalNav{
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  height: 90%;
-}
+  padding: 0px 3rem ;
+} 
 
-/* serch bar */
+/* ============================== serch bar */
 .responsive_nav_searh{
   display: flex;
-  height: 4em;
   padding: 4px;
   width: 90%;
+  height: 4em;
   justify-content: center;
+  align-items: center;
 }
 .search_input{
     padding: 16px;
     width: 88%;
+    height: 100%;
     font-size: 1rem;
     border: none;
     outline: none;
@@ -227,23 +212,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color:#0f1111 ;
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
     border: none;
     flex-shrink: 0;
-    padding: 16px;
-}
+    padding: 8px;
+} 
 
-/* profile picture  */
-.wallpaper-nav .Animaxx-logo,
-.side-nav-header .Animaxx-Logo{
+/* ====== profile picture in navigation bar */
+.SearchAndNavPannel .ProfileLogo,
+.side-nav-header .ProfileLogo{
   height: 45px;
   border-radius: 6px;
   padding: 0.1rem 0.3rem;
 }
-.wallpaper-nav .Animaxx-logo img{
+
+.SearchAndNavPannel .ProfileLogo img{
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -252,7 +238,7 @@
   background-image: linear-gradient(90deg,#833AB4 0%, #FD1D1D 50%, #FCB045 100%);
 }
 
-.side-nav-header .Animaxx-Logo img{
+.side-nav-header .ProfileLogo img{
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -262,8 +248,7 @@
 /* Small screen layout */
 @media screen and (max-width:830px) {
   .SearchAndNavPannel {
-    padding: 0px 1rem;       
-    gap: 1rem;                  
+    padding: 0px 1rem;   
   }
   .responsive_nav_searh{
     height: 3em;
@@ -274,31 +259,28 @@
   .search_icon{
     font-size: 1rem;
   }
-  .side-nav-header .Animaxx-Logo,
-  .wallpaper-nav .Animaxx-logo{
+  .SearchAndNavPannel .ProfileLogo{
     height: 35px;
   }
   .toggle-open-nav-btn{
     padding: 4px 8px;
     font-size: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 }
 @media screen and (max-width:580px) {
   .search_input{
-    width: 75%;
+    width: 70%;
   }
-  .wallpaper-nav .Animaxx-logo{
+  .responsive_nav_searh{
+    height: 1.5em;
+  }
+  .SearchAndNavPannel .ProfileLogo{
     height: 30px;
-    width: 30px;
   }
 }
 @media screen and (max-width:400px) {
-  .wallpaper-nav .Animaxx-logo{
+  .SearchAndNavPannel .ProfileLogo{
     height: 25px;
-    width: 25px;
   }
   .SearchAndNavPannel {
     padding: 0px 0.5rem;       

@@ -32,7 +32,7 @@ function ProfilePg() {
     const [userposts , setUserPosts]= useState([]);
     
     // to cheak profile page is of same login user or other users
-    const [isOwnProfile, setIsOwnProfile] = useState(false);
+    const [isOwnProfile, setIsOwnProfile] = useState(true);
     const [followBtn , SetFollowbtn]  = useState(false);
     const {userId : paramId } =  useParams();
     const [profiledata , setProfileData] = useState({});
@@ -45,7 +45,13 @@ function ProfilePg() {
     // redux
     const {userId} = useSelector((state)=>state.auth);
     const currMode = useSelector((state)=>state.theme.mode);
-    
+
+    // cheak is active user profile or other user profile
+    useEffect(() => {
+        if (!paramId || !userId) return;
+        setIsOwnProfile(String(paramId) === String(userId));
+    }, [paramId, userId]);
+
     // to fetch user data and post data
     useEffect(() => {
         const fetchData = async () => {
@@ -53,11 +59,7 @@ function ProfilePg() {
                 setLoading(true);
                 const res = await UserService.getProfile(paramId);
                 setProfileData(res.data);
-                if(paramId === userId){
-                    setIsOwnProfile(true);
-                }else{
-                    setIsOwnProfile(false);
-                }
+
                 const posts = await PostService.getUserPost(paramId);
                 setUserPosts(posts);
             
@@ -67,8 +69,8 @@ function ProfilePg() {
         } finally {
             setLoading(false);
         }};
-        fetchData();
-    }, [userId,paramId]);
+        if(paramId) fetchData();
+    }, [paramId]);
         
     //  to cheak the width of screen so layout can be changes 
     useEffect(()=>{
@@ -134,6 +136,7 @@ function ProfilePg() {
     if(Loading){
         return <ProfileSkeleton/>;
     }
+    console.log(isOwnProfile);
 
   return (
   <>

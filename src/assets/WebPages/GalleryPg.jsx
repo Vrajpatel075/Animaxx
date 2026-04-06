@@ -6,9 +6,7 @@ import Pagination from '../ComponentBlockUi/Pagination';
 import UniversalNav from '../ComponentBlockUi/UniversalNav';
 import PostService from '../../Service/PostService';
 import PostCard from '../ComponentBlockUi/PostCard';
-import { useSelector } from 'react-redux';
 import SkeletonCard from '../LodingSkeleton/SkeletonUi/SkeletonCard';
-import SignInCheak from '../ModelBody/SignInCheak';
 
 
 function GalleryPg({limit , page }) {
@@ -48,7 +46,7 @@ function GalleryPg({limit , page }) {
         showSearch={true}
       />
 
-      <div className="wallpaper-container">
+      <div className="GalleryPostContainer">
         <div className="post-list">
           {loading ? (
             Array.from({length:limit}).map((_,index)=>(

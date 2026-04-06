@@ -1,6 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-/* ============ wallpaper body===================== */
-
 /* ============ theme ==================*/
 .wallpaper-nav.light{
   background-color:var(--pure-white);
@@ -12,10 +10,10 @@
 
 
 /* ------------------------------ */
-.wallpaper-container{
+.GalleryPostContainer{
   width: 100vw;
 }
-.wallpaper-container .post-list{
+.GalleryPostContainer .post-list{
   columns: 200px;
   margin: 100px 2rem 0 2rem; 
 }
@@ -23,7 +21,7 @@
   columns: 200px;
   margin: 1rem;
 }
-.wallpaper-container .post-list img,
+.GalleryPostContainer .post-list img,
 .post_container .post-list img{
     width: 100%;  
     border-radius: 12px;
@@ -50,25 +48,25 @@
 }
 
 @media (max-width:700px) {
-.wallpaper-container .post-list,
+.GalleryPostContainer .post-list,
 .post_container .post-list{
   columns: 140px;
 }
 }
 @media (max-width:500px) {
-.wallpaper-container .post-list,
+.GalleryPostContainer .post-list,
 .post_container .post-list{
   columns: 120px;
 }
 }
 @media (max-width:400px) {
   .post_container .post-list,
-   .wallpaper-container .post-list{
+   .GalleryPostContainer .post-list{
     columns: 100px;
     margin: 0rem;
   }
   
-  .wallpaper-container .post-list img,
+  .GalleryPostContainer .post-list img,
   .post_container .post-list img{
     border-radius: 4px;
   }

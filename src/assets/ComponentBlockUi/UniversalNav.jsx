@@ -49,6 +49,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
   const handleProfileClick = () => {
     if (isLoggedIn) {
       setShowSignInModal(false)
+      setIsDropdownOpen(prev => !prev)
     } else {
       setShowSignInModal(true);
     }
@@ -74,7 +75,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
             ✖
           </button>
 
-          <div className="Animaxx-Logo mouseCursor">
+          <div className="ProfileLogo mouseCursor">
             <img
               src="/animax img source/ANIMAX_LOGO.png"
               alt="logo"
@@ -83,7 +84,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
           </div>
         </div>
 
-        <nav className="VirticalNav">
+        <nav className="sideNavLinks">
           <div className="routeLinks">
             {isLoggedIn && (
               <NavLink
@@ -130,14 +131,13 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
       )}
 
       {navOpen && (
-        <div className="wallpaper-overlay" onClick={() => setNavOpen(false)} />
+        <div onClick={() => setNavOpen(false)} />
       )}
 
-      <div
-        className={`SearchAndNavPannel wallpaper-nav ${
-          currMode === 'light' ? 'light' : 'dark'
-        }`}
-      >
+      <div>
+
+      <div className={`SearchAndNavPannel ${currMode === 'light' ? 'light' : 'dark'}`}>
+        
         <button
           className="toggle-open-nav-btn"
           onClick={() => setNavOpen(true)}
@@ -160,9 +160,9 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
         <div className="dropdown" ref={dropdownRef}>
 
           <div 
-          className="Animaxx-logo mouseCursor" 
+          className="ProfileLogo mouseCursor" 
           tabIndex={0}
-          onClick={() => setIsDropdownOpen(prev => !prev)}>
+          onClick={handleProfileClick}>
 
           <img 
           src={
@@ -174,8 +174,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
                 ? "/animax img source/animaxx_female_user_profile_picture.png"
                 : "/animax img source/animaxx_default_user_profile_picture.png"
             }
-            alt="logo"
-          onClick={handleProfileClick}/>
+            alt="logo"/>
 
           </div>
 
@@ -228,6 +227,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
 
         </div>
       
+      </div>
       </div>
 
 

@@ -1,0 +1,158 @@
+/* ===== Base ===== */
+a {
+  text-decoration: none;
+  color: var(--black);
+}
+
+.navigation {
+  position: sticky;
+  top: 0;
+  height: 80px;
+  background: rgba(156, 156, 156, 0.25);
+  backdrop-filter: blur(4px);
+  border-bottom: 2px solid var(--d-grey);
+  z-index: 1000;
+  transition: top 0.3s ease;
+}
+
+.header-sec {
+  max-width: 1140px;
+  margin: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  padding: 8px 10px;
+  margin-right: 20px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+/* ===== Mobile Top Bar ===== */
+.mobile-topbar {
+  display: none;
+}
+
+/* ===== Overlay ===== */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+}
+.nav_link{
+  transition:0.3s;
+  border-radius: 8px;
+}
+.nav_link:hover{
+  background-color: var(--prim);
+}
+.mob-logo .toggle-nav-btn{
+  display: none;
+}
+nav .mob-logo .toggle-close-nav-btn{
+  display: none;
+}
+
+
+
+
+/* ===== Mobile / Tablet ===== */
+@media (max-width: 760px) {
+  .mobile-topbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: rgba(156, 156, 156, 0.25);
+    backdrop-filter: blur(6px);
+    border-bottom: 2px solid var(--d-grey);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    z-index: 100;
+  }
+
+
+  .navigation{
+    border-right: 2px solid var(--d-grey);
+  }
+
+  .topbar-logo {
+    height: 45px;
+  }
+
+  .toggle-nav-btn {
+    background: var(--seco-1);
+    border: none;
+    border-radius: 5px;
+    padding: 6px 10px;
+    font-size: 1.4rem;
+  }
+
+  .navigation {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100dvh;
+    width: min(18rem, 100%);
+    border-left: 1px solid var(--prim);
+    transition: left 300ms ease;
+  }
+
+  .navigation.show {
+    left: 0;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-pages {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  nav a {
+    /* font-weight: 600; */
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+  .mob-logo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  .mob-logo .toggle-nav-btn{
+    display: block;
+  }
+  nav .mob-logo .toggle-close-nav-btn{
+    display: block;
+  }
+  button{
+    transition: 0.3s;
+  }
+  .toggle-close-nav-btn:hover,
+  .toggle-open-nav-btn:hover{
+    background-color: var(--seco-2);
+  }
+  .header-sec{
+    align-items: start;
+  }
+}

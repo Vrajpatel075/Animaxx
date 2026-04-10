@@ -1,0 +1,20 @@
+
+/* colors, spacing, typography */
+.dark{
+  background-color:var(--dark);
+  color: #eee;
+}
+.light{
+  background-color:var(--pure-white);
+  color: black;
+} 
+
+/* mouse placement */
+.mouseCursor{
+  cursor: pointer;
+}
+
+.error{
+    color: red;
+}
+

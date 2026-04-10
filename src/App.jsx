@@ -1,19 +1,28 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Home from './assets/WebPages/Home';
-import GalleryPg from './assets/WebPages/GalleryPg'
-import BackToTop from './assets/ComponentBlockUi/BackToTop';
-import SignIn from './assets/WebPages/SignIn';
-import SignUp from './assets/WebPages/SignUp';  
-import { useEffect, useState } from 'react';
-import ViewedPost from './assets/WebPages/ViewedPost';
-import ProfilePg from './assets/WebPages/ProfilePg';
-import SignUpUserinfo from './assets/WebPages/SignUpUserinfo';
-import { useSelector } from 'react-redux';
+import "./assets/Style/utilities.css";
+import "./assets/Style/variables.css";
 import toast from 'react-hot-toast';
+
+// components
+import Home from './assets/Pages/Home/Home';
+import GalleryPg from './assets/Pages/Gallery/GalleryPg'
+import ProfilePg from './assets/Pages/Profile/ProfilePg';
+import ViewedPost from './assets/Pages/ViewedPost/ViewedPost';
+import SignIn from './assets/Pages/SignIn-Up/SignIn';
+import SignUp from './assets/Pages/SignIn-Up/SignUp';  
+import SignUpUserinfo from './assets/Pages/SignIn-Up/SignUpUserinfo';
+
+// icons
 import { BsSunFill } from 'react-icons/bs';
 import { IoMoon } from 'react-icons/io5';
 
+// redux
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
+import Settings from './assets/Features/settings/Settings';
+import BackToTop from './assets/Component/BackToTop';
 
 function App() {
 
@@ -90,6 +99,14 @@ function App() {
             : 
           <Navigate to="/" 
           /> } />
+
+          <Route
+          path='/Settings'
+          element={isLoggedIn 
+            ? <Settings/> 
+            : <Navigate to="/"/>
+          }
+          />
 
         </Routes>
       </BrowserRouter>

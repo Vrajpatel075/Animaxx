@@ -1,0 +1,262 @@
+/* General container */
+.settingContainer {
+  display: flex;
+}
+
+/* Navigation */
+.settingContainer .Setting_Nav {
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  width: 30%;
+}
+.Setting_Nav ul {
+  list-style-type: none;
+}
+.Setting_Nav ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 0.5rem;
+  margin: 0.2rem 0;
+  border-radius: 8px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.Setting_Nav ul li:hover {
+  background-color: rgba(128, 128, 128, 0.08);
+  color: var(--seco-3);
+}
+.Setting_Nav ul li.active {
+  background-color: var(--seco-2);
+  color: var(--prim);
+}
+
+/* Active tab content */
+.activeTabContainer {
+  flex: 1;
+  padding:1rem 2rem;
+}
+
+/* Account Section */
+.setting_header {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.userInfoContainer {
+  width: 100%;
+  padding: 0 6rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Profile Picture */
+.Profil_Pic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+.Profil_Pic img {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--seco-3);
+}
+.Profil_Pic button ,
+.Update_Profile button {
+  border: none;
+  background-color: var(--seco-3);
+  color: var(--black);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: 0.3s;
+}
+.Profil_Pic button span,
+.Update_Profile button span{
+    font-size: 1rem;
+}
+/* .Profil_Pic button:hover {
+  background-color: var(--seco-2);
+  color: var(--prim);
+} */
+
+/* Form */
+.Update_Profile form.light input,
+.Update_Profile form.light textarea,
+.Update_Profile form.light select{
+    border: 2px solid var(--li-grey);
+    background-color: var(--pure-white);
+    color: var(--black);
+}
+.Update_Profile form.dark input,
+.Update_Profile form.dark textarea,
+.Update_Profile form.dark select{
+    border: 2px solid var(--night);
+    background-color: var(--dark);
+    color: var(--pure-white);
+}
+.Update_Profile form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 1rem 0;
+}
+.Update_Profile label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+.Update_Profile input,
+.Update_Profile textarea,
+.Update_Profile select {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 6px;
+  outline: none;
+  background-color: var(--pure-white);
+}
+.Update_Profile textarea {
+  resize: none;
+  min-height: 80px;
+}
+
+/* Grouping */
+.two_inputs {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.two_inputs .inputColums {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Save Button */
+.gender_save {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.gender_save button {
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  background-color: var(--seco-3);
+  font-weight: 600;
+  transition: 0.3s;
+}
+/* .gender_save button:hover {
+  background-color: var(--seco-2);
+  color: var(--prim);
+} */
+
+/* Account Created Footer */
+.Account_Created {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--li-grey);
+}
+
+.Verify_otp{
+    margin-top: 0.5rem;
+}
+
+/* mode ----------------------------- */
+.Mode_Input_container {
+    margin: 1rem 0;
+    padding: 0 6rem;
+    font-size: 1rem;
+}
+.Mode_Input input{
+    margin: 0.5rem 0.5rem;
+}
+
+/* aboit us =---------------------------------- */
+.Contact_Container{
+  padding: 0 6rem;
+}
+
+.Contact_Container .foot-container{
+    margin: 0;
+    padding: 1rem;
+    width: 100%;
+    border-radius: 16px;
+    height: 450px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(128, 128, 128, 0.195) transparent;
+}
+.Contact_Container .foot-container .des{
+    width: 100%;
+    padding: 0;
+}
+.Contact_Container .foot-container .des img{
+    filter: drop-shadow(2px 2px 2px var(--black));
+}
+
+@media screen  and (max-width:900px) {
+    .userInfoContainer,
+    .Mode_Input_container,
+    .Contact_Container {
+        padding: 0 1rem;
+    }
+    .settingContainer .Setting_Nav{
+        padding: 1rem;
+    }
+    .activeTabContainer{
+        padding: 1rem;
+    }
+}
+@media screen  and (max-width:750px) {
+    .BackHeader{
+        font-size: 0.7rem;
+    }
+    .backButton{
+        font-size: 0.7rem;
+        padding: 0.5rem;
+    }
+}
+@media screen and (max-width: 650px) {
+    .BackHeader{
+        padding: 0;
+    }
+  .settingContainer {
+    flex-direction: column;
+  }
+
+  .settingContainer .Setting_Nav {
+    width: 100%;
+  }
+  .Setting_Nav.hide {
+    display: none; /* hide nav when a tab is active */
+  }
+
+  .activeTabContainer {
+    display: none;
+    width: 100%;
+  }
+
+  .activeTabContainer.show {
+    display: block; 
+    padding: 0;
+  }
+
+  .Setting_Nav ul li.active {
+    background-color: transparent; 
+    color: inherit;
+  }
+}
+
+
+/* theme */
+.userInfoContainer .Update_Profile form .gender_save.night select{
+    background-color: var(--night);
+}
+.userInfoContainer .Update_Profile form .gender_save.light select{
+    background-color: var(--pure-white);
+}

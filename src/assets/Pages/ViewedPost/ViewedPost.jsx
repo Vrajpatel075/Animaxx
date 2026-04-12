@@ -4,7 +4,7 @@ import "./ViewedPost.css"
 // import "./GalleryPg.css"
 import PostCard from '../../Features/posts/PostCard';
 import PostService from '../../../Service/PostService';
-import SelectedPost from '../../Features/posts/SelectedUserPost';
+import SelectedPost from '../../Features/posts/SelectedPost';
 import SkeletonCard from '../../LodingSkeleton/Skeleton/SkeletonCard';
 import { useSelector } from 'react-redux';
 import { FaArrowLeft} from "react-icons/fa";
@@ -67,8 +67,6 @@ function ViewedPost() {
     return ()=> window.removeEventListener("resize",handleResize)
   },[]);
 
-  // post recomendation
-  const mainSuggestion = resizeRecomendationValue;
   
   const { mainRecommendations, sideRecommendations } = useMemo(() => {
   const shuffled = [...recommendedPosts].sort(() => Math.random() - 0.5);
@@ -87,7 +85,7 @@ function ViewedPost() {
 
     <div className="ViewPostContainer">
 
-      <div className='BackHeader'>
+      <div className={`BackHeader`}>
         <button className={`backButton ${currMode === 'light' ? 'light' : 'dark'}`}
         onClick={()=>navigate(-1)}>
           <FaArrowLeft/>

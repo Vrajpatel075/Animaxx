@@ -34,12 +34,11 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
         setIsDropdownOpen(false);
       }
     };
-
-  document.addEventListener("mousedown", handleClickOutside);
-  return () => {
-    document.removeEventListener("mousedown", handleClickOutside);
-  };
-}, []);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const navItems = [
     { label: 'GALLERY', paths: ['/Gallery', '/ViewedPost'] },
@@ -178,7 +177,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
 
           <div className={`dropdown-menu 
           ${ isDropdownOpen ? "active" : "" }
-          ${currMode === "light" ? "light" : "dark"}`}>
+          ${currMode === "light" ? "light" : "night"}`}>
             <div className='Profile-info'>
               <div>
                 {/* user profile picture */}
@@ -193,7 +192,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
               
               {/* user first and last namewith email */}
               <div className="profile-content">
-                <h2>{profile.firstName} {profile.lastName}</h2>
+                <h2>{profile.name}</h2>
                 <p>{profile.email}</p>
               </div>
             </div>

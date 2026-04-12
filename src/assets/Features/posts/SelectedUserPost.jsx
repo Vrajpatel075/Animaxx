@@ -12,11 +12,11 @@ const [isDescriptionOpen , setIsDescriptionOpen] = useState(false)
 const currMode = useSelector((state)=> state.theme.mode);
 
 // show all post in accept the post selected
-{console.log("posts" + posts + postId)}
-const unselectedpost = posts.filter(p => p.postId !== parseInt(postId));
+const unselectedpost = posts?.filter(p => p.postId !== parseInt(postId)) || [];
 
 // show only selected post data 
-const post = posts.find(p => p.postId === parseInt(postId));
+const post = posts?.find(p => p.postId === parseInt(postId));
+
 
   return (
   <>

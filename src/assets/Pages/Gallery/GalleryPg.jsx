@@ -6,7 +6,7 @@ import PostService from '../../../Service/PostService';
 import Pagination from '../../Component/Pagination';
 import UniversalNav from '../../Component/UniversalNav';
 import FooterPannel from '../../Component/FooterPannel';
-import SkeletonCard from '../../LodingSkeleton/Skeleton/ProfileSkeleton';
+import SkeletonCard from '../../LodingSkeleton/Skeleton/SkeletonCard';
 
 
 function GalleryPg({limit , page }) {

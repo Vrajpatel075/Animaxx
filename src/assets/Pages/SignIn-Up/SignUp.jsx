@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './SignIn.css';
 import UserService from '../../../Service/UserService';
+import toast from 'react-hot-toast/headless';
 
 function SignUp() {
   const [username, setUsername] = useState("");
@@ -32,7 +33,7 @@ function SignUp() {
 };
 
 
-  const handleSubmit = async (e) => {
+  const handleNext = async (e) => {
     e.preventDefault();
 
     let newError={};
@@ -45,20 +46,10 @@ function SignUp() {
     }
     setErrors(newError);
 
-    try {
-      if(Object.keys(newError).length ===  0){
-      const response = await UserService.register({
-        firstName,
-        lastName,
-        phone,
-        username,
-        email,
-        password
+    if (Object.keys(newError).length === 0) {
+      navigate("/SignUpUserinfo", {
+        state: { username, email, password }
       });
-      alert("Registration successful!"+ username + " " + email + " " + password + " " + firstName + " " + lastName + " " + phone + " " + country);
-      navigate("/SignIn");}
-    } catch (error) {
-      alert("Registration failed!" + error);
     }
   };
 
@@ -82,7 +73,7 @@ function SignUp() {
             <h2>Get Started</h2>
             <p>To unlock endless creativity.</p>
             </div>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleNext}>
             <div className="form">
               <input 
                 type="text" 

@@ -60,7 +60,7 @@ function Comments({postId,setIsCommentsOpen}) {
 
   return (
     <div className="commentcontainer" onClick={()=> setIsCommentsOpen(false)}>
-        <div className={`PostComments ${currMode === "light" ? "light" :"dark"}`} onClick={(e) => e.stopPropagation()}>
+        <div className={`PostComments ${currMode === "light" ? "light" :"night"}`} onClick={(e) => e.stopPropagation()}>
 
             <div className="line"></div>
 
@@ -90,17 +90,20 @@ function Comments({postId,setIsCommentsOpen}) {
                     <div className="allComments">
                         {allcomments.map(c=>(
                             <div key={c.commentId} className="sigleComment">
-                            <div className='PostOwner'>
-                                <div className='commentProfilPic'>
-                                    <img src={c.user.profilePicture 
-                                    ? `http://localhost:8080/uploads/profile-pics/${c.user.profilePicture}` 
-                                    : '/animax img source/animaxx_default_user_profile_picture.png'} alt="" />
+                                <div className="commentContainer">
+                                    <div className='commentProfilPic'>
+                                        <img src={c.user.profilePicture 
+                                        ? `http://localhost:8080/uploads/profile-pics/${c.user.profilePicture}` 
+                                        : '/animax img source/animaxx_default_user_profile_picture.png'} alt="" />
+                                    </div>
+                                    <div className="Commentcontent">
+                                        <h4>{c.user.username}</h4> 
+                                        <p>{c.text}</p>
+                                    </div>
+                                    <span>{timeago(c.createdAt)}</span>
                                 </div>
-                                <h4>{c.user.username}</h4>
-                            </div>
                             <div className='CommentMessage'>
-                            <p>{c.text}</p>
-                            <span>{timeago(c.createdAt)}</span>
+                           
                             </div>
                             <div className='CommentActivity'>
                                 <span><BiHeart/></span>

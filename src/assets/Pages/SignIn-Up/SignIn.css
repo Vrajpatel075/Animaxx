@@ -73,20 +73,11 @@
     border-bottom: 2px solid var(--d-grey);
     outline: none;
 }
-.phoneInput{
-    width: 80%;
-}
-.Sign-in-up-page .form input::placeholder{
-    color: var(--d-grey);
-}
-.Sign-in-up-page input{
-    accent-color: var(--prim);
-}
-
 
 .Sign-in-up-page .button-container{
     display: flex;
     justify-content: center;
+    margin: 1.5rem 0;
 }
 
 .Sign-in-up-page form button{

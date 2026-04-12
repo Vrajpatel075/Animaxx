@@ -2,12 +2,16 @@
 /* colors, spacing, typography */
 .dark{
   background-color:var(--dark);
-  color: #eee;
+  color: var(--pure-white);
 }
 .light{
   background-color:var(--pure-white);
-  color: black;
+  color: var(--black);
 } 
+.night{
+  background-color: var(--night);
+  color: var(--pure-white);
+}
 
 /* mouse placement */
 .mouseCursor{

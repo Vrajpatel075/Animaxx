@@ -99,7 +99,7 @@ function SignIn() {
               <button>Submit</button>
             </div>
             <div className="login-opt">
-              <p>Don't have an account? <Link to="/SignUpUserinfo">SIGN UP</Link></p>
+              <p>Don't have an account? <Link to="/SignUp">SIGN UP</Link></p>
               <p>Forgot password? <Link to="/ChangePassword">Change Password</Link></p>
             </div>
           </form>

@@ -11,20 +11,7 @@
 .PostComments.night::-webkit-scrollbar-track{
     background-color: var(--night);
 }
-.PostComments input.night{
-    color: var(--pure-white);
-    background-color: var(--night);
-}
-.PostComments.night{
-    background-color: var(--night);
-    color: var(--pure-white);
-    /* border: 1px solid var(--black); */
-}
-.PostComments.light{
-    color: var(--black);
-    background-color: var(--pure-white);
-    /* border: 1px solid var(--li-grey); */
-}
+
 .PostComments{
     overflow-y: auto;
     scroll-behavior: smooth;
@@ -44,10 +31,21 @@
     background-color: rgba(128, 128, 128, 0.097);
     border-radius: 6px;
 }
-
-.allComments .sigleComment .PostOwner{
+.commentContainer{
+    display: flex;
+    gap: 0.5rem;
     margin: 0.5rem 0;
-    padding: 0;
+}
+.commentProfilPic{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.commentProfilPic img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 .CommentInput{
@@ -72,12 +70,7 @@
     align-items: center;
     justify-content: center;
 }
-.CommentInput .CommentPostBtn.light{
-    color: var(--dark);
-}
-.CommentInput .CommentPostBtn.night{
-    color: var(--pure-white);
-}
+
 .CommentInput .CommentPostBtn:hover{
     color: var(--seco-1);
     background-color: rgba(128, 128, 128, 0.071);
@@ -117,18 +110,12 @@
     padding-right: 0.5rem;
 }
 
-.commentProfilPic{
-    height: 25px;
-    width: 25px;
-    border-radius: 50%;
-    overflow: hidden;
-}
 .CommentMessage {
     display: flex;
     justify-content: space-between;
 }
 .CommentActivity span{
-    font-size: 1.2rem ;
+    font-size: 1rem ;
     padding-right: 1rem;
 }
 
@@ -158,12 +145,7 @@
 }
 
 @media screen and (max-width:500px) {
-    .PostComments{
-        padding: 0 8px;
-    }
-    .PostComments h2{
-        font-size: 0.8rem;
-    }
+
     .PostComments .comments{
         font-size: 0.7rem;
         margin-bottom: 0.5rem;
@@ -180,26 +162,13 @@
     .sigleComment{
         margin: 0;
     }
-    .allComments .sigleComment .PostOwner{
-        font-size: 0.6rem;
-        margin: 0;
-    }
-    .CommentMessage{
-        font-size: 0.5rem;
-        margin: 0.5rem 0;
-    }
     .commentProfilPic{
-        height: 20px;
-        width: 20px;
+        height: 30px;
+        width: 30px;
     }
     .CommentActivity span{
         font-size: 0.8rem;
     }
-
-
-
-
-
 
     .commentcontainer{
         height: 100vh;

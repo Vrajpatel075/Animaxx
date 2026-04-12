@@ -14,7 +14,6 @@
     flex-wrap: wrap;
     padding: 0 6rem;
 }
-
 /* this are the 2 section of 60 and 40 % of ViewPostContainer */
 /* for desktop screen */
 .mainSection{
@@ -145,7 +144,7 @@
         padding: 0;
     }
     .recomendedPost{
-        padding: 0 1rem;
+        padding: 0
     }
     .ViewPostContainer .backButton{
         font-size: 0.7rem;

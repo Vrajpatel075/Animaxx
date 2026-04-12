@@ -1,36 +1,44 @@
-import React, { useState } from 'react'
-import "./SignIn.css"
-import { Link, useNavigate } from 'react-router-dom';
-import PhoneInput from 'react-phone-input-2';
+import React, { useState } from 'react';
+import "./SignIn.css";
+import { useLocation, useNavigate } from 'react-router-dom';
+import UserService from '../../../Service/UserService';
+import { toast } from 'react-hot-toast';
 
 function SignUpUserinfo() {
+  const [name, setName] = useState("");
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
+  const location = useLocation();
 
-const [firstName , setFirstName]= useState("");
-const [lastName , setLasttName]= useState("");
-const [phone , setPhone]= useState("");
-const [country , setCountry] = useState("")
-const [errors , setErrors] = useState("");
-const navigate = useNavigate()
+  // values passed from SignUp page
+  const { username, email, password } = location.state || {};
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-const handleNext = (e) =>{
-  e.preventDefault();
+    let newError = {};
+    if (!name.trim()) newError.name = "Please enter your name";
+    setErrors(newError);
 
-  let newError={};
-  if(!firstName.trim()) newError.firstName = "Enter First Name";
-  if(!lastName.trim()) newError.lastName ="Enter Last Name";
-  if(!phone.trim()) newError.phone = "Enter Phone Number";
-
-  setErrors(newError);
-  if(Object.keys(newError).length  === 0){
-    navigate("/SignUp",{state:{firstName ,lastName , phone , country}})
-  }
-}
-
+    if (Object.keys(newError).length === 0) {
+      try {
+        await UserService.register({
+          name,
+          username,
+          email,
+          password
+        });
+        toast.success("Registration successful!");
+        navigate("/SignIn");
+      } catch (error) {
+        console.log(error)
+        toast.error("Registration failed!");
+      }
+    }
+  };
 
   return (
-    <>
-     <div className="Sign-in-up-page">
+    <div className="Sign-in-up-page">
       <div className="container">
         <div className="info_container">
           <div className="form_logo">
@@ -40,7 +48,7 @@ const handleNext = (e) =>{
             CREATE A FREE ACCOUNT & BUILD YOUR OWN ANIME COMMUNITY
           </div>
           <div className="disc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, consectetur. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus praesentium, reiciendis voluptatum magni reprehenderit
+            Lorem ipsum dolor sit amet consectetur adipisicing elit...
           </div>
         </div>
 
@@ -48,47 +56,27 @@ const handleNext = (e) =>{
           <div className="titleMessage">
             <h2>Get Started</h2>
             <p>To unlock endless creativity.</p>
-            </div>
-          <form onSubmit={handleNext}>
+          </div>
+
+          <form onSubmit={handleSubmit}>
             <div className="form">
               <input 
                 type="text" 
-                placeholder="First Name" 
-                onChange={(e) => setFirstName(e.target.value)} 
-                />
-                {errors.firstName && <span className="error">{errors.firstName}</span>}
-              <input 
-                type="text" 
-                placeholder="Last Name" 
-                onChange={(e) => setLasttName(e.target.value)} 
+                placeholder="Name" 
+                maxLength={16}
+                onChange={(e) => setName(e.target.value)} 
               />
-              {errors.lastName && <span className="error">{errors.lastName}</span>}
-              <PhoneInput
-              className="phoneInput"
-                placeholder="Enter Phone" 
-                country={"in"}
-                value={phone}
-                onChange={(phone, countryData ) =>{ setPhone(phone); setCountry(countryData?.countryCode)}}
-                inputStyle={{width:"100%"}} 
-              />
-              {errors.phone && <span className="error">{errors.phone}</span>}
+              {errors.name && <span className="error">{errors.name}</span>}
             </div>
 
             <div className="button-container">
-              <button type="submit">Next</button>
-            </div>
-
-            <div className="login-opt">
-              <p>
-                Already have an account? <Link to="/SignIn">Sign In</Link>
-              </p>
+              <button className='mouseCursor' type="submit">Submit</button>
             </div>
           </form>
         </div>
       </div>
     </div>
-    </>
-  )
+  );
 }
 
-export default SignUpUserinfo
+export default SignUpUserinfo;

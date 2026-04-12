@@ -88,7 +88,7 @@ const handleSeeMore=()=>{
                     </div>
                     <div className="button">
                         <button className="btn-black mouseCursor" onClick={handleSeeMore}>SEE MORE</button>
-                        {!isLoggedIn && (<button className="btn-white"><Link to="/SignUpUserinfo">SIGN-UP</Link></button>)}
+                        {!isLoggedIn && (<button className="btn-white"><Link to="/SignUp">SIGN-UP</Link></button>)}
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@ const handleSeeMore=()=>{
                     </div>
                     <div className="button">
                     <button className="btn-black mouseCursor" onClick={handleSeeMore}>SEE MORE</button>
-                    {!isLoggedIn && (<button className="btn-white"><Link to="/SignUpUserinfo">SIGN-UP</Link></button>)}
+                    {!isLoggedIn && (<button className="btn-white"><Link to="/SignUp">SIGN-UP</Link></button>)}
                     </div>
                 </div>
             </div>
@@ -120,7 +120,7 @@ const handleSeeMore=()=>{
                     </div>
                     <div className="button">
                     <button className="btn-black" onClick={handleSeeMore}>SEE MORE</button>
-                    {!isLoggedIn && (<button className="btn-white"><Link to="/SignUpUserinfo">SIGN-UP</Link></button>)}
+                    {!isLoggedIn && (<button className="btn-white"><Link to="/SignUp">SIGN-UP</Link></button>)}
                     </div>
                 </div>
             </div>
@@ -136,7 +136,7 @@ const handleSeeMore=()=>{
                     </div>
                     <div className="button">
                     <button className="btn-black" onClick={handleSeeMore}>SEE MORE</button>
-                    {!isLoggedIn && (<button className="btn-white"><Link to="/SignUpUserinfo">SIGN-UP</Link></button>)}
+                    {!isLoggedIn && (<button className="btn-white"><Link to="/SignUp">SIGN-UP</Link></button>)}
                     </div>
                 </div>
             </div>
@@ -152,7 +152,7 @@ const handleSeeMore=()=>{
                     </div>
                     <div className="button">
                     <button className="btn-black" onClick={handleSeeMore}>SEE MORE</button>
-                    {!isLoggedIn && (<button className="btn-white"><Link to="/SignUpUserinfo">SIGN-UP</Link></button>)}
+                    {!isLoggedIn && (<button className="btn-white"><Link to="/SignUp">SIGN-UP</Link></button>)}
                     </div>
                 </div>
             </div>

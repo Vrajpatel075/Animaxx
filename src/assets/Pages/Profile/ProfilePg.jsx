@@ -171,7 +171,7 @@ function ProfilePg() {
 
             </div>
             <div className="Profile-Content">
-                <div className='first-last-name'><h1>{profiledata?.firstName}</h1><h1>{profiledata?.lastName}</h1>
+                <div className='first-last-name'><h1>{profiledata?.name}</h1>
                 
                 {isOwnProfile && 
                 <span className='edit-btn' onClick={() => navigate("/settings")}><MdOutlineEditNote/></span>
@@ -193,15 +193,15 @@ function ProfilePg() {
                 )}</div>
                 
                 <p className='Profile-Achivement'> 
-                    <span className='Achivement-count'>
+                    <span className='Achivement-count mouseCursor'>
                         <span>{profiledata.totalPosts || "0"}</span> 
                         <span>Post</span>
                     </span>
-                    <span className='Achivement-count'>
+                    <span className='Achivement-count mouseCursor'>
                         <span>{followersCount}</span>
                         <span>Followers</span>
                     </span>
-                    <span className='Achivement-count'>
+                    <span className='Achivement-count mouseCursor'>
                         <span>{followingCount}</span>
                         <span>Following</span>
                     </span>

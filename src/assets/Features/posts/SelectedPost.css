@@ -123,6 +123,7 @@
     }
     .SelectedPost.night{
         border:none;
+        background-color: var(--dark);
     }
     .SelectedPost.light{
         border:none;

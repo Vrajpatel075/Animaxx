@@ -12,7 +12,97 @@ button:hover{
   color: var(--prim);
 }
 
-/* back button*/
+/* ====================dropdown for profile */
+.dropdown{
+  position: relative;
+}
+
+.dropdown-menu{
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.2rem);
+  padding: 0.7rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  z-index: 999999;
+}
+
+.dropdown-menu .dropdown-menu {
+  position: absolute;
+  right: 50%;             
+  top: calc(30% + 0.5rem ); 
+  width: max-content;         
+  margin-top: 0.5rem;
+  padding: 0.7rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  z-index: 999999;
+}
+.dropdown-menu .dropdown-menu.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+
+.dropdown-menu.active{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.dropdown-menu .Profile-info{
+  display: flex;
+  gap: 0.5rem;
+}
+.dropdown-menu .Profile-info .profile-img{
+  height: 40px;
+  width: 40px;
+  overflow: hidden;
+}
+.dropdown-menu .Profile-info .profile-img img{
+  object-fit: cover;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+}
+.dropdown-menu .profile-content h2{
+  white-space: nowrap;
+  font-size: 1rem;
+}
+.dropdown-menu .profile-content p{
+  opacity: 0.5;
+  font-size: 0.6rem;
+}
+.dropdown-menu hr{
+  opacity: 0.2;
+  margin: 0.5rem;
+}
+
+.dropdown-menu .dropdownlink{
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.2rem;
+  border-radius: 12px;
+  transition: 0.3s;
+} 
+.dropdown-menu .dropdownlink:hover{
+  background-color: rgba(128, 128, 128, 0.097);
+} 
+
+
+/* ============================  back button*/
 .BackHeader {
     display: flex;
     align-items: center;

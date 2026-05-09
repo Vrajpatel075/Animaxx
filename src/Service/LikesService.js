@@ -16,7 +16,7 @@ class LikeService {
     }).then(res=> res.data);
   }
 
-  getLikedPosts(userId) {
+  getUserLikedPosts(userId) {
     return axios.get(`${LIKE_API_BASE_URL}/user/${userId}`, {
         withCredentials:true
     }).then(res=> res.data);

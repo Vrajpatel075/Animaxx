@@ -1,64 +1,80 @@
 import React, { useEffect, useState } from 'react';
-import {useNavigate } from 'react-router-dom';
 import './GalleryPg.css';
 import PostCard from '../../Features/posts/PostCard';
 import PostService from '../../../Service/PostService';
 import Pagination from '../../Component/Pagination';
 import UniversalNav from '../../Component/UniversalNav';
-import FooterPannel from '../../Component/FooterPannel';
-import SkeletonCard from '../../LodingSkeleton/Skeleton/SkeletonCard';
+import SkeletonCard from '../../LodingSkeleton/SkeletonCard';
+import { useSafeNavigate } from '../../../OfflineBackup/useSafeNavigate';
+import SideBar from '../../Component/SideBar';
 
-
-function GalleryPg({limit , page }) {
+function GalleryPg({ limit, page }) {
   const [wallpaperNavOpen, setWallpaperNavOpen] = useState(false);
-  const [postdata , setPostdata] = useState([]);
+  const [postdata, setPostdata] = useState([]);
   const [loading, setLoading] = useState(false);
-  const navigate   = useNavigate();
+  const safeNavigate = useSafeNavigate();
 
-  // fetching the ALLPOST data 
-  useEffect(()=>{
-    setLoading(true)
-    PostService.getAllPosts().then(res=>{
-      setPostdata(res);
-      setLoading(false);
-    })
-  },[])
-  
-   // cheak the userid so post made the active usre wont show in gallery  
+  // fetching the ALLPOST data
+  useEffect(() => {
+    setLoading(true);
+    PostService.getAllPosts()
+      .then(res => {
+        setPostdata(res);
+        setLoading(false);
+      })
+      .catch(err => {
+        if (!navigator.onLine) {
+          setPostdata(null);
+          setLoading(true)
+          }
+        })
+      }, []);
+
+  // check the userid so post made by active user won't show in gallery
   const activeUserId = Number(localStorage.getItem("userId"));
 
-  // filtering the ALLPOST so it dont have active user post in feed 
+  // filter posts so active user's posts don't appear in feed
   const filteredPosts = postdata.filter(
     post => post.user.userId !== activeUserId
-  ); 
+  );
 
-
-  // the ammount the post per page 
+  // pagination logic
   const lastPostIndex = page * limit;
   const firstPostIndex = lastPostIndex - limit;
-  const GalleryPosts = filteredPosts.slice(firstPostIndex , lastPostIndex)
+  const GalleryPosts = filteredPosts.slice(firstPostIndex, lastPostIndex);
 
   return (
     <>
-      <UniversalNav
+      <div className="AppLayout">      
+        <div className="SidebarContainer">
+          <SideBar />
+        </div> 
+
+        <div className="PostContainer">
+        <UniversalNav
         navOpen={wallpaperNavOpen}
         setNavOpen={setWallpaperNavOpen}
         showSearch={true}
-      />
+        />
 
-      <div className="GalleryPostContainer">
         <div className="post-list">
           {loading ? (
-            Array.from({length:limit}).map((_,index)=>(
-              <SkeletonCard  key={index}/>
+            Array.from({ length: limit }).map((_, index) => (
+              <SkeletonCard key={index} />
             ))
-          ): 
-          (GalleryPosts.map((post) => (
-            <PostCard
-            key={post.postId} 
-            post={post} 
-            onClick={() => navigate(`/ViewedPost/${post.postId}`)}/>
-          )))}
+          ) : (
+            GalleryPosts.length === 0 && !navigator.onLine ? (
+              <p>You are offline. Gallery not available.</p>
+            ) : (
+              GalleryPosts.map((post) => (
+                <PostCard
+                  key={post.postId}
+                  post={post}
+                  onClick={() => safeNavigate(`/ViewedPost/${post.postId}`)}
+                />
+              ))
+            )
+          )}
         </div>
 
         <Pagination
@@ -66,9 +82,10 @@ function GalleryPg({limit , page }) {
           limit={limit}
           page={page}
         />
+        </div>
+        
       </div>
 
-      <FooterPannel />
     </>
   );
 }

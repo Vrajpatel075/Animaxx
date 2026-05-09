@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import './Hero.css'
 import { Link, useNavigate } from 'react-router-dom';
+import { useSafeNavigate } from '../../../../OfflineBackup/useSafeNavigate';
 
 
 function Hero() {
@@ -11,8 +12,8 @@ const carouselRef = useRef(null);
   const nextRef = useRef(null);
   const prevRef = useRef(null);
   const isLoggedIn = !!localStorage.getItem("userId");
-  const Navigate = useNavigate();
-
+  const safeNavigate = useSafeNavigate();
+  
 
   const timeRunning = 3000;
   const timeAutoNext = 7000;
@@ -69,7 +70,7 @@ const carouselRef = useRef(null);
 }, []);
 
 const handleSeeMore=()=>{
-    Navigate(isLoggedIn ? "/Gallery" : "/SignIn");
+    safeNavigate(isLoggedIn ? "/Gallery" : "/SignIn");
 }
     
   return (
@@ -77,7 +78,7 @@ const handleSeeMore=()=>{
     <div className="carousel" ref={carouselRef}>
          <div className="list" ref={listRef}>
             <div className="item">
-                <img src="/animax img source/luffy-poster.jpg" alt=""/>
+                <img src="/animax-img/luffy-poster.jpg" alt=""/>
                 <div className="carousel-grad"></div>
                 <div className="content">
                     <div className="auther">ANIMAXX</div>
@@ -93,7 +94,7 @@ const handleSeeMore=()=>{
                 </div>
             </div>
             <div className="item">
-                <img src="/animax img source/bleach-poster.37ff8d8a-d79c-4cbb-ac9d-a81d32557d69" alt=""/>
+                <img src="/animax-img/bleach-poster.37ff8d8a-d79c-4cbb-ac9d-a81d32557d69" alt=""/>
                 <div className="carousel-grad"></div>
                 <div className="content">
                     <div className="auther">ANIMAXX</div>
@@ -109,7 +110,7 @@ const handleSeeMore=()=>{
                 </div>
             </div>
             <div className="item">
-                <img src="/animax img source/haikyyu-poster.jpg" alt=""/>
+                <img src="/animax-img/haikyyu-poster.jpg" alt=""/>
                 <div className="carousel-grad"></div>
                 <div className="content">
                     <div className="auther">ANIMAXX</div>
@@ -125,7 +126,7 @@ const handleSeeMore=()=>{
                 </div>
             </div>
             <div className="item">
-                <img src="/animax img source/demon-slayer-poster.webp" alt=""/>
+                <img src="/animax-img/demon-slayer-poster.webp" alt=""/>
                 <div className="carousel-grad"></div>
                 <div className="content">
                     <div className="auther">ANIMAXX</div>
@@ -141,7 +142,7 @@ const handleSeeMore=()=>{
                 </div>
             </div>
             <div className="item">
-                <img src="/animax img source/dandadan-poster.webp" alt=""/>
+                <img src="/animax-img/dandadan-poster.webp" alt=""/>
                 <div className="carousel-grad"></div>
                 <div className="content">
                     <div className="auther">ANIMAXX</div>
@@ -161,7 +162,7 @@ const handleSeeMore=()=>{
  
          <div className="thumnail" ref={thumbnailRef}>   
             <div className="item">
-                <img src="/animax img source/bleach-poster.37ff8d8a-d79c-4cbb-ac9d-a81d32557d69" alt=""/>
+                <img src="/animax-img/bleach-poster.37ff8d8a-d79c-4cbb-ac9d-a81d32557d69" alt=""/>
                 <div className="content">
                     <div className="title">
                         BLEACH
@@ -172,7 +173,7 @@ const handleSeeMore=()=>{
                 </div>
             </div>
             <div className="item">
-                <img src="/animax img source/haikyyu-poster.jpg" alt=""/>
+                <img src="/animax-img/haikyyu-poster.jpg" alt=""/>
                 <div className="content">
                     <div className="title">
                         HAIKYYU
@@ -183,7 +184,7 @@ const handleSeeMore=()=>{
                 </div>
             </div>
             <div className="item">
-                <img src="/animax img source/demon-slayer-poster.webp" alt=""/>
+                <img src="/animax-img/demon-slayer-poster.webp" alt=""/>
                 <div className="content">
                     <div className="title">
                         DEMON SLAYER
@@ -194,7 +195,7 @@ const handleSeeMore=()=>{
                 </div>
             </div>
             <div className="item">
-                <img src="/animax img source/dandadan-poster.webp" alt=""/>
+                <img src="/animax-img/dandadan-poster.webp" alt=""/>
                 <div className="content">
                     <div className="title">
                         DANDADAN
@@ -205,7 +206,7 @@ const handleSeeMore=()=>{
                 </div>
             </div>
             <div className="item">
-                <img src="/animax img source/luffy-poster.jpg" alt=""/>
+                <img src="/animax-img/luffy-poster.jpg" alt=""/>
                 <div className="content">
                     <div className="title">
                         ONE PIECE

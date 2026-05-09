@@ -1,9 +1,9 @@
 import React from 'react'
 import "./SignInCheak.css"
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom';
+import { useSafeNavigate } from '../../OfflineBackup/useSafeNavigate';
 function SignInCheak({onClose}) {
-    const navigate= useNavigate();
+    const safeNavigate= useSafeNavigate();
     const currMode = useSelector((state)=>state.theme.mode);
   return (
     <div className='ModelContainer' onClick={onClose}>
@@ -13,7 +13,7 @@ function SignInCheak({onClose}) {
             <p>Get started—step into the world of anime art.</p>
             </div>
             <div className='SignInCheakBtn'>
-                <button onClick={()=>navigate("/SignIn")}>Sign-In</button>
+                <button onClick={()=>safeNavigate("/SignIn")}>Sign-In</button>
             </div>
         <div className="separator">
             <span>OR</span>

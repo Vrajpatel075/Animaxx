@@ -7,12 +7,16 @@
 
 
 /* body of the page */
+.viewpage{
+    display: flex;
+    align-items: start;
+}
 .ViewPostContainer{
     margin: 0.5rem 0;
     width: 100vw;
     display: flex;
     flex-wrap: wrap;
-    padding: 0 6rem;
+    padding: 0 2rem;
 }
 /* this are the 2 section of 60 and 40 % of ViewPostContainer */
 /* for desktop screen */

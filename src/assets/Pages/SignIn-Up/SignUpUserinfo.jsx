@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import "./SignIn.css";
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import UserService from '../../../Service/UserService';
 import { toast } from 'react-hot-toast';
 
 function SignUpUserinfo() {
   const [name, setName] = useState("");
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
+  const safeNavigate = safeNavigate();
   const location = useLocation();
 
   // values passed from SignUp page
@@ -29,7 +29,7 @@ function SignUpUserinfo() {
           password
         });
         toast.success("Registration successful!");
-        navigate("/SignIn");
+        safeNavigate("/SignIn");
       } catch (error) {
         console.log(error)
         toast.error("Registration failed!");
@@ -42,7 +42,7 @@ function SignUpUserinfo() {
       <div className="container">
         <div className="info_container">
           <div className="form_logo">
-            <img src="/animax img source/ANIMAX_LOGO.png" alt="Animax Logo" />
+            <img src="/animax-img/ANIMAX_LOGO.png" alt="Animax Logo" />
           </div>
           <div className="info_title">
             CREATE A FREE ACCOUNT & BUILD YOUR OWN ANIME COMMUNITY

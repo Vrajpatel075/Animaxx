@@ -19,7 +19,7 @@ function HandleLikes({post}) {
         const fetchUserLikedPosts = async () => {
             try{
               if (!userId) return;
-                    const likedPosts = await LikesService.getLikedPosts(userId);
+                    const likedPosts = await LikesService.getUserLikedPosts(userId);
                      let isLiked = false;
                       for (let i = 0; i < likedPosts.length; i++){
                         if (likedPosts[i].postId === post.postId) {

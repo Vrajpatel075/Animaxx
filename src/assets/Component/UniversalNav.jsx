@@ -1,24 +1,33 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import { TbLogout2 } from "react-icons/tb";
 import { fetchuserdata } from '../Redux/authSlice';
-import { FaUser } from 'react-icons/fa';
+import { FaRegHeart, FaUser } from 'react-icons/fa';
 import { IoMdSettings } from 'react-icons/io';
 import { IoNotifications } from 'react-icons/io5';
 
 import './UniversalNav.css';
 import SignInCheak from '../Component/SignInCheak';
 import ExitWarring from '../Component/ExitWarring';
+import PostService from "../../Service/PostService"
+import { useSafeNavigate } from '../../OfflineBackup/useSafeNavigate';
+import { BsBellFill } from 'react-icons/bs';
 
 function UniversalNav({ navOpen, setNavOpen, showSearch }) {
-  const navigate = useNavigate();
+  const safeNavigate = useSafeNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
 
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showSignInModal, setShowSignInModal] = useState(false);
+
+  // for search
+  const [query, setQuery] = useState("");
+  const [allSuggestions, setAllSuggestions] = useState([]);
+  const [limit, setLimit] = useState(6);
+
 
   // Redux state
   const { userId, profile, isLoggedIn } = useSelector((state) => state.auth);
@@ -63,11 +72,67 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
     }
   }, [userId, dispatch]);
 
+  // for serch
+  const handleChange = async (e) => {
+  const value = e.target.value;
+  setQuery(value);
+
+  if (value.length > 1) {
+    try {
+      const res = await PostService.searchPosts(value);
+
+      // Collect titles, usernames, and tags
+      const titles = res.map(post => post.title);
+      const usernames = res.map(post => post.user.username);
+      const tags = res.flatMap(post => post.tags || []);
+
+      let filteredSuggestions;
+
+      if (usernames.some(u => u.includes(value))) {
+        // Unique usernames
+        const uniqueUsernames = [...new Set(
+          usernames.filter(u => u.includes(value))
+        )];
+        filteredSuggestions = uniqueUsernames;
+
+      } else if (tags.some(tag => tag.includes(value))) {
+        // Unique tags
+        const uniqueTags = [...new Set(
+          tags.filter(tag => tag.includes(value))
+        )];
+        filteredSuggestions = uniqueTags;
+
+      } else {
+        // Unique titles
+        const matchedTitles = titles.filter(t => t.includes(value));
+        const uniqueTitles = [...new Set(matchedTitles)];
+
+        // Order: starts-with first
+        filteredSuggestions = uniqueTitles.sort((a, b) => {
+          const aStarts = a.toLowerCase().startsWith(value.toLowerCase());
+          const bStarts = b.toLowerCase().startsWith(value.toLowerCase());
+
+          if (aStarts && !bStarts) return -1;
+          if (!aStarts && bStarts) return 1;
+          return a.localeCompare(b);
+        });
+      }
+
+       setAllSuggestions(filteredSuggestions);
+    } catch (err) {
+      console.error("Search error", err);
+    }
+  } else {
+    setAllSuggestions([]);
+  }
+};
+
+
   
 
   return (
     <>
-      <div className={`side-nav ${navOpen ? 'show' : ''}`}>
+      <div className={`side-nav ${navOpen ? 'show' : ''} ShowForMD ${currMode ==="light"?"light":"dark"}`}>
         <div className="side-nav-header">
           <button
             className="toggle-close-nav-btn"
@@ -80,9 +145,9 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
 
           <div className="ProfileLogo mouseCursor">
             <img
-              src="/animax img source/ANIMAX_LOGO.png"
+              src="/animax-img/ANIMAX_LOGO.png"
               alt="logo"
-              onClick={() => navigate('/')}
+              onClick={() => ('/')}
             />
           </div>
         </div>
@@ -126,42 +191,62 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
         </nav>
       </div>
 
-      {showLogoutModal && (
-        <ExitWarring
-        WarringModel={"logoutWarring"}
-        onCancel={() => setShowLogoutModal(false)}
-        />
-      )}
 
-      {/* overlay for SideNav */}
-      {navOpen && (
-        <div className='nav-overlay' onClick={() => setNavOpen(false)} />
-      )}
 
-      <div>
-
-      <div className={`SearchAndNavPannel ${currMode === 'light' ? 'light' : 'dark'}`}>
+    <div className={`SearchAndNavPannel ${currMode === 'light' ? 'light' : 'dark'}`}>
         
         <button
-          className="toggle-open-nav-btn"
+          className="toggle-open-nav-btn ShowForMD"
           onClick={() => setNavOpen(true)}
           aria-label="open sidebar"
         >
           <span> ☰ </span>
         </button>
+ 
+        
+      {navOpen && (
+        <div className='nav-overlay' onClick={() => setNavOpen(false)} />
+      )}
 
-        {/* display serchbar as per needs */}
-        {showSearch && (
-          <div className="responsive_nav_searh">
-            <input className="search_input" type="text" placeholder="Search..." />
-            <div className="search_icon">
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </div>
+      {/* display serchbar as per needs */}
+      {showSearch && (
+          <div className="responsive_nav_searh ">
+            <input
+            className="search_input"
+            type="text"
+            placeholder="Search..."
+            value={query}
+            onChange={handleChange}
+            />
+            
+          <div className="search_icon">
+            <i className="fa-solid fa-magnifying-glass"></i>
           </div>
-        )}
+          
+          {allSuggestions.length > 0 && (
+            <div className={`search_suggestions ${limit === 6 ? "collapsed" : ""}
+            ${currMode ==="light" ? "light" : "night"}`}>
+              {allSuggestions.slice(0, limit).map((item, idx) => (
+                <div key={idx} className="suggestion_item">
+                  <span>{item}</span>
+                </div>
+              ))}
+              
+              {allSuggestions.length > 6 && (
+                <div
+                className="suggestion_footer mouseCursor"
+                onClick={() => setLimit(limit === 6 ? 10 : 6)}
+                >
+                  {limit === 6 ? "View more results" : "View fewer results"}
+                </div>
+              )}
+              </div>
+            )}
+          </div>
+      )}
 
-        {/* dropdown on profile picture click */}
-        <div className="dropdown" ref={dropdownRef}>
+      {/* dropdown on profile picture click */}
+      <div className="dropdown HideForMd" ref={dropdownRef}>
 
           <div 
           className="ProfileLogo mouseCursor" 
@@ -170,7 +255,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
             <img src={
               profile?.profilePicture
                 ? `http://localhost:8080/uploads/profile-pics/${profile?.profilePicture}`
-                : "/animax img source/animaxx_default_user_profile_picture.png"
+                : "/animax-img/animaxx_default_user_profile_picture.png"
             }
             alt="logo"/>
           </div>
@@ -185,7 +270,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
                   <img src={
                     profile?.profilePicture
                     ? `http://localhost:8080/uploads/profile-pics/${profile?.profilePicture}`
-                    : "/animax img source/animaxx_default_user_profile_picture.png"
+                    : "/animax-img/animaxx_default_user_profile_picture.png"
                     } alt="" />
                 </div>
               </div>
@@ -202,7 +287,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
           {/* Profile */}
           <p 
           className='dropdownlink mouseCursor'
-          onClick={()=> navigate(`/ProfilePg/${userId}`)}>
+          onClick={()=> safeNavigate(`/ProfilePg/${userId}`)}>
             <span><FaUser/></span> 
             <span>Profile</span>
           </p>
@@ -217,7 +302,7 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
           {/* settings */}
           <p 
           className='dropdownlink mouseCursor'
-          onClick={()=> navigate("/Settings")}>
+          onClick={()=> safeNavigate("/Settings")}>
             <span><IoMdSettings/></span>
             <span>Settings</span>
           </p>
@@ -233,14 +318,34 @@ function UniversalNav({ navOpen, setNavOpen, showSearch }) {
           </p>
           </div>
 
+      </div>
+
+      <div className='AnimaxxTitle ShowForMD'>
+        <div className='AnimaxxLogo'>
+          <img src="/animax-img/ANIMAX_LOGO.png" alt="Logo" />
         </div>
+        <h2>Animaxx</h2>
+      </div>
+
+      <div>
+        <NavLink to="/notifications" className="nav-item ShowForMD">
+        <span className={`icon ${currMode==="light"?"light":"dark"}`}><FaRegHeart/></span>
+        </NavLink>
+      </div>
       
-      </div>
-      </div>
+    </div>
+    
 
 
       {showSignInModal && (
             <SignInCheak onClose={() => setShowSignInModal(false)} />
+      )}
+
+      {showLogoutModal && (
+        <ExitWarring
+        WarringModel={"logoutWarring"}
+        onCancel={() => setShowLogoutModal(false)}
+        />
       )}
           
 

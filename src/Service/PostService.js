@@ -9,6 +9,14 @@ class PostService{
             headers: { "Content-Type": "multipart/form-data" }
         })
     }
+    
+    editPost(postId, post) {
+        return axios.put(`${POST_API_BASE_URL}/updatePosts/${postId}`, post, {
+            withCredentials: true,
+            headers: { "Content-Type": "application/json" }
+        });
+    }
+
 
     getUserPost(userId){
         return axios.get(POST_API_BASE_URL + `/userposts/${userId}`,{
@@ -30,7 +38,14 @@ class PostService{
             withCredentials:true}).then(response => {
                 return response.data;
             })
-        }
+    }
+
+    searchPosts(query) {
+        return axios.get(`${POST_API_BASE_URL}/search?query=${query}`, {
+            withCredentials: true
+        }).then(response => response.data);
+    }
+    
 
 
 

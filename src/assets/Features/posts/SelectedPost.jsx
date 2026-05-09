@@ -5,21 +5,26 @@ import { HiDotsHorizontal } from 'react-icons/hi';
 import { MdBookmarkBorder, MdOutlineDownloading, MdOutlineFileDownload } from 'react-icons/md';
 
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import "./SelectedPost.css"
 import HandleLikes from './HandleLikes';
 import HandleComments from './HandleComments';
 import CommentsService from '../../../Service/CommentsService';
-import { FaBookmark, FaChessQueen } from 'react-icons/fa';
+import { FaBookmark, FaChessQueen, FaPen } from 'react-icons/fa';
 import SavepostService from '../../../Service/SavepostService';
+import { useSafeNavigate } from '../../../OfflineBackup/useSafeNavigate';
+import EditPost from './EditPost';
 
 function SelectedPost({post ,setIsDescriptionOpen ,  isDescriptionOpen}) {
-    const navigate = useNavigate();
     const [isCommentsOpen, setIsCommentsOpen] = useState(false);
     const [wordLimit , setWordLimit] = useState();
     const [commentcount , SetCommentCount] = useState();
+    const [viewComments , setviewComments] = useState();
     const [isSaved, setIsSaved] = useState(false);
+    const [isEditPostOpen, setIsEditPostOpen] = useState(false);
+    const [isExitWarningOpen, setIsExitWarningOpen] = useState(false);
+
+    const safeNavigate = useSafeNavigate();
       
     // dropdown
     const [isDropdownOpen , setIsDropdownOpen] = useState(false);
@@ -142,7 +147,7 @@ function SelectedPost({post ,setIsDescriptionOpen ,  isDescriptionOpen}) {
                     </div>
                     <div className="ProfilrUsername mouseCursor"
                     onClick={()=>{
-                      navigate(`/ProfilePg/${post.user?.userId}`)
+                      safeNavigate(`/ProfilePg/${post.user?.userId}`)
                     }}>
                       <span>{post.user?.username}</span>
                     </div>
@@ -154,15 +159,23 @@ function SelectedPost({post ,setIsDescriptionOpen ,  isDescriptionOpen}) {
                 </div>
              
                 <div className='PostActivite'>
-                    <span className='mainicons'>
+                    <span className='mainicons mouseCursor'>
                       <HandleLikes post={post}/>
                       <span className='icons'><FaRegComment
-                      onClick={() => setIsCommentsOpen(prev => !prev)}/>  
+                      onClick={() => {
+                        setIsCommentsOpen(prev => !prev)
+                        setviewComments(false)}}/>
+
                       <span  className='ActiveCount'>{commentcount}</span> </span>
-                      <span className='icons' onClick={toggleSave}> {isSaved ? <FaBookmark /> : <MdBookmarkBorder /> }</span>
-                      <span className='icons'><FaShare/></span>
+                      <span className='icons mouseCursor' onClick={toggleSave}> 
+                        {isSaved ? <FaBookmark /> : <MdBookmarkBorder /> 
+                      }</span>
+                      <span className='icons mouseCursor'><FaShare/></span>
                     </span>
-                      <span className='icons' onClick={()=> setIsDropdownOpen(prev => !prev)}><HiDotsHorizontal/></span>
+                      
+                    <span className='icons mouseCursor' 
+                    onClick={()=> setIsDropdownOpen(prev => !prev)}><HiDotsHorizontal/>
+                    </span>
                     
                 </div>
                 
@@ -171,20 +184,27 @@ function SelectedPost({post ,setIsDescriptionOpen ,  isDescriptionOpen}) {
                   ${ isDropdownOpen ? "active" : "" }
                   ${currMode === "light" ? "light" : "night"}`}>
                     
-                    {/* Download */}
+                    {Number(userId) === Number(post.user.userId) ? (
+                      <p className='dropdownlink mouseCursor' 
+                       onClick={() => setIsEditPostOpen(true)}>
+                        <span><FaPen/></span>
+                        <span>Edit</span>
+                      </p>
+                    ):( <>                    
                     <p 
                     className='dropdownlink mouseCursor'
                     onClick={()=> setIsDownloadDropdownOpen(prev => !prev)}>
                     <span><MdOutlineFileDownload /></span> 
                     <span>Download</span>
                     </p>
+                    
                     {isDownloadDropdownOpen && (
                       <div className={`dropdown-menu 
                          ${isDownloadDropdownOpen ? "active" : ""} 
                          ${currMode === "light" ? "light" : "night"}`}>
                         <p 
                         className='dropdownlink mouseCursor'
-                        onClick={() => navigate("/Premium")}>
+                        onClick={() => safeNavigate("/Premium")}>
                           <span><FaChessQueen /></span>
                           <span>Original Hd</span>
                         </p>
@@ -197,12 +217,12 @@ function SelectedPost({post ,setIsDescriptionOpen ,  isDescriptionOpen}) {
                         </p>
 
                       </div>
-                    )}
+                    )} </>)}
                     
                     {/* share */}
                     <p 
                     className='dropdownlink mouseCursor'
-                    onClick={()=> navigate("/Settings")}>
+                    onClick={()=> safeNavigate("/Settings")}>
                     <span><RiShareBoxFill /></span>
                     <span>Share</span>
                     </p>
@@ -236,14 +256,27 @@ function SelectedPost({post ,setIsDescriptionOpen ,  isDescriptionOpen}) {
                     year:"numeric"
                   })}</span>
                 </div>
-
-                {isCommentsOpen &&
+                
                 <HandleComments
+                isCommentsOpen={isCommentsOpen}
                 setIsCommentsOpen={setIsCommentsOpen}
                 postId={post.postId}
-                />}
-        
-        
+                viewComments={viewComments}
+                setviewComments = {setviewComments}
+                />
+                
+                {isEditPostOpen && (
+                  <EditPost
+                  postId={post.postId}
+                  title={post.title}
+                  description={post.description}
+                  tags={post.tags}
+                  imageUrl={post.imageUrl}
+                  closeModal={() => setIsEditPostOpen(false)}
+                  setCheakDiscard={setIsExitWarningOpen}
+                  cheakdiscard={isExitWarningOpen}
+                  />)}
+                          
               </div>  
     </div>
   )

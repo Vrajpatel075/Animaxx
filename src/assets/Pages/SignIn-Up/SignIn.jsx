@@ -52,7 +52,7 @@ function SignIn() {
       <div className="container">
         <div className="info_container">    
           <div className="form_logo">
-            <img src="/animax img source/ANIMAX_LOGO.png" alt=""/>
+            <img src="/animax-img/ANIMAX_LOGO.png" alt=""/>
           </div>
           <div className="info_title">
             CREATE A FREE ACCOUNT & BUILD YOUR OWN ANIME COMMUNITY

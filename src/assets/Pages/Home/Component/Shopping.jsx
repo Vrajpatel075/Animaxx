@@ -72,7 +72,7 @@ function Shopping() {
             </div>
           ))}
         </div>
-        <div className="explore">
+        <div className="exploreLink">
           <span><a href="#">Explore</a></span>
           <span><a href="#"><i className="fa-solid fa-up-right-from-square"></i></a></span>
         </div>

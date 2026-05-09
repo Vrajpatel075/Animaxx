@@ -4,20 +4,28 @@ import {useSelector } from 'react-redux';
 import { FaArrowLeft } from 'react-icons/fa6';
 import { MdOutlineEditNote } from "react-icons/md";
 import { useNavigate, useParams } from 'react-router-dom';
+import { useSafeNavigate } from '../../../OfflineBackup/useSafeNavigate';
+
 import UniversalNav from '../../Component/UniversalNav';
-import UploadPost from '../../Component/UploadPost';
+import UploadPost from '../../Features/posts/UploadPost';
 import SelectedUserPost from '../../Features/posts/SelectedUserPost';
 import PostCard from '../../Features/posts/PostCard';
-import ProfileSkeleton from '../../LodingSkeleton/Skeleton/ProfileSkeleton';
+
+import ProfileSkeleton from '../../LodingSkeleton/ProfileSkeleton';
+
+
 import UserService from '../../../Service/UserService';
 import FollowService from "../../../Service/FollowService";
 import PostService from '../../../Service/PostService';
+import SideBar from '../../Component/SideBar';
+import FollowCount from '../../Component/FollowCount';
 
 
 
 // SetCurrMode is for passing to Setting.jsx page as props not used in this page
 function ProfilePg() {
     const navigate =  useNavigate();
+    const safeNavigate = useSafeNavigate();
     const [navOpen, setNavOpen] = useState(false);
     const [Loading , setLoading] = useState(false);
     const [cheakdiscard , setCheakDiscard] = useState(false);
@@ -40,6 +48,8 @@ function ProfilePg() {
     const [isFollowing , setIsFollowing] = useState(false);
     const [followersCount , setfollowersCount] = useState(0);
     const [followingCount , setfollowingCount] = useState(0);
+    const [showFollows , setShowFollows] = useState(false);4
+    const [followTitle , setFollowTitle] = useState("");
 
     // redux
     const {userId} = useSelector((state)=>state.auth);
@@ -139,26 +149,19 @@ function ProfilePg() {
   return (
   <>
   <div className="profile-body">
+  <div className="SidebarContainer">
+    <SideBar />
+  </div>
 
-    {/* to change the header according to user */}
-    {isOwnProfile ?
-    (
-        <div className="profilNav">
-        <UniversalNav 
-        navOpen={navOpen}
-        setNavOpen={setNavOpen}
-        showSearch={false}
-       />
-    </div>
-    ):(
+   <div className="main-content">
+    {/* to change the header according  to user */}
     <div className='BackHeader'>
         <button className={`backButton ${currMode === 'light' ? 'light' : 'dark'}`}
         onClick={()=>navigate(-1)}>
           <FaArrowLeft/>
         </button>
-        <h1>{profiledata.username}</h1>
+        <h3>{profiledata.username}</h3>
       </div>
-    )}
     
     
     <div className={`Profile-Container ${isOwnProfile === true ? "NavOn" : ""}`} >
@@ -166,7 +169,7 @@ function ProfilePg() {
             <div className='Profil-Pic'>
             <img src={ profiledata?.profilePicture
             ? `http://localhost:8080/uploads/profile-pics/${profiledata?.profilePicture}`
-            : "/animax img source/animaxx_default_user_profile_picture.png"
+            : "/animax-img/animaxx_default_user_profile_picture.png"
         } alt="Profile Pic"/>
 
             </div>
@@ -174,7 +177,7 @@ function ProfilePg() {
                 <div className='first-last-name'><h1>{profiledata?.name}</h1>
                 
                 {isOwnProfile && 
-                <span className='edit-btn' onClick={() => navigate("/settings")}><MdOutlineEditNote/></span>
+                <span className='edit-btn' onClick={() => safeNavigate("/settings")}><MdOutlineEditNote/></span>
                 }
                 
                 </div>
@@ -197,11 +200,13 @@ function ProfilePg() {
                         <span>{profiledata.totalPosts || "0"}</span> 
                         <span>Post</span>
                     </span>
-                    <span className='Achivement-count mouseCursor'>
+                    <span className='Achivement-count mouseCursor'
+                    onClick={()=>{setShowFollows(true), setFollowTitle("Followers")}}>
                         <span>{followersCount}</span>
                         <span>Followers</span>
                     </span>
-                    <span className='Achivement-count mouseCursor'>
+                    <span className='Achivement-count mouseCursor'
+                    onClick={()=>{setShowFollows(true), setFollowTitle("Following")}}>
                         <span>{followingCount}</span>
                         <span>Following</span>
                     </span>
@@ -224,7 +229,7 @@ function ProfilePg() {
                     </button>
                 )}
                 {isOwnProfile ? (
-                    <button className='settings' onClick={() => navigate("/settings")}>
+                    <button className='settings' onClick={() => safeNavigate("/settings")}>
                       Edit
                     </button>
                 ):(
@@ -249,7 +254,7 @@ function ProfilePg() {
 
     {/* so see post of blogs */}
     {activeSection === "Posts" && 
-      <div className="post_container">
+      <div className="PostContainer">
          <div className="post-list">
           {userposts.map((post) => (
             <PostCard
@@ -265,7 +270,8 @@ function ProfilePg() {
       <div>
         <h1>Upload Blog</h1>
       </div>}
-    </div>
+      </div>
+  </div>
 
     {/* open selected post from user profile */}
     {selectedPostId  && <SelectedUserPost
@@ -283,6 +289,13 @@ function ProfilePg() {
         setUserPosts={setUserPosts}
         setActiveModal={setActiveModal}
         closeModal={() => setActiveModal(null)} />
+    )}
+
+    {showFollows && (
+        <FollowCount 
+        FollowTitle={followTitle}
+        onClose={()=>setShowFollows(false)}
+        />
     )}
   </>
   )

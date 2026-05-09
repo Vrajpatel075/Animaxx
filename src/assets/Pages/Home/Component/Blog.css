@@ -46,7 +46,7 @@ background: linear-gradient(0deg,rgb(23, 23, 24) 0%, rgba(27, 27, 27, 1) 50%, rg
 .card-img-with-svg-mark{
   width: 80vw;
   height: 80vh;
-  background-image: url("/animax img source/yourname1-reverce.png");
+  background-image: url("/animax-img/yourname1-reverce.png");
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -59,11 +59,11 @@ background: linear-gradient(0deg,rgb(23, 23, 24) 0%, rgba(27, 27, 27, 1) 50%, rg
 
 /* blog background inverted border radius image */
 .card-img-with-svg-mark {
-  mask: url("/animax img source/vector-img-1-removebg-preview.png") center / contain no-repeat,
-  url("/animax img source/vector-img-2-removebg-preview.png") center / contain no-repeat, 
+  mask: url("/animax-img/vector-img-1-removebg-preview.png") center / contain no-repeat,
+  url("/animax-img/vector-img-2-removebg-preview.png") center / contain no-repeat, 
   linear-gradient(#000000 0 0 );
-  -webkit-mask: url("/animax img source/vector-img-1-removebg-preview.png") center / contain no-repeat,
-  url("/animax img source/vector-img-2-removebg-preview.png") center / contain no-repeat, 
+  -webkit-mask: url("/animax-img/vector-img-1-removebg-preview.png") center / contain no-repeat,
+  url("/animax-img/vector-img-2-removebg-preview.png") center / contain no-repeat, 
   linear-gradient(#000000 0 0 );
   mask-size: 20rem , 30rem; 
   mask-position: top center , bottom right;
@@ -171,11 +171,11 @@ background: linear-gradient(0deg,rgb(23, 23, 24) 0%, rgba(27, 27, 27, 1) 50%, rg
       padding: 6px;
     }
     .card-img-with-svg-mark {
-      mask: url("/animax img source/vector-img-1-removebg-preview.png") center / contain no-repeat,
-      url("/animax img source/vector-img-2-removebg-preview.png") center / contain no-repeat, 
+      mask: url("/animax-img/vector-img-1-removebg-preview.png") center / contain no-repeat,
+      url("/animax-img/vector-img-2-removebg-preview.png") center / contain no-repeat, 
       linear-gradient(#000000 0 0 );
-      -webkit-mask: url("/animax img source/vector-img-1-removebg-preview.png") center / contain no-repeat,
-      url("/animax img source/vector-img-2-removebg-preview.png") center / contain no-repeat, 
+      -webkit-mask: url("/animax-img/vector-img-1-removebg-preview.png") center / contain no-repeat,
+      url("/animax-img/vector-img-2-removebg-preview.png") center / contain no-repeat, 
       linear-gradient(#000000 0 0 );
       mask-size: 20rem , 22rem; 
       mask-position: top center , bottom right;

@@ -41,19 +41,19 @@
 }
 
 #product_img1{
-  background-image: url("animax img source/sweatshirt.jpg");
+  background-image: url("/animax-img/sweatshirt.jpg");
 }
 #product_img2{
-  background-image: url("animax img source/t-shirt.webp");
+  background-image: url("/animax-img/t-shirt.webp");
 }
 #product_img3{
-  background-image: url("animax img source/watch.jpg");
+  background-image: url("/animax-img/watch.jpg");
 }
 #product_img4{
-  background-image: url("animax img source/shirt.jpg");
+  background-image: url("/animax-img/shirt.jpg");
 }
 #product_img5{
-  background-image: url("animax img source/shose.jpg");
+  background-image: url("/animax-img/shose.jpg");
 }
 
 
@@ -85,7 +85,7 @@
 } 
 
 /* explore */
-.explore{
+.exploreLink{
   margin-top: 30px;
   padding:  60px 0;
   font-size: 2rem;
@@ -96,7 +96,7 @@
   /* background-color: red; */
 }
 
-.explore .fa-up-right-from-square{
+.exploreLink .fa-up-right-from-square{
   margin: 0px 10px;
   font-size: 1.8rem;
 } 

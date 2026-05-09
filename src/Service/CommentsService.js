@@ -24,6 +24,19 @@ class CommentService{
         }).then(res => res.data);
     }
 
+    getUserComments(userId){
+        return axios.get(COMMENTS_API_BASE_URL + `/user/${userId}`,{
+            withCredentials:true,
+        }).then(res=> res.data);
+    }
+
+    deleteComment(commentId) {
+        return axios.delete(COMMENTS_API_BASE_URL + `/delete/${commentId}`, {
+            withCredentials: true,
+        }).then(res => res.data);
+    }
+
+
 
 }
 

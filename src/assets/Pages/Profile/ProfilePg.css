@@ -1,9 +1,12 @@
 .profile-body{
-    /* background-color: blue; */
-    padding: 0 4rem;
+    display: flex;
+    align-items: flex-start;
 }
-.NavOn{
-     margin-top: 80px;
+
+.main-content {
+  flex: 1;               
+  padding: 1rem;   
+  padding-top: 0;
 }
 
 .Profile-Container.night{

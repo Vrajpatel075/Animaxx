@@ -4,12 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logoutUser } from '../Redux/authSlice';
 import toast from 'react-hot-toast';
+import { useSafeNavigate } from '../../OfflineBackup/useSafeNavigate';
+import CommentsService from '../../Service/CommentsService';
     
-    function ExitWarring({ closeModal ,WarringModel,onCancel }) {
+    function ExitWarring({ closeModal ,WarringModel,onCancel ,commentId , onDeleteSuccess }) {
+
       const currMode = useSelector((state)=>state.theme.mode);
       const dispatch = useDispatch();
-      const navigate = useNavigate()
-;
+      
+      const safeNavigate = useSafeNavigate();
       
         const handleLogout = () => {
           dispatch(logoutUser()).then((res) => {
@@ -18,12 +21,27 @@ import toast from 'react-hot-toast';
                 background:"#ff9239",
                 font:"1rem"
               }});
-              navigate("/");
+              safeNavigate("/");
             } else {
               toast.error("Logout failed!");
             }
           });
         };
+        
+        const handleCommentDelete = async () => {
+          try {
+            await CommentsService.deleteComment(commentId);
+            toast.success("Comment deleted successfully", {
+              style: { background: "#ff9239", font: "1rem" }
+            });
+            if (onDeleteSuccess) onDeleteSuccess(commentId); // update parent state
+            closeModal();
+          } catch (err) {
+            console.error("Error deleting comment:", err);
+            toast.error("Failed to delete comment");
+          }
+        };
+
   return (
     <>
       {WarringModel === "exitWarring" &&
@@ -63,6 +81,25 @@ import toast from 'react-hot-toast';
             </div>
           </div>
       }
+      
+      {WarringModel === "DeleteComment" &&
+        <div className='ModelContainer' onClick={(e) => e.stopPropagation()}>
+          <div className={`discardBox ${currMode === "light" ? "light" : "dark"}`}>
+            <h2>You can't undo this action</h2>
+            <p>Are you sure you want to continue?</p>
+            <div className='discardbtn'>
+              <button className='continueBtn' onClick={handleCommentDelete}>
+                Delete
+              </button>
+              <button className='exitBtn' onClick={onCancel}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      }
+
+      
 
     </>
   );

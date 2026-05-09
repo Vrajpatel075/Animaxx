@@ -159,16 +159,16 @@
 }
 .bento-inner-box:nth-child(3) {
   z-index: 3;
-  background-image: url("animax img source/weathering-with-you-3.jpg");
+  background-image: url("/animax-img/weathering-with-you-3.jpg");
 }
 .bento-inner-box:nth-child(4) {
-  background-image: url("animax img source/5-centimeter-per-second-1.download");
+  background-image: url("/animax-img/5-centimeter-per-second-1.download");
   left: 35%;
   bottom: -70px;
   z-index: 2;
 }
 .bento-inner-box:nth-child(5) {
-  background-image: url("animax img source/i-want-to-eat-your-pancries1.jpg") ;
+  background-image: url("/animax-img/i-want-to-eat-your-pancries1.jpg") ;
   left: 65%;
   bottom: -70px;
   z-index: 2;

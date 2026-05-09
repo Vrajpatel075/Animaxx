@@ -4,6 +4,7 @@
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   import { useDispatch, useSelector } from 'react-redux';
   import { toggleMode } from '../../../Redux/themeSlice';
+import { useSafeNavigate } from '../../../../OfflineBackup/useSafeNavigate';
 
 
   gsap.registerPlugin(ScrollTrigger);
@@ -12,6 +13,7 @@
     
     const dispatch =  useDispatch();
     const currMode = useSelector((state)=> state.theme.mode)
+    const safeNavigate  = useSafeNavigate();
 
 // change the them / mode from profile
     const changeCurrMode = (mode) =>{
@@ -115,19 +117,21 @@
           <div className="title"><h1>4K WALLPAPERS</h1></div>
           <div className="dis"><span>magnam quibusdam recusandae soluta nulla, dicta eum a facere? Iure incidunt ea atque quibusdam labore? sit amet consectetur lorem adipisicing elit. Reiciendis, qui. Modi, expedita accusamus quo consequatur sit officiis quaerat repudiandae quae.</span></div>
           </div>
+
           <div className="bento-containe">
+
               <div className="bento-row1">
               <div className="item" id="item1">
                   <h1>HD</h1>
-                  <img src="/animax img source/suzume wallpaper.webp" alt=""/>
+                  <img src="/animax-img/suzume wallpaper.webp" alt=""/>
               </div>
               <div className="item" id="item2">
-                  <img src="/animax img source/yourname1.png" alt=""/>
+                  <img src="/animax-img/yourname1.png" alt=""/>
                   <div className="bento-inner-content">
                       <h1 className="title">POSTERS</h1>
                       <span className="dis">Download Immages Of Our Favorite Anime Movies In higH Quality Without Any Intrupting ADs.</span><br/>
                        <button className="button-transperent mouseCursor" 
-                        onClick={() => navigate(isLoggedIn ? "/Gallery" : "/SignIn")}>
+                        onClick={() => safeNavigate(isLoggedIn ? "/Gallery" : "/SignIn")}>
                         VIEW MORE
                       </button>
                   </div>
@@ -138,9 +142,10 @@
                   
               </div>
               </div>
+              
               <div className="bento-row2">
               <div className="item" id="item3">
-                  <img src="/animax img source/your-name-1.jpg" alt=""/>
+                  <img src="/animax-img/your-name-1.jpg" alt=""/>
                   <div className="bento-inner-card">
                       <div className="ball-grad"></div>
                       <div className="title">
@@ -167,19 +172,19 @@
                       </span>
                   </div>
                   <div className="bento-inner-card2">
-                      <img src="/animax img source/bento-rectangle2-card.jpg" alt=""/>
+                      <img src="/animax-img/bento-rectangle2-card.jpg" alt=""/>
                   </div>
                   <div className="side-grad"></div>
               </div>
               <div className="item" id="item4">
                   <div className="bg-img item " id="bento-img1">
-                      <img src="animax img source/goblin-slayer.jpg" alt=""/>
+                      <img src="animax-img/goblin-slayer.jpg" alt=""/>
                   </div>
                   <div className="bg-img item" id="bento-img2">
-                      <img src="animax img source/mob-psycho.jpg" alt=""/>
+                      <img src="animax-img/mob-psycho.jpg" alt=""/>
                   </div>
                   <div className="bg-img item" id="bento-img3">
-                      <img src="animax img source/black-clover-yami.webp" alt=""/>
+                      <img src="animax-img/black-clover-yami.webp" alt=""/>
                   </div>
                   <div className="bento-inner-content">
                       <h1>Create Your Profile</h1>

@@ -68,17 +68,17 @@ body.dark   .feture-page.night {
 } 
 
 #fetu-img1{
-  background-image: url("/animax img source/BERSERK-1.jpg");
+  background-image: url("/animax-img/BERSERK-1.jpg");
 }
 #fetu-img2{
-  background-image: url("/animax img source/slient-voice-2.jpg");
+  background-image: url("/animax-img/slient-voice-2.jpg");
   background-position: top;
 }
 #fetu-img3{
-  background-image: url("/animax img source/sprited-away-poster.jpg");
+  background-image: url("/animax-img/sprited-away-poster.jpg");
 }
 #fetu-img4{
-  background-image: url("/animax img source/the-garden-of-words-1.jpg");
+  background-image: url("/animax-img/the-garden-of-words-1.jpg");
   background-position: left;
 }
 

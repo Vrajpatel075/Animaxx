@@ -26,6 +26,17 @@
   -moz-column-break-inside: avoid;
 }
 
+@media screen and (max-width:800px) {
+  .likeContainer .PostContainer .post-list .postCard,
+  .SavedContainer .PostContainer .post-list .postCard {
+    padding: 0;
+    margin: 0;
+  }
+  .likeContainer .PostContainer .post-list .postCard img,
+  .SavedContainer .PostContainer .post-list .postCard img{
+    border-radius: 0;
+  }
+}
 
 @media screen and (max-width:450px) {
     .postCard{

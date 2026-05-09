@@ -1,19 +1,21 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import "./ViewedPost.css"
-// import "./GalleryPg.css"
 import PostCard from '../../Features/posts/PostCard';
 import PostService from '../../../Service/PostService';
 import SelectedPost from '../../Features/posts/SelectedPost';
-import SkeletonCard from '../../LodingSkeleton/Skeleton/SkeletonCard';
+import SkeletonCard from '../../LodingSkeleton/SkeletonCard';
+import SideBar from '../../Component/SideBar'
 import { useSelector } from 'react-redux';
 import { FaArrowLeft} from "react-icons/fa";
+import { useSafeNavigate } from '../../../OfflineBackup/useSafeNavigate';
 
 
 
 
 function ViewedPost() {
   const navigate   = useNavigate();
+  const safeNavigate = useSafeNavigate();
   const { postId } = useParams(); 
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false); 
   const [selectedpost , setSelectedpost] = useState(null);
@@ -81,7 +83,10 @@ function ViewedPost() {
 
   return (
     <>
-    <div className="viewpage">   
+    <div className="viewpage">  
+      <div className="SidebarContainer">
+        <SideBar />
+      </div> 
 
     <div className="ViewPostContainer">
 
@@ -113,7 +118,7 @@ function ViewedPost() {
             key={rp.postId} 
             post={rp} 
             onClick={() =>{ 
-              navigate(`/ViewedPost/${rp.postId}`)}} />
+              safeNavigate(`/ViewedPost/${rp.postId}`)}} />
               ))}
 
             {mobileRecomendation &&
@@ -140,7 +145,7 @@ function ViewedPost() {
           key={rp.postId} 
           post={rp} 
           onClick={() => {
-            navigate(`/ViewedPost/${rp.postId}`)}} />
+            safeNavigate(`/ViewedPost/${rp.postId}`)}} />
           ))}
         </div>
        </section>

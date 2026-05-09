@@ -58,7 +58,7 @@ function SignUp() {
       <div className="container">
         <div className="info_container">
           <div className="form_logo">
-            <img src="/animax img source/ANIMAX_LOGO.png" alt="Animax Logo" />
+            <img src="/animax-img/ANIMAX_LOGO.png" alt="Animax Logo" />
           </div>
           <div className="info_title">
             CREATE A FREE ACCOUNT & BUILD YOUR OWN ANIME COMMUNITY

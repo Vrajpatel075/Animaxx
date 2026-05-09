@@ -50,7 +50,6 @@
     background-color: rgba(128, 128, 128, 0.088);
 }
 .formContainer .PostForm form .viewimg{
-    /* background-color: red; */
     height: 300px;
     width: 100%;
     margin-top: 1rem;
@@ -65,12 +64,8 @@
 .formInputs{
     display: flex;
     flex-direction: column;
-}
-.formContainer .PostForm form label{
-    font-size: 1rem;
-    text-align: start;
-    margin: 1rem;
-    text-transform:capitalize;
+    gap: 2rem;
+    padding: 2rem 0;
 }
 
 .formContainer .PostForm form input{
@@ -80,25 +75,8 @@
     outline: none;
     border-bottom: 1px solid var(--d-grey);
 }
-.formContainer .PostForm form .error{
-    color: red;
-    font-size: 0.7rem;
-}
-.formContainer .PostForm form input{
-    background-color: var(--dark);
-    color: var(--pure-white);
-}
-.formContainer .PostForm form textarea{
-    height: 80px;
-    padding: 1rem;
-    resize: none;
-    border-radius: 8px;
-}
-.formContainer .PostForm form input.light{
-    background-color: var(--pure-white);
-    color: var(--black);
-}
-.formContainer .PostForm form button{
+
+.formContainer .PostForm form button.UploadButton {
     padding: 1rem;
     background-color: var(--seco-3);
     border-radius: 16px;
@@ -109,14 +87,52 @@
     margin: 1rem auto;
     width: 50%;
 }
-.formContainer .PostForm form button:hover{
+.formContainer .PostForm form button.UploadButton:hover{
     background-color: var(--seco-2);
-    
     transition: 0.25s;
 }
-.formContainer .PostForm form button.UploadButton{
-    margin-top: 1.5rem;
+
+.tags-input-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid var(--d-grey);
+  border-radius: 8px;
 }
+
+.tag-item {
+  display: flex;
+  align-items: center;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+.tag-item.light{
+    background-color: var(--li-grey);
+}
+
+.remove-tag {
+  all: unset; /* clears inherited styles */
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0 0.3rem;
+  margin-left: 0.4rem;
+  color: var(--pure-white);
+  transition: 0.25s ease-in;
+}
+.remove-tag:hover{
+    border-radius: 4px;
+}
+
+.tag-input {
+  flex: 1;
+  outline: none;
+  min-width: 120px;
+  background: transparent;
+  color: inherit;
+}
+
 
 
 
@@ -126,12 +142,6 @@
         width: 100dvw;
         box-sizing: none;
     }
-    .formContainer .PostForm .Uploadtitle{
-        margin-top: 1rem;
-    }
-    .formContainer .PostForm .Close-btn{
-        margin: 2rem;
-    }
 }
 
 
@@ -140,15 +150,15 @@
         padding: 0;
         height: 40px;
     }
-    .formContainer .PostForm form label{
-        margin:1rem 0;
-    }
 
     .formContainer .PostForm form button{
         padding: 0.5rem 0.5rem;
         font-weight: 400;
         border-radius: 8px;
         width: 80%;
+    }
+    .formContainer .PostForm form .viewimg{
+        height: 200px;
     }
 }
 

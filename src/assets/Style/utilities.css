@@ -1,6 +1,4 @@
 /* flex helpers, buttons, etc. */
-
-
 .active-link{
   background-color: var(--prim);
   border-radius: 6px;
@@ -20,15 +18,15 @@ button:hover{
 .dropdown-menu{
   position: absolute;
   right: 0;
-  top: calc(100% + 0.2rem);
-  padding: 0.7rem;
+  top: calc(100% + 0rem);
+  padding: 0.5rem;
   border-radius: 12px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
   opacity: 0;
   pointer-events: none;
   transform: translateY(-10px);
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
-  z-index: 999999;
+  z-index: 999;
 }
 
 .dropdown-menu .dropdown-menu {
@@ -37,14 +35,14 @@ button:hover{
   top: calc(30% + 0.5rem ); 
   width: max-content;         
   margin-top: 0.5rem;
-  padding: 0.7rem;
+  padding: 0.5rem;
   border-radius: 12px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
   opacity: 0;
   pointer-events: none;
   transform: translateY(-10px);
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
-  z-index: 999999;
+  z-index: 999;
 }
 .dropdown-menu .dropdown-menu.active {
   opacity: 1;
@@ -92,7 +90,7 @@ button:hover{
   gap: 0.5rem;
   font-size: 0.8rem;
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   margin: 0.2rem;
   border-radius: 12px;
   transition: 0.3s;

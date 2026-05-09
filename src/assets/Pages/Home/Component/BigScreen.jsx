@@ -7,6 +7,8 @@ import { useEffect, useRef } from 'react';
 gsap.registerPlugin(ScrollTrigger);
 function BigScreen() {
   const screenRef = useRef(null);
+  const videoSrc = "/animax-img/ins_1741531115420_rotated.mp4";
+
 
   useEffect(() => {
     const ctxs = gsap.context(() => {
@@ -34,7 +36,7 @@ function BigScreen() {
     <>
     <div className="show" ref={screenRef}>
     <div className="show_screen">
-        <video autoPlay muted loop playsInline src="animax img source/ins_1741531115420_rotated.mp4" type="video/mp4"></video>
+        <video autoPlay muted loop playsInline src={videoSrc || ""} />
          <div className="show_content">
         <h1>UNLEASH YOUR INNER OTAKU.</h1>
         <p>Lorem ipsum, dolor sit amet consectetur  elit. Placeat similique tempore sapiente fuga vitae molestiae maiores harum, commodi aliquid accusantium quaerat quia Lorem ipsum dolor sit amet.

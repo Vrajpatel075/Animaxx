@@ -8,7 +8,7 @@ function FooterPannel() {
         <div className="foot-container">
                     <div className="des">
                     <div className="logo">
-                    <span><img src="/animax img source/ANIMAX_LOGO.png" height="50px" width="50px" alt=""/></span>
+                    <span><img src="/animax-img/ANIMAX_LOGO.png" height="50px" width="50px" alt=""/></span>
                     <h1>ANIMAXX</h1>
                      </div>
                     <p>

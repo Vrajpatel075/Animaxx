@@ -5,10 +5,12 @@ import { NavLink } from 'react-router-dom';
 function NavigationPannel() {
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [showNavbar, setShowNavbar] = useState(true);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const cheakLogin = localStorage.getItem("userId");
+  
 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const cheakLogin = localStorage.getItem("userId");
+  
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
@@ -27,10 +29,10 @@ function NavigationPannel() {
   }, [lastScrollTop]);
 
   const NavItems = [
-    { label: 'Gallery', to: '/Gallery' },
-    { label: 'BLOGS', to: '/BlogsPg' },
+    { label: 'Gallery', to: '/Gallery'},
+    { label: 'BLOGS', to: '/BlogsPg'},
     { label: 'SHOP', to: '/ShopPg' },
-    { label: 'COMMUNITY', to: '/CommunityPg' },
+    { label: 'COMMUNITY', to: '/CommunityPg'},
   ];
 
   return (
@@ -43,7 +45,7 @@ function NavigationPannel() {
         >
           ☰
         </button>
-        <img src="/animax img source/ANIMAX_LOGO.png" alt="logo" className="topbar-logo" />
+        <img src="/animax-img/ANIMAX_LOGO.png" alt="logo" className="topbar-logo" />
       </div>
 
       <div className={`navigation ${sidebarOpen ? 'show' : ''}`} style={{ top: showNavbar ? '0' : '-100%' }}>
@@ -57,7 +59,7 @@ function NavigationPannel() {
               >
                 ✖
               </button>
-              <img src="/animax img source/ANIMAX_LOGO.png" alt="logo" height="45" />
+              <img src="/animax-img/ANIMAX_LOGO.png" alt="logo" height="45" />
             </div>
 
             <div className="nav-pages">

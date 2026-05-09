@@ -7,7 +7,7 @@ import { useProfileForm } from "../useProfileForm";
 
 function EditProfile({handleBack }) {
   
-  const { editFormData, handleChange, handleSave, usernameerror, profile } = useProfileForm();
+  const { editFormData,setEditformData, handleChange, handleSave, usernameerror, profile } = useProfileForm();
   const [isEditable, setIsEditable] = useState(false);
   const currMode = useSelector((state) => state.theme.mode);
 
@@ -43,7 +43,7 @@ function EditProfile({handleBack }) {
             src={
               profile?.profilePicture
                 ? `http://localhost:8080/uploads/profile-pics/${profile?.profilePicture}`
-                : "/animax img source/ANIMAX_LOGO.png"
+                : "/animax-img/ANIMAX_LOGO.png"
             }
             alt="Profile Pic"
           />
